@@ -3,29 +3,33 @@ Special markup language for ANSI output
 
 ![Logo](ANSI-Encode.png?raw=true "Logo Title Text 1")
 
-```
-╔══════════════════════════════════════════════╗
-║       ┏━┓┏┓╻┏━┓╻   ┏━╸┏┓╻┏━╸┏━┓╺┳┓┏━╸        ║
-║       ┣━┫┃┗┫┗━┓┃   ┣╸ ┃┗┫┃  ┃ ┃ ┃┃┣╸         ║
-║       ╹ ╹╹ ╹┗━┛╹   ┗━╸╹ ╹┗━╸┗━┛╺┻┛┗━╸        ║
-╠══════════════════════════════════════════════╣
-║ DESCRIPTION                                  ║
-║     Markup text to ANSI encoder.             ║
-║                                              ║
-║ USAGE                                        ║
-║     ansi-encode.pl [text file]               ║
-║                                              ║
-║ OPTIONS                                      ║
-║     -v or --version                          ║
-║         Shows version and licensing info     ║
-║                                              ║
-║     -h or --help                             ║
-║         Usage information                    ║
-║                                              ║
-║     -t or --tokens                           ║
-║         Show most used tokens                ║
-╚══════════════════════════════════════════════╝
+## Description
 
+Markup text to ANSI encoder
+
+## Usage
+
+ansi-encode.pl [text file name]
+
+## Options
+
+### -v or --version
+```
+    Show version and licensing info
+```
+
+### -h or --help
+```
+    Usage information
+```
+
+### -t or --tokens
+```
+    Show most used tokens
+```
+
+## Tokens
+```
 Tokens have to be encapsulated inside [% token %]
 
 NOTE:  Use "less -r" to view in "less"
