@@ -7,3 +7,4 @@ lib/Term/ANSIEncode.pm
 Makefile.PL
 MANIFEST
 README.md
+VERSION

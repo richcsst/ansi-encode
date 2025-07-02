@@ -11,7 +11,6 @@
 #                     Written By Richard Kelsch                       #
 #                  © Copyright 2025 Richard Kelsch                    #
 #                        All Rights Reserved                          #
-#                           Version 1.05                              #
 #######################################################################
 # This program is free software: you can redistribute it and/or       #
 # modify it under the terms of the GNU General Public License as      #
@@ -45,9 +44,7 @@ use Getopt::Long;
 
 binmode(STDOUT, ":encoding(UTF-8)");
 
-BEGIN {
-	our $VERSION = '1.05';
-}
+our $VERSION = $Term::ANSIEncode::VERSION;
 
 my $version = FALSE;
 my $help    = FALSE;
@@ -71,9 +68,9 @@ my $text = <<'VERSION';
 ▌[% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %]▐
 ▌▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▐
 ▌[% B_ANSI52 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_ANSI52 %]                           [% RESET %]▐
-▌[% B_ANSI52 %]                      © Copyright [% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_ANSI52 %]                        [% RESET %]▐
+▌[% B_ANSI52 %]                       Copyright ©[% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_ANSI52 %]                        [% RESET %]▐
 ▌[% B_ANSI52 %]                            All Rights Reserved                              [% RESET %]▐
-▌[% B_ANSI52 %]                               Version [% GREEN %]1.05[% RESET %][% B_ANSI52 %]                                  [% RESET %]▐
+▌[% B_ANSI52 %]                               Version [% GREEN %]XXXX[% RESET %][% B_ANSI52 %]                                  [% RESET %]▐
 ▌▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▐
 ▌                                                                             ▐
 ▌                                                                             ▐
@@ -91,6 +88,8 @@ my $text = <<'VERSION';
 
 
 VERSION
+
+$text =~ s/XXXX/$VERSION/gs;
 
 my $text2 = <<'SECOND';
 ▌ [% CYAN %]This program is free software: you can redistribute it and/or modify it    [% RESET %] ▐
@@ -291,7 +290,7 @@ Richard Kelsch
 
 =head1 USAGE
 
- ansi_encode.pl file
+ ansi_encode file
 
 =head1 OPTIONS
 

@@ -13,20 +13,21 @@ use ExtUtils::MakeMaker;
 use Term::ReadKey;
 use Term::ANSIColor;
 
-my ($COLS,$ROWS,$w,$h) = GetTerminalSize(*STDOUT);
-my $pmt = 'Y';
 my $line = '-' x 28 . ' ansi-encode ' . '-' x 28;
 if (-e 'Makefile') {
 	`make veryclean;reset`;
 }
+
 # ANSI Encode
 my $banner = slurp_file('banner.vt');
+chomp(my $VERSION = slurp_file('VERSION'));
+$banner =~ s/XXXX/$VERSION/gs;
 print $banner;
 
 WriteMakefile(
     NAME               => 'Term::ANSIEncode',
     AUTHOR             => q{Richard Kelsch <rich@rk-internet.com>},
-    VERSION_FROM       => 'bin/ansi-encode',
+    VERSION_FROM       => 'lib/Term/ANSIEncode.pm',
     ABSTRACT           => 'Markup Language for ANSI Encoding',
     PL_FILES           => {},
     MIN_PERL_VERSION   => 5.020, # 5.6 (5.006) is considered slow and unstable.  Upgrade
@@ -53,11 +54,11 @@ WriteMakefile(
 );
 
 print colored(['blue on_blue'],$line),"\n";
-
 print colored(['bright_white on_magenta'],' Building    -> '),colored(['bright_green'],'     make'),"\n";
 print colored(['bright_white on_magenta'],' Testing     -> '),colored(['bright_green'],'     make')," test\n";
 print colored(['bright_white on_magenta'],' Installing  -> '),colored(['red'],'sudo '),colored(['bright_green'],'make')," install\n";
 print colored(['bright_white on_magenta'],' Cleaning Up -> '),colored(['bright_green'],'     make')," veryclean\n";
+print colored(['blue on_blue'],$line),"\n";
 
 exit(0);
 
