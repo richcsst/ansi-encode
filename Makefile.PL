@@ -24,10 +24,10 @@ my $banner = slurp_file('banner.vt');
 print $banner;
 
 WriteMakefile(
-    NAME               => 'ansi-encode',
-    AUTHOR             => $Eml,
+    NAME               => 'Term::ANSIEncode',
+    AUTHOR             => q{Richard Kelsch <rich@rk-internet.com>},
     VERSION_FROM       => 'bin/ansi-encode.pl',
-    ABSTRACT_FROM      => 'bin/ansi-encode.pl',
+    ABSTRACT           => 'Markup Language for ANSI Encoding',
     PL_FILES           => {},
     MIN_PERL_VERSION   => 5.020, # 5.6 (5.006) is considered slow and unstable.  Upgrade
     CONFIGURE_REQUIRES => {
@@ -46,17 +46,17 @@ WriteMakefile(
 		'Time::HiRes'      => '0',
 		'Getopt::Long'     => '0',
     },
-	EXE_FILES => ['bin/ansi-encode.pl'],
+	EXE_FILES => ['bin/ansi-encode'],
     dist  => {COMPRESS => 'gzip -9f', SUFFIX => 'gz',},
     clean => {FILES    => '*bak *old'},
 );
 
 print colored(['blue on_blue'],$line),"\n";
 
-print colored(['bright_white on_magenta'],' Building    -> '),colored(['bright_green'],'               make'),"\n";
-print colored(['bright_white on_magenta'],' Testing     -> '),colored(['red'],'GFB_IGNORE_X=1 '),colored(['bright_green'],'make')," test\n";
-print colored(['bright_white on_magenta'],' Installing  -> '),colored(['red'],'          sudo '),colored(['bright_green'],'make')," install\n";
-print colored(['bright_white on_magenta'],' Cleaning Up -> '),colored(['bright_green'],'               make')," veryclean\n";
+print colored(['bright_white on_magenta'],' Building    -> '),colored(['bright_green'],'     make'),"\n";
+print colored(['bright_white on_magenta'],' Testing     -> '),colored(['bright_green'],'     make')," test\n";
+print colored(['bright_white on_magenta'],' Installing  -> '),colored(['red'],'sudo '),colored(['bright_green'],'make')," install\n";
+print colored(['bright_white on_magenta'],' Cleaning Up -> '),colored(['bright_green'],'     make')," veryclean\n";
 
 exit(0);
 
