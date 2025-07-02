@@ -9,21 +9,21 @@ Markup text to ANSI encoder
 
 ## Usage
 
-ansi-encode.pl [text file name]
+**ansi-encode.pl** [text file name]
 
 ## Options
 
-### -v or --version
+### -**v** or --**version**
 ```
     Show version and licensing info
 ```
 
-### -h or --help
+### -**h** or --**help**
 ```
     Usage information
 ```
 
-### -t or --tokens
+### -**t** or --**tokens**
 ```
     Show most used tokens
 ```
