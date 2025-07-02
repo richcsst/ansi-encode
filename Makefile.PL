@@ -50,7 +50,7 @@ WriteMakefile(
     },
 	EXE_FILES => ['bin/ansi-encode'],
     dist  => {COMPRESS => 'gzip -9f', SUFFIX => 'gz',},
-    clean => {FILES    => 'Term::ASNSIEncode* *bak *old'},
+    clean => {FILES    => '*gz *bak *old'},
 );
 
 print colored(['blue on_blue'],$line),"\n";
