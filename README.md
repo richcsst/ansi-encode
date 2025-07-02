@@ -1,5 +1,4 @@
 # ansi-encode
-Special markup language for ANSI output
 
 ![Logo](ANSI-Encode.png?raw=true "Logo Title Text 1")
 
