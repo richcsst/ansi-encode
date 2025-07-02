@@ -26,11 +26,12 @@ print $banner;
 WriteMakefile(
     NAME               => 'Term::ANSIEncode',
     AUTHOR             => q{Richard Kelsch <rich@rk-internet.com>},
-    VERSION_FROM       => 'bin/ansi-encode.pl',
+    VERSION_FROM       => 'bin/ansi-encode',
     ABSTRACT           => 'Markup Language for ANSI Encoding',
     PL_FILES           => {},
     MIN_PERL_VERSION   => 5.020, # 5.6 (5.006) is considered slow and unstable.  Upgrade
     CONFIGURE_REQUIRES => {
+		'Config'              => '0',
         'ExtUtils::MakeMaker' => '6.52',
         'Term::ANSIColor'     => '0',
         'Term::ReadKey'       => '0',
@@ -48,7 +49,7 @@ WriteMakefile(
     },
 	EXE_FILES => ['bin/ansi-encode'],
     dist  => {COMPRESS => 'gzip -9f', SUFFIX => 'gz',},
-    clean => {FILES    => '*bak *old'},
+    clean => {FILES    => 'Term::ASNSIEncode* *bak *old'},
 );
 
 print colored(['blue on_blue'],$line),"\n";
