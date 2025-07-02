@@ -9,7 +9,7 @@ Markup text to ANSI encoder
 
 ## Usage
 
-**ansi-encode.pl** [text file name]
+**ansi-encode** [text file name]
 
 ## Options
 
