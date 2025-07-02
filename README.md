@@ -1,7 +1,7 @@
 # ansi-encode
 Special markup language for ANSI output
 
-![Logo](https://github.com/richcsst/ansi-encode/ANSI-Encode.png "Logo Title Text 1")
+![Logo](ANSI-Encode.png?raw=true "Logo Title Text 1")
 
 ```
 ╔══════════════════════════════════════════════╗
