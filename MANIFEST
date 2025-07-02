@@ -1,0 +1,9 @@
+Changes
+ANSI-Encode.png
+bin/ansi-encode
+t/00-sample.t
+ignore.txt
+lib/Term/ANSIEncode.pm
+Makefile.PL
+MANIFEST
+README.md
