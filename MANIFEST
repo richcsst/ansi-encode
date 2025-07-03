@@ -8,6 +8,7 @@ Makefile.PL
 MANIFEST
 README.md
 VERSION
-examples/sample.ans
 AUTHOR
 HISTORY
+examples/sample.ans
+examples/banner.vt

@@ -19,7 +19,7 @@ if (-e 'Makefile') {
 }
 
 # ANSI Encode
-my $banner = slurp_file('banner.vt');
+my $banner = slurp_file('examples/banner.vt');
 chomp(my $VERSION = slurp_file('VERSION'));
 $banner =~ s/XXXX/$VERSION/gs;
 print $banner;
