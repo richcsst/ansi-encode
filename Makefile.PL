@@ -24,6 +24,18 @@ chomp(my $VERSION = slurp_file('VERSION'));
 $banner =~ s/XXXX/$VERSION/gs;
 print $banner;
 
+print 'Adding version to module ... ';
+
+my $module = slurp_file('src/ANSIEncode.pm.template');
+
+$module =~ s/XXXX/$VERSION/gs;
+
+open(my $FILE,'>','lib/Term/ANSIEncode.pm');
+print $FILE $module;
+close($FILE);
+
+print colored(['green'],'ok'),"\n";
+
 WriteMakefile(
     NAME               => 'Term::ANSIEncode',
     AUTHOR             => q{Richard Kelsch <rich@rk-internet.com>},
