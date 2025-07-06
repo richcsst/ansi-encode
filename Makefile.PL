@@ -15,7 +15,7 @@ use Term::ANSIColor;
 
 my $line = '-' x 33 . ' ansi-encode ' . '-' x 33;
 if (-e 'Makefile') {
-	`make veryclean;reset`;
+	`make veryclean;rm -f lib/Term/ANSIEncode.pm;touch lib/Term/ANSIEncode.pm;reset`;
 }
 
 # ANSI Encode
