@@ -1,4 +1,4 @@
-# ansi-encode
+# ANSIEncode
 
 ![ANSIEncode Logo](ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text 1")
 
@@ -127,6 +127,6 @@ NOTE:  Use "less -r" to view in "less"
 │ BRIGHT B_WHITE      │  Bright white                                    │
 │ B_ANSI0 - B_ANSI231 │ Term256 background colors (use -c to see these)  │
 │ B_GREY0 - B_GREY23  │ Levels of grey                                   │
-╰────────────────────────────────────────────────────────────────────────╯
+╰─────────────────────┴──────────────────────────────────────────────────╯
 ```
 
