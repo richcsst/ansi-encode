@@ -13,9 +13,9 @@
 1.08    Jul 3, 2025
 
         Vastly improved token handling, expanded symbols, and improved
-		documentation.
+        documentation.
 
-		New symbol list feature as well as search.
+        New symbol list feature as well as search.
 
 1.09    Jul 3, 2025
 
@@ -28,4 +28,4 @@
 1.11    Jul 5, 2025
 
         Added option to module to abbreviate the symbols list.  This speeds
-		up initialization.  The abbreviated symbols are U2400 to U25FF
+        up initialization.  The abbreviated symbols are U2400 to U25FF
