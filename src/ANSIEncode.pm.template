@@ -88,6 +88,8 @@ sub ansi_output {
 
 sub new {
     my $class = shift;
+	my $opt   = shift || 'abbreviated';
+
     my $self;
 
     my $esc = chr(27) . '[';
@@ -211,7 +213,10 @@ sub new {
     } ## end foreach my $count (0 .. 255)
 
     # Generate symbols
-    foreach my $u (0x2000 .. 0x2B59) {
+	my $start  = ($opt eq 'abbreviated') ? 0x2400 : 0x2000;
+	my $finish = ($opt eq 'abbreviated') ? 0x25FF : 0x2B59;
+	
+    foreach my $u ($start .. $finish) {
         my $name = charnames::viacode($u);
         unless ($name =~ /^(ZERO|LINE SEPARATOR|LEFT-TO-RIGHT|PARAGRAPH|POP |RIGHT-TO-LEFT|TRIGRAM|BRAILLE)/) {
             $self->{'characters'}->{$name} = charnames::string_vianame($name);
@@ -242,41 +247,10 @@ Richard Kelsch
 
 =head1 USAGE
 
- ansi_encode.pl file
+ my $obj = Term::ANSIEncode->new();
 
-=head1 OPTIONS
-
-=over 4
-
-=item --B<version> or -B<v>
-
-Shows name, version information and brief licensing information.
-
-=item --B<help> or -B<h>
-
-Simple usage and options documentation
-
-=item --B<tokens> or -B<y>
-
-Shows the most used tokens available.  A token is encapsulated within [% and %] (with at lease one space on each side)
-
-=item --B<symbols> or -B<s> [search]
-
-Similar to "tokens", but instead shows special symbol character tokens.
-
-You may also add a search string to shorten the list.
-
-IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
-
-=back
-
-=over 8
-
-[% RED %]This is written in red[% RESET %]
-
-B<RESET> changes output text to normal.
-
-=back
+Use this version for a full list of symbols:
+ my $obj = Term::ANSIEncode->new('long');
 
 =head1 TOKENS
 

@@ -24,3 +24,8 @@
 1.10    Jul 5, 2025
 
         Improved color grid output for -c option
+
+1.11    Jul 5, 2025
+
+        Added option to module to abbreviate the symbols list.  This speeds
+		up initialization.  The abbreviated symbols are U2400 to U25FF
