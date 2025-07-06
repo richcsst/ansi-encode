@@ -41,3 +41,4 @@ inc/
 # cpanfile.snapshot 
 
 src/*pm
+lib/Term/ANSIEncode.pm
