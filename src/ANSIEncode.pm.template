@@ -230,6 +230,7 @@ ANSI Encode
 =head1 SYNOPSIS
 
 A markup language to generate basic ANSI text
+This module is for use with the executable file
 
 =head1 AUTHOR & COPYRIGHT
 
@@ -259,13 +260,13 @@ Simple usage and options documentation
 
 Shows the most used tokens available.  A token is encapsulated within [% and %] (with at lease one space on each side)
 
-For example:
-
 =item --B<symbols> or -B<s> [search]
 
 Similar to "tokens", but instead shows special symbol character tokens.
 
 You may also add a search string to shorten the list.
+
+IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
 
 =back
 
