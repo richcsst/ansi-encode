@@ -29,3 +29,9 @@
 
         Added option to module to abbreviate the symbols list.  This speeds
         up initialization.  The abbreviated symbols are U2400 to U25FF
+
+1.12    Jul 8, 2025
+
+        Better control of the symbols table.  Shortening it speeds things up.
+		The executable has a new option to enable a full symbol table (if
+		needed).

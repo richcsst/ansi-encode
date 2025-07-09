@@ -53,6 +53,7 @@ my $help    = FALSE;
 my $tokens  = FALSE;
 my $symbols = FALSE;
 my $colors  = FALSE;
+my $full    = FALSE;
 
 GetOptions(
     'version' => \$version,
@@ -60,6 +61,7 @@ GetOptions(
     'tokens'  => \$tokens,
     'colors'  => \$colors,
     'symbols' => \$symbols,
+	'full'    => \$full,
 );
 
 my $text = <<'VERSION';
@@ -112,7 +114,7 @@ my $text2 = <<'SECOND';
 
 SECOND
 
-my $ansi = Term::ANSIEncode->new();
+my $ansi = ($full) ? Term::ANSIEncode->new('mode' => 'full') : Term::ANSIEncode->new('mode' => 'short');
 
 ###
 my $small = <<'SMALL';
@@ -279,18 +281,18 @@ if ($version) {
     foreach my $name (@names) {
         $size = max($size, length($name));
     }
-    my $temp = "\nSYMBOL TOKEN NAMES\n" . '╭─' . '─' x $size . '─╮' . "\n";
+    my $temp = "\n       SYMBOL TOKEN NAMES\n" . '╭─────┬' . '─' x $size . '─╮' . "\n";
     while (scalar(@names)) {
         my $name = shift(@names);
 		if ($name ne '') {
 			if ($name =~ /^COMBINING/) {
-				$temp .= sprintf('│ %-' . $size . 's │   %s', $name, $ansi->{'characters'}->{$name}) . "\n";
+				$temp .= sprintf('│U%04X│%-' . $size . 's │   %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
 			} else {
-				$temp .= sprintf('│ %-' . $size . 's │ %s', $name, $ansi->{'characters'}->{$name}) . "\n";
+				$temp .= sprintf('│U%04X│%-' . $size . 's │ %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
 			}
 		}
     } ## end while (scalar(@names))
-    $temp .= '╰─' . '─' x $size . '─╯' . "\n\n";
+    $temp .= '╰─────┴' . '─' x $size . '─╯' . "\n\n";
     $ansi->ansi_output($temp, 0);
 } elsif ($colors) {
 	my $grey = chr(27) . '[38;5;235m';
@@ -381,6 +383,10 @@ Similar to "tokens", but instead shows special symbol character tokens.
 You may also add a search string to shorten the list.
 
 IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
+
+=item --B<full> -B<f>
+
+Enables the full symbol tree.  Initialization is slightly slower.
 
 =back
 
