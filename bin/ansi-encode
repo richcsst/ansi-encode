@@ -281,18 +281,18 @@ if ($version) {
     foreach my $name (@names) {
         $size = max($size, length($name));
     }
-    my $temp = "\n       SYMBOL TOKEN NAMES\n" . '╭─────┬' . '─' x $size . '─╮' . "\n";
+    my $temp = "\n        SYMBOL TOKEN NAMES\n" . '╭──────┬' . '─' x $size . '─╮' . "\n";
     while (scalar(@names)) {
         my $name = shift(@names);
 		if ($name ne '') {
 			if ($name =~ /^COMBINING/) {
-				$temp .= sprintf('│U%04X│%-' . $size . 's │   %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
+				$temp .= sprintf('│U%05X│%-' . $size . 's │   %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
 			} else {
-				$temp .= sprintf('│U%04X│%-' . $size . 's │ %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
+				$temp .= sprintf('│U%05X│%-' . $size . 's │ %s', charnames::vianame($name), $name, $ansi->{'characters'}->{$name}) . "\n";
 			}
 		}
     } ## end while (scalar(@names))
-    $temp .= '╰─────┴' . '─' x $size . '─╯' . "\n\n";
+    $temp .= '╰──────┴' . '─' x $size . '─╯' . "\n\n";
     $ansi->ansi_output($temp, 0);
 } elsif ($colors) {
 	my $grey = chr(27) . '[38;5;235m';
@@ -386,7 +386,7 @@ IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
 
 =item --B<full> -B<f>
 
-Enables the full symbol tree.  Initialization is slightly slower.
+Enables the full symbol tree.  Initialization is slower.  It his highly recommended that you use a search string.
 
 =back
 

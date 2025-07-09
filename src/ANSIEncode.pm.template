@@ -221,12 +221,24 @@ sub new {
 		$finish = 0x2B59;
 	}
 
+	my $name = charnames::viacode(0x1F341); # Maple Leaf
+	$self->{'characters'}->{$name} = charnames::string_vianame($name);
     foreach my $u ($start .. $finish) {
-        my $name = charnames::viacode($u);
+        $name = charnames::viacode($u);
         unless ($name =~ /^(ZERO|LINE SEPARATOR|LEFT-TO-RIGHT|PARAGRAPH|POP |RIGHT-TO-LEFT|TRIGRAM|BRAILLE)/) {
             $self->{'characters'}->{$name} = charnames::string_vianame($name);
         }
-    } ## end foreach my $u (0x2000 .. 0x2B59)
+    }
+	if ($self->{'mode'} =~ /full|long/i) {
+		$start = 0x1F300;
+		$finish = 0x1FBFF;
+		foreach my $u ($start .. $finish) {
+			$name = charnames::viacode($u);
+			unless ($name =~ /^(ZERO|LINE SEPARATOR|LEFT-TO-RIGHT|PARAGRAPH|POP |RIGHT-TO-LEFT|TRIGRAM|BRAILLE)/) {
+				$self->{'characters'}->{$name} = charnames::string_vianame($name);
+			}
+		}
+	}
     bless($self, $class);
     return ($self);
 } ## end sub new

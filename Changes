@@ -35,3 +35,8 @@
         Better control of the symbols table.  Shortening it speeds things up.
 		The executable has a new option to enable a full symbol table (if
 		needed).
+
+1.13    Jul 8, 2025
+
+        Added more symbols to the full version of the symbol table.  It's
+		HUGE.
