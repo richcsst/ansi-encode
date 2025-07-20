@@ -148,7 +148,10 @@ my $small = <<'SMALL';
 ║         Show available colors and tokens                                ║
 ║                                                                         ║
 ║     -[% PINK %]s[% RESET %] or --[% PINK %]symbols[% RESET %] [search]                                            ║
-║         Show available symbols and tokens                               ║
+║         Show available symbols and character tokens by name             ║
+║                                                                         ║
+║     -[% PINK %]u[% RESET %] or --[% PINK %]unicode[% RESET %] [search]                                            ║
+║         Show available symbols and character tokens by unicode          ║
 ║                                                                         ║
 ║     -[% PINK %]f[% RESET %] or --[% PINK %]full[% RESET %]                                                        ║
 ║         Loads the full symbol table.  It will slow down initialization. ║
@@ -450,7 +453,15 @@ Shows the most used tokens available.  A token is encapsulated within [% and %] 
 
 =item --B<symbols> or -B<s> [search]
 
-Similar to "tokens", but instead shows special symbol character tokens.
+Similar to "tokens", but instead shows special symbol character tokens names.
+
+You may also add a search string to shorten the list.
+
+IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
+
+=item --B<unicode> or -B<u> [search]
+
+Similar to "tokens", but instead shows special symbol characters by unicode.
 
 You may also add a search string to shorten the list.
 
