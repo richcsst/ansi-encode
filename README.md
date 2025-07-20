@@ -37,6 +37,10 @@ Markup text to ANSI encoder
     Show all of the symbol character tokens
 	Use search to shorten the huge list
 ````
+### -**f** or --**full**
+```
+    Use the full token table.  This will increase the initialization time.
+```
 
 ## Tokens
 ```
