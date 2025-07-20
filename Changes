@@ -48,3 +48,7 @@
 1.15    Jul 20, 2025
 
         Improve Token, Help and Symbols output
+
+1.16    Jul 20, 2025
+
+        Better token, symbol and unicode support.  Added some attributes.
