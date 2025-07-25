@@ -43,6 +43,7 @@ use constant {
 };
 use Getopt::Long;
 use List::Util qw(max);
+
 # use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 
 binmode(STDOUT, ":encoding(UTF-8)");
@@ -64,9 +65,9 @@ GetOptions(
     'tokens'  => \$tokens,
     'colors'  => \$colors,
     'symbols' => \$symbols,
-	'full'    => \$full,
-	'dump'    => \$Dump,
-	'unicode' => \$unicode,
+    'full'    => \$full,
+    'dump'    => \$Dump,
+    'unicode' => \$unicode,
 );
 
 my $text = <<'VERSION';
@@ -120,6 +121,7 @@ my $text2 = <<'SECOND';
 SECOND
 
 my $ansi = ($full) ? Term::ANSIEncode->new('mode' => 'full') : Term::ANSIEncode->new('mode' => 'short');
+
 # print Dumper($ansi);exit;
 ###
 my $small = <<'SMALL';
@@ -292,14 +294,14 @@ if ($version) {
 } elsif ($tokens) {
     $ansi->ansi_output($to, 0);
 } elsif ($Dump) {
-	my $temp = "\n\n";
-	my @names = (sort(keys %{ $ansi->{'characters'}->{'NAME'} }));
-	while (scalar(@names)) {
-		my $name = shift(@names);
-		$temp .= $ansi->{'characters'}->{'NAME'}->{$name} . ' ';
-	}
-	$temp .= "\n\n";
-	$ansi->ansi_output($temp,0);
+    my $temp  = "\n\n";
+    my @names = (sort(keys %{ $ansi->{'characters'}->{'NAME'} }));
+    while (scalar(@names)) {
+        my $name = shift(@names);
+        $temp .= $ansi->{'characters'}->{'NAME'}->{$name} . ' ';
+    }
+    $temp .= "\n\n";
+    $ansi->ansi_output($temp, 0);
 } elsif ($unicode) {
     my @names;
     my $search = pop(@ARGV);
@@ -313,37 +315,37 @@ if ($version) {
         $size = max($size, length($name));
     }
     my $temp = "\nNOTE:  Not all terminals will support all characters\n" . '[% GREY5 %]╭───────╮[% RESET %]' . "\n";
-	$temp   .= '[% GREY5 %]│[% CYAN %]Unicode[% GREY5 %]│[% RESET %]' . " 0 1 2 3 4 5 6 7 8 9 A B C D E F\n";
-	$temp .= '[% GREY5 %]├───────┼───────────────────────────────────[% RESET %]' . "\n";
-	my $count = 0;
+    $temp .= '[% GREY5 %]│[% CYAN %]Unicode[% GREY5 %]│[% RESET %]' . " 0 1 2 3 4 5 6 7 8 9 A B C D E F\n";
+    $temp .= '[% GREY5 %]├───────┼───────────────────────────────────[% RESET %]' . "\n";
+    my $count = 0;
     while (scalar(@names)) {
         my $name = shift(@names);
-		if ($name ne '') {
-			if (($name eq 'U1F341' && ! $full) || ($name eq 'U1F300' && $full)) {
-				$temp .= "\n";
-				$count = 0;
-			}
-			if ($name =~ /^U0(20D.|20E.|20F0)/) {
-				unless($count) {
-					$temp .= '[% GREY5 %]│[% RESET %]' . $name . ' [% GREY5 %]│[% RESET %]  ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
-				} else {
-					$temp .= '  ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
-				}
-			} else {
-				unless($count) {
-					$temp .= '[% GREY5 %]│[% RESET %]' . $name . ' [% GREY5 %]│[% RESET %] ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
-				} else {
-					$temp .= ' ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
-				}
-			}
-			$count++;
-			if ($count > 15) {
-				$count = 0;
-				$temp .= "\n";
-			}
-		}
+        if ($name ne '') {
+            if (($name eq 'U1F341' && !$full) || ($name eq 'U1F300' && $full)) {
+                $temp .= "\n";
+                $count = 0;
+            }
+            if ($name =~ /^U0(20D.|20E.|20F0)/) {
+                unless ($count) {
+                    $temp .= '[% GREY5 %]│[% RESET %]' . $name . ' [% GREY5 %]│[% RESET %]  ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
+                } else {
+                    $temp .= '  ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
+                }
+            } else {
+                unless ($count) {
+                    $temp .= '[% GREY5 %]│[% RESET %]' . $name . ' [% GREY5 %]│[% RESET %] ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
+                } else {
+                    $temp .= ' ' . $ansi->{'characters'}->{'UNICODE'}->{$name};
+                }
+            } ## end else [ if ($name =~ /^U0(20D.|20E.|20F0)/)]
+            $count++;
+            if ($count > 15) {
+                $count = 0;
+                $temp .= "\n";
+            }
+        } ## end if ($name ne '')
     } ## end while (scalar(@names))
-	$temp .= "\n" unless($full);
+    $temp .= "\n" unless ($full);
     $temp .= '[% GREY5 %]╰───────┴───────────────────────────────────[% RESET %]' . "\n\n";
     $ansi->ansi_output($temp, 0);
 } elsif ($symbols) {
@@ -359,51 +361,51 @@ if ($version) {
         $size = max($size, length($name));
     }
     my $temp = "\nNOTE:  Not all terminals will support all characters\n" . '[% GREY5 %]╭───────┬─' . '─' x $size . '─╮[% RESET %]' . "\n";
-	$temp   .= '[% GREY5 %]│[% CYAN %]Unicode[% GREY5 %]│' . ' ' x ($size - 20) . '[% BRIGHT YELLOW %]Character Token Names[% RESET %] ' . "[% GREY5 %]│[% RESET %]\n";
-	$temp .= '[% GREY5 %]├───────┼─' .  '─' x $size . "─┤[% RESET %]\n";
+    $temp .= '[% GREY5 %]│[% CYAN %]Unicode[% GREY5 %]│' . ' ' x ($size - 20) . '[% BRIGHT YELLOW %]Character Token Names[% RESET %] ' . "[% GREY5 %]│[% RESET %]\n";
+    $temp .= '[% GREY5 %]├───────┼─' . '─' x $size . "─┤[% RESET %]\n";
     while (scalar(@names)) {
         my $name = shift(@names);
-		if ($name ne '') {
-			if ($name =~ /^COMBINING/) {
-				$temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s   %s', '[% GREY5 %]','[% RESET %]', charnames::vianame($name), '[% GREY5 %]','[% RESET %]', $name, '[% GREY5 %]','[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
-			} else {
-				$temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s %s', '[% GREY5 %]','[% RESET %]',charnames::vianame($name), '[% GREY5 %]','[% RESET %]',$name, '[% GREY5 %]','[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
-			}
-		}
+        if ($name ne '') {
+            if ($name =~ /^COMBINING/) {
+                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s   %s', '[% GREY5 %]', '[% RESET %]', charnames::vianame($name), '[% GREY5 %]', '[% RESET %]', $name, '[% GREY5 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
+            } else {
+                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s %s', '[% GREY5 %]', '[% RESET %]', charnames::vianame($name), '[% GREY5 %]', '[% RESET %]', $name, '[% GREY5 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
+            }
+        } ## end if ($name ne '')
     } ## end while (scalar(@names))
     $temp .= '[% GREY5 %]╰───────┴─' . '─' x $size . '─╯[% RESET %]' . "\n\n";
     $ansi->ansi_output($temp, 0);
 } elsif ($colors) {
-	my $grey = chr(27) . '[38;5;235m';
-	my $off  = chr(27) . '[0m';
-	print "\nANSI Colors and GREY colors (requires a terminal with 256 color support for all colors)\n";
-	print $grey, '╭────┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──╮', $off, "\n";
-	print $grey, '│', $off, 'ANSI';
-	foreach my $i (0..35) {
-		printf('%s│%s%2d',$grey,$off,$i);
-	}
-	print $grey, "│\n├────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤", $off, "\n";
-	printf('%s│%s %3d%s│%s', $grey, $off, 0, $grey, $off);
-	foreach my $i (0..35) {
-		if ($i <= 15) {
-			print chr(27), '[48;5;', $i, 'm  ', $off, $grey, '│', $off;
-		} else {
-			print '  ', $grey, '│', $off;
-		}
-	}
-	foreach my $i (0..6) {
-		my $_i = ($i * 36) + 16;
-		print "\n", $grey, '├────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤', $off, "\n";
-		if ($i == 6) {
-			print $grey, '│', $off, 'GREY', $grey, '│', $off;
-		} else {
-			printf("%s│%s %3d%s│%s",$grey,$off,$_i,$grey,$off);
-		}
-		foreach my $j (0..35) {
-			print chr(27),'[48;5;',($_i+$j),'m  ',chr(27),'[m', $grey, '│', $off;
-		}
-	}
-	print "\n", $grey, '╰────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──╯', $off, "\n";
+    my $grey = chr(27) . '[38;5;235m';
+    my $off  = chr(27) . '[0m';
+    print "\nANSI Colors and GREY colors (requires a terminal with 256 color support for all colors)\n";
+    print $grey, '╭────┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──╮', $off, "\n";
+    print $grey, '│',                                                                                                                  $off, 'ANSI';
+    foreach my $i (0 .. 35) {
+        printf('%s│%s%2d', $grey, $off, $i);
+    }
+    print $grey, "│\n├────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤", $off, "\n";
+    printf('%s│%s %3d%s│%s', $grey, $off, 0, $grey, $off);
+    foreach my $i (0 .. 35) {
+        if ($i <= 15) {
+            print chr(27), '[48;5;', $i, 'm  ', $off, $grey, '│', $off;
+        } else {
+            print '  ', $grey, '│', $off;
+        }
+    } ## end foreach my $i (0 .. 35)
+    foreach my $i (0 .. 6) {
+        my $_i = ($i * 36) + 16;
+        print "\n", $grey, '├────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤', $off, "\n";
+        if ($i == 6) {
+            print $grey, '│', $off, 'GREY', $grey, '│', $off;
+        } else {
+            printf("%s│%s %3d%s│%s", $grey, $off, $_i, $grey, $off);
+        }
+        foreach my $j (0 .. 35) {
+            print chr(27), '[48;5;', ($_i + $j), 'm  ', chr(27), '[m', $grey, '│', $off;
+        }
+    } ## end foreach my $i (0 .. 6)
+    print "\n", $grey, '╰────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──╯', $off, "\n";
 } else {
     my $file = $ARGV[0];
     if (defined($file) && -e $file) {
