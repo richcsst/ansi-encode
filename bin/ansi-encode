@@ -153,6 +153,9 @@ my $small = <<'SMALL';
 ║     -[% PINK %]u[% RESET %] or --[% PINK %]unicode[% RESET %] [search]                                            ║
 ║         Show available symbols and character tokens by unicode          ║
 ║                                                                         ║
+║     -[% PINK %]d[% RESET %] or --[% PINK %]dump[% RESET %] [search]     ║
+║         Dump available sysmbols                                         ║
+║                                                                         ║
 ║     -[% PINK %]f[% RESET %] or --[% PINK %]full[% RESET %]                                                        ║
 ║         Loads the full symbol table.  It will slow down initialization. ║
 ╚═════════════════════════════════════════════════════════════════════════╝
@@ -165,9 +168,10 @@ foreach my $c (0 .. 23) {
 $greydient .= '[% RESET %]';
 my $to = <<'TOKENS';
 
-Tokens have to be encapsulated inside [% token %] (the token must be
+Tokens have to be encapsulated inside [% TOKEN %] (the TOKEN must be
 surrounded by at least one space on each side.  Colors beyond the standard 8
-will require a terminal that supports 256 colors.
+will require a terminal that supports 256 colors.  It is also recommended that
+your terminal supports UTF-8 for advanced character/symbol support.
 
 NOTE:  Use "less -r" to view ANSI in "less"
 
@@ -467,7 +471,11 @@ You may also add a search string to shorten the list.
 
 IT IS HIGHLY SUGGESTED YOU USE A SEARCH STRING.
 
-=item --B<full> -B<f>
+=item --B<dump> or -B<d> [search]
+
+Does a raw dump of the symbols.
+
+=item --B<full> or -B<f>
 
 Enables the full symbol tree.  Initialization is slower.  It his highly recommended that you use a search string.
 
