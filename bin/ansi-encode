@@ -425,7 +425,6 @@ ANSI Encode
 =head1 SYNOPSIS
 
 A markup language to generate basic ANSI text
-This module is for use with the executable file
 
 =head1 AUTHOR & COPYRIGHT
 
