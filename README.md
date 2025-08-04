@@ -44,7 +44,7 @@ Markup text to ANSI encoder
 	Use search to shorten the huge list
 ```
 
-### -**d** or --**dump** [SEARCH]
+### -**d** or --**dump** [search]
 ~~~
     Shows the syumbols only
 ~~~
