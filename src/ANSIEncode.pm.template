@@ -61,7 +61,7 @@ sub ansi_output {
 		}
         foreach my $string (keys %{ $self->{'ansi_sequences'} }) {
             if ($string =~ /CLEAR|CLS/i) {
-                my $ch = cls;
+                my $ch = locate(1,1) . cls;
                 $text =~ s/\[\%\s+$string\s+\%\]/$ch/gi;
             } else {
                 $text =~ s/\[\%\s+$string\s+\%\]/$self->{'ansi_sequences'}->{$string}/gi;

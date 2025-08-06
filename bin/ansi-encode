@@ -72,12 +72,12 @@ GetOptions(
 
 my $text = <<'VERSION';
 [% CLEAR %]╔═════════════════════════════════════════════════════════════════════════════╗
-║[% RED %]               [% BRIGHT YELLOW %] _   _ [% GREEN %] _____ [% BRIGHT BLUE %]_____  [% BRIGHT WHITE %] ______                     _            [% RESET %]║
-║[% RED %]          ╱╲   [% BRIGHT YELLOW %]│ ╲ │ │[% GREEN %]╱ ____│[% BRIGHT BLUE %]_   _│ [% BRIGHT WHITE %]│  ____│                   │ │           [% RESET %]║
-║[% RED %]         ╱  ╲  [% BRIGHT YELLOW %]│  ╲│ │[% GREEN %] (___  [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│ │__   _ __   ___ ___   __│ │ ___       [% RESET %]║
-║[% RED %]        ╱ ╱╲ ╲ [% BRIGHT YELLOW %]│ . ` │[% GREEN %]╲___ ╲ [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│  __│ │ '_ ╲ ╱ __╱ _ ╲ ╱ _` │╱ _ ╲      [% RESET %]║
-║[% RED %]       ╱ ____ ╲[% BRIGHT YELLOW %]│ │╲  │[% GREEN %]____) │[% BRIGHT BLUE %]_│ │_  [% BRIGHT WHITE %]│ │____│ │ │ │ (_│ (_) │ (_│ │  __╱      [% RESET %]║
-║[% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %]║
+║[% B_BLACK %][% RED %]               [% BRIGHT YELLOW %] _   _ [% GREEN %] _____ [% BRIGHT BLUE %]_____  [% BRIGHT WHITE %] ______                     _            [% RESET %]║
+║[% B_BLACK %][% RED %]          ╱╲   [% BRIGHT YELLOW %]│ ╲ │ │[% GREEN %]╱ ____│[% BRIGHT BLUE %]_   _│ [% BRIGHT WHITE %]│  ____│                   │ │           [% RESET %]║
+║[% B_BLACK %][% RED %]         ╱  ╲  [% BRIGHT YELLOW %]│  ╲│ │[% GREEN %] (___  [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│ │__   _ __   ___ ___   __│ │ ___       [% RESET %]║
+║[% B_BLACK %][% RED %]        ╱ ╱╲ ╲ [% BRIGHT YELLOW %]│ . ` │[% GREEN %]╲___ ╲ [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│  __│ │ '_ ╲ ╱ __╱ _ ╲ ╱ _` │╱ _ ╲      [% RESET %]║
+║[% B_BLACK %][% RED %]       ╱ ____ ╲[% BRIGHT YELLOW %]│ │╲  │[% GREEN %]____) │[% BRIGHT BLUE %]_│ │_  [% BRIGHT WHITE %]│ │____│ │ │ │ (_│ (_) │ (_│ │  __╱      [% RESET %]║
+║[% B_BLACK %][% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %]║
 ╠═════════════════════════════════════════════════════════════════════════════╣
 ║[% B_ANSI52 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_ANSI52 %]                           [% RESET %]║
 ║[% B_ANSI52 %]                       Copyright ©[% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_ANSI52 %]                        [% RESET %]║
@@ -125,10 +125,10 @@ my $ansi = ($full) ? Term::ANSIEncode->new('mode' => 'full') : Term::ANSIEncode-
 # print Dumper($ansi);exit;
 ###
 my $small = <<'SMALL';
-╔═════════════════════════════════════════════════════════════════════════╗
-║                     [% RED %]┏━┓[% BRIGHT YELLOW %]┏┓╻[% GREEN %]┏━┓[% BRIGHT BLUE %]╻[% RESET %]   [% BRIGHT WHITE %]┏━╸┏┓╻┏━╸┏━┓╺┳┓┏━╸[% RESET %]                     ║
-║                     [% RED %]┣━┫[% BRIGHT YELLOW %]┃┗┫[% GREEN %]┗━┓[% BRIGHT BLUE %]┃[% RESET %]   [% BRIGHT WHITE %]┣╸ ┃┗┫┃  ┃ ┃ ┃┃┣╸ [% RESET %]                     ║
-║                     [% RED %]╹ ╹[% BRIGHT YELLOW %]╹ ╹[% GREEN %]┗━┛[% BRIGHT BLUE %]╹[% RESET %]   [% BRIGHT WHITE %]┗━╸╹ ╹┗━╸┗━┛╺┻┛┗━╸[% RESET %]                     ║
+[% CLEAR %]╔═════════════════════════════════════════════════════════════════════════╗
+║[% B_BLACK %]                     [% RED %]┏━┓[% BRIGHT YELLOW %]┏┓╻[% GREEN %]┏━┓[% BRIGHT BLUE %]╻   [% BRIGHT WHITE %]┏━╸┏┓╻┏━╸┏━┓╺┳┓┏━╸                     [% RESET %]║
+║[% B_BLACK %]                     [% RED %]┣━┫[% BRIGHT YELLOW %]┃┗┫[% GREEN %]┗━┓[% BRIGHT BLUE %]┃   [% BRIGHT WHITE %]┣╸ ┃┗┫┃  ┃ ┃ ┃┃┣╸                      [% RESET %]║
+║[% B_BLACK %]                     [% RED %]╹ ╹[% BRIGHT YELLOW %]╹ ╹[% GREEN %]┗━┛[% BRIGHT BLUE %]╹   [% BRIGHT WHITE %]┗━╸╹ ╹┗━╸┗━┛╺┻┛┗━╸                     [% RESET %]║
 ╠═════════════════════════════════════════════════════════════════════════╣
 ║[% B_ANSI52 %][% BRIGHT YELLOW %] DESCRIPTION                                                             [% RESET %]║
 ║     Markup text to ANSI encoder.                                        ║
@@ -222,9 +222,9 @@ NOTE:  Use "less -r" to view ANSI in "less"
 │ DEFAULT                        │ Default foreground color[% RESET %]                  │
 │ BLACK                          │ [% B_GREY3        %][% BLACK %] Black [% RESET %]                                   │
 │ RED                            │ [% RED            %]Red[% RESET %]                                       │
-│ PINK                           │ [% PINK           %]Hot pink[% RESET %]    (requires 256 color terminal) │
-│ ORANGE                         │ [% ORANGE         %]Orange[% RESET %]      (requires 256 color terminal) │
-│ NAVY                           │ [% NAVY           %]Deep blue[% RESET %]   (requires 256 color terminal) │
+│ PINK                           │ [% PINK           %]Hot pink[% RESET %]                                  │
+│ ORANGE                         │ [% ORANGE         %]Orange[% RESET %]                                    │
+│ NAVY                           │ [% NAVY           %]Deep blue[% RESET %]                                 │
 │ GREEN                          │ [% GREEN          %]Green[% RESET %]                                     │
 │ YELLOW                         │ [% YELLOW         %]Yellow[% RESET %]                                    │
 │ BLUE                           │ [% BLUE           %]Blue[% RESET %]                                      │
@@ -364,20 +364,20 @@ if ($version) {
     foreach my $name (@names) {
         $size = max($size, length($name));
     }
-    my $temp = "\nNOTE:  Not all terminals will support all characters\n" . '[% GREY5 %]╭───────┬─' . '─' x $size . '─╮[% RESET %]' . "\n";
-    $temp .= '[% GREY5 %]│[% CYAN %]Unicode[% GREY5 %]│' . ' ' x ($size - 20) . '[% BRIGHT YELLOW %]Character Token Names[% RESET %] ' . "[% GREY5 %]│[% RESET %]\n";
-    $temp .= '[% GREY5 %]├───────┼─' . '─' x $size . "─┤[% RESET %]\n";
+    my $temp = "\nNOTE:  Not all terminals will support all characters\n" . '[% GREY6 %]╭───────┬─' . '─' x $size . '─╮[% RESET %]' . "\n";
+    $temp .= '[% GREY6 %]│[% B_BLACK %][% CYAN %]Unicode[% RESET %][% GREY6 %]│[% B_BLACK %]' . ' ' x ($size - 20) . '[% BRIGHT YELLOW %]Character Token Names [% RESET %]' . "[% GREY6 %]│[% RESET %]\n";
+    $temp .= '[% GREY6 %]├───────┼─' . '─' x $size . "─┤[% RESET %]\n";
     while (scalar(@names)) {
         my $name = shift(@names);
         if ($name ne '') {
             if ($name =~ /^COMBINING/) {
-                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s   %s', '[% GREY5 %]', '[% RESET %]', charnames::vianame($name), '[% GREY5 %]', '[% RESET %]', $name, '[% GREY5 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
+                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s   %s', '[% GREY6 %]', '[% RESET %]', charnames::vianame($name), '[% GREY6 %]', '[% RESET %]', $name, '[% GREY6 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
             } else {
-                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s %s', '[% GREY5 %]', '[% RESET %]', charnames::vianame($name), '[% GREY5 %]', '[% RESET %]', $name, '[% GREY5 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
+                $temp .= sprintf('%s│%sU%05X %s│%s %' . $size . 's %s│%s %s', '[% GREY6 %]', '[% RESET %]', charnames::vianame($name), '[% GREY6 %]', '[% RESET %]', $name, '[% GREY6 %]', '[% RESET %]', $ansi->{'characters'}->{'NAME'}->{$name}) . "\n";
             }
         } ## end if ($name ne '')
     } ## end while (scalar(@names))
-    $temp .= '[% GREY5 %]╰───────┴─' . '─' x $size . '─╯[% RESET %]' . "\n\n";
+    $temp .= '[% GREY6 %]╰───────┴─' . '─' x $size . '─╯[% RESET %]' . "\n\n";
     $ansi->ansi_output($temp, 0);
 } elsif ($colors) {
     my $grey = chr(27) . '[38;5;235m';
