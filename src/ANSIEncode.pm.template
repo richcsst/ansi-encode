@@ -279,12 +279,26 @@ sub new {
         }
     } ## end foreach my $count (0 .. 255)
 
+	# 20D0 - 20EF
+	# 2100 - 218B
+	# 2190 - 23FF
+	# 2500 - 27FF
+	# 2900 - 2BFE
+	# 3001 - 3030
+	# 1F300 - 1F5FF
+	# 1F600 - 1F64F
+	# 1F680 - 1F6F8
+	# 1F780 - 1F7D8
+	# 1F800 - 1F8B1
+	# 1F900 - 1F997
+	# 1F9D0 - 1F9E6
+
     # Generate symbols
 	my $start = 0x2400;
 	my $finish = 0x2605;
 	if ($self->{'mode'} =~ /full|long/i) {
 		$start  = 0x2010;
-		$finish = 0x2B59;
+		$finish = 0x2BFF;
 	}
 
 	my $name = charnames::viacode(0x1F341); # Maple Leaf
