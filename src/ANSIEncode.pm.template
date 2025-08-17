@@ -29,11 +29,6 @@ package Term::ANSIEncode;
 #######################################################################
 
 use strict;
-
-use Term::ANSIScreen qw( :cursor :screen );
-use Term::ANSIColor;
-use Time::HiRes qw( sleep );
-use Text::Wrap::Smart ':all';
 use utf8;
 use charnames();
 use constant {
@@ -42,6 +37,11 @@ use constant {
     YES   => 1,
     NO    => 0,
 };
+
+use Term::ANSIScreen qw( :cursor :screen );
+use Term::ANSIColor;
+use Time::HiRes qw( sleep );
+use Text::Wrap::Smart ':all';
 
 binmode(STDOUT, ":encoding(UTF-8)");
 
