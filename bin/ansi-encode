@@ -50,24 +50,26 @@ binmode(STDOUT, ":encoding(UTF-8)");
 
 our $VERSION = $Term::ANSIEncode::VERSION;
 
-my $version = FALSE;
-my $help    = FALSE;
-my $tokens  = FALSE;
-my $symbols = FALSE;
-my $unicode = FALSE;
-my $colors  = FALSE;
-my $full    = FALSE;
-my $Dump    = FALSE;
+my $version   = FALSE;
+my $help      = FALSE;
+my $tokens    = FALSE;
+my $rawtokens = FALSE;
+my $symbols   = FALSE;
+my $unicode   = FALSE;
+my $colors    = FALSE;
+my $full      = FALSE;
+my $Dump      = FALSE;
 
 GetOptions(
-    'version' => \$version,
-    'help'    => \$help,
-    'tokens'  => \$tokens,
-    'colors'  => \$colors,
-    'symbols' => \$symbols,
-    'full'    => \$full,
-    'dump'    => \$Dump,
-    'unicode' => \$unicode,
+    'version'   => \$version,
+    'help'      => \$help,
+    'tokens'    => \$tokens,
+	'rawtokens' => \$rawtokens,
+    'colors'    => \$colors,
+    'symbols'   => \$symbols,
+    'full'      => \$full,
+    'dump'      => \$Dump,
+    'unicode'   => \$unicode,
 );
 
 my $text = <<'VERSION';
@@ -114,6 +116,9 @@ my $small = <<'SMALL';
 ║                                                                         ║
 ║     -[% PINK %]t[% RESET %] or --[% PINK %]tokens[% RESET %]                                                      ║
 ║         Show most used tokens                                           ║
+║                                                                         ║
+║     -[% PINK %]r[% RESET %] or --[% PINK %]rawtokens[% RESET %]                                                   ║
+║         Raw dump of available tokens.                                   ║
 ║                                                                         ║
 ║     -[% PINK %]c[% RESET %] or --[% PINK %]colors[% RESET %]                                                      ║
 ║         Show available colors and tokens                                ║
@@ -264,6 +269,28 @@ if ($version) {
     $ansi->ansi_output($small, 0);
 } elsif ($tokens) {
     $ansi->ansi_output($to, 0);
+} elsif ($rawtokens) {
+	print clr;
+	print "\nThe following are the available tokens:\n\n";
+	print '╔','═' x 131, "╗\n";
+	$ansi->ansi_output('║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . "[% RESET %]║\n", 0);
+	print '╠', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╣', "\n";
+	printf('║ %-31s║ %-31s║ %-31s║ %-31s║','ANSI0 - ANSI231','B_ANSI0 - B_ANSI231','GREY0 - GREY28', 'B_GREY0 - B_GREY28');
+	print "\n║";
+	my $width = 4;
+	my $count = 1;
+	foreach my $token (sort(keys %{$ansi->{'ansi_sequences'}})) {
+		next if ($token =~ /ANSI|GREY/);
+		printf(' %-31s', $token);
+	    $count++;
+		if ($count > $width) {
+			$count = 1;
+			print "║\n║";
+		} else {
+			print '║';
+		}
+	}
+	print "\r╚", '═' x 32, '╩', '═' x 32, '╩', '═' x 32, '╩', '═' x 32, '╝', "\n\n";
 } elsif ($Dump) {
     my $temp  = "\n\n";
     my @names;
@@ -434,6 +461,10 @@ Simple usage and options documentation
 =item --B<tokens> or -B<y>
 
 Shows the most used tokens available.  A token is encapsulated within [% and %] (with at lease one space on each side)
+
+=item --B<rawtokens> or B<r>
+
+Raw dump of useable tokens.
 
 =item --B<symbols> or -B<s> [search]
 
