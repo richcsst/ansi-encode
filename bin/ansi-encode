@@ -270,9 +270,7 @@ if ($version) {
 } elsif ($tokens) {
     $ansi->ansi_output($to, 0);
 } elsif ($rawtokens) {
-	print clr;
-	print "\nThe following are the available tokens:\n\n";
-	print '╔','═' x 131, "╗\n";
+	print "\n╔",'═' x 131, "╗\n";
 	$ansi->ansi_output('║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . "[% RESET %]║\n", 0);
 	print '╠', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╣', "\n";
 	printf('║ %-31s║ %-31s║ %-31s║ %-31s║','ANSI0 - ANSI231','B_ANSI0 - B_ANSI231','GREY0 - GREY28', 'B_GREY0 - B_GREY28');
