@@ -45,7 +45,7 @@ use Text::Wrap::Smart ':all';
 binmode(STDOUT, ":encoding(UTF-8)");
 
 BEGIN {
-    our $VERSION = 1.23;
+    our $VERSION = 1.24;
 }
 
 sub ansi_output {
