@@ -10,4 +10,4 @@ lib/Term/ANSIEncode.pm
 Makefile.PL
 MANIFEST
 README.md
-t/00-sample.t
+t/00-tests.t
