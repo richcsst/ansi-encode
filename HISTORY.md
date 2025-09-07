@@ -1,3 +1,5 @@
+![ANSIEncode Logo](ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text 1")
+
 # THE HISTORY OF (Term::)ANSIEncode
 
 This utility actually came from an abandoned project called "BBSUniversal".  It was a perl based modern BBS program that had various screen output formats like ANSI, PETSCII and ATASCII.  It was a fully multithreaded application that acted like a server for multiple network connections.  Locally, it actually worked quite well.
