@@ -57,7 +57,6 @@ sub ansi_output {
 
 	if (length($text) > 1) {
 		while ($text =~ /\[\% (.*?) \%\]/) {
-			warn $1;
             while ($text =~ /\[\%\s+BOX (.*?),(\d+),(\d+),(\d+),(\d+),(.*?)\s+\%\](.*?)\[\%\s+ENDBOX\s+\%\]/i) {
                 my $replace = $self->box($1, $2, $3, $4, $5, $6, $7);
                 $text =~ s/\[\%\s+BOX.*?\%\].*?\[\%\s+ENDBOX.*?\%\]/$replace/i;
