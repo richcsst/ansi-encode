@@ -49,9 +49,9 @@ use List::Util qw(max);
 # Since UTF-8 is the norm, it's enabled for all needed handles
 binmode(STDERR, ":encoding(UTF-8)");
 binmode(STDOUT, ":encoding(UTF-8)");
-binmode(STDIN, ":encoding(UTF-8)");
+binmode(STDIN,  ":encoding(UTF-8)");
 
-our $VERSION = $Term::ANSIEncode::VERSION; # Pull in the version from Term::ANSIEncode
+our $VERSION = $Term::ANSIEncode::VERSION;    # Pull in the version from Term::ANSIEncode
 
 my $version   = FALSE;
 my $help      = FALSE;
@@ -148,8 +148,8 @@ foreach my $c (0 .. 23) {
 $greydient .= '[% RESET %]';
 ###
 my $to = <<'TOKENS';
-[% CLEAR %]Tokens have to be encapsulated inside [% TOKEN %] (the TOKEN must be
-surrounded by at least one space on each side.  Colors beyond the standard 8
+[% CLEAR %]Tokens have to be encapsulated inside [ % TOKEN % ] (the TOKEN must be
+surrounded by at least one space on each side).  Colors beyond the standard 8
 will require a terminal that supports 256 colors.  It is also recommended that
 your terminal supports UTF-8 for advanced character/symbol support.  Some
 terminals may not support some features.
@@ -266,18 +266,17 @@ TOKENS
 ###
 
 $to =~ s/\[\% GREYDIENT \%\]/$greydient/g;
-
 if ($version) {
     $| = 1;
-    $ansi->ansi_output($text, 0);
+    $ansi->ansi_output($text);
 } elsif ($help) {
     $| = 1;
-    $ansi->ansi_output($small, 0);
+    $ansi->ansi_output($small);
 } elsif ($tokens) {
-    $ansi->ansi_output($to, 0);
+    $ansi->ansi_output($to);
 } elsif ($rawtokens) {
     print "\n╔", '═' x 131, "╗\n";
-    $ansi->ansi_output('║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . "[% RESET %]║\n", 0);
+    $ansi->ansi_output('║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . "[% RESET %]║\n");
     print '╠', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╦', '═' x 32, '╣', "\n";
     printf('║ %-31s║ %-31s║ %-31s║ %-31s║', 'ANSI0 - ANSI231', 'B_ANSI0 - B_ANSI231', 'GREY0 - GREY28', 'B_GREY0 - B_GREY28');
     print "\n║";
@@ -309,7 +308,7 @@ if ($version) {
         $temp .= $ansi->{'characters'}->{'NAME'}->{$name} . ' ';
     }
     $temp .= "\n\n";
-    $ansi->ansi_output($temp, 0);
+    $ansi->ansi_output($temp);
 } elsif ($unicode) {
     my @names;
     my $search = pop(@ARGV);
@@ -355,7 +354,7 @@ if ($version) {
     } ## end while (scalar(@names))
     $temp .= "\n" unless ($full);
     $temp .= '[% ANSI52 %]╰───────┴───────────────────────────────────[% RESET %]' . "\n\n";
-    $ansi->ansi_output($temp, 0);
+    $ansi->ansi_output($temp);
 } elsif ($symbols) {
     my @names;
     my $search = pop(@ARGV);
@@ -382,7 +381,7 @@ if ($version) {
         } ## end if ($name ne '')
     } ## end while (scalar(@names))
     $temp .= '[% ANSI52 %]╰───────┴─' . '─' x $size . '─╯[% RESET %]' . "\n\n";
-    $ansi->ansi_output($temp, 0);
+    $ansi->ansi_output($temp);
 } elsif ($colors) {
     my $grey   = '[% GREY8 %]';
     my $off    = '[% RESET %]';
@@ -415,23 +414,23 @@ if ($version) {
         }
     } ## end foreach my $i (0 .. 6)
     $string .= "\n" . $grey . '╰────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──╯' . $off . "\n";
-    $ansi->ansi_output($string, 0);
+    $ansi->ansi_output($string);
 } else {    # Output file to STDOUT
     my $file = $ARGV[0];
     if (defined($file) && -e $file) {
-		my $size = -s $file;
-		open(my $FILE,'<',$file);
-		binmode($FILE, ":encoding(UTF-8)");
-		read($FILE, my $text, $size);
-		close($FILE);
-        $ansi->ansi_output($text, 0);
+        my $size = -s $file;
+        open(my $FILE, '<', $file);
+        binmode($FILE, ":encoding(UTF-8)");
+        read($FILE, my $text, $size);
+        close($FILE);
+        $ansi->ansi_output($text);
     } else {
+        $ansi->ansi_output($small);
         $| = 1;
-        $ansi->ansi_output($small, 0);
     }
 } ## end else [ if ($version) ]
 
-exit;
+exit(0);
 
 __END__
 
