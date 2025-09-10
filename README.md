@@ -52,6 +52,12 @@ Markup text to ANSI encoder
     Use the full token table.  This will increase the initialization time.
 ```
 
+## Author
+
+Richard Kelsch
+
+* **GitHub** - https://github.com/richcsst
+
 ## Tokens
 
 Tokens have to be encapsulated inside [% token %] (the token must be surrounded by at least one space on each side.  Colors beyond the standard 8 will require a terminal that supports 256 colors.
