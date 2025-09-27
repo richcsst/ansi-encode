@@ -165,6 +165,7 @@ NOTE:  Use "less -r" to view ANSI in "less"
 [% BRIGHT WHITE %]│[% RESET %] DOWN                           [% BRIGHT WHITE %]│[% RESET %] Moves cursor down one step                [% BRIGHT WHITE %]│[% RESET %]
 [% BRIGHT WHITE %]│[% RESET %] RIGHT                          [% BRIGHT WHITE %]│[% RESET %] Moves cursor right one step               [% BRIGHT WHITE %]│[% RESET %]
 [% BRIGHT WHITE %]│[% RESET %] LEFT                           [% BRIGHT WHITE %]│[% RESET %] Moves cursor left one step                [% BRIGHT WHITE %]│[% RESET %]
+[% BRIGHT WHITE %]│[% RESET %] LOCATE row,column              [% BRIGHT WHITE %]│[% RESET %] Moves cursor to specified position        [% BRIGHT WHITE %]│[% RESET %]
 [% BRIGHT WHITE %]│[% RESET %] SAVE                           [% BRIGHT WHITE %]│[% RESET %] Save cursor position                      [% BRIGHT WHITE %]│[% RESET %]
 [% BRIGHT WHITE %]│[% RESET %] RESTORE                        [% BRIGHT WHITE %]│[% RESET %] Place cursor at saved position            [% BRIGHT WHITE %]│[% RESET %]
 [% BRIGHT WHITE %]│[% RESET %] BOLD                           [% BRIGHT WHITE %]│[% RESET %] [% BOLD %]Bold text[% RESET %]                                 [% BRIGHT WHITE %]│[% RESET %]
