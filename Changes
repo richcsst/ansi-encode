@@ -111,3 +111,7 @@
 
         Eliminated the need for unicode hash values
 
+1.31    Oct 06, 2025
+
+        Fixed testing error
+
