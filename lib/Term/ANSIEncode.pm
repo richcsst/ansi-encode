@@ -48,7 +48,7 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 BEGIN {
-    our $VERSION = '1.29';
+    our $VERSION = '1.30';
 }
 
 sub ansi_decode {
@@ -203,6 +203,8 @@ sub new {
     my $self = {
         'ansi_prefix'    => $csi,
         'mode'           => 'long',
+		'start'          => 0x2010,
+		'finish'         => 0x1FBFF,
         'ansi_sequences' => {
             'SS2'      => $esc . 'N',
             'SS3'      => $esc . 'O',
@@ -338,53 +340,8 @@ sub new {
         $self->{ 'FONT ' . $count } = $csi . ($count + 10);
     }
 
-    # 20D0 - 20EF
-    # 2100 - 218B
-    # 2190 - 23FF
-    # 2500 - 27FF
-    # 2900 - 2BFE
-    # 3001 - 3030
-    # 1F300 - 1F5FF
-    # 1F600 - 1F64F
-    # 1F680 - 1F6F8
-    # 1F780 - 1F7D8
-    # 1F800 - 1F8B1
-    # 1F900 - 1F997
-    # 1F9D0 - 1F9E6
-
     # Generate symbols
-    my $start  = 0x2400;
-    my $finish = 0x2605;
-    if ($self->{'mode'} =~ /full|long/i) {
-        $start  = 0x2010;
-        $finish = 0x2BFF;
-    }
 
-	if (0) {
-		my $name = charnames::viacode(0x1F341);    # Maple Leaf
-		$self->{'characters'}->{'NAME'}->{$name} = charnames::string_vianame($name);
-		$self->{'characters'}->{'UNICODE'}->{'U1F341'} = charnames::string_vianame($name);
-		foreach my $u ($start .. $finish) {
-			$name = charnames::viacode($u);
-			next if ($name eq '');
-			my $char = charnames::string_vianame($name);
-			$char = '?' unless (defined($char));
-			$self->{'characters'}->{'NAME'}->{$name} = $char;
-			$self->{'characters'}->{'UNICODE'}->{ sprintf('U%05X', $u) } = $char;
-		} ## end foreach my $u ($start .. $finish)
-		if ($self->{'mode'} =~ /full|long/i) {
-			$start  = 0x1F300;
-			$finish = 0x1FBFF;
-			foreach my $u ($start .. $finish) {
-				$name = charnames::viacode($u);
-				next if ($name eq '');
-				my $char = charnames::string_vianame($name);
-				$char = '?' unless (defined($char));
-				$self->{'characters'}->{'NAME'}->{$name} = $char;
-				$self->{'characters'}->{'UNICODE'}->{ sprintf('U%05X', $u) } = $char;
-			} ## end foreach my $u ($start .. $finish)
-		} ## end if ($self->{'mode'} =~...)
-	}
     bless($self, $class);
     return ($self);
 } ## end sub new
@@ -406,9 +363,6 @@ This module is for use with the executable file
  $obj->output($string); # $string contains the markup to be converted and sent to STDOUT.
 
 See the manual for "ansi-encode" to use a script to load a file directly.
-
-Use this version for a full list of symbols:
- my $obj = Term::ANSIEncode->new('mode' => 'long');
 
 =head1 TOKENS
 
