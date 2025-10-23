@@ -150,7 +150,7 @@ $to .= '│' . colored(['bright_green'], q{                  88,   "888,_ _,88P"
 $to .= '│' . colored(['bright_yellow'], q{                  MMM     "YMMMMMP"  MMM "MMP" """"YUMMMMMM     YM  "YMmMY"              }) . "│\n";
 
 {
-	foreach my $code ('clear','cursor','attributes','foreground','background','horizontal rules') {
+	foreach my $code ('clear','cursor','attributes','foreground','background','horizontal rules','special') {
 		if ($code eq 'clear') {
 			$to .= '╞══ ' . colored(['bold','bright_white'],uc($code)) . ' ' . '═' x (29 - (2 + length($code))) . '═╤════════════════════════════════════════════════════════╡' . "\n";
 		} else {
@@ -167,7 +167,7 @@ $to .= '│' . colored(['bright_yellow'], q{                  MMM     "YMMMMMP" 
 		}
 	}
 }
-
+  
 $to .= '╰────────────────────────────────┴────────────────────────────────────────────────────────╯' . "\n";
 ###
 

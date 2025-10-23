@@ -272,33 +272,53 @@ sub new {
         'finish'         => 0x1FBFF,
         'ansi_meta' => {
             'special' => {
+				'FONT DOUBLE-HEIGHT TOP' => {
+					'out' => $esc . '#3',
+					'desc' => 'Double-Height Font Top Portion',
+				},
+				'FONT DOUBLE-HEIGHT BOTTOM' => {
+					'out' => $esc . '#4',
+					'desc' => 'Double-Height Font Bottom Portion',
+				},
+				'FONT DOUBLE-WIDTH' => {
+					'out' => $esc . '#6',
+					'desc' => 'Double-Width Font',
+				},
+				'FONT DEFAULT' => {
+					'out' => $esc . '#5',
+					'desc' => 'Default Font Size',
+				},
+				'APC' => {
+					'out' => $esc . '_',
+					'desc' => 'Application Program Command',
+				},
                 'SS2' => {
                     'out'  => $esc . 'N',
-                    'desc' => '',
+                    'desc' => 'Single Shift 2',
                 },
                 'SS3' => {
                     'out'  => $esc . 'O',
-                    'desc' => '',
+                    'desc' => 'Single Shift 3',
                 },
                 'CSI' => {
                     'out'  => $esc . '[',
-                    'desc' => 'Control Sequence Identifier',
+                    'desc' => 'Control Sequence Itroducer',
                 },
                 'OSC' => {
                     'out'  => $esc . ']',
-                    'desc' => '',
+                    'desc' => 'Operating System Command',
                 },
                 'SOS' => {
                     'out'  => $esc . 'X',
-                    'desc' => '',
+                    'desc' => 'Start Of String',
                 },
                 'ST' => {
                     'out'  => $esc . "\\",
-                    'desc' => '',
+                    'desc' => 'String Terminator',
                 },
                 'DCS' => {
                     'out'  => $esc . 'P',
-                    'desc' => '',
+                    'desc' => 'Device Control String',
                 },
             },
 
