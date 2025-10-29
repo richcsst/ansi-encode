@@ -60,23 +60,22 @@ GetOptions(
 );
 ###
 my $text = <<'VERSION';
-[% CLS %][% ORANGE %]╔═════════════════════════════════════════════════════════════════════════════╗[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]               [% BRIGHT YELLOW %] _   _ [% GREEN %] _____ [% BRIGHT BLUE %]_____  [% BRIGHT WHITE %] ______                     _            [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]          ╱╲   [% BRIGHT YELLOW %]│ ╲ │ │[% GREEN %]╱ ____│[% BRIGHT BLUE %]_   _│ [% BRIGHT WHITE %]│  ____│                   │ │           [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]         ╱  ╲  [% BRIGHT YELLOW %]│  ╲│ │[% GREEN %] (___  [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│ │__   _ __   ___ ___   __│ │ ___       [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]        ╱ ╱╲ ╲ [% BRIGHT YELLOW %]│ . ` │[% GREEN %]╲___ ╲ [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│  __│ │ '_ ╲ ╱ __╱ _ ╲ ╱ _` │╱ _ ╲      [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]       ╱ ____ ╲[% BRIGHT YELLOW %]│ │╲  │[% GREEN %]____) │[% BRIGHT BLUE %]_│ │_  [% BRIGHT WHITE %]│ │____│ │ │ │ (_│ (_) │ (_│ │  __╱      [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %][% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% B_BLACK %]                                                                             [% ORANGE %]║[% B_BLACK %]
-[% ORANGE %]╠═════════════════════════════════════════════════════════════════════════════╣[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                           [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]                       Copyright ©[% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                        [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]                            All Rights Reserved                              [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]                           Perl Artistic License                             [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]                               Version [% GREEN %]XXXX[% RESET %][% B_COLOR 17 %]                                  [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]║[% RESET %][% B_COLOR 17 %]              GitHub:  https://github.com/richcsst/ansi-encode               [% RESET %][% ORANGE %]║[% RESET %]
-[% ORANGE %]╚═════════════════════════════════════════════════════════════════════════════╝[% RESET %]
-
+[% CLS %][% YELLOW %]╔═════════════════════════════════════════════════════════════════════════════╗[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]               [% BRIGHT YELLOW %] _   _ [% GREEN %] _____ [% BRIGHT BLUE %]_____  [% BRIGHT WHITE %] ______                     _            [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]          ╱╲   [% BRIGHT YELLOW %]│ ╲ │ │[% GREEN %]╱ ____│[% BRIGHT BLUE %]_   _│ [% BRIGHT WHITE %]│  ____│                   │ │           [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]         ╱  ╲  [% BRIGHT YELLOW %]│  ╲│ │[% GREEN %] (___  [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│ │__   _ __   ___ ___   __│ │ ___       [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]        ╱ ╱╲ ╲ [% BRIGHT YELLOW %]│ . ` │[% GREEN %]╲___ ╲ [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│  __│ │ '_ ╲ ╱ __╱ _ ╲ ╱ _` │╱ _ ╲      [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]       ╱ ____ ╲[% BRIGHT YELLOW %]│ │╲  │[% GREEN %]____) │[% BRIGHT BLUE %]_│ │_  [% BRIGHT WHITE %]│ │____│ │ │ │ (_│ (_) │ (_│ │  __╱      [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %][% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% B_BLACK %]                                                                             [% YELLOW %]║[% B_BLACK %]
+[% YELLOW %]╠═════════════════════════════════════════════════════════════════════════════╣[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                           [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                       Copyright ©[% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                        [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                            All Rights Reserved                              [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                           Perl Artistic License                             [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                               Version [% GREEN %]XXXX[% RESET %][% B_COLOR 17 %]                                  [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]              GitHub:  https://github.com/richcsst/ansi-encode               [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]╚═════════════════════════════════════════════════════════════════════════════╝[% RESET %]
 VERSION
 ###
 $text =~ s/XXXX/$VERSION/gs;
@@ -92,10 +91,10 @@ my $small = <<'SMALL';
 ╠═════════════════════════════════════════════════════════════════════════╣
 ║[% B_COLOR 52 %][% BRIGHT YELLOW %] DESCRIPTION                                                             [% RESET %]║
 ║     Markup text to ANSI encoder.                                        ║
-║                                                                         ║
+╟─────────────────────────────────────────────────────────────────────────╢
 ║[% B_COLOR 52 %][% BRIGHT YELLOW %] USAGE                                                                   [% RESET %]║
 ║     [% CYAN %]ansi-encode[% RESET %] [options] [text file]                                   ║
-║                                                                         ║
+╟─────────────────────────────────────────────────────────────────────────╢
 ║[% B_COLOR 52 %][% BRIGHT YELLOW %] OPTIONS                                                                 [% RESET %]║
 ║     -[% PINK %]v[% RESET %] or --[% PINK %]version[% RESET %]                                                     ║
 ║         Shows version and licensing info                                ║
@@ -110,7 +109,7 @@ my $small = <<'SMALL';
 ║         Raw dump of available tokens.                                   ║
 ║                                                                         ║
 ║     -[% PINK %]c[% RESET %] or --[% PINK %]colors[% RESET %]                                                      ║
-║         Show available colors and tokens                                ║
+║         Show available colors                                           ║
 ║                                                                         ║
 ║     -[% PINK %]s[% RESET %] or --[% PINK %]symbols[% RESET %] [search]                                            ║
 ║         Show available symbols and character tokens by name             ║
@@ -132,7 +131,7 @@ $greydient .= '[% RESET %]';
 ###
 my $to = <<'TOKENS';
 [% CLS %]Tokens have to be encapsulated inside [ % TOKEN % ] (the TOKEN must be
-surrounded by at least one space on each side).  Colors beyond the standard 16
+surrounded by at least one space on each side).  Colors beyond the standard 16*
 will require a terminal that supports 256 colors, up to 16 million colors.  It
 is also highly recommended that your terminal supports UTF-8 for advanced
 character/symbol support.  Some terminals may not support some features.
@@ -188,6 +187,7 @@ $to =~ s/\[\% GREYDIENT \%\]/$greydient/g;
 			}
 		} else {
 			foreach my $name (sort(keys %{$ansi->{'ansi_meta'}->{$code}})) {
+				next if ($name eq 'HIDE');
 				my $new = $ansi->{'ansi_meta'}->{$code}->{$name}->{'out'} . $name . $ansi->{'ansi_meta'}->{'attributes'}->{'RESET'}->{'out'};
 				$to =~ s/  $name  /  $new  /gs;
 			}
@@ -437,7 +437,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 
 =head1 USAGE
 
- ansi_encode.pl [options] [file/search]
+ ansi_encode.pl [options] [file or search]
 
 =head1 OPTIONS
 
@@ -641,15 +641,12 @@ Sets colors to default
 
 =head2 FOREGROUND
 
-There are many more foreground colors available than the ones below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "RGB" token for access to 16 million colors.
+There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "RGB" token for access to 16 million colors.
 
 =over 4
 
 =item BLACK          = Black
 =item RED            = Red
-=item PINK           = Hot pink
-=item ORANGE         = Orange
-=item NAVY           = Deep blue
 =item GREEN          = Green
 =item YELLOW         = Yellow
 =item BLUE           = Blue
@@ -670,7 +667,7 @@ There are many more foreground colors available than the ones below.  However, t
 
 =head2 BACKGROUND
 
-There are many more background colors available than the ones below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "B_RGB" token for access to 16 million colors.
+There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "B_RGB" token for access to 16 million colors.
 
 =over 4
 
@@ -683,9 +680,6 @@ There are many more background colors available than the ones below.  However, t
 =item B_CYAN           = Cyan
 =item B_WHITE          = White
 =item B_DEFAULT        = Default background color
-=item B_PINK           = Hot pink
-=item B_ORANGE         = Orange
-=item B_NAVY           = Deep blue
 =item BRIGHT B_BLACK   = Bright black (grey)
 =item BRIGHT B_RED     = Bright red
 =item BRIGHT B_GREEN   = Lime

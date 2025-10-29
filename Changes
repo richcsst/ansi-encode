@@ -131,3 +131,7 @@
 
         Fixed ALL POD issues.  Ugh.
 
+1.36    Oct 28, 2025
+
+        Changed the tokens and help screen.  Added more descriptions including
+		Indication of original 16 colors for limited terminals.

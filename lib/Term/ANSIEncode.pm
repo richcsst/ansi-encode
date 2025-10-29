@@ -39,7 +39,7 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 BEGIN {
-    our $VERSION = '1.35';
+    our $VERSION = '1.36';
 }
 
 # Returns a description of a token using the meta data.
@@ -302,7 +302,7 @@ sub new {
                 },
                 'CSI' => {
                     'out'  => $esc . '[',
-                    'desc' => 'Control Sequence Itroducer',
+                    'desc' => 'Control Sequence Introducer',
                 },
                 'OSC' => {
                     'out'  => $esc . ']',
@@ -380,11 +380,11 @@ sub new {
                 },
                 'NEXT LINE' => {
                     'out'  => $csi . 'E',
-                    'desc' => '',
-                },
+                    'desc' => 'Place the cursor at the beginning of the next line',
+                 },
                 'PREVIOUS LINE' => {
                     'out'  => $csi . 'F',
-                    'desc' => '',
+                    'desc' => 'Place the cursor at the beginning of the previous line',
                 },
                 'SAVE' => {
                     'out'  => $csi . 's',
@@ -532,11 +532,11 @@ sub new {
                 },
                 'BLACK' => {
                     'out'  => $csi . '30m',
-                    'desc' => 'Black',
+                    'desc' => '* Black',
                 },
                 'RED' => {
                     'out'  => $csi . '31m',
-                    'desc' => 'Red',
+                    'desc' => '* Red',
                 },
                 'DARK RED' => {
                     'out'  => $csi . '38:2:139:0:0m',
@@ -576,59 +576,59 @@ sub new {
                 },
                 'GREEN' => {
                     'out'  => $csi . '32m',
-                    'desc' => 'Green',
+                    'desc' => '* Green',
                 },
                 'YELLOW' => {
                     'out'  => $csi . '33m',
-                    'desc' => 'Yellow',
+                    'desc' => '* Yellow',
                 },
                 'BLUE' => {
                     'out'  => $csi . '34m',
-                    'desc' => 'Blue',
+                    'desc' => '* Blue',
                 },
                 'MAGENTA' => {
                     'out'  => $csi . '35m',
-                    'desc' => 'Magenta',
+                    'desc' => '* Magenta',
                 },
                 'CYAN' => {
                     'out'  => $csi . '36m',
-                    'desc' => 'Cyan',
+                    'desc' => '* Cyan',
                 },
                 'WHITE' => {
                     'out'  => $csi . '37m',
-                    'desc' => 'White',
+                    'desc' => '* White',
                 },
                 'BRIGHT BLACK' => {
                     'out'  => $csi . '90m',
-                    'desc' => 'Bright black',
+                    'desc' => '* Bright black',
                 },
                 'BRIGHT RED' => {
                     'out'  => $csi . '91m',
-                    'desc' => 'Bright red',
+                    'desc' => '* Bright red',
                 },
                 'BRIGHT GREEN' => {
                     'out'  => $csi . '92m',
-                    'desc' => 'Bright green',
+                    'desc' => '* Bright green',
                 },
                 'BRIGHT YELLOW' => {
                     'out'  => $csi . '93m',
-                    'desc' => 'Bright yellow',
+                    'desc' => '* Bright yellow',
                 },
                 'BRIGHT BLUE' => {
                     'out'  => $csi . '94m',
-                    'desc' => 'Bright blue',
+                    'desc' => '* Bright blue',
                 },
                 'BRIGHT MAGENTA' => {
                     'out'  => $csi . '95m',
-                    'desc' => 'Bright magenta',
+                    'desc' => '* Bright magenta',
                 },
                 'BRIGHT CYAN' => {
                     'out'  => $csi . '96m',
-                    'desc' => 'Bright cyan',
+                    'desc' => '* Bright cyan',
                 },
                 'BRIGHT WHITE' => {
                     'out'  => $csi . '97m',
-                    'desc' => 'Bright white',
+                    'desc' => '* Bright white',
                 },
                 'FIREBRICK' => {
                     'out'  => $csi . '38:2:178:34:34m',
@@ -1119,11 +1119,11 @@ sub new {
                 },
                 'B_BLACK' => {
                     'out'  => $csi . '40m',
-                    'desc' => 'Black',
+                    'desc' => '* Black',
                 },
                 'B_RED' => {
                     'out'  => $csi . '41m',
-                    'desc' => 'Red',
+                    'desc' => '* Red',
                 },
                 'B_DARK RED' => {
                     'out'  => $csi . '48:2:139:0:0m',
@@ -1163,59 +1163,59 @@ sub new {
                 },
                 'B_GREEN' => {
                     'out'  => $csi . '42m',
-                    'desc' => 'Green',
+                    'desc' => '* Green',
                 },
                 'B_YELLOW' => {
                     'out'  => $csi . '43m',
-                    'desc' => 'Yellow',
+                    'desc' => '* Yellow',
                 },
                 'B_BLUE' => {
                     'out'  => $csi . '44m',
-                    'desc' => 'Blue',
+                    'desc' => '* Blue',
                 },
                 'B_MAGENTA' => {
                     'out'  => $csi . '45m',
-                    'desc' => 'Magenta',
+                    'desc' => '* Magenta',
                 },
                 'B_CYAN' => {
                     'out'  => $csi . '46m',
-                    'desc' => 'Cyan',
+                    'desc' => '* Cyan',
                 },
                 'B_WHITE' => {
                     'out'  => $csi . '47m',
-                    'desc' => 'White',
+                    'desc' => '* White',
                 },
                 'B_BRIGHT BLACK' => {
                     'out'  => $csi . '100m',
-                    'desc' => 'Bright black',
+                    'desc' => '* Bright black',
                 },
                 'B_BRIGHT RED' => {
                     'out'  => $csi . '101m',
-                    'desc' => 'Bright red',
+                    'desc' => '* Bright red',
                 },
                 'B_BRIGHT GREEN' => {
                     'out'  => $csi . '102m',
-                    'desc' => 'Bright green',
+                    'desc' => '* Bright green',
                 },
                 'B_BRIGHT YELLOW' => {
                     'out'  => $csi . '103m',
-                    'desc' => 'Bright yellow',
+                    'desc' => '* Bright yellow',
                 },
                 'B_BRIGHT BLUE' => {
                     'out'  => $csi . '104m',
-                    'desc' => 'Bright blue',
+                    'desc' => '* Bright blue',
                 },
                 'B_BRIGHT MAGENTA' => {
                     'out'  => $csi . '105m',
-                    'desc' => 'Bright magenta',
+                    'desc' => '* Bright magenta',
                 },
                 'B_BRIGHT CYAN' => {
                     'out'  => $csi . '106m',
-                    'desc' => 'Bright cyan',
+                    'desc' => '* Bright cyan',
                 },
                 'B_BRIGHT WHITE' => {
                     'out'  => $csi . '107m',
-                    'desc' => 'Bright white',
+                    'desc' => '* Bright white',
                 },
                 'B_FIREBRICK' => {
                     'out'  => $csi . '48:2:178:34:34m',
@@ -1887,15 +1887,12 @@ Sets colors to default
 
 =head2 FOREGROUND
 
-There are many more foreground colors available than the ones below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "RGB" token for access to 16 million colors.
+There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "RGB" token for access to 16 million colors.
 
 =over 4
 
 =item BLACK          = Black
 =item RED            = Red
-=item PINK           = Hot pink
-=item ORANGE         = Orange
-=item NAVY           = Deep blue
 =item GREEN          = Green
 =item YELLOW         = Yellow
 =item BLUE           = Blue
@@ -1916,7 +1913,7 @@ There are many more foreground colors available than the ones below.  However, t
 
 =head2 BACKGROUND
 
-There are many more background colors available than the ones below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "B_RGB" token for access to 16 million colors.
+There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have "Term256" features.  You can used the "-t" option for all of the color tokens available or use the "B_RGB" token for access to 16 million colors.
 
 =over 4
 
@@ -1929,9 +1926,6 @@ There are many more background colors available than the ones below.  However, t
 =item B_CYAN           = Cyan
 =item B_WHITE          = White
 =item B_DEFAULT        = Default background color
-=item B_PINK           = Hot pink
-=item B_ORANGE         = Orange
-=item B_NAVY           = Deep blue
 =item BRIGHT B_BLACK   = Bright black (grey)
 =item BRIGHT B_RED     = Bright red
 =item BRIGHT B_GREEN   = Lime
