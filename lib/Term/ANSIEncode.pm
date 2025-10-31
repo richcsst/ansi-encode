@@ -39,7 +39,7 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 BEGIN {
-    our $VERSION = '1.37';
+    our $VERSION = '1.38';
 }
 
 # Returns a description of a token using the meta data.
@@ -203,23 +203,23 @@ sub box {
         $vl  = '█';
         $vr  = '█';
     } elsif ($type =~ /DOTS/i) {
-        $tl  = '⏺';
-        $tr  = '⏺';
-        $bl  = '⏺';
-        $br  = '⏺';
-        $top = '⏺';
-        $bot = '⏺';
-        $vl  = '⏺';
-        $vr  = '⏺';
+        $tl  = '🞄';
+        $tr  = '🞄';
+        $bl  = '🞄';
+        $br  = '🞄';
+        $top = '🞄';
+        $bot = '🞄';
+        $vl  = '🞄';
+        $vr  = '🞄';
     } elsif ($type =~ /DIAMOND/i) {
-        $tl  = '🞙';
-        $tr  = '🞙';
-        $bl  = '🞙';
-        $br  = '🞙';
-        $top = '🞙';
-        $bot = '🞙';
-        $vl  = '🞙';
-        $vr  = '🞙';
+        $tl  = '⧫';
+        $tr  = '⧫';
+        $bl  = '⧫';
+        $br  = '⧫';
+        $top = '⧫';
+        $bot = '⧫';
+        $vl  = '⧫';
+        $vr  = '⧫';
     } elsif ($type =~ /STAR/i) {
         $tl  = '⭑';
         $tr  = '⭑';
@@ -229,16 +229,43 @@ sub box {
         $bot = '⭑';
         $vl  = '⭑';
         $vr  = '⭑';
+    } elsif ($type =~ /CIRCLE/i) {
+        $tl  = '○';
+        $tr  = '○';
+        $bl  = '○';
+        $br  = '○';
+        $top = '○';
+        $bot = '○';
+        $vl  = '○';
+        $vr  = '○';
     } elsif ($type =~ /SQUARE/i) {
-        $tl  = '⏹';
-        $tr  = '⏹';
-        $bl  = '⏹';
-        $br  = '⏹';
-        $top = '⏹';
-        $bot = '⏹';
-        $vl  = '⏹';
-        $vr  = '⏹';
-    } ## end elsif ($type =~ /SQUARE/i)
+        $tl  = '∎';
+        $tr  = '∎';
+        $bl  = '∎';
+        $br  = '∎';
+        $top = '∎';
+        $bot = '∎';
+        $vl  = '∎';
+        $vr  = '∎';
+    } elsif ($type =~ /DITHERED/i) {
+        $tl  = '▒';
+        $tr  = '▒';
+        $bl  = '▒';
+        $br  = '▒';
+        $top = '▒';
+        $bot = '▒';
+        $vl  = '▒';
+        $vr  = '▒';
+    } elsif ($type =~ /HEART/i) {
+        $tl  = '♥';
+        $tr  = '♥';
+        $bl  = '♥';
+        $br  = '♥';
+        $top = '♥';
+        $bot = '♥';
+        $vl  = '♥';
+        $vr  = '♥';
+    }
 
     my $text = '';
     my $xx   = $x;
