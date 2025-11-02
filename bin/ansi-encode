@@ -46,7 +46,7 @@ my $tokens    = FALSE;
 my $rawtokens = FALSE;
 my $symbols   = FALSE;
 my $unicode   = FALSE;
-my $expanded  = FALSE;
+my $expanded  = (defined($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} eq 'truecolor') ? TRUE : FALSE;
 my $colors    = FALSE;
 my $Dump      = FALSE;
 
@@ -59,7 +59,6 @@ GetOptions(
     'symbols'   => \$symbols,
     'dump'      => \$Dump,
     'unicode'   => \$unicode,
-	'expanded'  => \$expanded,
 );
 ###
 my $text = <<'VERSION';
@@ -154,8 +153,6 @@ surrounded by at least one space on each side).  Colors beyond the standard 16
 will require a terminal that supports 256 colors, up to 16 million colors.  It
 is also highly recommended that your terminal supports UTF-8 for advanced
 character/symbol support.  Some terminals may not support some features.
-
-Use -[% BRIGHT BLUE %]e[% RESET %] or --[% BRIGHT BLUE %]expanded[% RESET %] to see all color tokens
 
 NOTE:  Use "less -r" to view ANSI in "less"
 
