@@ -177,3 +177,9 @@
         The "tokens" option has a more informative output for all of the
 		various color types.  This had the side effect of more available
 		tokens.
+
+1.44    Nov 06, 2025
+
+        Internal token handling improved.
+
+        "tokens" option output also improved
