@@ -39,7 +39,7 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 BEGIN {
-    our $VERSION = '1.43';
+    our $VERSION = '1.44';
 }
 
 # Returns a description of a token using the meta data.
@@ -56,6 +56,10 @@ sub ansi_decode {
     my $text = shift;
 
     if (length($text) > 1) {    # Special token handling requiring "smarts"
+		if ($text =~ /\[\%\s+SCREEN RESET\s+\%\]/) {
+			$text =~ s/\[\%\s+SCREEN RESET\s+\%\]//gs;
+			system('reset');
+		}
         my $csi = $self->{'ansi_sequences'}->{'CSI'};
         while ($text =~ /\[\%\s+LOCATE (\d+),(\d+)\s+\%\]/) {    # Sets the cursor to a specific location.
             my ($c, $r) = ($1, $2);
@@ -86,28 +90,6 @@ sub ansi_decode {
             my ($r, $g, $b) = ($1 & 255, $2 & 255, $3 & 255);
             my $replace = $csi . "48:2:$r:$g:$b" . 'm';
             $text =~ s/\[\%\s+B_RGB $r,$g,$b\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+(COLOR|COLOUR) (\d+)\s+\%\]/) {       # Sets the foreground color to a 256 color specific.  Use -c to see the codes
-            my $n       = $1;
-            my $c       = $2 & 255;
-            my $replace = $csi . "38:5:$c" . 'm';
-            $text =~ s/\[\%\s+$n $c\s+\%\]/$replace/;
-        } ## end while ($text =~ /\[\%\s+(COLOR|COLOUR) (\d+)\s+\%\]/)
-        while ($text =~ /\[\%\s+(B_COLOR|B_COLOUR) (\d+)\s+\%\]/) {    # Sets the background color to a 256 color specific.  Use -c to see the codes
-            my $n       = $1;
-            my $c       = $2 & 255;
-            my $replace = $csi . "48:5:$c" . 'm';
-            $text =~ s/\[\%\s+$n $c\s+\%\]/$replace/;
-        } ## end while ($text =~ /\[\%\s+(B_COLOR|B_COLOUR) (\d+)\s+\%\]/)
-        while ($text =~ /\[\%\s+GR.Y (\d+)\s+\%\]/) {                  # Sets the foreground color to a specific shade of grey.  Use -c to see the codes.
-            my $g       = $1;
-            my $replace = $csi . '38:5:' . (232 + $g) . 'm';
-            $text =~ s/\[\%\s+GRAY $g\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+B_GR.Y (\d+)\s+\%\]/) {                # Sets the background color to a specific shade of grey.  Use -c to see the codes.
-            my $g       = $1;
-            my $replace = $csi . '48:5:' . (232 + $g) . 'm';
-            $text =~ s/\[\%\s+B_GRAY $g\s+\%\]/$replace/;
         }
         while ($text =~ /\[\%\s+BOX (.*?),(\d+),(\d+),(\d+),(\d+),(.*?)\s+\%\](.*?)\[\%\s+ENDBOX\s+\%\]/i) {    # Parses the BOX token.
             my $replace = $self->box($1, $2, $3, $4, $5, $6, $7);
