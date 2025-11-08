@@ -11,3 +11,4 @@ MANIFEST
 README.md
 t/00-tests.t
 t/pod.t
+LICENSE
