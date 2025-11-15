@@ -48,7 +48,7 @@ my $symbols   = FALSE;
 my $unicode   = FALSE;
 my $colors    = FALSE;
 my $Dump      = FALSE;
-my $c16       = ($ENV{'TERM'} =~ /xterm/ || exists($ENV{'windir'})) ? TRUE : FALSE;
+my $c16       = TRUE;
 my $c256      = FALSE;
 my $crgb      = FALSE;
 my $frames    = FALSE;
