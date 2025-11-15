@@ -314,7 +314,7 @@ $to .= '│' . colored(['bright_yellow'],  q{                     MMM     "YMMMM
 $to .= '╰───────────────────────────────────────┴────────────────────────────────────────────────────────╯' . "\n";
 ###
 
-{
+{ # Colors
     my $new;
     foreach my $code (qw(attributes foreground background)) {
         if ($code eq 'background') {
@@ -336,36 +336,45 @@ $to .= '╰───────────────────────
     }
     $new = '[% RESET %]' . colored(['bright_green'],'│');
     $to =~ s/│/$new/gs;
+
     $new = colored(['bright_green'],'─');
     $to =~ s/─/$new/gs;
+
     $new = colored(['bright_green'],'┴');
     $to =~ s/┴/$new/gs;
+
     $new = colored(['bright_green'],'╭');
     $to =~ s/╭/$new/gs;
+
     $new = colored(['bright_green'],'╮');
     $to =~ s/╮/$new/gs;
+
     $new = colored(['bright_green'],'╰');
     $to =~ s/╰/$new/gs;
+
     $new = colored(['bright_green'],'╯');
     $to =~ s/╯/$new/gs;
+
     $new = colored(['bright_green'],'╞');
     $to =~ s/╞/$new/gs;
+
     $new = colored(['bright_green'],'═');
     $to =~ s/═/$new/gs;
+
     $new = colored(['bright_green'],'╤');
     $to =~ s/╤/$new/gs;
+
     $new = colored(['bright_green'],'╡');
     $to =~ s/╡/$new/gs;
+
     $new = colored(['bright_green'],'╪');
     $to =~ s/╪/$new/gs;
+
     $new = 'RULE [% FAINT %][% ITALIC %]color[% RESET %]';
     $to =~ s/RULE color/$new/s;
-    $new = '[% FAINT %][% ITALIC %]red[% RESET %]';
-    $to =~ s/red/$new/gs;
-    $new = '[% FAINT %][% ITALIC %]green[% RESET %]';
-    $to =~ s/green/$new/gs;
-    $new = '[% FAINT %][% ITALIC %]blue[% RESET %]';
-    $to =~ s/blue/$new/gs;
+
+    $new = '[% FAINT %][% ITALIC %]red[% RESET %],[% FAINT %][% ITALIC %]green[% RESET %],[% FAINT %][% ITALIC %]blue[% RESET %]';
+    $to =~ s/red,green,blue/$new/gs;
 }
 
 $| = 1;
