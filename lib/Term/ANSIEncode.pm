@@ -44,6 +44,29 @@ binmode(STDIN,  ":encoding(UTF-8)");
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
 
+# Table of styles. Each entry is [tl,tr,bl,br,top,bot,vl,vr]
+our %STYLES = (
+    DEFAULT       => ['╔', '╗', '╚', '╝', '═', '═', '║', '║'],
+    THIN          => ['┌', '┐', '└', '┘', '─', '─', '│', '│'],
+    ROUND         => ['╭', '╮', '╰', '╯', '─', '─', '│', '│'],
+    THICK         => ['┏', '┓', '┗', '┛', '━', '━', '┃', '┃'],
+    BLOCK         => ['🬚', '🬩', '🬌', '🬍', '🬋', '🬋', '▌', '▐'],
+    WEDGE         => ['🭊', '🬿', '🭥', '🭚', '▅', '🮄', '█', '█'],
+    'BIG WEDGE'   => ['◢', '◣', '◥', '◤', '█', '█', '█', '█'],
+    DOTS          => ['🞄', '🞄', '🞄', '🞄', '🞄', '🞄', '🞄', '🞄'],
+    DIAMOND       => ['⧫', '⧫', '⧫', '⧫', '⧫', '⧫', '⧫', '⧫'],
+    STAR          => ['⭑', '⭑', '⭑', '⭑', '⭑', '⭑', '⭑', '⭑'],
+    CIRCLE        => ['○', '○', '○', '○', '○', '○', '○', '○'],
+    SQUARE        => ['∎', '∎', '∎', '∎', '∎', '∎', '∎', '∎'],
+    DITHERED      => ['▒', '▒', '▒', '▒', '▒', '▒', '▒', '▒'],
+    HEART         => ['♥', '♥', '♥', '♥', '♥', '♥', '♥', '♥'],
+    CHRISTIAN     => ['🕇', '🕇', '🕇', '🕇', '🕇', '🕇', '🕇', '🕇'],
+    NOTES         => ['♪', '♪', '♪', '♪', '♪', '♪', '♪', '♪'],
+    PARALLELOGRAM => ['▰', '▰', '▰', '▰', '▰', '▰', '▰', '▰'],
+    'BIG ARROWS'  => ['▶', '▶', '◀', '◀', '▶', '◀', '▲', '▼'],
+    ARROWS        => ['🡕', '🡖', '🡔', '🡗', '🡒', '🡐', '🡑', '🡓'],
+);
+
 # Returns a description of a token using the meta data.
 sub ansi_description {
     my ($self, $code, $name) = @_;
@@ -117,193 +140,52 @@ sub ansi_output {
     return (TRUE);
 } ## end sub ansi_output
 
-# Draws a box with text in it.
 sub box {
     my ($self, $color, $x, $y, $w, $h, $type, $string) = @_;
-    $color = '[% ' . $color . ' %]';
 
-    my ($tl, $tr, $bl, $br, $top, $bot, $vl, $vr) = (qw(╔ ╗ ╚ ╝ ═ ═ ║ ║));
+    # Basic validation/fallbacks
+    $w ||= 3;
+    $h ||= 3;
+    $w = (int($w) < 3) ? 3 : int($w);
+    $h = (int($h) < 3) ? 3 : int($h);
 
-    if ($type eq 'THIN') {
-        $tl  = '┌';
-        $tr  = '┐';
-        $bl  = '└';
-        $br  = '┘';
-        $top = '─';
-        $bot = '─';
-        $vl  = '│';
-        $vr  = '│';
-    } elsif ($type eq 'ROUND') {
-        $tl  = '╭';
-        $tr  = '╮';
-        $bl  = '╰';
-        $br  = '╯';
-        $top = '─';
-        $bot = '─';
-        $vl  = '│';
-        $vr  = '│';
-    } elsif ($type eq 'THICK') {
-        $tl  = '┏';
-        $tr  = '┓';
-        $bl  = '┗';
-        $br  = '┛';
-        $top = '━';
-        $bot = '━';
-        $vl  = '┃';
-        $vr  = '┃';
-    } elsif ($type eq 'BLOCK') {
-        $tl  = '🬚';
-        $tr  = '🬩';
-        $bl  = '🬌';
-        $br  = '🬍';
-        $top = '🬋';
-        $bot = '🬋';
-        $vl  = '▌';
-        $vr  = '▐';
-    } elsif ($type eq 'WEDGE') {
-        $tl  = '🭊';
-        $tr  = '🬿';
-        $bl  = '🭥';
-        $br  = '🭚';
-        $top = '▅';
-        $bot = '🮄';
-        $vl  = '█';
-        $vr  = '█';
-    } elsif ($type eq 'BIG WEDGE') {
-        $tl  = '◢';
-        $tr  = '◣';
-        $bl  = '◥';
-        $br  = '◤';
-        $top = '█';
-        $bot = '█';
-        $vl  = '█';
-        $vr  = '█';
-    } elsif ($type eq 'DOTS') {
-        $tl  = '🞄';
-        $tr  = '🞄';
-        $bl  = '🞄';
-        $br  = '🞄';
-        $top = '🞄';
-        $bot = '🞄';
-        $vl  = '🞄';
-        $vr  = '🞄';
-    } elsif ($type eq 'DIAMOND') {
-        $tl  = '⧫';
-        $tr  = '⧫';
-        $bl  = '⧫';
-        $br  = '⧫';
-        $top = '⧫';
-        $bot = '⧫';
-        $vl  = '⧫';
-        $vr  = '⧫';
-    } elsif ($type eq 'STAR') {
-        $tl  = '⭑';
-        $tr  = '⭑';
-        $bl  = '⭑';
-        $br  = '⭑';
-        $top = '⭑';
-        $bot = '⭑';
-        $vl  = '⭑';
-        $vr  = '⭑';
-    } elsif ($type eq 'CIRCLE') {
-        $tl  = '○';
-        $tr  = '○';
-        $bl  = '○';
-        $br  = '○';
-        $top = '○';
-        $bot = '○';
-        $vl  = '○';
-        $vr  = '○';
-    } elsif ($type eq 'SQUARE') {
-        $tl  = '∎';
-        $tr  = '∎';
-        $bl  = '∎';
-        $br  = '∎';
-        $top = '∎';
-        $bot = '∎';
-        $vl  = '∎';
-        $vr  = '∎';
-    } elsif ($type eq 'DITHERED') {
-        $tl  = '▒';
-        $tr  = '▒';
-        $bl  = '▒';
-        $br  = '▒';
-        $top = '▒';
-        $bot = '▒';
-        $vl  = '▒';
-        $vr  = '▒';
-    } elsif ($type eq 'HEART') {
-        $tl  = '♥';
-        $tr  = '♥';
-        $bl  = '♥';
-        $br  = '♥';
-        $top = '♥';
-        $bot = '♥';
-        $vl  = '♥';
-        $vr  = '♥';
-    } elsif ($type eq 'CHRISTIAN') {
-        $tl  = '🕇';
-        $tr  = '🕇';
-        $bl  = '🕇';
-        $br  = '🕇';
-        $top = '🕇';
-        $bot = '🕇';
-        $vl  = '🕇';
-        $vr  = '🕇';
-    } elsif ($type eq 'NOTES') {
-        $tl  = '♪';
-        $tr  = '♪';
-        $bl  = '♪';
-        $br  = '♪';
-        $top = '♪';
-        $bot = '♪';
-        $vl  = '♪';
-        $vr  = '♪';
-    } elsif ($type eq 'PARALLELOGRAM') {
-        $tl  = '▰';
-        $tr  = '▰';
-        $bl  = '▰';
-        $br  = '▰';
-        $top = '▰';
-        $bot = '▰';
-        $vl  = '▰';
-        $vr  = '▰';
-    } elsif ($type eq 'BIG ARROWS') {
-        $tl  = '▶';
-        $tr  = '▶';
-        $bl  = '◀';
-        $br  = '◀';
-        $top = '▶';
-        $bot = '◀';
-        $vl  = '▲';
-        $vr  = '▼';
-    } elsif ($type eq 'ARROWS') {
-        $tl  = '🡕';
-        $tr  = '🡖';
-        $bl  = '🡔';
-        $br  = '🡗';
-        $top = '🡒';
-        $bot = '🡐';
-        $vl  = '🡑';
-        $vr  = '🡓';
-    } ## end elsif ($type eq 'ARROWS')
+    $color = '[% ' . ($color // 'DEFAULT') . ' %]';
 
+    # Normalize type and pick style (fall back to DEFAULT)
+    my $key = (defined($type)) ? uc($type) : 'DEFAULT';
+    $key =~ s/^\s+|\s+$//g;
+    $key = ($key eq '') ? 'DEFAULT' : $key;
+
+    my $style = $STYLES{$key} // $STYLES{DEFAULT};
+    my ($tl, $tr, $bl, $br, $top, $bot, $vl, $vr) = @{$style};
+
+    # Build the box text efficiently
     my $text = '';
-    my $xx   = $x;
-    my $yy   = $y;
-    $text .= locate($yy++, $xx) . $color . $tl . $top x ($w - 2) . $tr . '[% RESET %]';
-    foreach my $count (1 .. ($h - 2)) {
-        $text .= locate($yy++, $xx) . $color . $vl . '[% RESET %]' . ' ' x ($w - 2) . $color . $vr . '[% RESET %]';
+
+    # Top line
+    $text .= locate($y, $x) . $color . $tl . ($top x ($w - 2)) . $tr . '[% RESET %]';
+
+    # Middle lines
+    for my $row (1 .. ($h - 2)) {
+        $text .= locate($y + $row, $x) . $color . $vl . '[% RESET %]' . (' ' x ($w - 2)) . $color . $vr . '[% RESET %]';
     }
-    $text .= locate($yy++,  $xx) . $color . $bl . $bot x ($w - 2) . $br . '[% RESET %]' . $self->{'ansi_meta'}->{'cursor'}->{'SAVE'}->{'out'};
+
+    # Bottom line + save cursor
+    $text .= locate($y + $h - 1, $x) . $color . $bl . ($bot x ($w - 2)) . $br . '[% RESET %]' . $self->{'ansi_meta'}->{'cursor'}->{'SAVE'}->{'out'};
+
+    # Position cursor inside box and wrap text
     $text .= locate($y + 1, $x + 1);
-    chomp(my @lines = fuzzy_wrap($string, ($w - 3)));
-    $xx = $x + 1;
-    $yy = $y + 1;
+    chomp(my @lines = fuzzy_wrap($string // '', ($w - 3)));
+
+    my $line_y = $y + 1;
     foreach my $line (@lines) {
-        $text .= locate($yy++, $xx) . $line;
+        last if $line_y >= ($y + $h - 1);    # avoid writing outside the box
+        $text .= locate($line_y++, $x + 1) . $line;
     }
+
+    # Restore cursor
     $text .= $self->{'ansi_meta'}->{'cursor'}->{'RESTORE'}->{'out'};
+
     return ($text);
 } ## end sub box
 
@@ -322,7 +204,7 @@ sub new {
     return ($self);
 } ## end sub new
 
-sub _global_ansi_meta {
+sub _global_ansi_meta {    # prefills the hash cache
     my $esc = chr(27);
     my $csi = $esc . '[';
     my $tmp = {
