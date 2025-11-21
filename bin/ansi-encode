@@ -149,7 +149,7 @@ $text =~ s/XXXX/$VERSION/gs;
 
 my $ansi = Term::ANSIEncode->new();
 
-my @list = (
+our @list = (
     0x20 .. 0x7F,
     0xA0 .. 0xFF,
     0x2010 .. 0x205F,
@@ -201,10 +201,10 @@ my $small = <<'SMALL';
 ║     -[% BRIGHT BLUE %]s[% RESET %] or --[% BRIGHT BLUE %]symbols[% RESET %] [search]                                            ║
 ║         Show available symbols and character tokens by name             ║
 ║                                                                         ║
-║     -[% BRIGHT BLUE %]t[% RESET %] or --[% BRIGHT BLUE %]tokens[% RESET %]  [-[% BRIGHT BLUE %]e[% RESET %]]                                                ║
+║     -[% BRIGHT BLUE %]t[% RESET %] or --[% BRIGHT BLUE %]tokens[% RESET %]                                                      ║
 ║         Show most used tokens                                           ║
 ║                                                                         ║
-║     -[% BRIGHT BLUE %]u[% RESET %] or --[% BRIGHT BLUE %]unicode[% RESET %] [-[% BRIGHT BLUE %]e[% RESET %]] [search]                                       ║
+║     -[% BRIGHT BLUE %]u[% RESET %] or --[% BRIGHT BLUE %]unicode[% RESET %] [search]                                            ║
 ║         Show available symbols and character tokens by unicode          ║
 ║                                                                         ║
 ║     -[% BRIGHT BLUE %]v[% RESET %] or --[% BRIGHT BLUE %]version[% RESET %]                                                     ║
@@ -439,7 +439,9 @@ if ($version) {
         my $start = $ansi->{'start'};
         foreach my $code (@list) {
             my $name = charnames::viacode($code);
-            $ansi->ansi_output(charnames::string_vianame($name) . ' ');
+			if (defined($name)) {
+				$ansi->ansi_output(charnames::string_vianame($name) . ' ');
+			}
         }
     }
     print "\n";
@@ -503,8 +505,10 @@ if ($version) {
     } else {
         foreach my $code (@list) {
             my $name = charnames::viacode($code);
-            push(@names, $name);
-            $size = max($size, length($name));
+			if (defined($name)) {
+				push(@names, $name);
+				$size = max($size, length($name));
+			}
         }
     }
     $ansi->ansi_output("\nNOTE:  Not all terminals will support all characters\n" . '[% COLOR 52 %]╭─────────┬─' . '─' x $size . '─╮[% RESET %]' . "\n");
