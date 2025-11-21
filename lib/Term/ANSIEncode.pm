@@ -24,9 +24,9 @@ use utf8;    # REQUIRED
 use charnames();
 use constant {
     TRUE  => 1,
-	  FALSE => 0,
-	  YES   => 1,
-	  NO    => 0,
+    FALSE => 0,
+    YES   => 1,
+    NO    => 0,
 };
 
 use Term::ANSIScreen qw( :cursor :screen );
@@ -74,153 +74,97 @@ sub ansi_description {
     return ($self->{'ansi_meta'}->{$code}->{$name}->{'desc'});
 }
 
+# This was far easier to read with my original code.  However, AI actually did
+# optimize and shrink the code quite well and it seems to be much faster.
 sub ansi_decode {
-	    my ($self, $text) = @_;
-	
-	    # Nothing to do for very short strings
-	    return $text unless defined $text && length($text) > 1;
-	
-	    # If a literal screen reset token exists, remove it and run reset once.
-	    if ( $text =~ /\[\%\s*SCREEN\s+RESET\s*\%\]/i ) {
-			        $text =~ s/\[\%\s*SCREEN\s+RESET\s*\%\]//gis;
-			        system('reset');
-			    }
-	
-	    # Convenience CSI
-	    my $csi = $self->{'ansi_meta'}->{special}->{CSI}->{out};
-	
-	    #
-	    # BOX blocks (BOX ... ENDBOX) - handle first.
-	    # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
-	    # so we don't accidentally create replacement-string interpolation warnings.
-	    #
-	    while ( $text =~ m{\[\%\s*BOX\s*(.*?)\s*\%\](.*?)\[\%\s*ENDBOX\s*\%\]}is ) {
-			        my ($params, $body) = ($1, $2);
-			
-			        # split into up to 6 params: color,x,y,w,h,type
-			        my @parts = split(/\s*,\s*/, (defined $params ? $params : ''), 6);
-			
-			        # normalize empty strings to undef and ensure six elements
-			        for (@parts) { $_ = undef if defined $_ && $_ eq '' }
-			        push @parts, undef while @parts < 6;
-			
-			        my $replace = $self->box($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $parts[5], $body);
-			
-			        # replace the first occurrence of the matched block. Use \Q...\E to avoid any regex
-			        # metacharacter pitfalls when substituting the exact matched substring ($&).
-			        my $matched = $&;    # exact substring matched by the pattern
-			        $text =~ s/\Q$matched\E/$replace/;
-			    }
-	
-	    #
-	    # Targeted parameterized tokens (single-pass). These are simple Regex -> CSI conversions.
-	    #
-	    $text =~ s/\[\%\s*LOCATE\s+(\d+)\s*,\s*(\d+)\s*\%\]/ $csi . "$2;$1" . 'H' /eigs;
-	    $text =~ s/\[\%\s*SCROLL\s+UP\s+(\d+)\s*\%\]/     $csi . $1 . 'S'           /eigs;
-	    $text =~ s/\[\%\s*SCROLL\s+DOWN\s+(\d+)\s*\%\]/   $csi . $1 . 'T'           /eigs;
-	
-	    # HORIZONTAL RULE expands into a sequence of meta-tokens (resolved later).
-	    $text =~ s/\[\%\s*HORIZONTAL\s+RULE\s+(.*?)\s*\%\]/
-	          do {
-				              my $color = defined $1 && $1 ne '' ? uc $1 : 'DEFAULT';
-				              '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
-				          }/eigs;
-	
-	    # 24-bit RGB foreground/background
-	    $text =~ s/\[\%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\%\]/
-	          do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "38:2:$r:$g:$b" . 'm' }/eigs;
-	    $text =~ s/\[\%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\%\]/
-	          do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/eigs;
-	
-	    #
-	    # Flatten the ansi_meta lookup to a simple, case-insensitive hash for a single-pass
-	    # substitution of tokens like [% RED %], [% RESET %], etc.
-	    #
-	    my %lookup;
-	    for my $code (qw(foreground background special clear cursor attributes)) {
-			        my $map = $self->{'ansi_meta'}->{$code} or next;
-			        while ( my ($name, $info) = each %{$map} ) {
-						            next unless defined $info->{out};
-						            $lookup{lc $name} = $info->{out};
-						        }
-			    }
-	
-	    # Final single-pass replacement for remaining [% ... %] tokens.
-	    # If token matches a lookup entry, substitute; otherwise if it's a named char use charnames;
-	    # else leave token visible.
-	    $text =~ s/\[\%\s*(.+?)\s*\%\]/
-	          do {
-				              my $tok = $1;
-				              my $key = lc $tok;
-				              if ( exists $lookup{$key} ) {
-								                  $lookup{$key};
-								              }
-				              elsif ( defined( my $char = charnames::string_vianame($tok) ) ) {
-								                  $char;
-								              }
-				              else {
-								                  $&;    # leave the original token intact
-								              }
-				          }/egis;
-	
-	    return $text;
-	}
-
-sub ansi_decode_old {
     my ($self, $text) = @_;
 
-    if (length($text) > 1) {    # Special token handling requiring "smarts"
-        if ($text =~ /\[\%\s+SCREEN RESET\s+\%\]/) {
-            $text =~ s/\[\%\s+SCREEN RESET\s+\%\]//gs;
-            system('reset');
+    # Nothing to do for very short strings
+    return $text unless defined $text && length($text) > 1;
+
+    # If a literal screen reset token exists, remove it and run reset once.
+    if ($text =~ /\[\%\s*SCREEN\s+RESET\s*\%\]/i) {
+        $text =~ s/\[\%\s*SCREEN\s+RESET\s*\%\]//gis;
+        system('reset');
+    }
+
+    # Convenience CSI
+    my $csi = $self->{'ansi_meta'}->{special}->{CSI}->{out};
+
+    #
+    # BOX blocks (BOX ... ENDBOX) - handle first.
+    # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
+    # so we don't accidentally create replacement-string interpolation warnings.
+    #
+    while ($text =~ m{\[\%\s*BOX\s*(.*?)\s*\%\](.*?)\[\%\s*ENDBOX\s*\%\]}is) {
+        my ($params, $body) = ($1, $2);
+
+        # split into up to 6 params: color,x,y,w,h,type
+        my @parts = split(/\s*,\s*/, (defined $params ? $params : ''), 6);
+
+        # normalize empty strings to undef and ensure six elements
+        for (@parts) { $_ = undef if defined $_ && $_ eq '' }
+        push @parts, undef while @parts < 6;
+
+        my $replace = $self->box($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $parts[5], $body);
+
+        # replace the first occurrence of the matched block. Use \Q...\E to avoid any regex
+        # metacharacter pitfalls when substituting the exact matched substring ($&).
+        my $matched = $&;    # exact substring matched by the pattern
+        $text =~ s/\Q$matched\E/$replace/;
+    } ## end while ($text =~ m{\[\%\s*BOX\s*(.*?)\s*\%\](.*?)\[\%\s*ENDBOX\s*\%\]}is)
+
+    #
+    # Targeted parameterized tokens (single-pass). These are simple Regex -> CSI conversions.
+    #
+    $text =~ s/\[\%\s*LOCATE\s+(\d+)\s*,\s*(\d+)\s*\%\]/ $csi . "$2;$1" . 'H' /eigs;
+    $text =~ s/\[\%\s*SCROLL\s+UP\s+(\d+)\s*\%\]/     $csi . $1 . 'S'           /eigs;
+    $text =~ s/\[\%\s*SCROLL\s+DOWN\s+(\d+)\s*\%\]/   $csi . $1 . 'T'           /eigs;
+
+    # HORIZONTAL RULE expands into a sequence of meta-tokens (resolved later).
+    $text =~ s/\[\%\s*HORIZONTAL\s+RULE\s+(.*?)\s*\%\]/
+              do {
+                              my $color = defined $1 && $1 ne '' ? uc $1 : 'DEFAULT';
+                              '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
+                          }/eigs;
+
+    # 24-bit RGB foreground/background
+    $text =~ s/\[\%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\%\]/
+              do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "38:2:$r:$g:$b" . 'm' }/eigs;
+    $text =~ s/\[\%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\%\]/
+              do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/eigs;
+
+    #
+    # Flatten the ansi_meta lookup to a simple, case-insensitive hash for a single-pass
+    # substitution of tokens like [% RED %], [% RESET %], etc.
+    #
+    my %lookup;
+    for my $code (qw(foreground background special clear cursor attributes)) {
+        my $map = $self->{'ansi_meta'}->{$code} or next;
+        while (my ($name, $info) = each %{$map}) {
+            next unless defined $info->{out};
+            $lookup{ lc $name } = $info->{out};
         }
-        my $csi = $self->{'ansi_meta'}->{'special'}->{'CSI'}->{'out'};
-        while ($text =~ /\[\%\s+LOCATE (\d+),(\d+)\s+\%\]/) {    # Sets the cursor to a specific location.
-            my ($c, $r) = ($1, $2);
-            my $replace = $csi . "$r;$c" . 'H';
-            $text =~ s/\[\%\s+LOCATE $c,$r\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+HORIZONTAL RULE (.*?)\s+\%\]/) {    # Generates a horizontal rule in the specified color
-            my $color = $1;
-            my $new   = '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
-            $text =~ s/\[\%\s+HORIZONTAL RULE (.*?)\s+\%\]/$new/;
-        }
-        while ($text =~ /\[\%\s+SCROLL UP (\d+)\s+\%\]/) {          # Scrolls the screen up the specified number of lines
-            my $s       = $1;
-            my $replace = $csi . $s . 'S';
-            $text =~ s/\[\%\s+SCROLL UP $s\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+SCROLL DOWN (\d+)\s+\%\]/) {        # Scrolls the screen down a specified number of lines
-            my $s       = $1;
-            my $replace = $csi . $s . 'T';
-            $text =~ s/\[\%\s+SCROLL DOWN $s\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+RGB (\d+),(\d+),(\d+)\s+\%\]/) {    # Sets the foreground color to a specific Red, Green and BLue value
-            my ($r, $g, $b) = ($1 & 255, $2 & 255, $3 & 255);
-            my $replace = $csi . "38:2:$r:$g:$b" . 'm';
-            $text =~ s/\[\%\s+RGB $r,$g,$b\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+B_RGB (\d+),(\d+),(\d+)\s+\%\]/) {    # Sets the background color to a specific Red, Green and BLue value
-            my ($r, $g, $b) = ($1 & 255, $2 & 255, $3 & 255);
-            my $replace = $csi . "48:2:$r:$g:$b" . 'm';
-            $text =~ s/\[\%\s+B_RGB $r,$g,$b\s+\%\]/$replace/;
-        }
-        while ($text =~ /\[\%\s+BOX (.*?),(\d+),(\d+),(\d+),(\d+),(.*?)\s+\%\](.*?)\[\%\s+ENDBOX\s+\%\]/i) {    # Parses the BOX token.
-            my $replace = $self->box($1, $2, $3, $4, $5, $6, $7);
-            $text =~ s/\[\%\s+BOX.*?\%\].*?\[\%\s+ENDBOX.*?\%\]/$replace/;
-        }
-        foreach my $code (qw(foreground background special clear cursor attributes)) {
-            foreach my $name (keys(%{ $self->{'ansi_meta'}->{$code} })) {
-                $text =~ s/\[\%\s+$name\s+\%\]/$self->{'ansi_meta'}->{$code}->{$name}->{'out'}/gsie;
+    } ## end for my $code (qw(foreground background special clear cursor attributes))
+
+    # Final single-pass replacement for remaining [% ... %] tokens.
+    # If token matches a lookup entry, substitute; otherwise if it's a named char use charnames;
+    # else leave token visible.
+###
+    $text =~ s/\[\%\s*(.+?)\s*\%\]/
+        do {
+            my $tok = $1;
+            my $key = lc $tok;
+            if ( exists $lookup{$key} ) {
+                $lookup{$key};
+            } elsif ( defined( my $char = charnames::string_vianame($tok) ) ) {
+                $char;
+            } else {
+                $&;    # leave the original token intact
             }
-        }
-        while ($text =~ /\[\%\s+(.*?)\s+\%\]/ && defined(charnames::string_vianame($1))) {                      # Parse the rest of the tokens
-            my $string = $1;
-            my $char   = charnames::string_vianame($string);
-            $text =~ s/\[\%\s+$string\s+\%\]/$char/gsie;
-        }
-    } ## end if (length($text) > 1)
-    return ($text);
+        }/egis;
+###
+    return $text;
 } ## end sub ansi_decode
 
 sub ansi_output {
@@ -8786,36 +8730,36 @@ sub _global_ansi_meta {    # prefills the hash cache
                 'out'  => $csi . '48:2:44:22:8m',
             },
         },
-  };
+    };
 
-# Alternate Fonts
-foreach my $count (1 .. 9) {
-	$tmp->{'special'}->{ 'FONT ' . $count } = {
-		'desc' => "ANSI Font $count",
-		'out'  => $csi . ($count + 10) . 'm',
-	};
-} ## end foreach my $count (1 .. 9)
-foreach my $count (16 .. 231) {
-	$tmp->{'foreground'}->{ 'COLOR ' . $count } = {
-		'desc' => "ANSI256 Color $count",
-		'out'  => $csi . "38;5;$count" . 'm',
-	};
-	$tmp->{'background'}->{ 'B_COLOR ' . $count } = {
-		'desc' => "ANSI256 Color $count",
-		'out'  => $csi . "48;5;$count" . 'm',
-	};
-} ## end foreach my $count (16 .. 231)
-foreach my $count (232 .. 255) {
-	$tmp->{'foreground'}->{ 'GRAY ' . ($count - 232) } = {
-		'desc' => "ANSI256 grey level " . ($count - 232),
-		'out'  => $csi . "38;5;$count" . 'm',
-	};
-	$tmp->{'background'}->{ 'B_GRAY ' . ($count - 232) } = {
-		'desc' => "ANSI256 grey level " . ($count - 232),
-		'out'  => $csi . "48;5;$count" . 'm',
-	};
-} ## end foreach my $count (232 .. 255)
-return ($tmp);
+    # Alternate Fonts
+    foreach my $count (1 .. 9) {
+        $tmp->{'special'}->{ 'FONT ' . $count } = {
+            'desc' => "ANSI Font $count",
+            'out'  => $csi . ($count + 10) . 'm',
+        };
+    } ## end foreach my $count (1 .. 9)
+    foreach my $count (16 .. 231) {
+        $tmp->{'foreground'}->{ 'COLOR ' . $count } = {
+            'desc' => "ANSI256 Color $count",
+            'out'  => $csi . "38;5;$count" . 'm',
+        };
+        $tmp->{'background'}->{ 'B_COLOR ' . $count } = {
+            'desc' => "ANSI256 Color $count",
+            'out'  => $csi . "48;5;$count" . 'm',
+        };
+    } ## end foreach my $count (16 .. 231)
+    foreach my $count (232 .. 255) {
+        $tmp->{'foreground'}->{ 'GRAY ' . ($count - 232) } = {
+            'desc' => "ANSI256 grey level " . ($count - 232),
+            'out'  => $csi . "38;5;$count" . 'm',
+        };
+        $tmp->{'background'}->{ 'B_GRAY ' . ($count - 232) } = {
+            'desc' => "ANSI256 grey level " . ($count - 232),
+            'out'  => $csi . "48;5;$count" . 'm',
+        };
+    } ## end foreach my $count (232 .. 255)
+    return ($tmp);
 } ## end sub _global_ansi_meta
 
 1;
