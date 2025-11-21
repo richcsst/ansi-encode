@@ -15,6 +15,7 @@
 
 use strict;
 use utf8; # Required
+use warnings;
 use charnames();
 use constant {
     TRUE  => 1,
@@ -38,7 +39,6 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 our $VERSION = $Term::ANSIEncode::VERSION;    # Pull in the version from Term::ANSIEncode
-
 
 my $version   = FALSE;
 my $help      = FALSE;
