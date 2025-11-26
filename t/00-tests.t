@@ -14,7 +14,7 @@ BEGIN {
     use_ok('Term::ANSIEncode') || BAIL_OUT('Cannot load Term::ANSIEncode!');
 }
 
-diag(colored(['cyan on_black'], q{ _______        _   _              }));
+diag("\n" . colored(['cyan on_black'], q{ _______        _   _              }));
 diag(colored(['cyan on_black'], q{|__   __|      | | (_)             }));
 diag(colored(['cyan on_black'], q{   | | ___  ___| |_ _ _ __   __ _  }));
 diag(colored(['cyan on_black'], q{   | |/ _ \/ __| __| | '_ \ / _` | }));
