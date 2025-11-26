@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.47;
+package Term::ANSIEncode 1.48;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -245,22 +245,6 @@ sub _global_ansi_meta {    # prefills the hash cache
     my $csi = $esc . '[';
     my $tmp = {
         'special' => {
-            'FONT DOUBLE-HEIGHT TOP' => {
-                'out'  => $esc . '#3',
-                'desc' => 'Double-Height Font Top Portion',
-            },
-            'FONT DOUBLE-HEIGHT BOTTOM' => {
-                'out'  => $esc . '#4',
-                'desc' => 'Double-Height Font Bottom Portion',
-            },
-            'FONT DOUBLE-WIDTH' => {
-                'out'  => $esc . '#6',
-                'desc' => 'Double-Width Font',
-            },
-            'FONT DEFAULT' => {
-                'out'  => $esc . '#5',
-                'desc' => 'Default Font Size',
-            },
             'APC' => {
                 'out'  => $esc . '_',
                 'desc' => 'Application Program Command',
@@ -386,6 +370,26 @@ sub _global_ansi_meta {    # prefills the hash cache
         },
 
         'attributes' => {
+            'FONT DOUBLE-HEIGHT TOP' => {
+                'out'  => $esc . '#3',
+                'desc' => 'Double-Height Font Top Portion',
+            },
+            'FONT DOUBLE-HEIGHT BOTTOM' => {
+                'out'  => $esc . '#4',
+                'desc' => 'Double-Height Font Bottom Portion',
+            },
+            'FONT DOUBLE-WIDTH' => {
+                'out'  => $esc . '#6',
+                'desc' => 'Double-Width Font',
+            },
+            'FONT DEFAULT' => {
+                'out'  => $esc . '#5',
+                'desc' => 'Default Font Size',
+            },
+			'RING BELL' => {
+				'out' => chr(7),
+				'desc' => 'Console Bell',
+			},
             'RESET' => {
                 'out'  => $csi . '0m',
                 'desc' => 'Restore all attributes and colors to their defaults',
@@ -8734,7 +8738,7 @@ sub _global_ansi_meta {    # prefills the hash cache
 
     # Alternate Fonts
     foreach my $count (1 .. 9) {
-        $tmp->{'special'}->{ 'FONT ' . $count } = {
+        $tmp->{'attributes'}->{ 'FONT ' . $count } = {
             'desc' => "ANSI Font $count",
             'out'  => $csi . ($count + 10) . 'm',
         };

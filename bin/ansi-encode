@@ -268,7 +268,7 @@ $to .= '╰───────────────────────
                 $to =~ s/│$name  /│$new /gs;
             }
         } else {
-            foreach my $name (grep(!/^(HIDE|BLACK)$/, sort(keys %{$ansi->{'ansi_meta'}->{$code}}))) {
+            foreach my $name (grep(!/^(FONT.*|RING BELL|HIDE|BLACK)$/, sort(keys %{$ansi->{'ansi_meta'}->{$code}}))) {
                 my $new = $ansi->{'ansi_meta'}->{$code}->{$name}->{'out'} . $name . $ansi->{'ansi_meta'}->{'attributes'}->{'RESET'}->{'out'};
                 $to =~ s/│$name  /│$new  /gs;
             }
@@ -430,7 +430,7 @@ FRAMES
 } elsif ($Dump) {
     my $temp = "\n\n";
     my @names;
-    my $search = (scalar(@ARGV)) ? pop(@ARGV) : undef;
+    my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
     if (defined($search) && $search ne '') {
         $ansi->ansi_output(charnames::string_vianame($search));
     } else {
@@ -444,7 +444,7 @@ FRAMES
     }
     print "\n";
 } elsif ($unicode) {
-    my $search = (scalar(@ARGV)) ? pop(@ARGV) : undef;
+    my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
     $ansi->ansi_output("\nNOTE:  Not all terminals will support all characters\n" . '[% COLOR 52 %]╭─────────╮[% RESET %]' . "\n");
     if (defined($search)) {
         $ansi->ansi_output('[% COLOR 52 %]│ [% BRIGHT CYAN %]Unicode[% COLOR 52 %] │[% RESET %]' . "\n");
@@ -478,7 +478,7 @@ FRAMES
     }
 } elsif ($symbols) {
     my @names;
-    my $search = (scalar(@ARGV)) ? pop(@ARGV) : undef;
+    my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
     my $size = 0;
     if (defined($search) && $search ne '') {
         if ($search =~ /^U\+/) {
@@ -494,7 +494,7 @@ FRAMES
         } else {
             foreach my $code (@list) {
                 my $name = charnames::viacode($code);
-                if ($name =~ /$search/i) {
+                if (defined($name) && $name =~ /$search/i) {
                     push(@names, $name);
                     $size = max($size, length($name));
                 }
