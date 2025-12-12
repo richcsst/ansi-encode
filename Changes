@@ -202,3 +202,12 @@
 
         Fixed search bug
         Improved testing
+
+1.49    Dec 09, 2025
+
+        Revamped the -t tokens table
+		Added "UNDERLINE COLOR" token for terminals that support it.
+
+1.50    Dec 11, 2025
+
+        Fixed a token typo
