@@ -24,7 +24,7 @@ binmode $builder->failure_output, ":encoding(UTF-8)";
 binmode $builder->todo_output,    ":encoding(UTF-8)";
 
 # ╔ ╗ ╚ ╝ ═ ║
-diag("\r" . colored(['bright_yellow'], "\e[4m                                    "));
+diag("\n\r" . colored(['bright_yellow'], "\e[4m                                    "));
 diag("\r" . colored(['bright_yellow'], '▏') . colored(['cyan on_black'], q{ _______        _   _              }) . colored(['yellow'], '◣'));
 diag("\r" . colored(['bright_yellow'], '▏') . colored(['cyan on_black'], q{|__   __|      | | (_)             }) . colored(['yellow'], '█'));
 diag("\r" . colored(['bright_yellow'], '▏') . colored(['cyan on_black'], q{   | | ___  ___| |_ _ _ __   __ _  }) . colored(['yellow'], '█'));
