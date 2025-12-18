@@ -35,7 +35,7 @@ diag("\r" . colored(['bright_yellow'], '▏') . colored(['cyan on_black'], q{   
 diag("\r" . colored(['bright_yellow'], '▏') . colored(['cyan on_black'], q{Term::ANSIEncode            |___/  }) . colored(['yellow'], '█'));
 diag("\r" . colored(['bright_yellow'], '▏                                   ') . colored(['yellow'], '█'));
 diag("\r" . colored(['bright_yellow'],        '◥████████████████████████████████████'));
-
+diag("\r  \n\r  " x 12 . "\e[13A");
 diag("\r  \n\r" . colored(['bright_yellow on_magenta'],sprintf('%-25s',' Testing object creation ')));
 my $ansi = Term::ANSIEncode->new();
 isa_ok($ansi,'Term::ANSIEncode');
