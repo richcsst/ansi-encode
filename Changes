@@ -231,3 +231,7 @@
 1.55    Dec 18, 2025
 
         Shrank the bin/ansi-encode source a bit my compressing repetitions
+
+1.56    Dec 18, 2025
+
+        Revamped the module to make the source easy to read.
