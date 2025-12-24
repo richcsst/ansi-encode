@@ -40,19 +40,19 @@ binmode(STDIN,  ":encoding(UTF-8)");
 
 our $VERSION = $Term::ANSIEncode::VERSION;    # Pull in the version from Term::ANSIEncode
 
-my $version   = FALSE;
-my $help      = FALSE;
-my $tokens    = FALSE;
-my $rawtokens = FALSE;
-my $symbols   = FALSE;
-my $unicode   = FALSE;
-my $colors    = FALSE;
-my $Dump      = FALSE;
-my $c16       = TRUE;
-my $c256      = FALSE;
-my $crgb      = FALSE;
-my $frames    = FALSE;
-my $rules     = FALSE;
+my $version    = FALSE;
+my $help       = FALSE;
+my $tokens     = FALSE;
+my $rawtokens  = FALSE;
+my $symbols    = FALSE;
+my $unicode    = FALSE;
+my $colors     = FALSE;
+my $Dump       = FALSE;
+my $c16        = TRUE;
+my $c256       = FALSE;
+my $crgb       = FALSE;
+my $frames     = FALSE;
+my $rules      = FALSE;
 my $ansi_modes = FALSE;
 
 GetOptions(
@@ -84,8 +84,6 @@ access to all Unicode characters and symbols:
 ';
 
 ###
-
-
 
 my $ansi = Term::ANSIEncode->new();
 
@@ -327,14 +325,14 @@ VERSION
 } elsif ($ansi_modes) {
     my $out = "[% BRIGHT WHITE %]-------- [% BRIGHT YELLOW %]Modes supported [% BRIGHT WHITE %]----------[% RESET %]\n";
     if ($c16) {
-        $out .= "            ANSI16:  [% GREEN %]Supported[% RESET %]\n";
+        $out .= "           ANSI 16:  [% GREEN %]Supported[% RESET %]\n";
     } else {
-        $out .= "            ANSI16:  [% RED %]Not Supported[% RESET %]\n";
+        $out .= "           ANSI 16:  [% RED %]Not Supported[% RESET %]\n";
     }
     if ($c256) {
-        $out .= "           ANSI256:  [% GREEN %]Supported[% RESET %]\n";
+        $out .= "          ANSI 256:  [% GREEN %]Supported[% RESET %]\n";
     } else {
-        $out .= "           ANSI256:  [% RED %]Not Supported[% RESET %]\n";
+        $out .= "          ANSI 256:  [% RED %]Not Supported[% RESET %]\n";
     }
     if ($crgb) {
         $out .= "    ANSI TrueColor:  [% GREEN %]Supported[% RESET %]\n";
