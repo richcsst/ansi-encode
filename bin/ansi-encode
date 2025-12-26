@@ -103,51 +103,51 @@ our @list = (
 ###
 my $help_text = <<'SMALL';
 
-[% CLS %]╔═════════════════════════════════════════════════════════════════════════╗
-║[% B_BLACK %]                     [% RED %]┏━┓[% BRIGHT YELLOW %]┏┓╻[% GREEN %]┏━┓[% BRIGHT BLUE %]╻   [% BRIGHT WHITE %]┏━╸┏┓╻┏━╸┏━┓╺┳┓┏━╸                     [% RESET %]║
-║[% B_BLACK %]                     [% RED %]┣━┫[% BRIGHT YELLOW %]┃┗┫[% GREEN %]┗━┓[% BRIGHT BLUE %]┃   [% BRIGHT WHITE %]┣╸ ┃┗┫┃  ┃ ┃ ┃┃┣╸                      [% RESET %]║
-║[% B_BLACK %]                     [% RED %]╹ ╹[% BRIGHT YELLOW %]╹ ╹[% GREEN %]┗━┛[% BRIGHT BLUE %]╹   [% BRIGHT WHITE %]┗━╸╹ ╹┗━╸┗━┛╺┻┛┗━╸                     [% RESET %]║
-╠═════════════════════════════════════════════════════════════════════════╣
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] DESCRIPTION                                                             [% RESET %]║
-║     Markup text to ANSI encoder.                                        ║
-╟─────────────────────────────────────────────────────────────────────────╢
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] USAGE                                                                   [% RESET %]║
-║     [% CYAN %]ansi-encode[% RESET %] [options] [text file]                                   ║
-╟─────────────────────────────────────────────────────────────────────────╢
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] OPTIONS                                                                 [% RESET %]║
-║     -[% BRIGHT BLUE %]a[% RESET %] or --[% BRIGHT BLUE %]ansi-modes[% RESET %]                                                  ║
-║         Show supported ANSI color modes                                 ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]c[% RESET %] or --[% BRIGHT BLUE %]colors[% RESET %]                                                      ║
-║         Show available colors                                           ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]d[% RESET %] or --[% BRIGHT BLUE %]dump[% RESET %] [search]                                               ║
-║         Dump available sysmbols                                         ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]f[% RESET %] or --[% BRIGHT BLUE %]frames[% RESET %]                                                      ║
-║         Show sample frame types                                         ║
-║                                                                         ║
-║     --[% BRIGHT BLUE %]help[% RESET %]                                                              ║
-║         Usage information                                               ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]h[% RESET %] or --[% BRIGHT BLUE %]horizontal-rules[% RESET %]                                            ║
-║         Show sample horizontal rules                                    ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]r[% RESET %] or --[% BRIGHT BLUE %]rawtokens[% RESET %]                                                   ║
-║         Raw dump of available tokens.                                   ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]s[% RESET %] or --[% BRIGHT BLUE %]symbols[% RESET %] [search]                                            ║
-║         Show available symbols and character tokens by name             ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]t[% RESET %] or --[% BRIGHT BLUE %]tokens[% RESET %]                                                      ║
-║         Show most used tokens                                           ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]u[% RESET %] or --[% BRIGHT BLUE %]unicode[% RESET %] [search]                                            ║
-║         Show available symbols and character tokens by unicode          ║
-║                                                                         ║
-║     -[% BRIGHT BLUE %]v[% RESET %] or --[% BRIGHT BLUE %]version[% RESET %]                                                     ║
-║         Shows version and licensing info                                ║
-╚═════════════════════════════════════════════════════════════════════════╝
+[% CLS %]╔═════════════════════════════════════════════════════════════════╗
+║[% B_BLACK %]                 [% RED %]┏━┓[% BRIGHT YELLOW %]┏┓╻[% GREEN %]┏━┓[% BRIGHT BLUE %]╻   [% BRIGHT WHITE %]┏━╸┏┓╻┏━╸┏━┓╺┳┓┏━╸                 [% RESET %]║
+║[% B_BLACK %]                 [% RED %]┣━┫[% BRIGHT YELLOW %]┃┗┫[% GREEN %]┗━┓[% BRIGHT BLUE %]┃   [% BRIGHT WHITE %]┣╸ ┃┗┫┃  ┃ ┃ ┃┃┣╸                  [% RESET %]║
+║[% B_BLACK %]                 [% RED %]╹ ╹[% BRIGHT YELLOW %]╹ ╹[% GREEN %]┗━┛[% BRIGHT BLUE %]╹   [% BRIGHT WHITE %]┗━╸╹ ╹┗━╸┗━┛╺┻┛┗━╸                 [% RESET %]║
+╠═════════════════════════════════════════════════════════════════╣
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] DESCRIPTION                                                     [% RESET %]║
+║     Markup text to ANSI encoder.                                ║
+╟─────────────────────────────────────────────────────────────────╢
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] USAGE                                                           [% RESET %]║
+║     [% CYAN %]ansi-encode[% RESET %] [options] [text file]                           ║
+╟─────────────────────────────────────────────────────────────────╢
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] OPTIONS                                                         [% RESET %]║
+║     -[% BRIGHT BLUE %]a[% RESET %] or --[% BRIGHT BLUE %]ansi-modes[% RESET %]                                          ║
+║         Show supported ANSI color modes                         ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]c[% RESET %] or --[% BRIGHT BLUE %]colors[% RESET %]                                              ║
+║         Show available colors                                   ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]d[% RESET %] or --[% BRIGHT BLUE %]dump[% RESET %] [search]                                       ║
+║         Dump available sysmbols                                 ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]f[% RESET %] or --[% BRIGHT BLUE %]frames[% RESET %]                                              ║
+║         Show sample frame types                                 ║
+║                                                                 ║
+║     --[% BRIGHT BLUE %]help[% RESET %]                                                      ║
+║         Usage information                                       ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]h[% RESET %] or --[% BRIGHT BLUE %]horizontal-rules[% RESET %]                                    ║
+║         Show sample horizontal rules                            ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]r[% RESET %] or --[% BRIGHT BLUE %]rawtokens[% RESET %]                                           ║
+║         Raw dump of available tokens.                           ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]s[% RESET %] or --[% BRIGHT BLUE %]symbols[% RESET %] [search]                                    ║
+║         Show available symbols and character tokens by name     ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]t[% RESET %] or --[% BRIGHT BLUE %]tokens[% RESET %]                                              ║
+║         Show most used tokens                                   ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]u[% RESET %] or --[% BRIGHT BLUE %]unicode[% RESET %] [search]                                    ║
+║         Show available symbols and character tokens by unicode  ║
+║                                                                 ║
+║     -[% BRIGHT BLUE %]v[% RESET %] or --[% BRIGHT BLUE %]version[% RESET %]                                             ║
+║         Shows version and licensing info                        ║
+╚═════════════════════════════════════════════════════════════════╝
 SMALL
 
 my $bar = '[% BRIGHT GREEN %]│[% RESET %]';
