@@ -81,6 +81,8 @@ colors like "xterm-256color".  You should be using the "Awesome" fonts for
 access to all Unicode characters and symbols:
 
     http://github.com/gabrielelana/awesome-terminal-fonts
+
+I suggest "SourceCodePro-Powerline-Awesome" when selecting a font
 ';
 
 ###
