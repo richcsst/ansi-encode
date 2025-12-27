@@ -243,3 +243,7 @@
 1.58    Dec 26, 2025
 
         Optimized -d --dump option.
+
+1.59    Dec 27, 2025
+
+        More memory friendly.

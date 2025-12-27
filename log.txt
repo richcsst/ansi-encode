@@ -1,0 +1,767 @@
+DEFAULT -> 39m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+AIR FORCE BLUE -> 38;2;93;138;168m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ALICE BLUE -> 38;2;240;248;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ALIZARIN CRIMSON -> 38;2;227;38;54m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ALMOND -> 38;2;239;222;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AMARANTH -> 38;2;229;43;80m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AMBER -> 38;2;255;191;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AMERICAN ROSE -> 38;2;255;3;62m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AMETHYST -> 38;2;153;102;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ANDROID GREEN -> 38;2;164;198;57m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ANTI-FLASH WHITE -> 38;2;242;243;244m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ANTIQUE BRASS -> 38;2;205;149;117m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ANTIQUE FUCHSIA -> 38;2;145;92;131m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ANTIQUE WHITE -> 38;2;250;235;215m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AO -> 38;2;0;128;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+APPLE GREEN -> 38;2;141;182;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+APRICOT -> 38;2;251;206;177m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AQUA -> 38;2;0;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AQUA MARINE -> 38;2;127;255;212m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AQUAMARINE -> 38;2;127;255;212m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ARMY GREEN -> 38;2;75;83;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ARYLIDE YELLOW -> 38;2;233;214;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ASH GRAY -> 38;2;178;190;181m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ASPARAGUS -> 38;2;135;169;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ATOMIC TANGERINE -> 38;2;255;153;102m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AUBURN -> 38;2;165;42;42m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AUREOLIN -> 38;2;253;238;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AUROMETALSAURUS -> 38;2;110;127;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AWESOME -> 38;2;255;32;82m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AZURE -> 38;2;240;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+AZURE MIST -> 38;2;240;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BABY BLUE -> 38;2;137;207;240m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BABY BLUE EYES -> 38;2;161;202;241m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BABY PINK -> 38;2;244;194;194m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BALL BLUE -> 38;2;33;171;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BANANA MANIA -> 38;2;250;231;181m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BANANA YELLOW -> 38;2;255;225;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BATTLESHIP GRAY -> 38;2;132;132;130m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BAZAAR -> 38;2;152;119;123m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BEAU BLUE -> 38;2;188;212;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BEAVER -> 38;2;159;129;112m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BEIGE -> 38;2;245;245;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BISQUE -> 38;2;255;228;196m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BISTRE -> 38;2;61;43;31m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BITTERSWEET -> 38;2;254;111;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLACK -> 30m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+BLANCHED ALMOND -> 38;2;255;235;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLEU DE FRANCE -> 38;2;49;140;231m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLIZZARD BLUE -> 38;2;172;229;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLOND -> 38;2;250;240;190m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE -> 34m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE BELL -> 38;2;162;162;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE GRAY -> 38;2;102;153;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE GREEN -> 38;2;13;152;186m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE PURPLE -> 38;2;138;43;226m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUE VIOLET -> 38;2;138;43;226m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BLUSH -> 38;2;222;93;131m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BOLE -> 38;2;121;68;59m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BONDI BLUE -> 38;2;0;149;182m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BONE -> 38;2;227;218;201m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BOSTON UNIVERSITY RED -> 38;2;204;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BOTTLE GREEN -> 38;2;0;106;78m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BOYSENBERRY -> 38;2;135;50;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRANDEIS BLUE -> 38;2;0;112;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRASS -> 38;2;181;166;66m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRICK RED -> 38;2;203;65;84m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT BLACK -> 90m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT BLUE -> 94m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT CERULEAN -> 38;2;29;172;214m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT CYAN -> 96m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT GREEN -> 92m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT LAVENDER -> 38;2;191;148;228m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT MAGENTA -> 95m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT MAROON -> 38;2;195;33;72m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT PINK -> 38;2;255;0;127m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT RED -> 91m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT TURQUOISE -> 38;2;8;232;222m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT UBE -> 38;2;209;159;232m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT WHITE -> 97m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRIGHT YELLOW -> 93m -> ANSI 4 BIT at /usr/local/bin/ansi-encode line 241.
+BRILLIANT LAVENDER -> 38;2;244;187;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRILLIANT ROSE -> 38;2;255;85;163m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRINK PINK -> 38;2;251;96;127m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRITISH RACING GREEN -> 38;2;0;66;37m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BRONZE -> 38;2;205;127;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BROWN -> 38;2;165;42;42m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BUBBLE GUM -> 38;2;255;193;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BUBBLES -> 38;2;231;254;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BUFF -> 38;2;240;220;130m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BULGARIAN ROSE -> 38;2;72;6;7m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURGUNDY -> 38;2;128;0;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURLY WOOD -> 38;2;222;184;135m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURLYWOOD -> 38;2;222;184;135m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURNT ORANGE -> 38;2;204;85;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURNT SIENNA -> 38;2;233;116;81m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BURNT UMBER -> 38;2;138;51;36m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BYZANTINE -> 38;2;189;51;164m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+BYZANTIUM -> 38;2;112;41;99m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADET -> 38;2;83;104;114m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADET BLUE -> 38;2;95;158;160m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADET GRAY -> 38;2;145;163;176m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADMIUM GREEN -> 38;2;0;107;60m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADMIUM ORANGE -> 38;2;237;135;45m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADMIUM RED -> 38;2;227;0;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CADMIUM YELLOW -> 38;2;255;246;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAFE AU LAIT -> 38;2;166;123;91m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAFE NOIR -> 38;2;75;54;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAL POLY POMONA GREEN -> 38;2;30;77;43m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAMBRIDGE BLUE -> 38;2;163;193;173m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAMEL -> 38;2;193;154;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAMOUFLAGE GREEN -> 38;2;120;134;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CANARY -> 38;2;255;255;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CANARY YELLOW -> 38;2;255;239;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CANDY APPLE RED -> 38;2;255;8;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CANDY PINK -> 38;2;228;113;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAPRI -> 38;2;0;191;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAPUT MORTUUM -> 38;2;89;39;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARDINAL -> 38;2;196;30;58m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARIBBEAN GREEN -> 38;2;0;204;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARMINE -> 38;2;255;0;64m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARMINE PINK -> 38;2;235;76;66m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARMINE RED -> 38;2;255;0;56m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARNATION PINK -> 38;2;255;166;201m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARNELIAN -> 38;2;179;27;27m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CAROLINA BLUE -> 38;2;153;186;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CARROT ORANGE -> 38;2;237;145;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CELADON -> 38;2;172;225;175m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CELESTE -> 38;2;178;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CELESTIAL BLUE -> 38;2;73;151;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CERISE -> 38;2;222;49;99m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CERISE PINK -> 38;2;236;59;131m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CERULEAN -> 38;2;0;123;167m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CERULEAN BLUE -> 38;2;42;82;190m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CG BLUE -> 38;2;0;122;165m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CG RED -> 38;2;224;60;49m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHAMOISEE -> 38;2;160;120;90m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHAMPAGNE -> 38;2;250;214;165m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHARCOAL -> 38;2;54;69;79m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHARTREUSE -> 38;2;127;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHERRY -> 38;2;222;49;99m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHERRY BLOSSOM PINK -> 38;2;255;183;197m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHESTNUT -> 38;2;205;92;92m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHOCOLATE -> 38;2;210;105;30m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CHROME YELLOW -> 38;2;255;167;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CINEREOUS -> 38;2;152;129;123m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CINNABAR -> 38;2;227;66;52m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CINNAMON -> 38;2;210;105;30m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CITRINE -> 38;2;228;208;10m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CLASSIC ROSE -> 38;2;251;204;231m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COBALT -> 38;2;0;71;171m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COCOA BROWN -> 38;2;210;105;30m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COFFEE -> 38;2;111;78;55m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COLUMBIA BLUE -> 38;2;155;221;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COOL BLACK -> 38;2;0;46;99m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COOL GRAY -> 38;2;140;146;172m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COPPER -> 38;2;184;115;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COPPER ROSE -> 38;2;153;102;102m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COQUELICOT -> 38;2;255;56;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORAL -> 38;2;255;127;80m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORAL PINK -> 38;2;248;131;121m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORAL RED -> 38;2;255;64;64m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORDOVAN -> 38;2;137;63;69m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORN -> 38;2;251;236;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORN FLOWER BLUE -> 38;2;100;149;237m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORN SILK -> 38;2;255;248;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORNELL RED -> 38;2;179;27;27m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORNFLOWER -> 38;2;154;206;235m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORNFLOWER BLUE -> 38;2;100;149;237m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CORNSILK -> 38;2;255;248;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COSMIC LATTE -> 38;2;255;248;231m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+COTTON CANDY -> 38;2;255;188;217m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CREAM -> 38;2;255;253;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CRIMSON -> 38;2;220;20;60m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CRIMSON GLORY -> 38;2;190;0;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CRIMSON RED -> 38;2;153;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+CYAN -> 36m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+DAFFODIL -> 38;2;255;255;49m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DANDELION -> 38;2;240;225;48m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK BLUE -> 38;2;0;0;139m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK BROWN -> 38;2;101;67;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK BYZANTIUM -> 38;2;93;57;84m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK CANDY APPLE RED -> 38;2;164;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK CERULEAN -> 38;2;8;69;126m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK CHESTNUT -> 38;2;152;105;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK CORAL -> 38;2;205;91;69m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK CYAN -> 38;2;0;139;139m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK ELECTRIC BLUE -> 38;2;83;104;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK GOLDEN ROD -> 38;2;184;134;11m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK GOLDENROD -> 38;2;184;134;11m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK GRAY -> 38;2;169;169;169m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK GREEN -> 38;2;1;50;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK JUNGLE GREEN -> 38;2;26;36;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK KHAKI -> 38;2;189;183;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK LAVA -> 38;2;72;60;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK LAVENDER -> 38;2;115;79;150m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK MAGENTA -> 38;2;139;0;139m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK MIDNIGHT BLUE -> 38;2;0;51;102m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK OLIVE GREEN -> 38;2;85;107;47m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK ORANGE -> 38;2;255;140;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK ORCHID -> 38;2;153;50;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK PASTEL BLUE -> 38;2;119;158;203m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK PASTEL GREEN -> 38;2;3;192;60m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK PASTEL PURPLE -> 38;2;150;111;214m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK PASTEL RED -> 38;2;194;59;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK PINK -> 38;2;231;84;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK POWDER BLUE -> 38;2;0;51;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK RASPBERRY -> 38;2;135;38;87m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK RED -> 38;2;139;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SALMON -> 38;2;233;150;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SCARLET -> 38;2;86;3;25m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SEA GREEN -> 38;2;143;188;143m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SIENNA -> 38;2;60;20;20m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SLATE BLUE -> 38;2;72;61;139m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SLATE GRAY -> 38;2;47;79;79m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK SPRING GREEN -> 38;2;23;114;69m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK TAN -> 38;2;145;129;81m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK TANGERINE -> 38;2;255;168;18m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK TAUPE -> 38;2;72;60;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK TERRA COTTA -> 38;2;204;78;92m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK TURQUOISE -> 38;2;0;206;209m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARK VIOLET -> 38;2;148;0;211m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DARTMOUTH GREEN -> 38;2;0;105;62m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DAVY GRAY -> 38;2;85;85;85m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEBIAN RED -> 38;2;215;10;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CARMINE -> 38;2;169;32;62m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CARMINE PINK -> 38;2;239;48;56m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CARROT ORANGE -> 38;2;233;105;44m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CERISE -> 38;2;218;50;135m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CHAMPAGNE -> 38;2;250;214;165m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP CHESTNUT -> 38;2;185;78;72m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP COFFEE -> 38;2;112;66;65m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP FUCHSIA -> 38;2;193;84;193m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP JUNGLE GREEN -> 38;2;0;75;73m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP LILAC -> 38;2;153;85;187m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP MAGENTA -> 38;2;204;0;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP PEACH -> 38;2;255;203;164m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP PINK -> 38;2;255;20;147m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP SAFFRON -> 38;2;255;153;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DEEP SKY BLUE -> 38;2;0;191;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DENIM -> 38;2;21;96;189m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DESERT -> 38;2;193;154;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DESERT SAND -> 38;2;237;201;175m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DIM GRAY -> 38;2;105;105;105m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DODGER BLUE -> 38;2;30;144;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DOGWOOD ROSE -> 38;2;215;24;104m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DOLLAR BILL -> 38;2;133;187;101m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DRAB -> 38;2;150;113;23m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+DUKE BLUE -> 38;2;0;0;156m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+EARTH YELLOW -> 38;2;225;169;95m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ECRU -> 38;2;194;178;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+EGGPLANT -> 38;2;97;64;81m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+EGGSHELL -> 38;2;240;234;214m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+EGYPTIAN BLUE -> 38;2;16;52;166m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC BLUE -> 38;2;125;249;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC CRIMSON -> 38;2;255;0;63m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC CYAN -> 38;2;0;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC GREEN -> 38;2;0;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC INDIGO -> 38;2;111;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC LAVENDER -> 38;2;244;187;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC LIME -> 38;2;204;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC PURPLE -> 38;2;191;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC ULTRAMARINE -> 38;2;63;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC VIOLET -> 38;2;143;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ELECTRIC YELLOW -> 38;2;255;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+EMERALD -> 38;2;80;200;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ETON BLUE -> 38;2;150;200;162m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FALLOW -> 38;2;193;154;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FALU RED -> 38;2;128;24;24m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FAMOUS -> 38;2;255;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FANDANGO -> 38;2;181;51;137m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FASHION FUCHSIA -> 38;2;244;0;161m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FAWN -> 38;2;229;170;112m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FELDGRAU -> 38;2;77;93;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FERN -> 38;2;113;188;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FERN GREEN -> 38;2;79;121;66m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FERRARI RED -> 38;2;255;40;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FIELD DRAB -> 38;2;108;84;30m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FIRE ENGINE RED -> 38;2;206;32;41m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FIREBRICK -> 38;2;178;34;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLAME -> 38;2;226;88;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLAMINGO PINK -> 38;2;252;142;172m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLAVESCENT -> 38;2;247;233;142m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLAX -> 38;2;238;220;130m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLORAL WHITE -> 38;2;255;250;240m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLUORESCENT ORANGE -> 38;2;255;191;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLUORESCENT PINK -> 38;2;255;20;147m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FLUORESCENT YELLOW -> 38;2;204;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FOLLY -> 38;2;255;0;79m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FOREST GREEN -> 38;2;34;139;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FRENCH BEIGE -> 38;2;166;123;91m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FRENCH BLUE -> 38;2;0;114;187m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FRENCH LILAC -> 38;2;134;96;142m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FRENCH ROSE -> 38;2;246;74;138m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FUCHSIA -> 38;2;255;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FUCHSIA PINK -> 38;2;255;119;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FULVOUS -> 38;2;228;132;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+FUZZY WUZZY -> 38;2;204;102;102m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GAINSBORO -> 38;2;220;220;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GAMBOGE -> 38;2;228;155;15m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GHOST WHITE -> 38;2;248;248;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GINGER -> 38;2;176;101;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GLAUCOUS -> 38;2;96;130;182m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GLITTER -> 38;2;230;232;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLD -> 38;2;255;215;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLDEN BROWN -> 38;2;153;101;21m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLDEN POPPY -> 38;2;252;194;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLDEN ROD -> 38;2;218;165;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLDEN YELLOW -> 38;2;255;223;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GOLDENROD -> 38;2;218;165;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GRANNY SMITH APPLE -> 38;2;168;228;160m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GREEN -> 32m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+GREEN BLUE -> 38;2;17;100;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GREEN YELLOW -> 38;2;173;255;47m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GRULLO -> 38;2;169;154;134m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+GUPPIE GREEN -> 38;2;0;255;127m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HALAYA UBE -> 38;2;102;56;84m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HAN BLUE -> 38;2;68;108;207m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HAN PURPLE -> 38;2;82;24;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HANSA YELLOW -> 38;2;233;214;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HARLEQUIN -> 38;2;63;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HARVARD CRIMSON -> 38;2;201;0;22m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HARVEST GOLD -> 38;2;218;145;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HEART GOLD -> 38;2;128;128;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HELIOTROPE -> 38;2;223;115;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HOLLYWOOD CERISE -> 38;2;244;0;161m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HONEYDEW -> 38;2;240;255;240m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HOOKER GREEN -> 38;2;73;121;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HOT MAGENTA -> 38;2;255;29;206m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HOT PINK -> 38;2;255;105;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+HUNTER GREEN -> 38;2;53;94;59m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ICTERINE -> 38;2;252;247;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INCHWORM -> 38;2;178;236;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INDIA GREEN -> 38;2;19;136;8m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INDIAN RED -> 38;2;205;92;92m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INDIAN YELLOW -> 38;2;227;168;87m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INDIGO -> 38;2;75;0;130m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INTERNATIONAL KLEIN -> 38;2;0;47;167m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+INTERNATIONAL ORANGE -> 38;2;255;79;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+IRIS -> 38;2;90;79;207m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ISABELLINE -> 38;2;244;240;236m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ISLAMIC GREEN -> 38;2;0;144;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+IVORY -> 38;2;255;255;240m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JADE -> 38;2;0;168;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JASMINE -> 38;2;248;222;126m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JASPER -> 38;2;215;59;62m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JAZZBERRY JAM -> 38;2;165;11;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JONQUIL -> 38;2;250;218;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JUNE BUD -> 38;2;189;218;87m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+JUNGLE GREEN -> 38;2;41;171;135m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+KELLY GREEN -> 38;2;76;187;23m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+KHAKI -> 38;2;240;230;140m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+KU CRIMSON -> 38;2;232;0;13m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LA SALLE GREEN -> 38;2;8;120;48m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LANGUID LAVENDER -> 38;2;214;202;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAPIS LAZULI -> 38;2;38;97;156m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LASER LEMON -> 38;2;254;254;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAUREL GREEN -> 38;2;169;186;157m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVA -> 38;2;207;16;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER -> 38;2;230;230;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER BLUE -> 38;2;204;204;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER BLUSH -> 38;2;255;240;245m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER GRAY -> 38;2;196;195;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER INDIGO -> 38;2;148;87;235m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER MAGENTA -> 38;2;238;130;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER MIST -> 38;2;230;230;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER PINK -> 38;2;251;174;210m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER PURPLE -> 38;2;150;123;182m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAVENDER ROSE -> 38;2;251;160;227m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LAWN GREEN -> 38;2;124;252;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LEMON -> 38;2;255;247;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LEMON CHIFFON -> 38;2;255;250;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LEMON LIME -> 38;2;191;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LEMON YELLOW -> 38;2;255;244;79m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT APRICOT -> 38;2;253;213;177m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT BLUE -> 38;2;173;216;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT BROWN -> 38;2;181;101;29m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT CARMINE PINK -> 38;2;230;103;113m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT CORAL -> 38;2;240;128;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT CORNFLOWER BLUE -> 38;2;147;204;234m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT CRIMSON -> 38;2;245;105;145m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT CYAN -> 38;2;224;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT FUCHSIA PINK -> 38;2;249;132;239m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT GOLDEN ROD YELLOW -> 38;2;250;250;210m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT GOLDENROD YELLOW -> 38;2;250;250;210m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT GRAY -> 38;2;211;211;211m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT GREEN -> 38;2;144;238;144m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT KHAKI -> 38;2;240;230;140m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT PASTEL PURPLE -> 38;2;177;156;217m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT PINK -> 38;2;255;182;193m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT SALMON -> 38;2;255;160;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT SALMON PINK -> 38;2;255;153;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT SEA GREEN -> 38;2;32;178;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT SKY BLUE -> 38;2;135;206;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT SLATE GRAY -> 38;2;119;136;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT STEEL BLUE -> 38;2;176;196;222m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT TAUPE -> 38;2;179;139;109m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT THULIAN PINK -> 38;2;230;143;172m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIGHT YELLOW -> 38;2;255;255;237m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LILAC -> 38;2;200;162;200m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIME -> 38;2;191;255;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIME GREEN -> 38;2;50;205;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LINCOLN GREEN -> 38;2;25;89;5m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LINEN -> 38;2;250;240;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LION -> 38;2;193;154;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LIVER -> 38;2;83;75;79m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+LUST -> 38;2;230;32;32m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MACARONI AND CHEESE -> 38;2;255;189;136m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAGENTA -> 35m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+MAGIC MINT -> 38;2;170;240;209m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAGNOLIA -> 38;2;248;244;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAHOGANY -> 38;2;192;64;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAIZE -> 38;2;251;236;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAJORELLE BLUE -> 38;2;96;80;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MALACHITE -> 38;2;11;218;81m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MANATEE -> 38;2;151;154;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MANGO TANGO -> 38;2;255;130;67m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MANTIS -> 38;2;116;195;101m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAROON -> 38;2;128;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAUVE -> 38;2;224;176;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAUVE TAUPE -> 38;2;145;95;109m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAUVELOUS -> 38;2;239;152;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MAYA BLUE -> 38;2;115;194;251m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEAT BROWN -> 38;2;229;183;59m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM AQUA MARINE -> 38;2;102;205;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM AQUAMARINE -> 38;2;102;221;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM BLUE -> 38;2;0;0;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM CANDY APPLE RED -> 38;2;226;6;44m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM CARMINE -> 38;2;175;64;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM CHAMPAGNE -> 38;2;243;229;171m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM ELECTRIC BLUE -> 38;2;3;80;150m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM JUNGLE GREEN -> 38;2;28;53;45m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM LAVENDER MAGENTA -> 38;2;221;160;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM ORCHID -> 38;2;186;85;211m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM PERSIAN BLUE -> 38;2;0;103;165m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM PURPLE -> 38;2;147;112;219m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM RED VIOLET -> 38;2;187;51;133m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM SEA GREEN -> 38;2;60;179;113m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM SLATE BLUE -> 38;2;123;104;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM SPRING BUD -> 38;2;201;220;135m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM SPRING GREEN -> 38;2;0;250;154m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM TAUPE -> 38;2;103;76;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM TEAL BLUE -> 38;2;0;84;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM TURQUOISE -> 38;2;72;209;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MEDIUM VIOLET RED -> 38;2;199;21;133m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MELON -> 38;2;253;188;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MIDNIGHT BLUE -> 38;2;25;25;112m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MIDNIGHT GREEN -> 38;2;0;73;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MIKADO YELLOW -> 38;2;255;196;12m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MINT -> 38;2;62;180;137m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MINT CREAM -> 38;2;245;255;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MINT GREEN -> 38;2;152;255;152m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MISTY ROSE -> 38;2;255;228;225m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MOCCASIN -> 38;2;255;228;181m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MODE BEIGE -> 38;2;150;113;23m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MOONSTONE BLUE -> 38;2;115;169;194m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MORDANT RED 19 -> 38;2;174;12;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MOSS GREEN -> 38;2;173;223;173m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MOUNTAIN MEADOW -> 38;2;48;186;143m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MOUNTBATTEN PINK -> 38;2;153;122;141m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MSU GREEN -> 38;2;24;69;59m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MULBERRY -> 38;2;197;75;140m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MUNSELL -> 38;2;242;243;244m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MUSTARD -> 38;2;255;219;88m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+MYRTLE -> 38;2;33;66;30m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NADESHIKO PINK -> 38;2;246;173;198m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NAPIER GREEN -> 38;2;42;128;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NAPLES YELLOW -> 38;2;250;218;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NAVAJO WHITE -> 38;2;255;222;173m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NAVY -> 38;5;17m -> ANSI 8 BIT at /usr/local/bin/ansi-encode line 241.
+NAVY BLUE -> 38;2;0;0;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NEON CARROT -> 38;2;255;163;67m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NEON FUCHSIA -> 38;2;254;89;194m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NEON GREEN -> 38;2;57;255;20m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NON-PHOTO BLUE -> 38;2;164;221;237m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+NORTH TEXAS GREEN -> 38;2;5;144;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OCEAN BOAT BLUE -> 38;2;0;119;190m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OCHRE -> 38;2;204;119;34m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OFFICE GREEN -> 38;2;0;128;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLD GOLD -> 38;2;207;181;59m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLD LACE -> 38;2;253;245;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLD LAVENDER -> 38;2;121;104;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLD MAUVE -> 38;2;103;49;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLD ROSE -> 38;2;192;128;129m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLIVE -> 38;2;128;128;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLIVE DRAB -> 38;2;107;142;35m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLIVE GREEN -> 38;2;186;184;108m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OLIVINE -> 38;2;154;185;115m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ONYX -> 38;2;15;15;15m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OPERA MAUVE -> 38;2;183;132;167m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ORANGE -> 38;5;202m -> ANSI 8 BIT at /usr/local/bin/ansi-encode line 241.
+ORANGE PEEL -> 38;2;255;159;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ORANGE RED -> 38;2;255;69;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ORANGE YELLOW -> 38;2;248;213;104m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ORCHID -> 38;2;218;112;214m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OTTER BROWN -> 38;2;101;67;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OUTER SPACE -> 38;2;65;74;76m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OUTRAGEOUS ORANGE -> 38;2;255;110;74m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+OXFORD BLUE -> 38;2;0;33;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PACIFIC BLUE -> 38;2;28;169;201m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PAKISTAN GREEN -> 38;2;0;102;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALATINATE BLUE -> 38;2;39;59;226m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALATINATE PURPLE -> 38;2;104;40;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE AQUA -> 38;2;188;212;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE BLUE -> 38;2;175;238;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE BROWN -> 38;2;152;118;84m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE CARMINE -> 38;2;175;64;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE CERULEAN -> 38;2;155;196;226m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE CHESTNUT -> 38;2;221;173;175m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE COPPER -> 38;2;218;138;103m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE CORNFLOWER BLUE -> 38;2;171;205;239m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE GOLD -> 38;2;230;190;138m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE GOLDEN ROD -> 38;2;238;232;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE GOLDENROD -> 38;2;238;232;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE GREEN -> 38;2;152;251;152m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE LAVENDER -> 38;2;220;208;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE MAGENTA -> 38;2;249;132;229m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE PINK -> 38;2;250;218;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE PLUM -> 38;2;221;160;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE RED VIOLET -> 38;2;219;112;147m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE ROBIN EGG BLUE -> 38;2;150;222;209m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE SILVER -> 38;2;201;192;187m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE SPRING BUD -> 38;2;236;235;189m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE TAUPE -> 38;2;188;152;126m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE TURQUOISE -> 38;2;175;238;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PALE VIOLET RED -> 38;2;219;112;147m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PANSY PURPLE -> 38;2;120;24;74m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PAPAYA WHIP -> 38;2;255;239;213m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PARIS GREEN -> 38;2;80;200;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL BLUE -> 38;2;174;198;207m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL BROWN -> 38;2;131;105;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL GRAY -> 38;2;207;207;196m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL GREEN -> 38;2;119;221;119m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL MAGENTA -> 38;2;244;154;194m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL ORANGE -> 38;2;255;179;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL PINK -> 38;2;255;209;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL PURPLE -> 38;2;179;158;181m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL RED -> 38;2;255;105;97m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL VIOLET -> 38;2;203;153;201m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PASTEL YELLOW -> 38;2;253;253;150m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PATRIARCH -> 38;2;128;0;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PAYNE GRAY -> 38;2;83;104;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEACH -> 38;2;255;229;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEACH PUFF -> 38;2;255;218;185m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEACH YELLOW -> 38;2;250;223;173m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEAR -> 38;2;209;226;49m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEARL -> 38;2;234;224;200m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PEARL AQUA -> 38;2;136;216;192m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERIDOT -> 38;2;230;226;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERIWINKLE -> 38;2;204;204;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN BLUE -> 38;2;28;57;187m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN INDIGO -> 38;2;50;18;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN ORANGE -> 38;2;217;144;88m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN PINK -> 38;2;247;127;190m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN PLUM -> 38;2;112;28;28m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN RED -> 38;2;204;51;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERSIAN ROSE -> 38;2;254;40;162m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PERU -> 38;2;205;133;63m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PHLOX -> 38;2;223;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PHTHALO BLUE -> 38;2;0;15;137m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PHTHALO GREEN -> 38;2;18;53;36m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PIGGY PINK -> 38;2;253;221;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PINE GREEN -> 38;2;1;121;111m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PINK -> 38;5;198m -> ANSI 8 BIT at /usr/local/bin/ansi-encode line 241.
+PINK FLAMINGO -> 38;2;252;116;253m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PINK PEARL -> 38;2;231;172;207m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PINK SHERBET -> 38;2;247;143;167m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PISTACHIO -> 38;2;147;197;114m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PLATINUM -> 38;2;229;228;226m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PLUM -> 38;2;221;160;221m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PORTLAND ORANGE -> 38;2;255;90;54m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+POWDER BLUE -> 38;2;176;224;230m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PRINCETON ORANGE -> 38;2;255;143;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PRUSSIAN BLUE -> 38;2;0;49;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PSYCHEDELIC PURPLE -> 38;2;223;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PUCE -> 38;2;204;136;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PUMPKIN -> 38;2;255;117;24m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE -> 38;2;128;0;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE HEART -> 38;2;105;53;156m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE MOUNTAIN MAJESTY -> 38;2;150;120;182m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE MOUNTAINS -> 38;2;157;129;186m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE PIZZAZZ -> 38;2;254;78;218m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+PURPLE TAUPE -> 38;2;80;64;77m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RACKLEY -> 38;2;93;138;168m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RADICAL RED -> 38;2;255;53;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RASPBERRY -> 38;2;227;11;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RASPBERRY GLACE -> 38;2;145;95;109m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RASPBERRY PINK -> 38;2;226;80;152m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RASPBERRY ROSE -> 38;2;179;68;108m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RAW SIENNA -> 38;2;214;138;89m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RAZZLE DAZZLE ROSE -> 38;2;255;51;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RAZZMATAZZ -> 38;2;227;37;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RED -> 31m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+RED BROWN -> 38;2;165;42;42m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RED ORANGE -> 38;2;255;83;73m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RED VIOLET -> 38;2;199;21;133m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RICH BLACK -> 38;2;0;64;64m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RICH CARMINE -> 38;2;215;0;64m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RICH ELECTRIC BLUE -> 38;2;8;146;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RICH LILAC -> 38;2;182;102;210m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RICH MAROON -> 38;2;176;48;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RIFLE GREEN -> 38;2;65;72;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROBINS EGG BLUE -> 38;2;31;206;203m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE -> 38;2;255;0;127m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE BONBON -> 38;2;249;66;158m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE EBONY -> 38;2;103;72;70m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE GOLD -> 38;2;183;110;121m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE MADDER -> 38;2;227;38;54m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE PINK -> 38;2;255;102;204m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE QUARTZ -> 38;2;170;152;169m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE TAUPE -> 38;2;144;93;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSE VALE -> 38;2;171;78;82m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSEWOOD -> 38;2;101;0;11m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSSO CORSA -> 38;2;212;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROSY BROWN -> 38;2;188;143;143m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROYAL AZURE -> 38;2;0;56;168m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROYAL BLUE -> 38;2;65;105;225m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROYAL FUCHSIA -> 38;2;202;44;146m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ROYAL PURPLE -> 38;2;120;81;169m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUBY -> 38;2;224;17;95m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUDDY -> 38;2;255;0;40m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUDDY BROWN -> 38;2;187;101;40m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUDDY PINK -> 38;2;225;142;150m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUFOUS -> 38;2;168;28;7m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUSSET -> 38;2;128;70;27m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+RUST -> 38;2;183;65;14m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SACRAMENTO STATE GREEN -> 38;2;0;86;63m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SADDLE BROWN -> 38;2;139;69;19m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAFETY ORANGE -> 38;2;255;103;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAFFRON -> 38;2;244;196;48m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAINT PATRICK BLUE -> 38;2;35;41;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SALMON -> 38;2;255;140;105m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SALMON PINK -> 38;2;255;145;164m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAND -> 38;2;194;178;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAND DUNE -> 38;2;150;113;23m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SANDSTORM -> 38;2;236;213;64m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SANDY BROWN -> 38;2;244;164;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SANDY TAUPE -> 38;2;150;113;23m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAP GREEN -> 38;2;80;125;42m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SAPPHIRE -> 38;2;15;82;186m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SATIN SHEEN GOLD -> 38;2;203;161;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SCARLET -> 38;2;255;36;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SCHOOL BUS YELLOW -> 38;2;255;216;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SCREAMIN GREEN -> 38;2;118;255;122m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEA BLUE -> 38;2;0;105;148m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEA GREEN -> 38;2;46;139;87m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEA SHELL -> 38;2;255;245;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEAL BROWN -> 38;2;50;20;20m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEASHELL -> 38;2;255;245;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SELECTIVE YELLOW -> 38;2;255;186;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SEPIA -> 38;2;112;66;20m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SHADOW -> 38;2;138;121;93m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SHAMROCK -> 38;2;69;206;162m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SHAMROCK GREEN -> 38;2;0;158;96m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SHOCKING PINK -> 38;2;252;15;192m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SIENNA -> 38;2;160;82;45m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SILVER -> 38;2;192;192;192m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SINOPIA -> 38;2;203;65;11m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SKOBELOFF -> 38;2;0;116;116m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SKY BLUE -> 38;2;135;206;235m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SKY MAGENTA -> 38;2;207;113;175m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SLATE BLUE -> 38;2;106;90;205m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SLATE GRAY -> 38;2;112;128;144m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SMALT -> 38;2;0;51;153m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SMOKEY TOPAZ -> 38;2;147;61;65m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SMOKY BLACK -> 38;2;16;12;8m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SNOW -> 38;2;255;250;250m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SPIRO DISCO BALL -> 38;2;15;192;252m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SPRING BUD -> 38;2;167;252;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SPRING GREEN -> 38;2;0;255;127m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+STEEL BLUE -> 38;2;70;130;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+STIL DE GRAIN YELLOW -> 38;2;250;218;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+STIZZA -> 38;2;153;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+STORMCLOUD -> 38;2;0;128;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+STRAW -> 38;2;228;217;111m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SUNGLOW -> 38;2;255;204;51m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SUNSET -> 38;2;250;214;165m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+SUNSET ORANGE -> 38;2;253;94;83m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TAN -> 38;2;210;180;140m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TANGELO -> 38;2;249;77;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TANGERINE -> 38;2;242;133;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TANGERINE YELLOW -> 38;2;255;204;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TAUPE -> 38;2;72;60;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TAUPE GRAY -> 38;2;139;133;137m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TAWNY -> 38;2;205;87;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TEA GREEN -> 38;2;208;240;192m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TEA ROSE -> 38;2;244;194;194m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TEAL -> 38;2;0;128;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TEAL BLUE -> 38;2;54;117;136m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TEAL GREEN -> 38;2;0;109;91m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TERRA COTTA -> 38;2;226;114;91m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+THISTLE -> 38;2;216;191;216m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+THULIAN PINK -> 38;2;222;111;161m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TICKLE ME PINK -> 38;2;252;137;172m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TIFFANY BLUE -> 38;2;10;186;181m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TIGER EYE -> 38;2;224;141;60m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TIMBERWOLF -> 38;2;219;215;210m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TITANIUM YELLOW -> 38;2;238;230;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TOMATO -> 38;2;255;99;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TOOLBOX -> 38;2;116;108;192m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TOPAZ -> 38;2;255;200;124m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TRACTOR RED -> 38;2;253;14;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TROLLEY GRAY -> 38;2;128;128;128m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TROPICAL RAIN FOREST -> 38;2;0;117;94m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TRUE BLUE -> 38;2;0;115;207m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TUFTS BLUE -> 38;2;65;125;193m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TUMBLEWEED -> 38;2;222;170;136m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TURKISH ROSE -> 38;2;181;114;129m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TURQUOISE -> 38;2;64;224;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TURQUOISE BLUE -> 38;2;0;255;239m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TURQUOISE GREEN -> 38;2;160;214;180m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TUSCAN RED -> 38;2;102;66;77m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TWILIGHT LAVENDER -> 38;2;138;73;107m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+TYRIAN PURPLE -> 38;2;102;2;60m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UA BLUE -> 38;2;0;51;170m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UA RED -> 38;2;217;0;76m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UBE -> 38;2;136;120;195m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UCLA BLUE -> 38;2;83;104;149m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UCLA GOLD -> 38;2;255;179;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UFO GREEN -> 38;2;60;208;112m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ULTRA PINK -> 38;2;255;111;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ULTRAMARINE -> 38;2;18;10;143m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ULTRAMARINE BLUE -> 38;2;65;102;245m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UMBER -> 38;2;99;81;71m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UNITED NATIONS BLUE -> 38;2;91;146;229m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UNIVERSITY OF -> 38;2;183;135;39m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UNIVERSITY OF CALIFORNIA GOLD -> 38;2;183;135;39m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UNMELLOW YELLOW -> 38;2;255;255;102m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UP FOREST GREEN -> 38;2;1;68;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UP MAROON -> 38;2;123;17;19m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UPSDELL RED -> 38;2;174;32;41m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UROBILIN -> 38;2;225;173;33m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+USC CARDINAL -> 38;2;153;0;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+USC GOLD -> 38;2;255;204;0m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+UTAH CRIMSON -> 38;2;211;0;63m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VANILLA -> 38;2;243;229;171m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VEGAS GOLD -> 38;2;197;179;88m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VENETIAN RED -> 38;2;200;8;21m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VERDIGRIS -> 38;2;67;179;174m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VERMILION -> 38;2;227;66;52m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VERONICA -> 38;2;160;32;240m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIOLET -> 38;2;238;130;238m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIOLET BLUE -> 38;2;50;74;178m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIOLET RED -> 38;2;247;83;148m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIRIDIAN -> 38;2;64;130;109m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIVID AUBURN -> 38;2;146;39;36m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIVID BURGUNDY -> 38;2;159;29;53m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIVID CERISE -> 38;2;218;29;129m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIVID TANGERINE -> 38;2;255;160;137m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+VIVID VIOLET -> 38;2;159;0;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WARM BLACK -> 38;2;0;66;66m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WATERSPOUT -> 38;2;0;255;255m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WENGE -> 38;2;100;84;82m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WHEAT -> 38;2;245;222;179m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WHITE -> 37m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+WHITE SMOKE -> 38;2;245;245;245m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WILD BLUE YONDER -> 38;2;162;173;208m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WILD STRAWBERRY -> 38;2;255;67;164m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WILD WATERMELON -> 38;2;252;108;133m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WINE -> 38;2;114;47;55m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+WISTERIA -> 38;2;201;160;220m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+XANADU -> 38;2;115;134;120m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+YALE BLUE -> 38;2;15;77;146m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+YELLOW -> 33m -> ANSI 3 BIT at /usr/local/bin/ansi-encode line 241.
+YELLOW GREEN -> 38;2;154;205;50m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+YELLOW ORANGE -> 38;2;255;174;66m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ZAFFRE -> 38;2;0;20;168m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
+ZINNWALDITE BROWN -> 38;2;44;22;8m -> ANSI 24 BIT at /usr/local/bin/ansi-encode line 241.
