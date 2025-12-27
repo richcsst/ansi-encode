@@ -1221,10 +1221,10 @@ sub _global_ansi_meta {    # prefills the hash cache
     };
 ###
 
-	foreach my $name (keys %{ $tmp->{'foreground'} }) {
-		$tmp->{'background'}->{"B_$name"}->{'desc'} = $tmp->{'foreground'}->{$name}->{'desc'};
-		$tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
-	}	
+    foreach my $name (keys %{ $tmp->{'foreground'} }) {
+        $tmp->{'background'}->{"B_$name"}->{'desc'} = $tmp->{'foreground'}->{$name}->{'desc'};
+        $tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
+    }
 
     # Alternate Fonts
     foreach my $count (1 .. 9) {
