@@ -416,13 +416,15 @@ FRAMES
     if (defined($search) && $search ne '') {
         $ansi->ansi_output(charnames::string_vianame($search));
     } else {
+		print "\nAssembling character dump...";
         my $start = $ansi->{'start'};
         foreach my $code (@list) {
             my $name = charnames::viacode($code);
             if (defined($name)) {
-                $ansi->ansi_output(charnames::string_vianame($name) . ' ');
+                $temp .= charnames::string_vianame($name) . ' ';
             }
         }
+		$ansi->ansi_output($temp);
     }
     print "\n";
 } elsif ($unicode) {
