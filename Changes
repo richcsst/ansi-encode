@@ -259,3 +259,10 @@
 
         Note, in the "-t" or "--tokens" option of the "ansi-encode" executable,
 		the labeling of the colors are changed.
+
+1.61    Dec 28, 2025
+
+        Changed ANSI color description format in the tokens output of the
+		"ansi-encode" script.
+
+		Updated the manual page.

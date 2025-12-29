@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.60;
+package Term::ANSIEncode 1.61;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -1236,21 +1236,21 @@ sub _global_ansi_meta {    # prefills the hash cache
     } ## end foreach my $count (1 .. 9)
     foreach my $count (16 .. 231) {
         $tmp->{'foreground'}->{ 'COLOR ' . $count } = {
-            'desc' => "ANSI 256 Color $count",
+            'desc' => "ANSI 8 Bit Color $count",
             'out'  => $csi . "38;5;$count" . 'm',
         };
         $tmp->{'background'}->{ 'B_COLOR ' . $count } = {
-            'desc' => "ANSI 256 Color $count",
+            'desc' => "ANSI 8 Bit Color $count",
             'out'  => $csi . "48;5;$count" . 'm',
         };
     } ## end foreach my $count (16 .. 231)
     foreach my $count (232 .. 255) {
         $tmp->{'foreground'}->{ 'GRAY ' . ($count - 232) } = {
-            'desc' => "ANSI256 gray level " . ($count - 232),
+            'desc' => "ANSI 8 Bit Gray level " . ($count - 232),
             'out'  => $csi . "38;5;$count" . 'm',
         };
         $tmp->{'background'}->{ 'B_GRAY ' . ($count - 232) } = {
-            'desc' => "ANSI256 gray level " . ($count - 232),
+            'desc' => "ANSI 8 Bit Gray level " . ($count - 232),
             'out'  => $csi . "48;5;$count" . 'm',
         };
     } ## end foreach my $count (232 .. 255)
@@ -1523,6 +1523,22 @@ For example, for a color of blue, use the following
 =item HORIZONTAL RULE [color]             = A solid line of [color] background
 
 =back
+
+=head2 FRAMES
+
+Makes a "dialog box" at the selected location and type
+
+For example:   [% BOX BLUE,10,10,40,4,DOUBLE %]Text that will be wrapped inside the box[% ENDBOX %]
+
+=over 4
+
+=item BOX color,column,row,width,height,type
+
+Begins the frame definition
+
+=item ENDBOX
+
+Ends the frame definition
 
 =head1 AUTHOR & COPYRIGHT
 
