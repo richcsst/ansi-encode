@@ -132,23 +132,28 @@ VERSION
     
     $ansi->ansi_output($text);
 } elsif ($ansi_modes) {
-    my $out = "[% BRIGHT WHITE %]-------- [% BRIGHT YELLOW %]Modes supported [% BRIGHT WHITE %]----------[% RESET %]\n";
-    if ($c16) {
-        $out .= "           ANSI 16:  [% GREEN %]Supported[% RESET %]\n";
+    my $out = "[% B_YELLOW %][% BLACK %]      ANSI Modes supported       [% RESET %]\n";
+    if ($c8) {
+        $out .= "     ANSI 3 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
-        $out .= "           ANSI 16:  [% RED %]Not Supported[% RESET %]\n";
+        $out .= "     ANSI 3 BIT:  [% RED %]Not Supported[% RESET %]\n";
+    }
+    if ($c16) {
+        $out .= "     ANSI 4 BIT:  [% GREEN %]Supported[% RESET %]\n";
+    } else {
+        $out .= "     ANSI 4 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
     if ($c256) {
-        $out .= "          ANSI 256:  [% GREEN %]Supported[% RESET %]\n";
+        $out .= "     ANSI 8 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
-        $out .= "          ANSI 256:  [% RED %]Not Supported[% RESET %]\n";
+        $out .= "     ANSI 8 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
     if ($crgb) {
-        $out .= "    ANSI TrueColor:  [% GREEN %]Supported[% RESET %]\n";
+        $out .= "    ANSI 24 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
-        $out .= "    ANSI TrueColor:  [% RED %]Not Supported[% RESET %]\n";
+        $out .= "    ANSI 24 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
-    $out .= "[% BRIGHT WHITE %]-----------------------------------[% RESET %]\n";
+    $out .= "[% B_YELLOW %]                                 [% RESET %]\n";
     $ansi->ansi_output($out);
 } elsif ($help) {
     $ansi->ansi_output(help_text());
@@ -238,8 +243,8 @@ TOKENS
                     }
                 }
                 foreach my $name (@names) {
-                    if (type($ansi->{'ansi_meta'}->{'foreground'}->{$name}->{'out'}) ne $code) {
-			    		if ($name =~ /^(DEFAULT|NAVY|COLOR 16|BLACK)$/) {
+                    if (type($ansi->{'ansi_meta'}->{'foreground'}->{$name}->{'out'}) eq $code) {
+			    		if ($name =~ /^(DEFAULT|NAVY|COLOR 16|COLOR 17|BLACK|MEDIUM BLUE|ARMY GREEN|BISTRE|BULGARIAN ROSE|CHARCOAL|COOL BLACK|DARK BLUE|DARK GREEN|DARK JUNGLE GREEN|DARK MIDNIGHT BLUE|DUKE BLUE|EGYPTIAN BLUE|MEDIUM JUNGLE GREEN|MIDNIGHT BLUE|NAVY BLUE|ONYX|OXFORD BLUE|PHTHALO BLUE|PHTHALO GREEN|PRUSSIAN BLUE|SAINT PATRICK BLUE|SEAL BROWN|SMOKEY BLACK|ULTRAMARINE|ZINNWALDITE BROWN)$/) {
 				    		$to .= $bar . sprintf(' %-29s ',$name) . '[% RESET %]' . $bar . '[% B_' . $name . ' %]' . sprintf(' %-31s ', "B_${name}") . '[% RESET %]│' . sprintf(' %-54s ',$ansi->ansi_description('foreground',$name)) . "$bar\n";
 					    } else {
     						$to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-29s ',$name) . '[% RESET %]' . $bar . '[% BLACK %][% B_' . $name . ' %]' . sprintf(' %-31s ', "B_${name}") . '[% RESET %]' . $bar . sprintf(' %-54s ',$ansi->ansi_description('foreground',$name)) . "$bar\n";

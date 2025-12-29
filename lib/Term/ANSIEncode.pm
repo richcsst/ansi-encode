@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.59;
+package Term::ANSIEncode 1.60;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -1270,7 +1270,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 
 =head1 USAGE
 
- my $ansi = Term;;ANSIEncode->new;
+ my $ansi = Term::ANSIEncode->new;
 
  my $string = '[% CLS %]Some markup encoded string';
 
@@ -1428,26 +1428,42 @@ Sets colors to default
 
 =head2 FOREGROUND
 
-There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may requite 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' features.  You can used the '-t' option for all of the color tokens available or use the 'RGB' token for access to 16 million colors.
+There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' and 'truecolor' features.  You can used the '-t' option (in the executable "ansi-encode" file) for all of the color tokens available or use the 'RGB' token for access to 16 million colors.
 
 =over 4
 
 =item BLACK          = Black
+
 =item RED            = Red
+
 =item GREEN          = Green
+
 =item YELLOW         = Yellow
+
 =item BLUE           = Blue
+
 =item MAGENTA        = Magenta
+
 =item CYAN           = Cyan
+
 =item WHITE          = White
+
 =item DEFAULT        = Default foreground color
+
 =item BRIGHT BLACK   = Bright black (dim grey)
+
 =item BRIGHT RED     = Bright red
+
 =item BRIGHT GREEN   = Lime
+
 =item BRIGHT YELLOW  = Bright Yellow
+
 =item BRIGHT BLUE    = Bright blue
+
 =item BRIGHT MAGENTA = Bright magenta
+
 =item BRIGHT CYAN    = Bright cyan
+
 =item BRIGHT WHITE   = Bright white
 
 =back
@@ -1459,21 +1475,37 @@ There are many more background colors available than the sixteen below.  However
 =over 4
 
 =item B_BLACK          = Black
+
 =item B_RED            = Red
+
 =item B_GREEN          = Green
+
 =item B_YELLOW         = Yellow
+
 =item B_BLUE           = Blue
+
 =item B_MAGENTA        = Magenta
+
 =item B_CYAN           = Cyan
+
 =item B_WHITE          = White
+
 =item B_DEFAULT        = Default background color
+
 =item BRIGHT B_BLACK   = Bright black (grey)
+
 =item BRIGHT B_RED     = Bright red
+
 =item BRIGHT B_GREEN   = Lime
+
 =item BRIGHT B_YELLOW  = Bright yellow
+
 =item BRIGHT B_BLUE    = Bright blue
+
 =item BRIGHT B_MAGENTA = Bright magenta
+
 =item BRIGHT B_CYAN    = Bright cyan
+
 =item BRIGHT B_WHITE   = Bright white
 
 =back
