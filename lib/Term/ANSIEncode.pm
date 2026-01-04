@@ -1224,7 +1224,6 @@ sub _global_ansi_meta {    # prefills the hash cache
 
     foreach my $name (keys %{ $tmp->{'foreground'} }) {
         $tmp->{'background'}->{"B_$name"}->{'desc'} = $tmp->{'foreground'}->{$name}->{'desc'};
-#		$tmp->{'background'}->{"B_$name"}->{'desc'} =~ s/foreground/background/;
         $tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
     }
 
