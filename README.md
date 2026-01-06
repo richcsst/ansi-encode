@@ -14,19 +14,14 @@ It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced featu
 
 ## Options
 
-### -**v** or --**version**
+### -**a** or --**ansi-modes**
 ```
-    Show version and licensing info.
-```
-
-### -**h** or --**help**
-```
-    Usage information
+    Show aupported ANSI color modes
 ```
 
-### -**t** or --**tokens**
+### --**baud**=speed
 ```
-    Show most used tokens.
+    Slow down output to the specific baud rate.  75, 150, 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600 or 115200
 ```
 
 ### -**c** or --**colors**
@@ -34,20 +29,45 @@ It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced featu
     Show color grid for use with "ANSI" and "GREY" tokens.
 ```
 
+### -**d** or --**dump** [search]
+~~~
+    Shows the symbols only.
+~~~
+
+### -**f** or --**frame**
+```
+    Show sample frame types.
+```
+
+### -**h** or --**horizontal-rules**
+```
+    Show sample horizontal rules.
+```
+
+### -**r** or --**rawtokens**
+```
+    Raw dump of available tokens.
+```
+
 ### -**s** or --**symbols** [search]
 ```
     Show all of the symbol character tokens by name.  Use search to shorten the huge list.
 ````
+
+### -**t** or --**tokens**
+```
+    Show most used tokens.
+```
 
 ### -**u** or --**unicode** [search]
 ```
     Show all of the symbol character tokens by unicode.  Use search to shorten the huge list.
 ```
 
-### -**d** or --**dump** [search]
-~~~
-    Shows the symbols only
-~~~
+### -**v** or --**version**
+```
+    Show version and licensing info.
+```
 
 ## Author
 

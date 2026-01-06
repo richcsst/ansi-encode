@@ -626,9 +626,6 @@ sub help_text {
 ║     -[% BRIGHT BLUE %]f[% RESET %] or --[% BRIGHT BLUE %]frames[% RESET %]                                              ║
 ║         Show sample frame types                                 ║
 ║                                                                 ║
-║     --[% BRIGHT BLUE %]help[% RESET %]                                                      ║
-║         Usage information                                       ║
-║                                                                 ║
 ║     -[% BRIGHT BLUE %]h[% RESET %] or --[% BRIGHT BLUE %]horizontal-rules[% RESET %]                                    ║
 ║         Show sample horizontal rules                            ║
 ║                                                                 ║
