@@ -26,7 +26,7 @@ It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced featu
 
 ### -**c** or --**colors**
 ```
-    Show color grid for use with "ANSI" and "GREY" tokens.
+    Show color grid for use with "COLOR" and "GREY" tokens.
 ```
 
 ### -**d** or --**dump** [search]
