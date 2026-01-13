@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.64;
+package Term::ANSIEncode 1.70;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -75,6 +75,7 @@ sub ansi_description {
     return ($self->{'ansi_meta'}->{$code}->{$name}->{'desc'});
 }
 
+# Returns a string containing a series of manners of color output
 sub ansi_colors {
 	my $self = shift;
 
@@ -104,38 +105,31 @@ sub ansi_colors {
 		$index++;
 		$string .= '[% RESET %]' . "\n";
 	}
-	$string .= "\n" . '[% BRIGHT YELLOW %] 8 BIT' . $off . "\n";
-	$string .= $grey . '╭───' . '───┬' x 36 . '───╮' . $off . "\n";
-	$string .= $grey . '│' . $off . 'COLOR ';
-	foreach my $i (0 .. 35) {
-		$string .= $grey . '│' . $off . sprintf('%3d', $i);
-	}
-	$string .= "$grey│$off";
+	$string .= "\n" . '[% BRIGHT YELLOW %] 8 BIT' . $off . "\n" . '─' x 180;
 	foreach my $i (0 .. 6) {
 		my $_i = ($i * 36) + 16;
-		$string .= "\n" . $grey . '├───' . '───┼' x 36 . "───┤$off\n";
+		$string .= "\n";
 		if ($i == 6) {
-			$string .= $grey . '│' . $off . ' GRAY ' . $grey . '│' . $off;
-		} else {
-			$string .= sprintf("%s│%s %4d %s│%s", $grey, $off, $_i, $grey, $off);
+			$string .= "\n GRAY ";
 		}
 		foreach my $j (0 .. 35) {
 			if ($i == 6) {
 				if ($j > 23) {
-					$string .= "   $grey" . "│$off";
+					$string .= "   ";
 				} elsif ($j > 10) {
-					$string .= '[% BLACK %][% B_GRAY ' . $j . ' %]' . sprintf('%3d', $j) . '[% RESET %]' . $grey . '│' . $off;
+					$string .= '[% BLACK %][% B_GRAY ' . $j . ' %]' . sprintf(' %3d ', $j) . '[% RESET %]';
 				} else {
-					$string .= '[% WHITE %][% B_GRAY ' . $j . ' %]' . sprintf('%3d', $j) . '[% RESET %]' . $grey . '│' . $off;
+					$string .= '[% WHITE %][% B_GRAY ' . $j . ' %]' . sprintf(' %3d ', $j) . '[% RESET %]';
 				}
 			} elsif (($_i + $j) <= 21) {
-				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf('%3d',($_i + $j)) . '[% RESET %]' . $grey . '│' . $off;
+				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
 			} else {
-				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf('%3d',($_i + $j)) . '[% RESET %]' . $grey . '│' . $off;
+				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
 			}
 		}
 	} ## end foreach my $i (0 .. 6)
-	$string .= "\n" . $grey . '╰───' . '───┴' x 36 . '───╯' . $off . "\n\n";
+	$string .= "\n\n";
+
 	return($string);
 }
 
