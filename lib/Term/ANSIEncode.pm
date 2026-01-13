@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.72;
+package Term::ANSIEncode 1.73;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -34,7 +34,7 @@ use Term::ANSIColor;
 use Time::HiRes qw( sleep );
 use Text::Format;
 
-# use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
+ use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 # use Term::Drawille;
 
 # UTF-8 is required for special character handling
@@ -43,21 +43,21 @@ binmode(STDOUT, ":encoding(UTF-8)");
 binmode(STDIN,  ":encoding(UTF-8)");
 
 BEGIN {
-	require Exporter;
+    require Exporter;
 
-	# Inherit from Exporter to export functions and variables
-	our @ISA = qw(Exporter);
+    # Inherit from Exporter to export functions and variables
+    our @ISA = qw(Exporter);
 
-	# Functions and variables which are exported by default
-	our @EXPORT = qw(
-		ansi_description
-		ansi_decode
-		ansi_output
-		ansi_box
-	);
+    # Functions and variables which are exported by default
+    our @EXPORT = qw(
+      ansi_description
+      ansi_decode
+      ansi_output
+      ansi_box
+    );
 
-	# Functions and variables which can be optionally exported
-	our @EXPORT_OK = qw(ansi_colors);
+    # Functions and variables which can be optionally exported
+    our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
 # Package-level caches so large tables are built only once per process.
@@ -93,139 +93,105 @@ sub ansi_description {
     return ($self->{'ansi_meta'}->{$code}->{$name}->{'desc'});
 }
 
-# Returns a string containing a series of manners of color output
 sub ansi_colors {
-	my $self = shift;
+    my $self = shift;
 
     my $grey   = '[% GRAY 8 %]';
-	my $off    = '[% RESET %]';
-	my $string = "\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n" . '─' x 59 . "\n\[\% B_BLACK \%\]\[\% WHITE \%\] BLACK   \[\% RESET \%\] \[\% WHITE \%\]\[\% B_BRIGHT BLACK \%\] BRIGHT BLACK   \[\% RESET \%\]\n";
-	my $index = 0;
-	foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE)) {
-		$string .= sprintf('%s %-7s %s %s %-14s %s',"\[\% BLACK \%\]\[\% B_$color \%\]", $color , $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' '; 
-		for (my $count=0;$count<64;$count+=2) {
-			if ($index == 1) { # Yellow
-				$string .= "\[\% B_RGB $count,$count,0 \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',0 %]▐';
-			} elsif ($index == 2) { # Green
-				$string .= "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0," . ($count+1) . ',0 %]▐';
-			} elsif ($index == 3) { # Cyan
-				$string .= "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0," . ($count+1) . ',' . ($count+1) . ' %]▐';
-			} elsif ($index == 4) { # Blue
-				$string .= "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0," . ($count+1) . ' %]▐';
-			} elsif ($index == 5) { # Magenta
-				$string .= "\[\% B_RGB $count,0,$count \%\]\[\% RGB " . ($count+1) . ',0,' . ($count+1) . ' %]▐';
-			} elsif ($index == 6) { # White
-				$string .= "\[\% B_RGB $count,$count,$count \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',' . ($count+1) . ' %]▐';
-			} else { # Red
-				$string .= "\[\% B_RGB $count,0,0 \%\]\[\% RGB " . ($count+1) . ',0,0 %]▐';
-			}
-		}
-		$string .= "$off\n" . sprintf('%s %-7s %s %s %-14s %s',"\[\% BLACK \%\]\[\% B_$color \%\]", ' ' , $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' '; 
-		for (my $count=128;$count>64;$count-=2) {
-			if ($index == 1) { # Yellow
-				$string .= "\[\% B_RGB $count,$count,0 \%\]\[\% RGB " . ($count-1) . ',' . ($count-1) . ',0 %]▐';
-			} elsif ($index == 2) { # Green
-				$string .= "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0," . ($count-1) . ',0 %]▐';
-			} elsif ($index == 3) { # Cyan
-				$string .= "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0," . ($count-1) . ',' . ($count-1) . ' %]▐';
-			} elsif ($index == 4) { # Blue
-				$string .= "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0," . ($count-1) . ' %]▐';
-			} elsif ($index == 5) { # Magenta
-				$string .= "\[\% B_RGB $count,0,$count \%\]\[\% RGB " . ($count-1) . ',0,' . ($count-1) . ' %]▐';
-			} elsif ($index == 6) { # White
-				$string .= "\[\% B_RGB $count,$count,$count \%\]\[\% RGB " . ($count-1) . ',' . ($count-1) . ',' . ($count-1) . ' %]▐';
-			} else { # Red
-				$string .= "\[\% B_RGB $count,0,0 \%\]\[\% RGB " . ($count-1) . ',0,0 %]▐';
-			}
-		}
-		$string .= "$off\n" . sprintf('%s %-7s %s %s %-14s %s',"\[\% BLACK \%\]\[\% B_$color \%\]", ' ' , $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' '; 
-		for (my $count=128;$count<192;$count+=2) {
-			if ($index == 1) { # Yellow
-				$string .= "\[\% B_RGB $count,$count,0 \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',0 %]▐';
-			} elsif ($index == 2) { # Green
-				$string .= "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0," . ($count+1) . ',0 %]▐';
-			} elsif ($index == 3) { # Cyan
-				$string .= "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0," . ($count+1) . ',' . ($count+1) . ' %]▐';
-			} elsif ($index == 4) { # Blue
-				$string .= "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0," . ($count+1) . ' %]▐';
-			} elsif ($index == 5) { # Magenta
-				$string .= "\[\% B_RGB $count,0,$count \%\]\[\% RGB " . ($count+1) . ',0,' . ($count+1) . ' %]▐';
-			} elsif ($index == 6) { # White
-				$string .= "\[\% B_RGB $count,$count,$count \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',' . ($count+1) . ' %]▐';
-			} else { # Red
-				$string .= "\[\% B_RGB $count,0,0 \%\]\[\% RGB " . ($count+1) . ',0,0 %]▐';
-			}
-		}
-		$string .= "$off\n" . sprintf('%s %-7s %s %s %-14s %s',"\[\% BLACK \%\]\[\% B_$color \%\]", ' ' , $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' '; 
-		for (my $count=255;$count>192;$count-=2) {
-			if ($index == 1) { # Yellow
-				$string .= "\[\% B_RGB $count,$count,0 \%\]\[\% RGB " . ($count-1) . ',' . ($count-1) . ',0 %]▐';
-			} elsif ($index == 2) { # Green
-				$string .= "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0," . ($count-1) . ',0 %]▐';
-			} elsif ($index == 3) { # Cyan
-				$string .= "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0," . ($count-1) . ',' . ($count-1) . ' %]▐';
-			} elsif ($index == 4) { # Blue
-				$string .= "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0," . ($count-1) . ' %]▐';
-			} elsif ($index == 5) { # Magenta
-				$string .= "\[\% B_RGB $count,0,$count \%\]\[\% RGB " . ($count-1) . ',0,' . ($count-1) . ' %]▐';
-			} elsif ($index == 6) { # White
-				$string .= "\[\% B_RGB $count,$count,$count \%\]\[\% RGB " . ($count-1) . ',' . ($count-1) . ',' . ($count-1) . ' %]▐';
-			} else { # Red
-				$string .= "\[\% B_RGB $count,0,0 \%\]\[\% RGB " . ($count-1) . ',0,0 %]▐';
-			}
-		}
-		$index++;
-		$string .= '[% RESET %]' . "\n";
-	}
-	$string .= "\n" . '[% BRIGHT YELLOW %] 8 BIT' . $off . "\n" . '─' x 60;
-	foreach my $i (0 .. 5) {
-		my $_i = ($i * 36) + 16; # 16, 28, 40
-		$string .= "\n";
-		foreach my $j (0 .. 11) { # 35
-			if (($_i + $j) <= 21) {
-				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			} else {
-				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			}
-		}
-	} ## end foreach my $i (0 .. 6)
-	foreach my $i (0 .. 5) {
-		my $_i = ($i * 36) + 28; # 16, 28, 40
-		$string .= "\n";
-		foreach my $j (0 .. 11) { # 35
-			if (($_i + $j) <= 21) {
-				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			} else {
-				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			}
-		}
-	} ## end foreach my $i (0 .. 6)
-	foreach my $i (0 .. 6) {
-		my $_i = ($i * 36) + 40; # 16, 28, 40
-		$string .= "\n";
-		if ($i == 6) {
-			$string .= "\n\[\% BRIGHT YELLOW \%\] GRAY \[\% RESET \%\]\n";
-		}
-		foreach my $j (0 .. 11) { # 35
-			if ($i == 6) {
-				if ($j > 23) {
-					$string .= "   ";
-				} elsif ($j > 10) {
-					$string .= '[% BLACK %][% B_GRAY ' . $j . ' %]' . sprintf(' %3d ', $j) . '[% RESET %]';
-				} else {
-					$string .= '[% WHITE %][% B_GRAY ' . $j . ' %]' . sprintf(' %3d ', $j) . '[% RESET %]';
-				}
-			} elsif (($_i + $j) <= 21) {
-				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			} else {
-				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ',($_i + $j)) . '[% RESET %]';
-			}
-		}
-	} ## end foreach my $i (0 .. 6)
-	$string .= "\n\n";
+    my $off    = '[% RESET %]';
+    my $string = qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n) . ('─' x 59) . "\n";
 
-	return($string);
-}
+    # Define subroutine references for color blocks
+    my %actions = (
+        0 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB $count,0,0 \%\]\[\% RGB $next_count,0,0 \%\]▐"; },
+        1 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB $count,$count,0 \%\]\[\% RGB $next_count,$next_count,0 \%\]▐"; },
+        2 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0,$next_count,0 \%\]▐"; },
+        3 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0,$next_count,$next_count \%\]▐"; },
+        4 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0,$next_count \%\]▐"; },
+        5 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB $count,0,$count \%\]\[\% RGB $next_count,0,$next_count \%\]▐"; },
+        6 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB $count,$count,$count \%\]\[\% RGB $next_count,$next_count,$next_count \%\]▐"; },
+    );
+
+	my $index = 0;
+    foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE BLACK)) {
+		if ($color eq 'BLACK') {
+			$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+			$string .= "$off\n";
+		} else {
+			$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+			# Loop through color ranges and call appropriate subroutine for blocks
+			foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
+				if ($range->[0] < $range->[1]) {
+					for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
+						# Pass arguments to the subroutine and append the result
+						$string .= $actions{$index}->($count, $count + $range->[2]);
+					}
+				} else {
+					for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
+						# Pass arguments to the subroutine and append the result
+						$string .= $actions{$index}->($count, $count + $range->[2]);
+					}
+				}
+				$string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+			} ## end foreach my $range ([0, 64, ...])
+			$index++;
+			$string .= '[% RESET %]' . "\n";
+		}
+    } ## end foreach my $color (@colors)
+
+    $string .= "\n[% BRIGHT YELLOW %] 8 BIT$off\n" . ('─' x 60) . _generate_8bit_colors();
+    return ($string);
+} ## end sub ansi_colors
+
+sub _generate_8bit_colors {
+    my $output = ''; # "\n";
+    foreach my $i (0 .. 5) {
+        my $_i = ($i * 36) + 16;     # 16, 28, 40
+        $output .= "\n";
+        foreach my $j (0 .. 11) {    # 35
+            if (($_i + $j) <= 21) {
+                $output .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            } else {
+                $output .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            }
+        } ## end foreach my $j (0 .. 11)
+    } ## end foreach my $i (0 .. 5)
+    foreach my $i (0 .. 5) {
+        my $_i = ($i * 36) + 28;     # 16, 28, 40
+        $output .= "\n";
+        foreach my $j (0 .. 11) {    # 35
+            if (($_i + $j) <= 21) {
+                $output .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            } else {
+                $output .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            }
+        } ## end foreach my $j (0 .. 11)
+    } ## end foreach my $i (0 .. 5)
+    foreach my $i (0 .. 5) {
+        my $_i = ($i * 36) + 40;     # 16, 28, 40
+        $output .= "\n";
+        if ($i == 6) {
+            $output .= "\n\[\% BRIGHT YELLOW \%\] GRAY \[\% RESET \%\]\n";
+        }
+        foreach my $j (0 .. 11) {    # 35
+			if (($_i + $j) <= 21) {
+                $output .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            } else {
+                $output .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
+            }
+        } ## end foreach my $j (0 .. 11)
+    } ## end foreach my $i (0 .. 6)
+	$output .= "\n" . '[% BRIGHT YELLOW %] GRAY[% RESET %]' . "\n";
+	foreach my $count (0 .. 23) {
+		if ($count < 12) {
+			$output .= '[% WHITE %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
+		} else {
+			$output .= "\n" if ($count == 12);
+			$output .= '[% BLACK %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
+		}
+	}
+    $output .= "\n\n";
+    return $output;
+} ## end sub _generate_8bit_colors
 
 # This was far easier to read with my original code.  However, AI actually did
 # optimize and shrink the code quite well and it seems to be much faster.
@@ -299,32 +265,32 @@ sub ansi_decode {
     $text =~ s/\[\%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\%\]/
       do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/eigs;
 
-	while ($text =~ /\[\%\s+WRAP\s+\%\](.*?)\[\%\s+ENDWRAP\s+\%\]/si) {
-		my $wrapped = $1;
-		my $format  = Text::Format->new(
-			'columns'     => $self->{'columns'} - 1,
-			'tabstop'     => 4,
-			'extraSpace'  => TRUE,
-			'firstIndent' => 0,
-		);
-		$wrapped = $format->format($wrapped);
-		chomp($wrapped);
-		$text =~ s/\[\%\s+WRAP\s+\%\].*?\[\%\s+ENDWRAP\s+\%\]/$wrapped/s;
-	} ## end while ($text =~ /\[\%\s+WRAP\s+\%\](.*?)\[\%\s+ENDWRAP\s+\%\]/si)
+    while ($text =~ /\[\%\s+WRAP\s+\%\](.*?)\[\%\s+ENDWRAP\s+\%\]/si) {
+        my $wrapped = $1;
+        my $format  = Text::Format->new(
+            'columns'     => $self->{'columns'} - 1,
+            'tabstop'     => 4,
+            'extraSpace'  => TRUE,
+            'firstIndent' => 0,
+        );
+        $wrapped = $format->format($wrapped);
+        chomp($wrapped);
+        $text =~ s/\[\%\s+WRAP\s+\%\].*?\[\%\s+ENDWRAP\s+\%\]/$wrapped/s;
+    } ## end while ($text =~ /\[\%\s+WRAP\s+\%\](.*?)\[\%\s+ENDWRAP\s+\%\]/si)
 
-	while ($text =~ /\[\%\s+JUSTIFIED\s+\%\](.*?)\[\%\s+ENDJUSTIFIED\s+\%\]/si) {
-		my $wrapped = $1;
-		my $format  = Text::Format->new(
-			'columns'     => $self->{'columns'} - 1,
-			'tabstop'     => 4,
-			'extraSpace'  => TRUE,
-			'firstIndent' => 0,
-			'justify'     => TRUE,
-		);
-		$wrapped = $format->format($wrapped);
-		chomp($wrapped);
-		$text =~ s/\[\%\s+JUSTIFIED\s+\%\].*?\[\%\s+ENDJUSTIFIED\s+\%\]/$wrapped/s;
-	} ## end while ($text =~ /\[\%\s+JUSTIFIED\s+\%\](.*?)\[\%\s+ENDJUSTIFIED\s+\%\]/si)
+    while ($text =~ /\[\%\s+JUSTIFIED\s+\%\](.*?)\[\%\s+ENDJUSTIFIED\s+\%\]/si) {
+        my $wrapped = $1;
+        my $format  = Text::Format->new(
+            'columns'     => $self->{'columns'} - 1,
+            'tabstop'     => 4,
+            'extraSpace'  => TRUE,
+            'firstIndent' => 0,
+            'justify'     => TRUE,
+        );
+        $wrapped = $format->format($wrapped);
+        chomp($wrapped);
+        $text =~ s/\[\%\s+JUSTIFIED\s+\%\].*?\[\%\s+ENDJUSTIFIED\s+\%\]/$wrapped/s;
+    } ## end while ($text =~ /\[\%\s+JUSTIFIED\s+\%\](.*?)\[\%\s+ENDJUSTIFIED\s+\%\]/si)
 
     #
     # Flatten the ansi_meta lookup to a simple, case-insensitive hash for a single-pass
@@ -364,15 +330,15 @@ sub ansi_output {
 
     $text = $self->ansi_decode($text);
     $text =~ s/\[ \% TOKEN \% \]/\[\% TOKEN \%\]/;    # Special token to show [% TOKEN %] on output
-	my $speed = $self->{'speed'};
-	if ($speed == 0) {
-		print $text;
-	} else {
-		for(my $index = 0; $index < length($text); $index++) {
-			print substr($text,$index,1);
-			sleep $speed;
-		}
-	}
+    my $speed = $self->{'speed'};
+    if ($speed == 0) {
+        print $text;
+    } else {
+        for (my $index = 0; $index < length($text); $index++) {
+            print substr($text, $index, 1);
+            sleep $speed;
+        }
+    } ## end else [ if ($speed == 0) ]
     return (TRUE);
 } ## end sub ansi_output
 
@@ -412,15 +378,15 @@ sub ansi_box {
     # Position cursor inside box and wrap text
     $text .= locate($y + 1, $x + 1);
 
-	my $format  = Text::Format->new(
-		'columns'     => $w - 3,
-		'tabstop'     => 4,
-		'extraSpace'  => TRUE,
-		'firstIndent' => 0,
-	);
-	$string = $format->format($string);
-	chomp($string);
-	my @lines = split(/\n/,$string);
+    my $format = Text::Format->new(
+        'columns'     => $w - 3,
+        'tabstop'     => 4,
+        'extraSpace'  => TRUE,
+        'firstIndent' => 0,
+    );
+    $string = $format->format($string);
+    chomp($string);
+    my @lines = split(/\n/, $string);
 
     my $line_y = $y + 1;
     foreach my $line (@lines) {
@@ -432,7 +398,7 @@ sub ansi_box {
     $text .= $self->{'ansi_meta'}->{'cursor'}->{'RESTORE'}->{'out'};
 
     return ($text);
-} ## end sub box
+} ## end sub ansi_box
 
 sub new {
     my $class = shift;
@@ -443,9 +409,9 @@ sub new {
         'ansi_prefix' => $csi,
         'list'        => [(0x20 .. 0x7F, 0xA0 .. 0xFF, 0x2010 .. 0x205F, 0x2070 .. 0x242F, 0x2440 .. 0x244F, 0x2460 .. 0x29FF, 0x1F300 .. 0x1F8BF, 0x1F900 .. 0x1FBBF, 0x1F900 .. 0x1FBCF, 0x1FBF0 .. 0x1FBFF)],
         'ansi_meta'   => $GLOBAL_ANSI_META,
-		'baud'        => 'FULL',
-		'columns'     => 80,
-		@_,
+        'baud'        => 'FULL',
+        'columns'     => 80,
+        @_,
     };
 
     bless($self, $class);

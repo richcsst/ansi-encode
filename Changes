@@ -293,3 +293,7 @@
 1.72    Jan 13, 2026
 
         Made tokens option fit on narrow screens.
+
+1.73    Jan 13, 2026
+
+        Optimized the ansi_colors method.
