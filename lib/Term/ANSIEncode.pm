@@ -111,31 +111,31 @@ sub ansi_colors {
         6 => sub { my ($count, $next_count) = @_; return "\[\% B_RGB $count,$count,$count \%\]\[\% RGB $next_count,$next_count,$next_count \%\]▐"; },
     );
 
-	my $index = 0;
+    my $index = 0;
     foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE BLACK)) {
-		if ($color eq 'BLACK') {
-			$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
-			$string .= "$off\n";
-		} else {
-			$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
-			# Loop through color ranges and call appropriate subroutine for blocks
-			foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
-				if ($range->[0] < $range->[1]) {
-					for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
-						# Pass arguments to the subroutine and append the result
-						$string .= $actions{$index}->($count, $count + $range->[2]);
-					}
-				} else {
-					for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
-						# Pass arguments to the subroutine and append the result
-						$string .= $actions{$index}->($count, $count + $range->[2]);
-					}
-				}
-				$string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
-			} ## end foreach my $range ([0, 64, ...])
-			$index++;
-			$string .= '[% RESET %]' . "\n";
-		}
+        if ($color eq 'BLACK') {
+            $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+            $string .= "$off\n";
+        } else {
+            $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+            # Loop through color ranges and call appropriate subroutine for blocks
+            foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
+                if ($range->[0] < $range->[1]) {
+                    for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
+                        # Pass arguments to the subroutine and append the result
+                        $string .= $actions{$index}->($count, $count + $range->[2]);
+                    }
+                } else {
+                    for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
+                        # Pass arguments to the subroutine and append the result
+                        $string .= $actions{$index}->($count, $count + $range->[2]);
+                    }
+                }
+                $string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+            } ## end foreach my $range ([0, 64, ...])
+            $index++;
+            $string .= '[% RESET %]' . "\n";
+        }
     } ## end foreach my $color (@colors)
 
     $string .= "\n[% BRIGHT YELLOW %] 8 BIT$off\n" . ('─' x 60) . _generate_8bit_colors();
@@ -173,22 +173,22 @@ sub _generate_8bit_colors {
             $output .= "\n\[\% BRIGHT YELLOW \%\] GRAY \[\% RESET \%\]\n";
         }
         foreach my $j (0 .. 11) {    # 35
-			if (($_i + $j) <= 21) {
+            if (($_i + $j) <= 21) {
                 $output .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
             } else {
                 $output .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf(' %3d ', ($_i + $j)) . '[% RESET %]';
             }
         } ## end foreach my $j (0 .. 11)
     } ## end foreach my $i (0 .. 6)
-	$output .= "\n" . '[% BRIGHT YELLOW %] GRAY[% RESET %]' . "\n";
-	foreach my $count (0 .. 23) {
-		if ($count < 12) {
-			$output .= '[% WHITE %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
-		} else {
-			$output .= "\n" if ($count == 12);
-			$output .= '[% BLACK %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
-		}
-	}
+    $output .= "\n" . '[% BRIGHT YELLOW %] GRAY[% RESET %]' . "\n";
+    foreach my $count (0 .. 23) {
+        if ($count < 12) {
+            $output .= '[% WHITE %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
+        } else {
+            $output .= "\n" if ($count == 12);
+            $output .= '[% BLACK %][% B_GRAY ' . $count . ' %]' . sprintf(' %3d ', $count) . '[% RESET %]';
+        }
+    }
     $output .= "\n\n";
     return $output;
 } ## end sub _generate_8bit_colors

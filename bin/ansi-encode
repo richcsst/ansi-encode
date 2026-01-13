@@ -73,7 +73,7 @@ GetOptions(
     'frames'             => \$frames,
     'h|horizontal-rules' => \$rules,
     'baud=i'             => \$baud,
-	'width=i'            => \$width,
+    'width=i'            => \$width,
 );
 
 if ($baud > 0) {
@@ -234,7 +234,7 @@ TOKENS
         my @names = (sort(keys %{$ansi->{'ansi_meta'}->{'clear'}}));
         while(scalar(@names)) {
             my $name = shift(@names);
-			$to .= add_row($bar, $name, $ansi->ansi_description('clear', $name));
+            $to .= add_row($bar, $name, $ansi->ansi_description('clear', $name));
         }
     }
 
@@ -244,7 +244,7 @@ TOKENS
         my @names = (sort(keys %{$ansi->{'ansi_meta'}->{'cursor'}}));
         while(scalar(@names)) {
             my $name = shift(@names);
-			$to .= add_row($bar, $name, $ansi->ansi_description('cursor', $name));
+            $to .= add_row($bar, $name, $ansi->ansi_description('cursor', $name));
         }
         $to .= add_row($bar, 'LOCATE column,row', 'Sets the cursor location');
         $to .= add_row($bar, 'SCROLL UP count',   'Scrolls the screen up by "count" lines');
@@ -257,29 +257,29 @@ TOKENS
         my @names = grep(!/FONT \d/,(sort(keys %{$ansi->{'ansi_meta'}->{'attributes'}})));
         while(scalar(@names)) {
             my $name = shift(@names);
-			my $format  = Text::Format->new(
-				'columns'     => 37,
-				'tabstop'     => 4,
-				'extraSpace'  => TRUE,
-				'firstIndent' => 0,
-			);
-			my $desc = $format->format($ansi->ansi_description('attributes',$name));
-			my @d = split(/\n/, $desc);
-			my $first = TRUE;
-			while(scalar(@d)) {
-				my $line = shift(@d);
-				if ($first) {
-					if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR/) {
-						$to .= "$bar " . sprintf('%-34s',$name) . ' [% BRIGHT GREEN %]│[% RESET %] ' . sprintf('%-38s',$line) . ' [% BRIGHT GREEN %]│[% RESET %]' . "\n";
-#						$to .= "$bar " . sprintf('%-34s','FONT 1-9') . " $bar " . sprintf('%-38s','Set specific font (1-9)') . " $bar" . "\n" if ($name =~ /FONT DEFAULT/);
-					} else {
-						$to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-34s',$name) . ' [% RESET %]' . "$bar " . sprintf('%-38s',$line) . " $bar\n";
-					}
-					$first = FALSE;
-				} else {
-					$to .= sprintf('%s %-34s %s %-38s %s',$bar, ' ', $bar, $line, $bar) . "\n";
-				}
-			}
+            my $format  = Text::Format->new(
+                'columns'     => 37,
+                'tabstop'     => 4,
+                'extraSpace'  => TRUE,
+                'firstIndent' => 0,
+            );
+            my $desc = $format->format($ansi->ansi_description('attributes',$name));
+            my @d = split(/\n/, $desc);
+            my $first = TRUE;
+            while(scalar(@d)) {
+                my $line = shift(@d);
+                if ($first) {
+                    if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR/) {
+                        $to .= "$bar " . sprintf('%-34s',$name) . ' [% BRIGHT GREEN %]│[% RESET %] ' . sprintf('%-38s',$line) . ' [% BRIGHT GREEN %]│[% RESET %]' . "\n";
+#                        $to .= "$bar " . sprintf('%-34s','FONT 1-9') . " $bar " . sprintf('%-38s','Set specific font (1-9)') . " $bar" . "\n" if ($name =~ /FONT DEFAULT/);
+                    } else {
+                        $to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-34s',$name) . ' [% RESET %]' . "$bar " . sprintf('%-38s',$line) . " $bar\n";
+                    }
+                    $first = FALSE;
+                } else {
+                    $to .= sprintf('%s %-34s %s %-38s %s',$bar, ' ', $bar, $line, $bar) . "\n";
+                }
+            }
         }
         $to .= "$bar " . sprintf('%-34s','UNDERLINE COLOR color') . "$bar " . sprintf('%-38s','Set the underline color using color') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s',' ') . " $bar " . sprintf('%-38s','token.') . " $bar\n";
@@ -415,15 +415,15 @@ FRAMES
 } elsif ($rawtokens) {
     my $width = 2;
     my $text = "\n";
-	if ($width == 2) {
-		$text .= '[% GREEN %]╔' . '═' x 65 . '╗[% RESET %]' . "\n";
-		$text .= '[% GREEN %]║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 13 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 14 . '[% RESET %][% GREEN %]║[% RESET %]' . "\n";
-		$text .= '[% GREEN %]╠' . '═' x 32 . '╦' . '═' x 32 . '╣[% RESET %]' . "\n";
-	} else {
-		$text .=  '[% GREEN %]╔' . '═' x 131 . '╗[% RESET %]' . "\n";
-		$text .= '[% GREEN %]║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . '[% RESET %][% GREEN %]║[% RESET %]' . "\n";
-		$text .= '[% GREEN %]╠' . '═' x 32 . '╦' . '═' x 32 . '╦' . '═' x 32 . '╦' . '═' x 32 . '╣[% RESET %]' . "\n";
-	}
+    if ($width == 2) {
+        $text .= '[% GREEN %]╔' . '═' x 65 . '╗[% RESET %]' . "\n";
+        $text .= '[% GREEN %]║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 13 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 14 . '[% RESET %][% GREEN %]║[% RESET %]' . "\n";
+        $text .= '[% GREEN %]╠' . '═' x 32 . '╦' . '═' x 32 . '╣[% RESET %]' . "\n";
+    } else {
+        $text .=  '[% GREEN %]╔' . '═' x 131 . '╗[% RESET %]' . "\n";
+        $text .= '[% GREEN %]║[% B_BLACK %][% BRIGHT YELLOW %]' . ' ' x 46 . 'THE FOLLOWING ARE THE AVAILABLE TOKENS' . ' ' x 47 . '[% RESET %][% GREEN %]║[% RESET %]' . "\n";
+        $text .= '[% GREEN %]╠' . '═' x 32 . '╦' . '═' x 32 . '╦' . '═' x 32 . '╦' . '═' x 32 . '╣[% RESET %]' . "\n";
+    }
     $text .= '[% GREEN %]║[% RESET %]';
     my $count = 1;
     foreach my $codes ('clear','cursor','attributes','foreground','background') {
@@ -438,15 +438,15 @@ FRAMES
             }
         }
     }
-	if ($width == 2) {
-		$text .= "\r" . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','JUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','ENDJUSTIFIED') . '[% GREEN %]║[% RESET %]' . "\n";
-		$text .= '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'WRAP') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'ENDWRAP') . '[% GREEN %]║[% RESET %]' . "\n";
-		$text .= '[% GREEN %]╚' . '═' x 32 . '╩' . '═' x 32 . '╝[% RESET %]' . "\n\n";
-	} else {
-		$text .= "\r" . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','JUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','ENDJUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'WRAP') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'ENDWRAP') . '[% GREEN %]║[% RESET %]' . "\n";
-		$text .= '[% GREEN %]╚' . '═' x 32 . '╩' . '═' x 32 . '╩' . '═' x 32 . '╩' . '═' x 32 . '╝[% RESET %]' . "\n\n";
-	}
-	$ansi->ansi_output($text);
+    if ($width == 2) {
+        $text .= "\r" . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','JUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','ENDJUSTIFIED') . '[% GREEN %]║[% RESET %]' . "\n";
+        $text .= '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'WRAP') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'ENDWRAP') . '[% GREEN %]║[% RESET %]' . "\n";
+        $text .= '[% GREEN %]╚' . '═' x 32 . '╩' . '═' x 32 . '╝[% RESET %]' . "\n\n";
+    } else {
+        $text .= "\r" . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','JUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s','ENDJUSTIFIED') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'WRAP') . '[% GREEN %]║[% RESET %]' . sprintf(' %-31s', 'ENDWRAP') . '[% GREEN %]║[% RESET %]' . "\n";
+        $text .= '[% GREEN %]╚' . '═' x 32 . '╩' . '═' x 32 . '╩' . '═' x 32 . '╩' . '═' x 32 . '╝[% RESET %]' . "\n\n";
+    }
+    $ansi->ansi_output($text);
 } elsif ($Dump) {
     my $temp = "\n\n";
     my @names;
@@ -466,7 +466,7 @@ FRAMES
     }
     print "\n";
 } elsif ($unicode) {
-	print "\nAssembling unicode glyphs...";
+    print "\nAssembling unicode glyphs...";
     my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
     my $text = "\n\nNOTE:  Not all terminals will support all characters\n" . '[% COLOR 52 %]╭─────────╮[% RESET %]' . "\n";
     if (defined($search)) {
@@ -500,12 +500,12 @@ FRAMES
                 }
             }
         }
-		$text .= "\n";
+        $text .= "\n";
         $text .= '[% COLOR 52 %]╰─────────┴' . '─' x 65 . '[% RESET %]' . "\n\n";
     }
-	$ansi->ansi_output($text);
+    $ansi->ansi_output($text);
 } elsif ($symbols) {
-	print "\nAssembling symbols...";
+    print "\nAssembling symbols...";
     my @names;
     my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
     my $size = 0;
@@ -553,7 +553,7 @@ FRAMES
             } ## end if ($name ne '')
         } ## end while (scalar(@names))
         $text .= '[% COLOR 52 %]╰─────────┴─' . '─' x $size . '─╯[% RESET %]' . "\n\n";
-		$ansi->ansi_output($text);
+        $ansi->ansi_output($text);
     } else {
         print "\nNothing found for $search\n\n";
     }
@@ -595,28 +595,28 @@ sub type {
 } ## end sub ansi_type
 
 sub add_row {
-	my ($bar, $name, $desc) = @_;
+    my ($bar, $name, $desc) = @_;
 
-	my $text = '';
-	my $format  = Text::Format->new(
-		'columns'     => 37,
-		'tabstop'     => 4,
-		'extraSpace'  => TRUE,
-		'firstIndent' => 0,
-	);
-	$desc = $format->format($desc);
-	my @d = split(/\n/, $desc);
-	my $first = TRUE;
-	while(scalar(@d)) {
-		my $line = shift(@d);
-		if ($first) {
-			$text .= sprintf('%s %-34s %s %-38s %s',$bar, $name, $bar, $line, $bar) . "\n";
-			$first = FALSE;
-		} else {
-			$text .= sprintf('%s %-34s %s %-38s %s',$bar, ' ', $bar, $line, $bar) . "\n";
-		}
-	}
-	return($text);
+    my $text = '';
+    my $format  = Text::Format->new(
+        'columns'     => 37,
+        'tabstop'     => 4,
+        'extraSpace'  => TRUE,
+        'firstIndent' => 0,
+    );
+    $desc = $format->format($desc);
+    my @d = split(/\n/, $desc);
+    my $first = TRUE;
+    while(scalar(@d)) {
+        my $line = shift(@d);
+        if ($first) {
+            $text .= sprintf('%s %-34s %s %-38s %s',$bar, $name, $bar, $line, $bar) . "\n";
+            $first = FALSE;
+        } else {
+            $text .= sprintf('%s %-34s %s %-38s %s',$bar, ' ', $bar, $line, $bar) . "\n";
+        }
+    }
+    return($text);
 }
 
 sub help_text {
