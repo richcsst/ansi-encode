@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.73;
+package Term::ANSIEncode 1.74;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -34,7 +34,7 @@ use Term::ANSIColor;
 use Time::HiRes qw( sleep );
 use Text::Format;
 
- use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
+# use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 # use Term::Drawille;
 
 # UTF-8 is required for special character handling

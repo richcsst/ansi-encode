@@ -297,3 +297,7 @@
 1.73    Jan 13, 2026
 
         Optimized the ansi_colors method.
+
+1.74    Jan 13, 2026
+
+        Whoops, I left the debug code enabled.
