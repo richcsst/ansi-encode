@@ -27,7 +27,7 @@ use constant {
 use Term::ANSIScreen qw( :cursor :screen );
 use Term::ANSIColor;
 use Time::HiRes qw( sleep );
-use Term::ANSIEncode;
+use Term::ANSIEncode qw( ansi_colors );
 use Getopt::Long;
 use List::Util qw(max);
 

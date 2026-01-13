@@ -68,6 +68,25 @@ our %STYLES = (
     ARROWS        => ['🡕', '🡖', '🡔', '🡗', '🡒', '🡐', '🡑', '🡓'],
 );
 
+BEGIN {
+	require Exporter;
+
+	# Inherit from Exporter to export functions and variables
+	our @ISA = qw(Exporter);
+
+	# Functions and variables which are exported by default
+	our @EXPORT = qw(
+		ansi_description
+		ansi_decode
+		ansi_output
+		box
+	);
+
+	# Functions and variables which can be optionally exported
+	our @EXPORT_OK = qw(ansi_colors);
+} ## end BEGIN
+
+
 # Returns a description of a token using the meta data.
 sub ansi_description {
     my ($self, $code, $name) = @_;
