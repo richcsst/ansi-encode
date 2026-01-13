@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.63;
+package Term::ANSIEncode 1.64;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -73,6 +73,70 @@ sub ansi_description {
     my ($self, $code, $name) = @_;
 
     return ($self->{'ansi_meta'}->{$code}->{$name}->{'desc'});
+}
+
+sub ansi_colors {
+	my $self = shift;
+
+    my $grey   = '[% GRAY 8 %]';
+	my $off    = '[% RESET %]';
+	my $string = "\n\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n" . '─' x 155 . "\n\[\% B_BLACK \%\]\[\% WHITE \%\] BLACK   \[\% RESET \%\] \[\% WHITE \%\]\[\% B_BRIGHT BLACK \%\] BRIGHT BLACK   \[\% RESET \%\]\n";
+	my $index = 0;
+	foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE)) {
+		$string .= sprintf('%s %-7s %s %s %-14s %s',"\[\% BLACK \%\]\[\% B_$color \%\]", $color , $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' '; 
+		for (my $count=0;$count<255;$count+=2) {
+			if ($index == 1) { # Yellow
+				$string .= "\[\% B_RGB $count,$count,0 \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',0 %]▐';
+			} elsif ($index == 2) { # Green
+				$string .= "\[\% B_RGB 0,$count,0 \%\]\[\% RGB 0," . ($count+1) . ',0 %]▐';
+			} elsif ($index == 3) { # Cyan
+				$string .= "\[\% B_RGB 0,$count,$count \%\]\[\% RGB 0," . ($count+1) . ',' . ($count+1) . ' %]▐';
+			} elsif ($index == 4) { # Blue
+				$string .= "\[\% B_RGB 0,0,$count \%\]\[\% RGB 0,0," . ($count+1) . ' %]▐';
+			} elsif ($index == 5) { # Magenta
+				$string .= "\[\% B_RGB $count,0,$count \%\]\[\% RGB " . ($count+1) . ',0,' . ($count+1) . ' %]▐';
+			} elsif ($index == 6) { # White
+				$string .= "\[\% B_RGB $count,$count,$count \%\]\[\% RGB " . ($count+1) . ',' . ($count+1) . ',' . ($count+1) . ' %]▐';
+			} else { # Red
+				$string .= "\[\% B_RGB $count,0,0 \%\]\[\% RGB " . ($count+1) . ',0,0 %]▐';
+			}
+		}
+		$index++;
+		$string .= '[% RESET %]' . "\n";
+	}
+	$string .= "\n" . '[% BRIGHT YELLOW %] 8 BIT' . $off . "\n";
+	$string .= $grey . '╭───' . '───┬' x 36 . '───╮' . $off . "\n";
+	$string .= $grey . '│' . $off . 'COLOR ';
+	foreach my $i (0 .. 35) {
+		$string .= $grey . '│' . $off . sprintf('%3d', $i);
+	}
+	$string .= "$grey│$off";
+	foreach my $i (0 .. 6) {
+		my $_i = ($i * 36) + 16;
+		$string .= "\n" . $grey . '├───' . '───┼' x 36 . "───┤$off\n";
+		if ($i == 6) {
+			$string .= $grey . '│' . $off . ' GRAY ' . $grey . '│' . $off;
+		} else {
+			$string .= sprintf("%s│%s %4d %s│%s", $grey, $off, $_i, $grey, $off);
+		}
+		foreach my $j (0 .. 35) {
+			if ($i == 6) {
+				if ($j > 23) {
+					$string .= "   $grey" . "│$off";
+				} elsif ($j > 10) {
+					$string .= '[% BLACK %][% B_GRAY ' . $j . ' %]' . sprintf('%3d', $j) . '[% RESET %]' . $grey . '│' . $off;
+				} else {
+					$string .= '[% WHITE %][% B_GRAY ' . $j . ' %]' . sprintf('%3d', $j) . '[% RESET %]' . $grey . '│' . $off;
+				}
+			} elsif (($_i + $j) <= 21) {
+				$string .= '[% WHITE %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf('%3d',($_i + $j)) . '[% RESET %]' . $grey . '│' . $off;
+			} else {
+				$string .= '[% BLACK %][% B_COLOR ' . ($_i + $j) . ' %]' . sprintf('%3d',($_i + $j)) . '[% RESET %]' . $grey . '│' . $off;
+			}
+		}
+	} ## end foreach my $i (0 .. 6)
+	$string .= "\n" . $grey . '╰───' . '───┴' x 36 . '───╯' . $off . "\n\n";
+	return($string);
 }
 
 # This was far easier to read with my original code.  However, AI actually did

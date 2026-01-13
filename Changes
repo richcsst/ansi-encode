@@ -276,3 +276,8 @@
         Added "WRAP text ENDWRAP" and "JUSTIFIED text ENDJUSTIFIED" tokens.
 		Added a baud rate feature for showing animated ANSI screens at the
 		correct speed.
+
+1.69    Jan 12, 2026
+
+        Moved the color list to the library and removed from the main script.
+		Improved the color list.

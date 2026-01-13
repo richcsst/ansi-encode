@@ -523,43 +523,7 @@ FRAMES
         print "\nNothing found for $search\n\n";
     }
 } elsif ($colors) {
-    my $grey   = '[% GRAY 8 %]';
-    my $off    = '[% RESET %]';
-    my $string = '';
-    $string .= "\n" . '[% BRIGHT WHITE %] ANSI Colors and GRAY colors (requires a terminal with 256 color support for all colors)' . $off . "\n";
-    $string .= $grey . '╭───' . '──┬' x 36 . '──╮' . $off . "\n";
-    $string .= $grey . '│' . $off . 'COLOR';
-    foreach my $i (0 .. 35) {
-        $string .= $grey . '│' . $off . sprintf('%02d', $i);
-    }
-    $string .= $grey . "│\n├───" . '──┼' x 36 . "──┤$off\n";
-    $string .= sprintf('%s│%s %4d%s│%s', $grey, $off, 0, $grey, $off);
-    foreach my $i (0 .. 35) {
-        if ($i <= 15) {
-            $string .= chr(27) . '[48;5;' . $i . 'm  ' . $off . $grey . '│' . $off;
-        } else {
-            $string .= '  ' . $grey . '│' . $off;
-        }
-    } ## end foreach my $i (0 .. 35)
-    foreach my $i (0 .. 6) {
-        my $_i = ($i * 36) + 16;
-        $string .= "\n" . $grey . '├───' . '──┼' x 36 . "──┤$off\n";
-        if ($i == 6) {
-            $string .= $grey . '│' . $off . 'GRAY ' . $grey . '│' . $off;
-        } else {
-            $string .= sprintf("%s│%s %4d%s│%s", $grey, $off, $_i, $grey, $off);
-        }
-        foreach my $j (0 .. 35) {
-            $string .= chr(27) . '[48;5;' . ($_i + $j) . 'm  ' . chr(27) . '[m' . $grey . '│' . $off;
-        }
-    } ## end foreach my $i (0 .. 6)
-    $string .= "\n" . $grey . '╰───' . '──┴' x 36 . '──╯' . $off . "\n\n";
-    $string .= 'RGB and B_RGB take three values (0 - 255) for [% RED %]RED[% RESET %],[% GREEN %]GREEN[% RESET %],[% BLUE %]BLUE[% RESET %] for full 24 bit color' . "\n";
-    $ansi->ansi_output($string);
-    print 'For example:  [% RGB 255,255,255 %] WHITE [% RESET %] will show as ';
-    $ansi->ansi_output('[% RGB 255,255,255 %] WHITE [% RESET %]' . "\n");
-    print '              [% RGB 255,128,192 %] COLOR [% RESET %] will show as ';
-    $ansi->ansi_output('[% RGB 255,128,192 %] COLOR [% RESET %]' . "\n");
+    $ansi->ansi_output($ansi->ansi_colors());
 } else {    # Output file to STDOUT
     my $file = $ARGV[0];
     if (defined $file && -e $file) {
