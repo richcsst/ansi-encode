@@ -234,7 +234,7 @@ TOKENS
         my @names = (sort(keys %{$ansi->{'ansi_meta'}->{'clear'}}));
         while(scalar(@names)) {
             my $name = shift(@names);
-			$to .= add_row_2($bar, $name, $ansi->ansi_description('clear', $name));
+			$to .= add_row($bar, $name, $ansi->ansi_description('clear', $name));
         }
     }
 
@@ -244,11 +244,11 @@ TOKENS
         my @names = (sort(keys %{$ansi->{'ansi_meta'}->{'cursor'}}));
         while(scalar(@names)) {
             my $name = shift(@names);
-			$to .= add_row_2($bar, $name, $ansi->ansi_description('cursor', $name));
+			$to .= add_row($bar, $name, $ansi->ansi_description('cursor', $name));
         }
-        $to .= add_row_2($bar, 'LOCATE column,row', 'Sets the cursor location');
-        $to .= add_row_2($bar, 'SCROLL UP count',   'Scrolls the screen up by "count" lines');
-        $to .= add_row_2($bar, 'SCROLL DOWN count', 'Scrolls the screen down by "count" lines');
+        $to .= add_row($bar, 'LOCATE column,row', 'Sets the cursor location');
+        $to .= add_row($bar, 'SCROLL UP count',   'Scrolls the screen up by "count" lines');
+        $to .= add_row($bar, 'SCROLL DOWN count', 'Scrolls the screen down by "count" lines');
     }
 
     $to .= '[% BRIGHT GREEN %]╞══ [% BOLD %][% BRIGHT YELLOW %]ATTRIBUTES [% RESET %][% BRIGHT GREEN %]' . '═' x 22 . '╪' . '═' x 40 . '╡[% RESET %]' . "\n";
@@ -594,7 +594,7 @@ sub type {
     }
 } ## end sub ansi_type
 
-sub add_row_2 {
+sub add_row {
 	my ($bar, $name, $desc) = @_;
 
 	my $text = '';
