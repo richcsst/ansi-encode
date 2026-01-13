@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.71;
+package Term::ANSIEncode 1.72;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -53,7 +53,7 @@ BEGIN {
 		ansi_description
 		ansi_decode
 		ansi_output
-		box
+		ansi_box
 	);
 
 	# Functions and variables which can be optionally exported
@@ -259,7 +259,7 @@ sub ansi_decode {
         for (@parts) { $_ = undef if defined $_ && $_ eq '' }
         push @parts, undef while @parts < 6;
 
-        my $replace = $self->box($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $parts[5], $body);
+        my $replace = $self->ansi_box($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $parts[5], $body);
 
         # replace the first occurrence of the matched block. Use \Q...\E to avoid any regex
         # metacharacter pitfalls when substituting the exact matched substring ($&).
@@ -376,7 +376,7 @@ sub ansi_output {
     return (TRUE);
 } ## end sub ansi_output
 
-sub box {
+sub ansi_box {
     my ($self, $color, $x, $y, $w, $h, $type, $string) = @_;
 
     # Basic validation/fallbacks

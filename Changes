@@ -289,3 +289,7 @@
 1.71    Jan 13, 2026
 
         Color listing will fix on narrow screens.
+
+1.72    Jan 13, 2026
+
+        Made tokens option fit on narrow screens.
