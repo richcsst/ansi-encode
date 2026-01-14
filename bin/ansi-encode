@@ -49,10 +49,10 @@ my $symbols    = FALSE;
 my $unicode    = FALSE;
 my $colors     = FALSE;
 my $Dump       = FALSE;
-my $c8         = TRUE;
-my $c16        = TRUE;
-my $c256       = FALSE;
-my $crgb       = FALSE;
+my $c3bit      = TRUE;
+my $c4bit      = TRUE;
+my $c8bit      = FALSE;
+my $c24bit     = FALSE;
 my $frames     = FALSE;
 my $rules      = FALSE;
 my $ansi_modes = FALSE;
@@ -119,11 +119,11 @@ if ($baud > 0) {
     $speed = 0;
 }
 
-if (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} eq 'truecolor') {
-    $crgb = TRUE;
+if ((exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /256/) || exists($ENV{'Path'})) { # PATH for Linux and Path for Windows
+    $c8bit = TRUE;
 }
-if (exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /256/) {
-    $c256 = TRUE;
+if (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} eq 'truecolor') {
+    $c24bit = TRUE;
 }
 
 my $header = '[% CLS %]For Best results, make sure your terminal type supports 256 (or more)
@@ -182,22 +182,22 @@ VERSION
     $ansi->ansi_output($text);
 } elsif ($ansi_modes) {
     my $out = "\n[% B_YELLOW %][% BLACK %]      ANSI Modes supported       [% RESET %]\n";
-    if ($c8) {
+    if ($c3bit) {
         $out .= "     ANSI 3 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
         $out .= "     ANSI 3 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
-    if ($c16) {
+    if ($c4bit) {
         $out .= "     ANSI 4 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
         $out .= "     ANSI 4 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
-    if ($c256) {
+    if ($c8bit) {
         $out .= "     ANSI 8 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
         $out .= "     ANSI 8 BIT:  [% RED %]Not Supported[% RESET %]\n";
     }
-    if ($crgb) {
+    if ($c24bit) {
         $out .= "    ANSI 24 BIT:  [% GREEN %]Supported[% RESET %]\n";
     } else {
         $out .= "    ANSI 24 BIT:  [% RED %]Not Supported[% RESET %]\n";
@@ -298,7 +298,7 @@ TOKENS
         $to .= "$bar [% CYAN %]COLORS, START BACKGROUND WITH 'B_' $bar [% CYAN %]DESCRIPTION                            $bar\n";
 
         foreach my $code ('ANSI 3 BIT','ANSI 4 BIT','ANSI 8 BIT','ANSI 24 BIT') {
-            if (($code eq 'ANSI 3 BIT' && $c8) || ($code eq 'ANSI 4 BIT' && $c16) || ($code eq 'ANSI 8 BIT' && $c256) || ($code eq 'ANSI 24 BIT' && $crgb)) {
+            if (($code eq 'ANSI 3 BIT' && $c3bit) || ($code eq 'ANSI 4 BIT' && $c4bit) || ($code eq 'ANSI 8 BIT' && $c8bit) || ($code eq 'ANSI 24 BIT' && $c24bit)) {
                 if ($code eq 'ANSI 3 BIT') {
                     $to .= '[% BRIGHT GREEN %]╞══ [% BOLD %][% BRIGHT YELLOW %]' . sprintf('%-11s',$code) . ' [% RESET %][% BRIGHT GREEN %]' . '═' x 16 . '╤' . '═' x 4 . '╪' . '═' x 40 . '╡[% RESET %]' . "\n";
                 } else {
@@ -325,7 +325,7 @@ TOKENS
                 }
             }
         }
-        if ($crgb) {
+        if ($c24bit) {
             $to .= $bar . sprintf(' %-29s ','RGB red,green,blue') . '[% RESET %]' . $bar . '[% B_RED %] [% B_GREEN %] [% B_BLUE %] [% B_MAGENTA %] [% RESET %]' . $bar . sprintf(' %-38s ','Set color to a value 0-255 per primary') . "$bar\n";
             $to .= $bar . sprintf(' %-29s ',' ') . '[% RESET %]' . $bar . '    ' . $bar . sprintf(' %-38s ','color.') . "$bar\n";
         }
@@ -564,7 +564,7 @@ FRAMES
         print "\nNothing found for $search\n\n";
     }
 } elsif ($colors) {
-    $ansi->ansi_output($ansi->ansi_colors());
+    $ansi->ansi_output($ansi->ansi_colors({'3 BIT' => $c3bit, '4 BIT' => $c4bit, '8 BIT' => $c8bit, '24 BIT' => $c24bit}));
 } else {    # Output file to STDOUT
     my $file = $ARGV[0];
     if (defined $file && -e $file) {

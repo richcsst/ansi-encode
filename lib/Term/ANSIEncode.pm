@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.75;
+package Term::ANSIEncode 1.76;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -95,11 +95,20 @@ sub ansi_description {
 
 # Returns in a string, a color map
 sub ansi_colors {
-    my $self = shift;
+    my $self   = shift;
+	my $params = shift if (scalar(@_));
 
+	unless (defined($params)) {
+		$params = {
+			'3 BIT'  => TRUE,
+			'4 BIT'  => TRUE,
+			'8 BIT'  => FALSE,
+			'24 BIT' => FALSE,
+		};
+	}
     my $grey   = '[% GRAY 8 %]';
     my $off    = '[% RESET %]';
-    my $string = qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n) . ('─' x 59) . "\n";
+    my $string = ($params->{'24 BIT'}) ? qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n) . ('─' x 59) . "\n" : qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            \[\% RESET \%\]\n) . ('─' x 26) . "\n";
 
     # Define subroutine references for color blocks
     my %actions = (
@@ -118,28 +127,38 @@ sub ansi_colors {
             $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
             $string .= "$off\n";
         } else {
-            $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+			if ($params->{'4 BIT'}) {
+				$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+			} else {
+				$string .= sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off);
+			}
             # Loop through color ranges and call appropriate subroutine for blocks
-            foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
-                if ($range->[0] < $range->[1]) {
-                    for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
-                        # Pass arguments to the subroutine and append the result
-                        $string .= $actions{$index}->($count, $count + $range->[2]);
-                    }
-                } else {
-                    for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
-                        # Pass arguments to the subroutine and append the result
-                        $string .= $actions{$index}->($count, $count + $range->[2]);
-                    }
-                }
-                $string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
-            } ## end foreach my $range ([0, 64, ...])
+			if ($params->{'24 BIT'}) {
+				foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
+					if ($range->[0] < $range->[1]) {
+						for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
+							# Pass arguments to the subroutine and append the result
+							$string .= $actions{$index}->($count, $count + $range->[2]);
+						}
+					} else {
+						for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
+							# Pass arguments to the subroutine and append the result
+							$string .= $actions{$index}->($count, $count + $range->[2]);
+						}
+					}
+					if ($params->{'4 BIT'}) {
+						$string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+					} else {
+						$string .= "\n" . sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+					}
+				} ## end foreach my $range ([0, 64, ...])
+			}
             $index++;
             $string .= '[% RESET %]' . "\n";
         }
     } ## end foreach my $color (@colors)
 
-    $string .= "\n[% BRIGHT YELLOW %] 8 BIT$off\n" . ('─' x 60) . _generate_8bit_colors();
+    $string .= "\n[% BRIGHT YELLOW %] 8 BIT$off\n" . ('─' x 60) . _generate_8bit_colors() if (defined($params) && $params->{'8 BIT'});
     return ($string);
 } ## end sub ansi_colors
 
@@ -1454,6 +1473,32 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
  $string .= "\n" . '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
 
  $ansi->ansi_output($string);
+
+=head1 METHODS
+
+=over 4
+
+=item new
+
+Instantiate the object.  All parameters are ignored.
+
+=item ansi_colors
+
+It requires one parameter, a reference to a hash indicating color format support.
+
+ # True = 1 amd 0 = False
+ {
+     '3 BIT'  => 0, # True for 8 color support (it should be the bare minimum supported)
+     '4 BIT'  => 0, # True for bright color support.
+     '8 BIT'  => 0, # True for 256 color support (Windows 10+) always
+                    # supports.  Linux will have "256" in the TERM
+                    # environmernt variable definition
+     '24 BIT' => 0, # True for 16.4 million color support.  Not supported
+                    # (yet) on Windows.  The Linux environment variable
+                    # COLORTERM will ber set to "truecolor" for support.
+ }
+
+=back
 
 =head1 TOKENS
 

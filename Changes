@@ -307,3 +307,7 @@
         Added more tokens to the tokens option
 
 		Fixed the man page errors
+
+1.76    Jan 14, 2026
+
+        Improved ansi_colors and color format detection improvements.
