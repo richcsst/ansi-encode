@@ -157,7 +157,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | BRIGHT MAGENTA | Bright magenta |
 | BRIGHT CYAN | Bright cyan |
 | BRIGHT WHITE | Bright white |
-| COLOR 17 - COLOR 231 | Term256 colors (use -c to see these) |
+| COLOR 16 - COLOR 231 | Term256 colors (use -c to see these) |
 | GREY0 - GREY23  | Levels of grey |
 
 #### BACKGROUND
