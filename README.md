@@ -158,7 +158,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | BRIGHT CYAN | Bright cyan |
 | BRIGHT WHITE | Bright white |
 | COLOR 16 - COLOR 231 | Term256 colors (use -c to see these) |
-| GREY0 - GREY23  | Levels of grey |
+| GREY 0 - GREY 23  | Levels of grey |
 
 #### BACKGROUND
 
