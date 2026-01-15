@@ -315,3 +315,9 @@
 1.77    Jan 14, 2026
 
         Corrected terminal type color capability and added a new method.
+
+1.78    Jan 14, 2026
+
+        Further hardening of ANSI capablity detection with bnetter Windows
+		compatibility.
+

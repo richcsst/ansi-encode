@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.77;
+package Term::ANSIEncode 1.78;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -54,7 +54,7 @@ BEGIN {
       ansi_decode
       ansi_output
       ansi_box
-	  ansi_detect_capability
+      ansi_detect_capability
     );
 
     # Functions and variables which can be optionally exported
@@ -87,56 +87,49 @@ our %STYLES = (
     ARROWS        => ['🡕', '🡖', '🡔', '🡗', '🡒', '🡐', '🡑', '🡓'],
 );
 
-sub ansi_detect_capability {
-	my $self = shift;
+# Detecting ANSI terminal capability is a royal pain.
 
-	if (exists($ENV{'TERM'})) {
-		if ($ENV{'linux'}) {
-			return(
-				{
-					'3 BIT'  => TRUE,
-					'4 BIT'  => FALSE,
-					'8 BIT'  => FALSE,
-					'24 BIT' => FALSE,
-				}
-			);
-		} elsif ($ENV{'TERM'} =~ /xterm|256/) {
-			if (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor/) {
-				return(
-					{
-						'3 BIT'  => TRUE,
-						'4 BIT'  => TRUE,
-						'8 BIT'  => TRUE,
-						'24 BIT' => TRUE,
-					}
-				);
-			}
-			return(
-				{
-					'3 BIT'  => TRUE,
-					'4 BIT'  => TRUE,
-					'8 BIT'  => TRUE,
-					'24 BIT' => FALSE,
-				}
-			);
-		}
-		return(
-			{
-				'3 BIT'  => TRUE,
-				'4 BIT'  => TRUE,
-				'8 BIT'  => FALSE,
-				'24 BIT' => FALSE,
-			}
-		);
-	}
-	return(
-		{
-			'3 BIT'  => TRUE,
-			'4 BIT'  => FALSE,
-			'8 BIT'  => FALSE,
-			'24 BIT' => FALSE,
-		}
-	);
+sub ansi_detect_capability {
+    my $self = shift;
+
+    my $caps = {
+        '3 BIT'  => TRUE,
+        '4 BIT'  => FALSE,
+        '8 BIT'  => FALSE,
+        '24 BIT' => FALSE,
+    };
+
+    if ($^O eq 'MSWin32') {
+        # Windows-specific detection
+        # Check for Windows 10 virtual terminal and others (like ConEmu)
+        if (exists $ENV{'WT_SESSION'} || $ENV{'ConEmuANSI'} || (exists $ENV{'OS'} && $ENV{'OS'} eq 'Windows_NT')) {
+            $caps = {
+                '3 BIT'  => TRUE,
+                '4 BIT'  => TRUE,
+                '8 BIT'  => TRUE,
+                '24 BIT' => (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/) ? TRUE : FALSE,
+            };
+        }
+    } else {
+        # UNIX-like systems, use tput where available, fallback to environment variables
+        if (my $tput_caps = _detect_ansi_with_tput()) {
+            $caps = $tput_caps;
+        }
+    }
+
+    return $caps;
+}
+
+sub _detect_ansi_with_tput {
+    my $colors = `tput colors 2>/dev/null`;
+    chomp($colors);
+
+    return {
+        '3 BIT'  => ($colors >= 8 ? TRUE : FALSE),
+        '4 BIT'  => ($colors >= 16 ? TRUE : FALSE),
+        '8 BIT'  => ($colors >= 256 ? TRUE : FALSE),
+        '24 BIT' => (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/ ? TRUE : FALSE),
+    };
 }
 
 # Returns a description of a token using the meta data.
@@ -149,16 +142,16 @@ sub ansi_description {
 # Returns in a string, a color map
 sub ansi_colors {
     my $self   = shift;
-	my $params = shift if (scalar(@_));
+    my $params = shift if (scalar(@_));
 
-	unless (defined($params)) {
-		$params = {
-			'3 BIT'  => TRUE,
-			'4 BIT'  => TRUE,
-			'8 BIT'  => FALSE,
-			'24 BIT' => FALSE,
-		};
-	}
+    unless (defined($params)) {
+        $params = {
+            '3 BIT'  => TRUE,
+            '4 BIT'  => TRUE,
+            '8 BIT'  => FALSE,
+            '24 BIT' => FALSE,
+        };
+    }
     my $grey   = '[% GRAY 8 %]';
     my $off    = '[% RESET %]';
     my $string = ($params->{'24 BIT'}) ? qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n) . ('─' x 59) . "\n" : qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            \[\% RESET \%\]\n) . ('─' x 26) . "\n";
@@ -180,32 +173,32 @@ sub ansi_colors {
             $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
             $string .= "$off\n";
         } else {
-			if ($params->{'4 BIT'}) {
-				$string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
-			} else {
-				$string .= sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off);
-			}
+            if ($params->{'4 BIT'}) {
+                $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+            } else {
+                $string .= sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", $color, $off);
+            }
             # Loop through color ranges and call appropriate subroutine for blocks
-			if ($params->{'24 BIT'}) {
-				foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
-					if ($range->[0] < $range->[1]) {
-						for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
-							# Pass arguments to the subroutine and append the result
-							$string .= $actions{$index}->($count, $count + $range->[2]);
-						}
-					} else {
-						for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
-							# Pass arguments to the subroutine and append the result
-							$string .= $actions{$index}->($count, $count + $range->[2]);
-						}
-					}
-					if ($params->{'4 BIT'}) {
-						$string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
-					} else {
-						$string .= "\n" . sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
-					}
-				} ## end foreach my $range ([0, 64, ...])
-			}
+            if ($params->{'24 BIT'}) {
+                foreach my $range ([0, 64, 2], [128, 64, -2], [128, 192, 2], [255, 192, -2]) {
+                    if ($range->[0] < $range->[1]) {
+                        for (my $count = $range->[0]; $count < $range->[1]; $count += $range->[2]) {
+                            # Pass arguments to the subroutine and append the result
+                            $string .= $actions{$index}->($count, $count + $range->[2]);
+                        }
+                    } else {
+                        for (my $count = $range->[0]; $count > $range->[1]; $count += $range->[2]) {
+                            # Pass arguments to the subroutine and append the result
+                            $string .= $actions{$index}->($count, $count + $range->[2]);
+                        }
+                    }
+                    if ($params->{'4 BIT'}) {
+                        $string .= "\n" . sprintf('%s %-7s %s %s %-14s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off, "\[\% BLACK \%\]\[\% B_BRIGHT $color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+                    } else {
+                        $string .= "\n" . sprintf('%s %-7s %s', "\[\% BLACK \%\]\[\% B_$color \%\]", ' ', $off) . ' ' if ($range->[0] != 255);
+                    }
+                } ## end foreach my $range ([0, 64, ...])
+            }
             $index++;
             $string .= '[% RESET %]' . "\n";
         }
@@ -1462,7 +1455,7 @@ sub _global_ansi_meta {    # prefills the hash cache
     };
 ###
 
-	# Generate background colors from foreground
+    # Generate background colors from foreground
     foreach my $name (keys %{ $tmp->{'foreground'} }) {
         $tmp->{'background'}->{"B_$name"}->{'desc'} = $tmp->{'foreground'}->{$name}->{'desc'};
         $tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
@@ -1475,8 +1468,8 @@ sub _global_ansi_meta {    # prefills the hash cache
             'out'  => $csi . ($count + 10) . 'm',
         };
     }
-	
-	# Generate 8 bit colors
+    
+    # Generate 8 bit colors
     foreach my $count (16 .. 231) {
         $tmp->{'foreground'}->{ 'COLOR ' . $count } = {
             'desc' => "ANSI 8 Bit Color $count",
@@ -1488,7 +1481,7 @@ sub _global_ansi_meta {    # prefills the hash cache
         };
     }
 
-	# Generate Gray colors
+    # Generate Gray colors
     foreach my $count (232 .. 255) {
         $tmp->{'foreground'}->{ 'GRAY ' . ($count - 232) } = {
             'desc' => "ANSI 8 Bit Gray level " . ($count - 232),
