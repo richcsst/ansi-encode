@@ -49,8 +49,8 @@ my $symbols    = FALSE;
 my $unicode    = FALSE;
 my $colors     = FALSE;
 my $Dump       = FALSE;
-my $c3bit      = TRUE;
-my $c4bit      = TRUE;
+my $c3bit      = FALSE;
+my $c4bit      = FALSE;
 my $c8bit      = FALSE;
 my $c24bit     = FALSE;
 my $frames     = FALSE;
@@ -119,12 +119,14 @@ if ($baud > 0) {
     $speed = 0;
 }
 
-if ((exists($ENV{'TERM'}) && $ENV{'TERM'} =~ /256/) || exists($ENV{'Path'})) { # PATH for Linux and Path for Windows
-    $c8bit = TRUE;
-}
-if (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} eq 'truecolor') {
-    $c24bit = TRUE;
-}
+my $ansi = Term::ANSIEncode->new('baud' => $baud, 'speed' => $speed, 'columns' => $width);
+
+my $capability = $ansi->ansi_detect_capability();
+
+$c3bit  = TRUE if ($capability->{'3 BIT'});
+$c4bit  = TRUE if ($capability->{'4 BIT'});
+$c8bit  = TRUE if ($capability->{'8 BIT'});
+$c24bit = TRUE if ($capability->{'24 BIT'});
 
 my $header = '[% CLS %]For Best results, make sure your terminal type supports 256 (or more)
 colors like "xterm-256color".  You should be using the "Awesome" fonts for
@@ -136,8 +138,6 @@ I suggest "SourceCodePro-Powerline-Awesome" when selecting a font
 ';
 
 ###
-
-my $ansi = Term::ANSIEncode->new('baud' => $baud, 'speed' => $speed, 'columns' => $width);
 
 our @list = (
     0x20 .. 0x7F,
@@ -271,7 +271,6 @@ TOKENS
                 if ($first) {
                     if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR/) {
                         $to .= "$bar " . sprintf('%-34s',$name) . ' [% BRIGHT GREEN %]│[% RESET %] ' . sprintf('%-38s',$line) . ' [% BRIGHT GREEN %]│[% RESET %]' . "\n";
-#                        $to .= "$bar " . sprintf('%-34s','FONT 1-9') . " $bar " . sprintf('%-38s','Set specific font (1-9)') . " $bar" . "\n" if ($name =~ /FONT DEFAULT/);
                     } else {
                         $to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-34s',$name) . ' [% RESET %]' . "$bar " . sprintf('%-38s',$line) . " $bar\n";
                     }

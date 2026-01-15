@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.76;
+package Term::ANSIEncode 1.77;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -54,6 +54,7 @@ BEGIN {
       ansi_decode
       ansi_output
       ansi_box
+	  ansi_detect_capability
     );
 
     # Functions and variables which can be optionally exported
@@ -85,6 +86,58 @@ our %STYLES = (
     'BIG ARROWS'  => ['▶', '▶', '◀', '◀', '▶', '◀', '▲', '▼'],
     ARROWS        => ['🡕', '🡖', '🡔', '🡗', '🡒', '🡐', '🡑', '🡓'],
 );
+
+sub ansi_detect_capability {
+	my $self = shift;
+
+	if (exists($ENV{'TERM'})) {
+		if ($ENV{'linux'}) {
+			return(
+				{
+					'3 BIT'  => TRUE,
+					'4 BIT'  => FALSE,
+					'8 BIT'  => FALSE,
+					'24 BIT' => FALSE,
+				}
+			);
+		} elsif ($ENV{'TERM'} =~ /xterm|256/) {
+			if (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor/) {
+				return(
+					{
+						'3 BIT'  => TRUE,
+						'4 BIT'  => TRUE,
+						'8 BIT'  => TRUE,
+						'24 BIT' => TRUE,
+					}
+				);
+			}
+			return(
+				{
+					'3 BIT'  => TRUE,
+					'4 BIT'  => TRUE,
+					'8 BIT'  => TRUE,
+					'24 BIT' => FALSE,
+				}
+			);
+		}
+		return(
+			{
+				'3 BIT'  => TRUE,
+				'4 BIT'  => TRUE,
+				'8 BIT'  => FALSE,
+				'24 BIT' => FALSE,
+			}
+		);
+	}
+	return(
+		{
+			'3 BIT'  => TRUE,
+			'4 BIT'  => FALSE,
+			'8 BIT'  => FALSE,
+			'24 BIT' => FALSE,
+		}
+	);
+}
 
 # Returns a description of a token using the meta data.
 sub ansi_description {
