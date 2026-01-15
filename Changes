@@ -321,3 +321,6 @@
         Further hardening of ANSI capablity detection with bnetter Windows
 		compatibility.
 
+1.79    Jan 14, 2026
+
+        Minor documentation fixes
