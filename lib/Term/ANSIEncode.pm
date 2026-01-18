@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.81;
+package Term::ANSIEncode 1.82;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -30,7 +30,6 @@ use constant {
 };
 
 use Term::ANSIScreen qw( :cursor :screen );
-use Term::ANSIColor;
 use Time::HiRes qw( sleep );
 use Text::Format;
 
