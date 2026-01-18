@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.80;
+package Term::ANSIEncode 1.81;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -154,7 +154,17 @@ sub ansi_colors {
     }
     my $grey   = '[% GRAY 8 %]';
     my $off    = '[% RESET %]';
-    my $string = ($params->{'24 BIT'}) ? qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            24 BIT\[\% RESET \%\]\n) . ('─' x 59) . "\n" : qq(\[\% CLS \%\]\[\% BRIGHT YELLOW \%\] 3 BIT     4 BIT            \[\% RESET \%\]\n) . ('─' x 26) . "\n";
+	my $w      = 9;
+    my $string = '[% CLS %][% BRIGHT YELLOW %] 3 BIT     [% RESET %]';
+	if ($params->{'4 BIT'}) {
+		$string .= '[% BRIGHT YELLOW %]4 BIT            [% RESET %]';
+		$w = 26;
+	}
+	if ($params-> {'24 BIT'}) {
+		$string .= '[% BRIGHT YELLOW %]24 BIT[% RESET %]';
+		$w = 59;
+	}
+	$string .= "\n" . '━' x $w . "\n";
 
     # Define subroutine references for color blocks
     my %actions = (
@@ -170,7 +180,10 @@ sub ansi_colors {
     my $index = 0;
     foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE BLACK)) {
         if ($color eq 'BLACK') {
-            $string .= sprintf('%s %-7s %s %s %-14s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off, "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+            $string .= sprintf('%s %-7s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off) . ' ';
+			if ($params->{'4 BIT'}) {
+				$string .= sprintf('%s %-14s %s', "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+			}
             $string .= "$off\n";
         } else {
             if ($params->{'4 BIT'}) {

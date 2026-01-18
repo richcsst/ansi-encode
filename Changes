@@ -328,3 +328,7 @@
 1.80    Jan 17, 2026
 
         Fixed the bright color bug
+
+1.81    Jan 17, 2026
+
+        Color list handles 3,4,8 and 24 bit recognition correctly
