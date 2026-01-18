@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.82;
+package Term::ANSIEncode 1.83;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -29,7 +29,6 @@ use constant {
     NO    => 0,
 };
 
-use Term::ANSIScreen qw( :cursor :screen );
 use Time::HiRes qw( sleep );
 use Text::Format;
 
@@ -442,19 +441,20 @@ sub ansi_box {
     # Build the box text efficiently
     my $text = '';
 
+	my $csi = "\e[";
     # Top line
-    $text .= locate($y, $x) . $color . $tl . ($top x ($w - 2)) . $tr . '[% RESET %]';
+    $text .= $csi . $y .';' . $x . 'H' . $color . $tl . ($top x ($w - 2)) . $tr . '[% RESET %]';
 
     # Middle lines
     for my $row (1 .. ($h - 2)) {
-        $text .= locate($y + $row, $x) . $color . $vl . '[% RESET %]' . (' ' x ($w - 2)) . $color . $vr . '[% RESET %]';
+        $text .= $csi . ($y + $row) . ';' . $x . 'H' . $color . $vl . '[% RESET %]' . (' ' x ($w - 2)) . $color . $vr . '[% RESET %]';
     }
 
     # Bottom line + save cursor
-    $text .= locate($y + $h - 1, $x) . $color . $bl . ($bot x ($w - 2)) . $br . '[% RESET %]' . $self->{'ansi_meta'}->{'cursor'}->{'SAVE'}->{'out'};
+    $text .= $csi . ($y + $h - 1) . ';' . $x . 'H' . $color . $bl . ($bot x ($w - 2)) . $br . '[% RESET %]' . $self->{'ansi_meta'}->{'cursor'}->{'SAVE'}->{'out'};
 
     # Position cursor inside box and wrap text
-    $text .= locate($y + 1, $x + 1);
+    $text .= $csi . ($y + 1) . ';' . ($x + 1) . 'H';
 
     my $format = Text::Format->new(
         'columns'     => $w - 3,
@@ -469,7 +469,7 @@ sub ansi_box {
     my $line_y = $y + 1;
     foreach my $line (@lines) {
         last if $line_y >= ($y + $h - 1);    # avoid writing outside the box
-        $text .= locate($line_y++, $x + 1) . $line;
+        $text .= $csi . $line_y++ . ';' . ($x + 1) . 'H' . $line;
     }
 
     # Restore cursor
