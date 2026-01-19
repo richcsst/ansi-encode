@@ -2,7 +2,7 @@
 
 Term::ANSIEncode
 
-![Term::ANSIEncode](../../images/ANSIEncode.png?raw-true "Term::ANSIEncode graphic")
+![Term::ANSIEncode](../../images/ANSI-Encode.png?raw-true "Term::ANSIEncode graphic")
 
 ## SYNOPSIS
 
