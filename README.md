@@ -8,11 +8,27 @@ Markup text to ANSI encoder.  Very handy for making server identification screen
 
 ## Usage
 
+To use as a Perl module:
+```
+ my $ansi = Term::ANSIEncode->new;
+
+ my $string = '[% CLS %]Some markup encoded string';
+ $string .= "\n" . '[% RED     %]Red foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% YELLOW  %]Yellow foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% GREEN   %]Green foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% CYAN    %]Cyan foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
+
+ $ansi->ansi_output($string);
+```
+To use the executable, run:
+
 **ansi-encode** [options] [File or Search]
 
 It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced features in this module/utility.
 
-Read the pod or man page for Term::ANSIEncode
+Read the pod or man page for **Term::ANSIEncode**
 
 ## Options
 
@@ -219,5 +235,6 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
+
 
 
