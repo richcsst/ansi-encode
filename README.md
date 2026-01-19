@@ -8,7 +8,7 @@ Markup text to ANSI encoder.  Very handy for making server identification screen
 
 ## Usage
 
-To use as a Perl module:
+### To use as a Perl module:
 ```
  my $ansi = Term::ANSIEncode->new;
 
@@ -22,7 +22,7 @@ To use as a Perl module:
 
  $ansi->ansi_output($string);
 ```
-To use the executable, run:
+### To use the executable, run:
 
 **ansi-encode** [options] [File or Search]
 
@@ -235,6 +235,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
+
 
 
 
