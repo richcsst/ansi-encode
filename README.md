@@ -48,7 +48,7 @@ Slow down output to the specific baud rate.  It can be any baud rate.  Full spee
 
 Show color grid for use with "COLOR" and "GRAY" tokens.
 
-![Colors](colors.png?raw=true "Term::ANSIEncode Color Examples")
+![Colors](images/colors.png?raw=true "Term::ANSIEncode Color Examples")
 
 ### -**d** or --**dump** [search]
 
@@ -228,5 +228,6 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
+
 
 
