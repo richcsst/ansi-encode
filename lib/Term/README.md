@@ -90,9 +90,9 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 
 ### FRAMES
 
-| **Token** | Text | **End Token** | **Description** | Types |
-| --- | --- | --- | --- | --- |
-| **BOX** color,x,y,width,height,type | text | **ENDBOX** | Draw a frame around text | THIN, ROUND, THICK, BLOCK, WEDGE, DOTS, DIAMOND, STAR, SQUARE |
+| **Token** | **End Token** | **Description** | Types |
+| --- | --- | --- | --- |
+| **BOX** color,x,y,width,height,type | **ENDBOX** | Draw a frame around text | THIN, ROUND, THICK, BLOCK, WEDGE, DOTS, DIAMOND, STAR, SQUARE |
 
 ### COLORS
 
@@ -160,12 +160,10 @@ Makes a solid blank line, the full width of the screen with the selected color
 
 ### TEXT WRAP
 
-| **Token*** | **Description** |
-| --- | --- |
-| WRAP | Begins text block to be word-wrapped |
-| ENDWRAP | Ends text block to be word-wrapped |
-| JUSTIFIED | Begins text block to be word-wrapped and justified |
-| ENDJUSTIFIED | Ends text block to be word-wrapped and justified |
+| **Token** | **End Token** | **Description** | Types |
+| --- | --- | --- | --- |
+| WRAP | ENDWRAP | Begins text block to be word-wrapped |
+| JUSTIFIED | ENDJUSTIFIED | Begins text block to be word-wrapped and justified |
 
 ## AUTHOR & COPYRIGHT
 
