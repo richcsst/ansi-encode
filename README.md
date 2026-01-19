@@ -86,6 +86,8 @@ Show all of the symbol character tokens by unicode.  Use search to shorten the h
 
 Show version and licensing info.
 
+![Version](images/version.png?raw=true "Term::ANSIEncode Version")
+
 ## Author
 
 Richard Kelsch
