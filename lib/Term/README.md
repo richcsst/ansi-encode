@@ -2,6 +2,8 @@
 
 Term::ANSIEncode
 
+![Term::ANSIEncode](../images/ANSIEncode.png?raw-true "Term::ANSIEncode graphic")
+
 ## SYNOPSIS
 
 A markup language to generate basic ANSI text.  A terminal that supports UTF-8 is required if you wish to have special characters, both graphical and international.
