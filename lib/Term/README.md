@@ -90,7 +90,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 
 ### FRAMES
 
-This special token takes parameters and requires and end token to function.  The text goes between the token and end token.
+This special token takes parameters and requires an end token to function.  The text goes between the token and end token.
 
 | **Token** | **End Token** | **Description** | Types |
 | --- | --- | --- | --- |
