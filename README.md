@@ -1,6 +1,6 @@
 # Term::ANSIEncode
 
-![ANSIEncode Logo](ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text")
+![Term::ANSIEncode Logo](ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
 ## Description
 
@@ -16,14 +16,14 @@ Read the pod or man page for Term::ANSIEncode
 
 ## Options
 
-![Help Screen](help.png?raw=true "ANSIEncode Help Screen")
+![Help Screen](help.png?raw=true "Term::ANSIEncode Help Screen")
 
 ### -**a** or --**ansi-modes**
 ```
     Show aupported ANSI color modes
 ```
 
-![Support Color Modes](supported.png?raw=true "ANSIEncode Supported Color Modes")
+![Support Color Modes](supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
 
 ### --**baud**=speed
 ```
@@ -35,7 +35,7 @@ Read the pod or man page for Term::ANSIEncode
     Show color grid for use with "COLOR" and "GREY" tokens.
 ```
 
-![Colors](colors.png?raw=true "ANSIEncode Colors")
+![Colors](colors.png?raw=true "Term::ANSIEncode Colors")
 
 ### -**d** or --**dump** [search]
 ~~~
@@ -47,14 +47,14 @@ Read the pod or man page for Term::ANSIEncode
     Show sample frame types.
 ```
 
-![Frames](frames.png?raw=true "ANSIEncode Frames Example")
+![Frames](frames.png?raw=true "Term::ANSIEncode Frames Example")
 
 ### -**h** or --**horizontal-rules**
 ```
     Show sample horizontal rules.
 ```
 
-![Horizontal Rules](rules.png?raw=true "ANSIEncode Horizontal Rules Example")
+![Horizontal Rules](rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
 
 ### -**r** or --**rawtokens**
 ```
