@@ -1,6 +1,6 @@
 # Term::ANSIEncode
 
-![Term::ANSIEncode Logo](ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
+![Term::ANSIEncode Logo](images/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
 ## Description
 
@@ -32,13 +32,13 @@ It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced featu
 
 ## Options
 
-![Help Screen](help.png?raw=true "Term::ANSIEncode Help Screen")
+![Help Screen](images/help.png?raw=true "Term::ANSIEncode Help Screen")
 
 ### -**a** or --**ansi-modes**
 
 Show aupported ANSI color modes
 
-![Support Color Modes](supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
+![Support Color Modes](images/supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
 
 ### --**baud**=speed
 
@@ -56,13 +56,13 @@ Shows the symbols only.
 
 Show sample frame types.
 
-![Frames](frames.png?raw=true "Term::ANSIEncode Frames Example")
+![Frames](images/frames.png?raw=true "Term::ANSIEncode Frames Example")
 
 ### -**h** or --**horizontal-rules**
 
 Show sample horizontal rules.
 
-![Horizontal Rules](rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
+![Horizontal Rules](images/rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
 
 ### -**r** or --**rawtokens**
 
