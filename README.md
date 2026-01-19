@@ -1,10 +1,10 @@
 # Term::ANSIEncode
 
-![ANSIEncode Logo](ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text 1")
+![ANSIEncode Logo](ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text")
 
 ## Description
 
-Markup text to ANSI encoder
+Markup text to ANSI encoder.  Very handy for making server identification screens.
 
 ## Usage
 
@@ -16,10 +16,14 @@ Read the pod or man page for Term::ANSIEncode
 
 ## Options
 
+![Help Screen](help.png?raw=true "ANSIEncode Help Screen")
+
 ### -**a** or --**ansi-modes**
 ```
     Show aupported ANSI color modes
 ```
+
+![Support Color Modes](supported.png?raw=true "ANSIEncode Supported Color Modes")
 
 ### --**baud**=speed
 ```
@@ -31,6 +35,8 @@ Read the pod or man page for Term::ANSIEncode
     Show color grid for use with "COLOR" and "GREY" tokens.
 ```
 
+![Colors](colors.png?raw=true "ANSIEncode Colors")
+
 ### -**d** or --**dump** [search]
 ~~~
     Shows the symbols only.
@@ -41,10 +47,14 @@ Read the pod or man page for Term::ANSIEncode
     Show sample frame types.
 ```
 
+![Frames](frames.png?raw=true "ANSIEncode Frames Example")
+
 ### -**h** or --**horizontal-rules**
 ```
     Show sample horizontal rules.
 ```
+
+![Horizontal Rules](rules.png?raw=true "ANSIEncode Horizontal Rules Example")
 
 ### -**r** or --**rawtokens**
 ```
