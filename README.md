@@ -42,13 +42,11 @@ Show aupported ANSI color modes
 
 ### --**baud**=speed
 
-Slow down output to the specific baud rate.  75, 150, 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600 or 115200
+Slow down output to the specific baud rate.  It can be any baud rate.  Full speed otherwise.
 
 ### -**c** or --**colors**
 
-Show color grid for use with "COLOR" and "GREY" tokens.
-
-![Colors](colors.png?raw=true "Term::ANSIEncode Colors")
+Show color grid for use with "COLOR" and "GRAY" tokens.
 
 ### -**d** or --**dump** [search]
 
@@ -228,3 +226,4 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
+
