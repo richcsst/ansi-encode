@@ -90,6 +90,8 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 
 ### FRAMES
 
+This special token takes parameters and requires and end token to function.  The text goes between the token and end token.
+
 | **Token** | **End Token** | **Description** | Types |
 | --- | --- | --- | --- |
 | **BOX** color,x,y,width,height,type | **ENDBOX** | Draw a frame around text | THIN, ROUND, THICK, BLOCK, WEDGE, DOTS, DIAMOND, STAR, SQUARE |
@@ -159,6 +161,8 @@ Makes a solid blank line, the full width of the screen with the selected color
 | **HORIZONTAL RULE** [color] | A solid line of [color] background |
 
 ### TEXT WRAP
+
+These tokens have an end token where text to be wrapped have text between the token and end token.
 
 | **Token** | **End Token** | **Description** | Types |
 | --- | --- | --- | --- |
