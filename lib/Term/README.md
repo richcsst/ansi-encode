@@ -13,12 +13,12 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
  my $ansi = Term::ANSIEncode->new;
 
  my $string = 'CLSSome markup encoded string';
- $string .= "\n" . 'RED    Red foregroundRESET' . "\n";
- $string .= "\n" . 'YELLOW Yellow foregroundRESET' . "\n";
- $string .= "\n" . 'GREEN  Green foregroundRESET' . "\n";
- $string .= "\n" . 'CYAN   Cyan foregroundRESET' . "\n";
- $string .= "\n" . 'BLUE   Blue foregroundRESET' . "\n";
- $string .= "\n" . 'MAGENTAMagenta foregroundRESET' . "\n";
+ $string .= "\n" . '[% RED     %]Red foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% YELLOW  %]Yellow foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% GREEN   %]Green foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% CYAN    %]Cyan foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
+ $string .= "\n" . '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
 
  $ansi->ansi_output($string);
 ```
