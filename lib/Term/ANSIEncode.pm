@@ -9,7 +9,7 @@ package Term::ANSIEncode 1.85;
 #  ╱_╱    ╲_╲_| ╲_|_____╱|_____| |______|_| |_|╲___╲___╱ ╲__,_|╲___|  #
 #######################################################################
 #                     Written By Richard Kelsch                       #
-#                  © Copyright 2025 Richard Kelsch                    #
+#                  Copyright © 2025 Richard Kelsch                    #
 #                        All Rights Reserved                          #
 #######################################################################
 # This program is free software: you can redistribute it and/or       #
@@ -169,17 +169,17 @@ sub ansi_colors {
     }
     my $grey   = '[% GRAY 8 %]';
     my $off    = '[% RESET %]';
-	my $w      = 9;
+    my $w      = 9;
     my $string = '[% CLS %][% BRIGHT YELLOW %] 3 BIT     [% RESET %]';
-	if ($params->{'4 BIT'}) {
-		$string .= '[% BRIGHT YELLOW %]4 BIT            [% RESET %]';
-		$w = 26;
-	}
-	if ($params-> {'24 BIT'}) {
-		$string .= '[% BRIGHT YELLOW %]24 BIT[% RESET %]';
-		$w = 59;
-	}
-	$string .= "\n" . '━' x $w . "\n";
+    if ($params->{'4 BIT'}) {
+        $string .= '[% BRIGHT YELLOW %]4 BIT            [% RESET %]';
+        $w = 26;
+    }
+    if ($params-> {'24 BIT'}) {
+        $string .= '[% BRIGHT YELLOW %]24 BIT[% RESET %]';
+        $w = 59;
+    }
+    $string .= "\n" . '━' x $w . "\n";
 
     # Define subroutine references for color blocks
     my %actions = (
@@ -196,9 +196,9 @@ sub ansi_colors {
     foreach my $color (qw(RED YELLOW GREEN CYAN BLUE MAGENTA WHITE BLACK)) {
         if ($color eq 'BLACK') {
             $string .= sprintf('%s %-7s %s', "\[\% WHITE \%\]\[\% B_$color \%\]", $color, $off) . ' ';
-			if ($params->{'4 BIT'}) {
-				$string .= sprintf('%s %-14s %s', "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
-			}
+            if ($params->{'4 BIT'}) {
+                $string .= sprintf('%s %-14s %s', "\[\% WHITE \%\]\[\% B_BRIGHT $color \%\]", "BRIGHT $color", $off) . ' ';
+            }
             $string .= "$off\n";
         } else {
             if ($params->{'4 BIT'}) {
@@ -458,7 +458,7 @@ sub ansi_box {
     # Build the box text efficiently
     my $text = '';
 
-	my $csi = "\e[";
+    my $csi = "\e[";
     # Top line
     $text .= $csi . $y .';' . $x . 'H' . $color . $tl . ($top x ($w - 2)) . $tr . '[% RESET %]';
 
@@ -1469,11 +1469,11 @@ sub _global_ansi_meta {    # prefills the hash cache
     # Generate background colors from foreground
     foreach my $name (keys %{ $tmp->{'foreground'} }) {
         $tmp->{'background'}->{"B_$name"}->{'desc'} = $tmp->{'foreground'}->{$name}->{'desc'};
-		if ($name =~ /BRIGHT/) {
-			$tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '10' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
-		} else {
-			$tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
-		}
+        if ($name =~ /BRIGHT/) {
+            $tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '10' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
+        } else {
+            $tmp->{'background'}->{"B_$name"}->{'out'}  = $csi . '4' . substr($tmp->{'foreground'}->{$name}->{'out'}, 3);
+        }
     }
 
     # Alternate Fonts
