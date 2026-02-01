@@ -100,6 +100,20 @@ WriteMakefile(
     clean => {
         FILES => '*gz *bak *old',
     },
+    META_MERGE => {
+      'meta-spec' => { version => 2 },
+      resources => {
+        repository => {
+             type => 'git',
+             url  => 'https://github.com/richcsst/ansi-encode.git',
+             web  => 'https://github.com/richcsst/ansi-encode',
+        },
+        bugtracker => {
+             web => 'https://github.com/richcsst/ansi-encode/issues'
+        },
+        homepage   => 'https://github.com/richcsst/ansi-encode',
+      },
+    },
 );
 
 print colored(['blue on_blue'], $line . "\e[0K"), "\n";
