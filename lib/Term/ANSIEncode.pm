@@ -117,12 +117,12 @@ sub ansi_detect_capability {
     if ($^O eq 'MSWin32') {
         # Windows-specific detection
         # Check for Windows 10 virtual terminal and others (like ConEmu)
-        if (exists $ENV{'WT_SESSION'} || $ENV{'ConEmuANSI'} || (exists $ENV{'OS'} && $ENV{'OS'} eq 'Windows_NT')) {
+        if (exists($ENV{'WT_SESSION'}) || $ENV{'ConEmuANSI'} || (exists $ENV{'OS'} && $ENV{'OS'} eq 'Windows_NT')) {
             $caps = {
                 '3 BIT'  => TRUE,
                 '4 BIT'  => TRUE,
                 '8 BIT'  => TRUE,
-                '24 BIT' => (exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/) ? TRUE : FALSE,
+                '24 BIT' => ((exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/) || (exists($ENV{'TERM_PROGRAM'}) && $ENV{'TERM_PROGRAM'} =~ /WarpTerminal/)) ? TRUE : FALSE,
             };
         }
     } else {
