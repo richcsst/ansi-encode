@@ -135,7 +135,7 @@ VERSION
 }
 
 sub expand_tokens {
-	my $self = shift;
+	my $self  = shift;
 
 	my $bar = '[% BRIGHT GREEN %]│[% RESET %]';
     my $to  = <<'TOKENS';
