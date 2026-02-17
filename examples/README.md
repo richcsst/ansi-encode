@@ -7,3 +7,23 @@ Example:
 ```
 ansi-encode examples/use.ans
 ```
+## IBM Logo
+
+## MS-DOS Logo
+
+## Sinclair Logo
+
+## Timex/Sinclair Logo
+
+## Timex/Sinclair 1000 Logo
+
+## Timex/Sinclair 1500 Logo
+
+## Timex/Sinclair 2048 Logo
+
+## Timex/Sinclair 2068 Logo
+
+## USA In Stars and Stripes Colored Font
+
+## Windows Logo
+
