@@ -30,7 +30,9 @@ GitHub will ALWAYS have the latest version and CPAN is not guaranteed to have th
 ```
 ansi-encode [options] [File or Search]
 ```
-It is HIGHLY encouraged for your terminal be set as UTF-8 for the advanced features in this module/utility.  It is also encouraged that you use a font having the graphics characters for frames and other features.
+It is **HIGHLY** encouraged for your terminal be set as **UTF-8** for the advanced features in this module/utility.  It is also encouraged that you use a font having the graphics characters for frames and other features.
+
+For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.
 
 ## Options
 
@@ -258,5 +260,6 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | **Token** | **Description** |
 | --- | --- |
 | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
+
 
 
