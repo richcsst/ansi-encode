@@ -106,7 +106,7 @@ I suggest "**SourceCodePro-Powerline-Awesome**" when selecting a font
 
 Tokens have to be encapsulated inside [% token %] (the token must be surrounded by at least one space on each side.  Colors beyond the standard 8 will require a terminal that supports 256 colors.
 
-NOTE:  Use "less -r" to view ANSI in "less"
+NOTE:  Use "less -r" to view ANSI in "less".  This list is only a partial list
 
 ### GENERAL
 
@@ -230,6 +230,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
+
 
 
 
