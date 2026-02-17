@@ -108,21 +108,17 @@ Tokens have to be encapsulated inside [% token %] (the token must be surrounded 
 
 NOTE:  Use "less -r" to view ANSI in "less".  This list is only a partial list
 
-### GENERAL
+### CLEAR
 
 Please use the "-t" option to see all of the tokens.  This is only a partial list.
 
 | **Token** | **Description** |
 | --- | --- |
-| RETURN | ASCII RETURN (13) |
-| LINEFEED | ASCII LINEFEED (10) |
-| NEWLINE | RETURN + LINEFEED (13 + 10) |
 | CLEAR | Places cursor at top left, screen cleared |
 | CLS | Same as CLEAR |
 | CLEAR LINE | Clear to the end of line |
 | CLEAR DOWN | Clear down from current cursor position |
 | CLEAR UP | Clear up from current cursor position |
-| RESET | Reset all colors and attributes |
 
 ### CURSOR
 
@@ -149,6 +145,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | REVERSE | Reverse |
 | CROSSED OUT | Crossed out (not all terminals support this) |
 | DEFAULT FONT | Default font |
+| RESET | Reset all colors and attributes |
 
 ### COLORS
 
@@ -182,6 +179,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | BRIGHT WHITE | Bright white |
 | COLOR 16 - COLOR 231 | Term256 colors (use -c to see these) |
 | GREY 0 - GREY 23  | Levels of grey |
+| RGB red,green,blue | 24 bit colors |
 
 #### BACKGROUND
 
@@ -209,6 +207,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | B_BRIGHT WHITE | Bright white |
 | B_COLOR 16 - B_COLOR 231 | Term256 background colors (use -c to see these) |
 | B_GREY 0 - B_GREY 23 | Levels of grey |
+} B_RGB red,green,blue | 24 bit background colors |
 
 ### HORIZONTAL RULES
 
@@ -230,7 +229,3 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | HORIZONTAL RULE BRIGHT MAGENTA | A solid line of bright magenta background |
 | HORIZONTAL RULE BRIGHT CYAN  | A solid line of bright cyan background |
 | HORIZONTAL RULE BRIGHT WHITE | A solid line of bright white background |
-
-
-
-
