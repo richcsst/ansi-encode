@@ -108,9 +108,9 @@ I suggest "**SourceCodePro-Powerline-Awesome**" when selecting a font
 
 ## Tokens
 
-Tokens have to be encapsulated inside [% token %] (the token must be surrounded by at least one space on each side.  Colors beyond the standard 8 will require a terminal that supports 256 colors.
+Tokens have to be encapsulated inside [% token %] (the token must be surrounded by at least one space on each side.  Colors beyond the standard 8 will require a terminal that supports 16, 256 and/or 16.7 million colors.  This list is only a partial list of tokens.
 
-NOTE:  Use "less -r" to view ANSI in "less".  This list is only a partial list
+NOTE:  Use "less -r" to view ANSI in "less".
 
 ### CLEAR
 
@@ -260,6 +260,7 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | **Token** | **Description** |
 | --- | --- |
 | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
+
 
 
 
