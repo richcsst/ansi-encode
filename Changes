@@ -360,3 +360,10 @@
 1.88    Feb 12, 2026
 
         Removed unneeded prerequisites from install process.
+
+1.89    Fed 17, 2026
+
+        Example ANS files added to the "examples" directory.  Some will
+		require a wide terminal.
+
+        New tokens added

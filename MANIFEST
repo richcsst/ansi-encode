@@ -5,6 +5,17 @@ images/colors.png
 images/frames.png
 images/rules.png
 images/version.png
+examples/ibm.ans
+examples/ms-dos.ans
+examples/sinclair.ans
+examples/timex-sinclair-1000.ans
+examples/timex-sinclair-1500.ans
+examples/timex-sinclair-2048.ans
+examples/timex-sinclair-2068.ans
+examples/timex-sinclair.ans
+examples/usa.ans
+examples/windows.ans
+examples/README.md
 AUTHOR.md
 bin/ansi-encode
 Changes
