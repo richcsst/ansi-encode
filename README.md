@@ -6,6 +6,8 @@
 
 Markup text to ANSI encoder.  Very handy for making server identification screens.
 
+GitHub will ALWAYS have the latest version and CPAN is not guaranteed to have the latest.
+
 ## Usage
 
 ### To use the Perl module:
@@ -256,4 +258,5 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 | **Token** | **Description** |
 | --- | --- |
 | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
+
 
