@@ -268,4 +268,5 @@ Please use the "-t" option to see all of the tokens.  This is only a partial lis
 * When making a tokenized file for output, first prepare what you want to show in just black and white text.
 * Make two copies of the output in the file and only work on the last copy for adding color and attributes, referring to the original above for reference.
 * Have a second terminal window open to run ```ansi-encode [filename]``` to quickly see what the output looks like, without having to exit your editor.
-* Remove the original copy, once everything looks great, the you are finished.
+* Remove the original copy, once everything looks great, then you are finished.
+
