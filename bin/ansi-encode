@@ -694,4 +694,12 @@ This program is free software; you can redistribute it and/or modify it under th
 
 L<https://perlfoundation.org/artistic-license-20.html>
 
+=head1 GITHUB
+
+=over 4
+
+=item https://github.com/richcsst/ansi-encode
+
+=back
+
 =cut
