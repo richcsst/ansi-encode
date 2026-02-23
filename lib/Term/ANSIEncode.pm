@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.90;
+package Term::ANSIEncode 1.91;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '1.90';
+our $VERSION = '1.91';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -248,7 +248,7 @@ TOKENS
                 }
                 foreach my $name (@names) {
                     if ($self->_type($self->{'ansi_meta'}->{'foreground'}->{$name}->{'out'}) eq $code) {
-                        if ($name =~ /^(DEFAULT|NAVY|COLOR 16|COLOR 17|BLACK|MEDIUM BLUE|ARMY GREEN|BISTRE|BULGARIAN ROSE|CHARCOAL|COOL BLACK|DARK BLUE|DARK GREEN|DARK JUNGLE GREEN|DARK MIDNIGHT BLUE|DUKE BLUE|EGYPTIAN BLUE|MEDIUM JUNGLE GREEN|MIDNIGHT BLUE|NAVY BLUE|ONYX|OXFORD BLUE|PHTHALO BLUE|PHTHALO GREEN|PRUSSIAN BLUE|SAINT PATRICK BLUE|SEAL BROWN|SMOKEY BLACK|ULTRAMARINE|ZINNWALDITE BROWN)$/) {
+                        if ($name =~ /^(DEFAULT|NAVY|GRAY [0-9]|COLOR 1[6-8]|BLACK|MEDIUM BLUE|ARMY GREEN|BISTRE|BULGARIAN ROSE|CHARCOAL|COOL BLACK|DARK BLUE|DARK GREEN|DARK JUNGLE GREEN|DARK MIDNIGHT BLUE|DUKE BLUE|EGYPTIAN BLUE|MEDIUM JUNGLE GREEN|MIDNIGHT BLUE|NAVY BLUE|ONYX|OXFORD BLUE|PHTHALO BLUE|PHTHALO GREEN|PRUSSIAN BLUE|SAINT PATRICK BLUE|SEAL BROWN|SMOKEY BLACK|ULTRAMARINE|ZINNWALDITE BROWN)$/) {
                             $to .= $bar . sprintf(' %-29s ',$name) . '[% RESET %]' . $bar . '[% B_' . $name . ' %]    [% RESET %]│' . sprintf(' %-38s ',$self->ansi_description('foreground',$name)) . "$bar\n";
                         } else {
                             $to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-29s ',$name) . '[% RESET %]' . $bar . '[% B_' . $name . ' %]    [% RESET %]' . $bar . sprintf(' %-38s ',$self->ansi_description('foreground',$name)) . "$bar\n";
@@ -334,7 +334,7 @@ sub _add_row {
 
     my $text = '';
     my $format  = Text::Format->new(
-		'columns'     => 37,
+		'columns'     => 38,
 		'tabstop'     => 4,
 		'extraSpace'  => TRUE,
 		'firstIndent' => 0,

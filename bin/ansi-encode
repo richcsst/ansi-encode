@@ -218,7 +218,7 @@ FRAMES
     if (defined($search) && $search ne '') {
         $temp .= charnames::string_vianame($search);
     } else {
-        $temp .= "\nAssembling character dump...";
+        print "\nAssembling character dump...";
         my $start = $ansi->{'start'};
         foreach my $code (@list) {
             my $name = charnames::viacode($code);
@@ -227,7 +227,7 @@ FRAMES
             }
         }
     }
-	$ansi->ansi_output($temp . "\n");
+	$ansi->ansi_output("$temp\n");
 } elsif ($unicode) {
     print "\nAssembling unicode glyphs...";
     my $search = (scalar(@ARGV)) ? uc(pop(@ARGV)) : undef;
