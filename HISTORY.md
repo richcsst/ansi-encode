@@ -2,7 +2,7 @@
 
 # THE HISTORY OF (Term::)ANSIEncode
 
-This utility actually came from a called "BBSUniversal".  It was a perl based modern BBS program that had various screen output formats like ANSI, PETSCII and ATASCII.  It was a fully multithreaded application that acted like a server for multiple network connections.
+This utility actually came from a project called "BBSUniversal".  It was a perl based modern BBS program that had various screen output formats like ANSI, PETSCII and ATASCII.  It was a fully multithreaded application that acted like a server for multiple network connections.
 
 It had a tokenized markup language for ANSI, PETSCII and ATASCII and decided why not incorporate the ANSI driver as a stand-alone utility?  So this is the result of that idea.  (Term::)ANSIEncode is the result.
 
