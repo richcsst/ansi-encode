@@ -29,6 +29,7 @@ examples/windows.ans
 examples/README.md
 AUTHOR.md
 bin/ansi-encode
+bin/README.md
 Changes
 HISTORY.md
 ignore.txt
