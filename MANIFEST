@@ -27,6 +27,7 @@ examples/timex-sinclair.ans
 examples/usa.ans
 examples/windows.ans
 examples/README.md
+font-installer/README.md
 AUTHOR.md
 bin/ansi-encode
 bin/README.md
