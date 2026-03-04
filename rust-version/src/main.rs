@@ -1,23 +1,66 @@
-// main.rs - Rust implementation of ansi-encode
+use clap::{Parser, ValueEnum};
 
-// Use necessary crates
-use clap::{Arg, App};
-use regex::Regex;
-use once_cell::sync::Lazy;
-use unicode_names2::get;
-use anyhow::{Result, Context};
+#[derive(Parser)]
+#[clap(author, version, about, long_about=None)]
+struct Cli {
+    /// Print version information
+    #[clap(short, long)]
+    version: bool,
 
-fn main() -> Result<()> {
-    let matches = App::new("ansi-encode")
-        .arg(Arg::with_name("input")
-            .help("Input string to encode")
-            .required(true)
-            .index(1))
-        .get_matches();
+    /// Print help information
+    #[clap(short, long)]
+    help: bool,
 
-    let input = matches.value_of("input").context("No input string supplied")?;
+    /// Token options
+    #[clap(long)]
+    tokens: Option<String>,
 
-    // TODO: Implement the ANSI encoding logic here.
+    /// Raw token options
+    #[clap(long)]
+    rawtokens: Option<String>,
 
-    Ok(())
+    /// Symbol options
+    #[clap(long)]
+    symbols: Option<String>,
+
+    /// Dump options
+    #[clap(long)]
+    dump: bool,
+
+    /// Unicode options
+    #[clap(long)]
+    unicode: bool,
+
+    /// Color options
+    #[clap(long)]
+    colors: bool,
+
+    /// Frame options
+    #[clap(long)]
+    frames: bool,
+
+    /// Horizontal rule options
+    #[clap(long)]
+    horizontal_rules: bool,
+
+    /// ANSI modes
+    #[clap(long)]
+    ansi_modes: Option<String>,
+
+    /// Baud rate
+    #[clap(long, value_parser)]
+    baud: Option<u32>,
+
+    /// Terminal width
+    #[clap(long, value_parser)]
+    width: Option<u32>,
+
+    /// Input file
+    #[clap(value_parser)]
+    file: Option<String>,
+}
+
+fn main() {
+    let cli = Cli::parse();
+    // TODO: Implement the CLI functionality here
 }
