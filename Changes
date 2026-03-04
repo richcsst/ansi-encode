@@ -384,3 +384,7 @@
 1.93    Mar 03, 2026
 
         Added more tokens and macro tokens.
+
+1.94    Mar 03, 2026
+
+        Added the extra tokens to the -t option

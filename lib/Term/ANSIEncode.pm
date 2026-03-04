@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.93;
+package Term::ANSIEncode 1.94;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '1.93';
+our $VERSION = '1.94';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -289,6 +289,9 @@ TOKENS
         $to .= "$bar " . sprintf('%34s','') . " $bar " . sprintf('%-38s',       'PARALLELOGRAM') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s',' ') . " $bar " . sprintf('%-38s', '') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s','ENDBOX') . " $bar " . sprintf('%-38s', 'Ends the BOX token function') . " $bar\n";
+        $to .= '[% BRIGHT CYAN %]│ ' . '─' x 34 . " $bar [% BRIGHT CYAN %]" . '─' x 38 . ' │[% RESET %]' . "\n";
+		$to .= "$bar " . sprintf('%-34s','SPACES count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of spaces') . " $bar\n";
+		$to .= "$bar " . sprintf('%-34s','CHAR character,count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of "character"') . " $bar\n";
     }
     $to .= '[% BRIGHT GREEN %]╰' . '─' x 36 . '┴' . '─' x 40 . '╯[% RESET %]' . "\n";
 
@@ -298,6 +301,9 @@ TOKENS
 
         $new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
         $to =~ s/ color     /$new/gs;
+
+		$new = '[% FAINT %][% ITALIC %]character[% RESET %],[% FAINT %][% ITALIC %]count[% RESET %]';
+        $to =~ s/character,count/$new/gs;
 
         $new = '[% FAINT %][% ITALIC %] count     [% RESET %]';
         $to =~ s/ count     /$new/gs;
