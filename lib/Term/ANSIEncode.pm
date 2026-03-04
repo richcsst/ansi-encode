@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.92;
+package Term::ANSIEncode 1.93;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '1.92';
+our $VERSION = '1.93';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -768,6 +768,8 @@ sub _global_ansi_meta {    # prefills the hash cache
             'SS2' => { 'out' => $esc . 'N',  'desc' => 'Single Shift 2' },
             'SS3' => { 'out' => $esc . 'O',  'desc' => 'Single Shift 3' },
             'ST'  => { 'out' => $esc . "\\", 'desc' => 'String Terminator' },
+#           SPACES count
+#           CHAR count
         },
 
         'clear' => {
@@ -1983,6 +1985,20 @@ Begins text block to be word-wrapped and justified
 =item ENDJUSTIFIED
 
 Ends text block to be word-wrapped and justified
+
+=back
+
+=head2 MACROS
+
+=over 4
+
+=item SPACES count
+
+Output "count" number of spaces
+
+=item CHAR character,count
+
+Output "count" number of "character".  Only ONE character is allowed.
 
 =back
 
