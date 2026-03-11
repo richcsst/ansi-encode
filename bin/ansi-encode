@@ -367,7 +367,7 @@ sub help_text {
 ║         Show supported ANSI color modes                                   ║
 ║                                                                           ║
 ║     --[% BRIGHT CYAN %]baud[% RESET %]=speed                                                          ║
-║         "speed" can be any baud rate.                                     ║
+║         "speed" can be any baud rate. Default is full speed.              ║
 ║                                                                           ║
 ║     -[% BRIGHT CYAN %]c[% RESET %] or --[% BRIGHT CYAN %]colors[% RESET %]                                                        ║
 ║         Show available colors                                             ║

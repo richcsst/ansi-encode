@@ -8,6 +8,8 @@ Markup text to ANSI encoder.  Very handy for making server identification screen
 
 GitHub will ALWAYS have the latest version and CPAN is not guaranteed to have the latest.
 
+You will get best results if you use a font with all of the UTF-8 characters.  See the **Fonts** section below.
+
 ## Usage
 
 ### To use the Perl module:
@@ -34,7 +36,7 @@ It is **HIGHLY** encouraged for your terminal be set as **UTF-8** for the advanc
 
 Excellent True-Type fonts for use:  http://github.com/gabrielelana/awesome-terminal-fonts (Listed as "Source Code" fonts)
 
-For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.
+For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.  The third party AI **Warp Terminal** supports all features.
 
 ## Options
 
