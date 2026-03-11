@@ -108,6 +108,8 @@ Some fonts do not support all of the Unicode characters.  The "examples" directo
 
 * http://github.com/gabrielelana/awesome-terminal-fonts
 
+Use the ```font-installer/install-awesome-fonts.sh``` script to install the fonts without having to clone the above repository.
+
 I suggest "**SourceCodePro-Powerline-Awesome**" when selecting a font
 
 ## Tokens
