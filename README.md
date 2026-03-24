@@ -44,7 +44,7 @@ For Windows, this setting is in your "Region" setting.  Also note, Windows Termi
 
 ### -**a** or --**ansi-modes**
 
-Show aupported ANSI color modes
+Show aupported ANSI color modes.  Note, this is only for detection.  The other options may depend on the supported color support.  However, the tokens will always send output assuming the mode is supported.
 
 ![Support Color Modes](images/supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
 
