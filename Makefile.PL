@@ -90,7 +90,7 @@ WriteMakefile(
         'Getopt::Long'      => '0',
 		'Text::Format'      => '0',
     },
-    EXE_FILES => ['bin/ansi-encode'],
+    EXE_FILES => ['bin/ansiencode'],
     dist      => {
         COMPRESS => 'gzip -9f',
         SUFFIX   => 'gz',
