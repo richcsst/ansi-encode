@@ -1,4 +1,4 @@
-package Term::ANSIEncode 1.96;
+package Term::ANSIEncode 1.97;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '1.96';
+our $VERSION = '1.97';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -1669,6 +1669,8 @@ sub _global_ansi_meta {    # prefills the hash cache
 } ## end sub _global_ansi_meta
 
 1;
+
+=pod
 
 =encoding UTF-8
 
