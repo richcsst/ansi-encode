@@ -398,3 +398,8 @@
         MetaCPAN has this weird behavior using the bin/ansi-encode file for
 		the documentation.  Weird I made some changes to help minimize this
 		weirdness.
+
+1.96    Mar 25, 2026
+
+        Renamed the executable to "ansiencode" to get around the MetaCPAN
+		weirdness.
