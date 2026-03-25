@@ -6,8 +6,4 @@
 
 A binary for use with the Term::ANSIEncode
 
-For legacy compatability run the following:
-
-```bash
-sudo ln -s /usr/local/bin/ansiencode /usr/local/bin/ansi-encode
-```
+The "make install" portion of the installation will create a symlink to "ansiencode" called "ansi-encode" for compatibility.

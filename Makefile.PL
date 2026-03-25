@@ -125,26 +125,24 @@ sub get_version {
 	return($version);
 } ## end sub slurp_file
 
-package MY;
 
-sub postamble {
+###
+sub MY::postamble {
     return <<'MAKE_FRAG';
-	
-	# Run symlink creation after normal installation
-	install: install_symlink
-	  
-	install_symlink: pure_install
-	  $(NOECHO) $(ECHO) "Creating ansi-encode symlink (Unix-like only)"
-	  $(PERLRUN) -e "exit 0 if $$^O =~ /^(MSWin32|cygwin|dos|os2|VMS|MacOS|amigaos|mpeix)$$/; \
-                     my $$d='$(DESTINSTALLSCRIPT)'; \
-                     my $$link=\"$$d/ansi-encode\"; \
-                     unlink $$link; \
-                     symlink 'ansiencode', $$link or die \"symlink(ansiencode,$$link) failed: $$!\\n\";"
-  
-MAKE_FRAG
-  }
 
-package main;
+pure_install:: install_symlink
+
+install_symlink:
+	$(NOECHO) $(PERLRUN) -e "exit 0 if $$^O =~ /^(MSWin32|cygwin|dos|os2|VMS|MacOS|amigaos|mpeix)$$/; \
+                   unlink '$(DESTINSTALLSCRIPT)/ansi-encode'; \
+                   symlink 'ansiencode','$(DESTINSTALLSCRIPT)/ansi-encode' \
+                     or die qq(symlink failed\\n); \
+                   print qq(symlink ansiencode to ansi-encode created\\n);"
+
+MAKE_FRAG
+}
+###
+
 
 __END__
   
