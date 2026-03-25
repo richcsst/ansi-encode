@@ -28,7 +28,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 | **Name** | **Description** |
 | --- | --- |
 | **new** | Instantiate the object.  All parameters are ignored. |
-| **ansi_colors** | It requires one parameter, a reference to a hash indicating color format support is returned (_see code below_) |
+| **ansi_colors** | It returns one hash reference to a hash indicating color format support is returned (_see code below_) |
 
 ```
      # True = 1 amd 0 = False
