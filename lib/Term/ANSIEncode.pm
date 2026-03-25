@@ -1866,7 +1866,7 @@ Sets colors to default
 
 =head2 FOREGROUND
 
-There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' and 'truecolor' features.  You can used the '-t' option (in the executable "ansi-encode" file) for all of the color tokens available or use the 'RGB' token for access to 16 million colors.
+There are many more foreground colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' and 'truecolor' features.  You can used the '-t' option (in the executable "ansiencode" file) for all of the color tokens available or use the 'RGB' token for access to 16 million colors.
 
 =over 4
 
