@@ -388,7 +388,7 @@ __END__
 
 =head1 NAME
 
-ANSI Encode
+ANSIEncode
 
 =head1 SYNOPSIS
 
