@@ -30,7 +30,7 @@ You will get best results if you use a font with all of the UTF-8 characters.  S
 ```
 ### To use the executable, run:
 ```
-ansi-encode [options] [File or Search]
+ansiencode [options] [File or Search]
 ```
 It is **HIGHLY** encouraged for your terminal be set as **UTF-8** for the advanced features in this module/utility.  It is also encouraged that you use a font having the graphics characters for frames and other features.
 
