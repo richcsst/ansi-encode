@@ -34,7 +34,7 @@ You will get best results if you use a font with all of the UTF-8 characters.  S
 
 ### To use the executable, run:
 
-```
+```bash
 ansiencode [options] [File or Search]
 ```
 
