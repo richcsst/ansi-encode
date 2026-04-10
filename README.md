@@ -118,9 +118,9 @@ Tokens have to be encapsulated inside [% token %] (the token must be surrounded 
 
 NOTE:  Use "less -r" to view ANSI in "less".
 
-### CLEAR
+* *Please use the "-t" option to see all of the tokens.  This is only a partial list.*
 
-Please use the "-t" option to see all of the tokens.  This is only a partial list.
+### CLEAR
 
 | **Token** | **Description** |
 | --- | --- |
