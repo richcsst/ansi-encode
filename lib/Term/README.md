@@ -9,7 +9,8 @@ Term::ANSIEncode
 A markup language to generate basic ANSI text.  A terminal that supports UTF-8 is required if you wish to have special characters, both graphical and international.
 
 ## USAGE
-```
+
+```perl
  my $ansi = Term::ANSIEncode->new;
 
  my $string = 'CLSSome markup encoded string';
@@ -30,7 +31,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 | **new** | Instantiate the object.  All parameters are ignored. |
 | **ansi_colors** | It returns one hash reference to a hash indicating color format support is returned (_see code below_) |
 
-```
+```perl
      # True = 1 amd 0 = False
      {
          '3 BIT'  => 0, # True for 8 color support (it should be the bare minimum supported)
