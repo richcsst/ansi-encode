@@ -106,13 +106,13 @@ Show version and licensing info.
 
 Richard Kelsch
 
-* **GitHub** - https://github.com/richcsst
+* **GitHub** - [https://github.com/richcsst](https://github.com/richcsst)
 
 ## Fonts
 
 Some fonts do not support all of the Unicode characters.  The "examples" directory has an install script to install the "Awesome" fonts that look great and have all Unicode symbols.  They look great, are easy to read and have a plethora of support for the graphics and unicode characters.  They are TrueType fonts and can be installed on most systems and terminals.
 
-* http://github.com/gabrielelana/awesome-terminal-fonts
+* [http://github.com/gabrielelana/awesome-terminal-fonts](http://github.com/gabrielelana/awesome-terminal-fonts)
 
 Use the ```font-installer/install-awesome-fonts.sh``` script to install the fonts without having to clone the above repository.
 
