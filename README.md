@@ -16,6 +16,8 @@ You will get best results if you use a font with all of the UTF-8 characters.  S
 ```
  # Read the module's POD manual for more information, via "man" or "perldoc"
 
+ use Term::ANSIEncode;
+
  my $ansi = Term::ANSIEncode->new;
 
  my $string = '[% CLS %]Some markup encoded string';
