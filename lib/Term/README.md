@@ -11,6 +11,8 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
 ## USAGE
 
 ```perl
+ use Term::ANSIEncode
+
  my $ansi = Term::ANSIEncode->new;
 
  my $string = 'CLSSome markup encoded string';
@@ -189,4 +191,4 @@ Perl Artistic License
 
 This program is free software; you can redistribute it and/or modify it under the terms of the the Artistic License (2.0). You may obtain a copy of the full license at;
 
-http://www.perlfoundation.org/artistic_license_2_0
+[http://www.perlfoundation.org/artistic_license_2_0](http://www.perlfoundation.org/artistic_license_2_0)
