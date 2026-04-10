@@ -1,11 +1,9 @@
-![ANSIEncode Logo](images/ANSI-Encode.png?raw=true "ANSIEncode Logo Title Text 1")
-
 # Richard Kelsch
 
-![Author Richard Kelsch](images/author.jpg?raw=true "Author Richard Kelsch")
+![Author](pics/SuperMe.jpg?raw=true "Richard Kelsch")
 
-I have been a Perl coder for nearly four decades.  I specialize in code optimization and multi-threading and do it quite well.
+![Divider](pics/pink.jpg?raw=true "Divider")
 
-I have switched jobs and am now a Linux System Administrator, but I still code in Perl as a hobby.
+I am a Perl Programmer and Linux System Administrator by profession.  I specialize in code optimization and multi-threading.  I have been coding professionally for nearly 4 decades.  I am a [published author](pics/TinyPrint.jpg "ST Format Cover Disk #65 Dec 1994 Page 9") as well.
 
 * **GitHub** - https://github.com/richcsst
