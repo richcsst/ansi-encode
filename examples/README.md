@@ -6,7 +6,7 @@ These files can be decoded by the ```ansi-encode``` binary to see their output. 
 
 Example:
 
-```
+```bash
 ansiencode examples/usa.ans
 ```
 
