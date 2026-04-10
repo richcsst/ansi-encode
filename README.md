@@ -279,3 +279,8 @@ NOTE:  Use "less -r" to view ANSI in "less".
 Copyright © 2023-2026 Richard Kelsch
 
 This program is free software; you can redistribute it and/or modify it under the terms of either: the GNU General Public License as published by the Free Software Foundation; or the Artistic License.
+
+This program is free software; you can redistribute it and/or modify it under the terms of either: the GNU General Public License as published by the Free Software Foundation; or the Artistic License.
+
+See [http://dev.perl.org/licenses/](http://dev.perl.org/licenses/) for more information.
+
