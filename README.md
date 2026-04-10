@@ -13,7 +13,8 @@ You will get best results if you use a font with all of the UTF-8 characters.  S
 ## Usage
 
 ### To use the Perl module:
-```
+
+```perl
  # Read the module's POD manual for more information, via "man" or "perldoc"
 
  use Term::ANSIEncode;
@@ -30,10 +31,13 @@ You will get best results if you use a font with all of the UTF-8 characters.  S
 
  $ansi->ansi_output($string);
 ```
+
 ### To use the executable, run:
+
 ```
 ansiencode [options] [File or Search]
 ```
+
 It is **HIGHLY** encouraged for your terminal be set as **UTF-8** for the advanced features in this module/utility.  It is also encouraged that you use a font having the graphics characters for frames and other features.
 
 Excellent True-Type fonts for use:  http://github.com/gabrielelana/awesome-terminal-fonts (Listed as "Source Code" fonts)
