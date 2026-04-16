@@ -2,8 +2,10 @@
 
 ![Term::ANSIEncode Logo](../images/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
+![Divider](../images/pink.jpg?raw=true "Divider")
+
 ## DESCRIPTION
 
-A binary that will install the AWESOME fonts for use with Wayland/X-Windows based terminals.
+   A binary that will install the AWESOME fonts for use with Wayland/X-Windows based terminals.
 
-The fonts are TrueType and can also work on Mac and Windows.
+   The fonts are TrueType and can also work on Mac and Windows.
