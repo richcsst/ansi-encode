@@ -2,6 +2,8 @@
 
 ![Term::ANSIEncode Logo](images/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
+![Divider](images/pink.jpg?raw=true "Divider")
+
 ## Description
 
    Markup text to ANSI encoder.  Very handy for making server identification screens.
@@ -9,6 +11,8 @@
    GitHub will ALWAYS have the latest version and CPAN is not guaranteed to have the latest.
 
    You will get best results if you use a font with all of the UTF-8 characters.  See the **Fonts** section below.
+
+![Divider](images/pink.jpg?raw=true "Divider")
 
 ## Usage
 
@@ -42,7 +46,9 @@
 
    Excellent True-Type fonts for use:  http://github.com/gabrielelana/awesome-terminal-fonts (Listed as "Source Code" fonts)
 
-    For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.  The third party AI **Warp Terminal** supports all features.
+   For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.  The third party AI **Warp Terminal** supports all features.
+
+![Divider](images/pink.jpg?raw=true "Divider")
 
 ## Options
 
@@ -102,11 +108,15 @@
 
 ![Version](images/version.png?raw=true "Term::ANSIEncode Version")
 
+![Divider](images/pink.jpg?raw=true "Divider")
+
 ## Author
 
    Richard Kelsch
 
    * **GitHub** - [https://github.com/richcsst](https://github.com/richcsst)
+
+![Divider](images/pink.jpg?raw=true "Divider")
 
 ## Fonts
 
@@ -117,6 +127,8 @@
    Use the ```font-installer/install-awesome-fonts.sh``` script to install the fonts without having to clone the above repository.
 
    I suggest "**SourceCodePro-Powerline-Awesome**" when selecting a font
+
+![Divider](images/pink.jpg?raw=true "Divider")
 
 ## Tokens
 
@@ -273,12 +285,16 @@
    | --- | --- |
    | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
 
+![Divider](images/pink.jpg?raw=true "Divider")
+
 ## SUGGESTIONS
 
    * When making a tokenized file for output, first prepare what you want to show in just black and white text.
    * Make two copies of the output in the file and only work on the last copy for adding color and attributes, referring to the original above for reference.
    * Have a second terminal window open to run ```ansiencode [filename]``` to quickly see what the output looks like, without having to exit your editor.
    * Remove the original copy, once everything looks great, then you are finished.
+
+![Divider](images/pink.jpg?raw=true "Divider")
 
 ## LICENSE AND COPYRIGHT
 
@@ -288,4 +304,4 @@
 
    This program is free software; you can redistribute it and/or modify it under the terms of either: the GNU General Public License as published by the Free Software Foundation; or the Artistic License.
 
-See [http://dev.perl.org/licenses/](http://dev.perl.org/licenses/) for more information.
+   See [http://dev.perl.org/licenses/](http://dev.perl.org/licenses/) for more information.
