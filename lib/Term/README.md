@@ -1,12 +1,16 @@
-## NAME
+# NAME
 
 Term::ANSIEncode
 
 ![Term::ANSIEncode](../../images/ANSI-Encode.png?raw-true "Term::ANSIEncode graphic")
 
+![Divider](../../images/pink.jpg?raw=true "Divider")
+
 ## SYNOPSIS
 
 A markup language to generate basic ANSI text.  A terminal that supports UTF-8 is required if you wish to have special characters, both graphical and international.
+
+![Divider](../../images/pink.jpg?raw=true "Divider")
 
 ## USAGE
 
@@ -26,16 +30,18 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
  $ansi->ansi_output($string);
 ```
 
+![Divider](../../images/pink.jpg?raw=true "Divider")
+
 ## METHODS
 
-| **Name** | **Description** |
-| --- | --- |
-| **new** | Instantiate the object.  All parameters are ignored. |
-| **ansi_colors** | It returns one hash reference to a hash indicating color format support is returned (_see code below_) |
+   | **Name** | **Description** |
+   | --- | --- |
+   | **new** | Instantiate the object.  All parameters are ignored. |
+   | **ansi_colors** | It returns one hash reference to a hash indicating color format support is returned (_see code below_) |
 
-```perl
-     # True = 1 amd 0 = False
-     {
+   ```perl
+   # True = 1 amd 0 = False
+      {
          '3 BIT'  => 0, # True for 8 color support (it should be the bare minimum supported)
          '4 BIT'  => 0, # True for bright color support.
          '8 BIT'  => 0, # True for 256 color support (Windows 10+) always
@@ -45,11 +51,13 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
                         # (yet) on Windows.  The Linux environment variable
                         # COLORTERM will ber set to "truecolor" for support.
      }
-```
+   ```
+
+![Divider](../../images/pink.jpg?raw=true "Divider")
 
 ## TOKENS
 
-### GENERAL
+   ### GENERAL
 
 | **Token** | **Description** |
 | --- | --- |
@@ -172,23 +180,27 @@ These tokens have an end token where text to be wrapped have text between the to
 | WRAP | ENDWRAP | Begins text block to be word-wrapped |
 | JUSTIFIED | ENDJUSTIFIED | Begins text block to be word-wrapped and justified |
 
+![Divider](../../images/pink.jpg?raw=true "Divider")
+
 ## MACRO TOKENS
 
-These tokens take a "count" value.
+   These tokens take a "count" value.
 
 | **Token** | **Parameters** | **Description** |
 | --- | --- | --- |
 | SPACES | count | Output spaces |
 | CHAR | character,count | Output a single character "count" number of times |
 
+![Divider](../../images/pink.jpg?raw=true "Divider")
+
 ## AUTHOR & COPYRIGHT
 
-Richard Kelsch
+   Richard Kelsch
 
-Copyright © 2025 Richard Kelsch
-All Rights Reserved
-Perl Artistic License
+   Copyright © 2025 Richard Kelsch
+   All Rights Reserved
+   Perl Artistic License
 
-This program is free software; you can redistribute it and/or modify it under the terms of the the Artistic License (2.0). You may obtain a copy of the full license at;
+   This program is free software; you can redistribute it and/or modify it under the terms of the the Artistic License (2.0). You may obtain a copy of the full license at;
 
 [http://www.perlfoundation.org/artistic_license_2_0](http://www.perlfoundation.org/artistic_license_2_0)
