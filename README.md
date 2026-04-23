@@ -8,7 +8,7 @@
 
    Markup text to ANSI encoder.  Very handy for making server identification screens.
 
-   GitHub will ALWAYS have the latest version and CPAN is not guaranteed to have the latest.
+   GitHub will *ALWAYS* have the latest version and CPAN is not guaranteed to have the latest.
 
    You will get best results if you use a font with all of the UTF-8 characters.  See the **Fonts** section below.
 
