@@ -66,7 +66,7 @@
 
    ### -**c** or --**colors**
 
-   Show color grid for use with "COLOR" and "GRAY" tokens.
+   Show color grid for use with "COLOR", "GRAY" and "RGB" tokens.
 
 ![Colors](images/colors.png?raw=true "Term::ANSIEncode Color Examples")
 
