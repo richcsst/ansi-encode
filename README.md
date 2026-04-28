@@ -60,9 +60,13 @@
 
 ![Support Color Modes](images/supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
 
+----
+
    ### --**baud**=speed
 
    Slow down output to the specific baud rate.  It can be any baud rate.  Full speed otherwise.
+
+----
 
    ### -**c** or --**colors**
 
@@ -70,9 +74,13 @@
 
 ![Colors](images/colors.png?raw=true "Term::ANSIEncode Color Examples")
 
+----
+
    ### -**d** or --**dump** [search]
 
    Shows the symbols only.
+
+----
 
    ### -**f** or --**frame**
 
@@ -80,27 +88,39 @@
 
 ![Frames](images/frames.png?raw=true "Term::ANSIEncode Frames Example")
 
+----
+
    ### -**h** or --**horizontal-rules**
 
    Show sample horizontal rules.
 
 ![Horizontal Rules](images/rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
 
+----
+
    ### -**r** or --**rawtokens**
 
    Raw dump of available tokens.
+
+----
 
    ### -**s** or --**symbols** [search]
 
    Show all of the symbol character tokens by name.  Use search to shorten the huge list.
 
+----
+
    ### -**t** or --**tokens**
 
    Show most used tokens.
 
+----
+
    ### -**u** or --**unicode** [search]
 
    Show all of the symbol character tokens by unicode.  Use search to shorten the huge list.
+
+----
 
    ### -**v** or --**version**
 
