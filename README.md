@@ -54,6 +54,8 @@
 
 ![Help Screen](images/help.png?raw=true "Term::ANSIEncode Help Screen")
 
+----
+
    ### -**a** or --**ansi-modes**
 
    Show aupported ANSI color modes.  Note, this is only for detection.  The other options may depend on the supported color support.  However, the tokens will always send output assuming the mode is supported.
