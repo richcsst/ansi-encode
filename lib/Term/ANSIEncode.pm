@@ -124,7 +124,7 @@ sub get_version {
 [% YELLOW %]║[% B_BLACK %]                                                                             [% YELLOW %]║[% B_BLACK %]
 [% YELLOW %]╠═════════════════════════════════════════════════════════════════════════════╣[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                           [% RESET %][% YELLOW %]║[% RESET %]
-[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                       Copyright ©[% GREEN %]2025 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                        [% RESET %][% YELLOW %]║[% RESET %]
+[% YELLOW %]║[% RESET %][% B_COLOR 17 %]                   Copyright ©[% GREEN %]2023 - 2026 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                     [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                            All Rights Reserved                              [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                         Perl Artistic License 2.0                           [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                               Version [% GREEN %]XXXX[% RESET %][% B_COLOR 17 %]                                  [% RESET %][% YELLOW %]║[% RESET %]
