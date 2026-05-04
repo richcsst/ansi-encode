@@ -2,15 +2,15 @@
 
 Term::ANSIEncode
 
-![Term::ANSIEncode](../../images/ANSI-Encode.png?raw-true "Term::ANSIEncode graphic")
+![Term::ANSIEncode](../../pics/ANSI-Encode.png?raw-true "Term::ANSIEncode graphic")
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## SYNOPSIS
 
 A markup language to generate basic ANSI text.  A terminal that supports UTF-8 is required if you wish to have special characters, both graphical and international.
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## USAGE
 
@@ -30,7 +30,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
  $ansi->ansi_output($string);
 ```
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## METHODS
 
@@ -53,7 +53,7 @@ A markup language to generate basic ANSI text.  A terminal that supports UTF-8 i
      }
    ```
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## TOKENS
 
@@ -180,7 +180,7 @@ These tokens have an end token where text to be wrapped have text between the to
 | WRAP | ENDWRAP | Begins text block to be word-wrapped |
 | JUSTIFIED | ENDJUSTIFIED | Begins text block to be word-wrapped and justified |
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## MACRO TOKENS
 
@@ -191,7 +191,7 @@ These tokens have an end token where text to be wrapped have text between the to
 | SPACES | count | Output spaces |
 | CHAR | character,count | Output a single character "count" number of times |
 
-![Divider](../../images/pink.jpg?raw=true "Divider")
+![Divider](../../pics/pink.jpg?raw=true "Divider")
 
 ## AUTHOR & COPYRIGHT
 

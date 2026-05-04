@@ -1,8 +1,8 @@
 # Term::ANSIEncode
 
-![Term::ANSIEncode Logo](../images/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
+![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
-![Divider](../images/pink.jpg?raw=true "Divider")
+![Divider](../pics/pink.jpg?raw=true "Divider")
 
 ## DESCRIPTION
 

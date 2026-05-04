@@ -1,12 +1,12 @@
 # Richard Kelsch
 
-![Author](images/author.jpg?raw=true "Richard Kelsch")
+![Author](pics/author.jpg?raw=true "Richard Kelsch")
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 I am a Perl Programmer and Linux System Administrator by profession.  I specialize in code optimization and multi-threading.  I have been coding professionally for nearly 4 decades.  I am a [published author](#achievements) as well.
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 # RESUME
 
@@ -185,7 +185,7 @@ I am a Perl Programmer and Linux System Administrator by profession.  I speciali
 
 ## ACHIEVEMENTS
 
-   * **Published Programmer** - *ST Format Magazine*.  [Issue #65, Page 9](images/TinyPrint.jpg "ST Format Cover Disk #65 Dec 1994 Page 9 - Tiny Print").
+   * **Published Programmer** - *ST Format Magazine*.  [Issue #65, Page 9](pics/TinyPrint.jpg "ST Format Cover Disk #65 Dec 1994 Page 9 - Tiny Print").
    * **CPAN Module Creator** -
        * **Graphics::Framebuffer** – A Perl graphics module for drawing graphics on Linux framebuffer devices.
        * **Debug::Easy** – A Perl module to include in code that allows for easy and switchable debugging output.  Can be left in production code.

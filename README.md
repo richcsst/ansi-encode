@@ -1,8 +1,8 @@
 # Term::ANSIEncode
 
-![Term::ANSIEncode Logo](images/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
+![Term::ANSIEncode Logo](pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Description
 
@@ -12,7 +12,7 @@
 
    You will get best results if you use a font with all of the UTF-8 characters.  See the **Fonts** section below.
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Usage
 
@@ -48,11 +48,11 @@
 
    For Windows, this setting is in your "Region" setting.  Also note, Windows Terminal/Command/PowerShell lacks some capabilities.  The third party AI **Warp Terminal** supports all features.
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Options
 
-![Help Screen](images/help.png?raw=true "Term::ANSIEncode Help Screen")
+![Help Screen](pics/help.png?raw=true "Term::ANSIEncode Help Screen")
 
 ----
 
@@ -60,7 +60,7 @@
 
    Show aupported ANSI color modes.  Note, this is only for detection.  The other options may depend on the supported color support.  However, the tokens will always send output assuming the mode is supported.
 
-![Support Color Modes](images/supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
+![Support Color Modes](pics/supported.png?raw=true "Term::ANSIEncode Supported Color Modes")
 
 ----
 
@@ -74,7 +74,7 @@
 
    Show color grid for use with "COLOR", "GRAY" and "RGB" tokens.
 
-![Colors](images/colors.png?raw=true "Term::ANSIEncode Color Examples")
+![Colors](pics/colors.png?raw=true "Term::ANSIEncode Color Examples")
 
 ----
 
@@ -88,7 +88,7 @@
 
    Show sample frame types.
 
-![Frames](images/frames.png?raw=true "Term::ANSIEncode Frames Example")
+![Frames](pics/frames.png?raw=true "Term::ANSIEncode Frames Example")
 
 ----
 
@@ -96,7 +96,7 @@
 
    Show sample horizontal rules.
 
-![Horizontal Rules](images/rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
+![Horizontal Rules](pics/rules.png?raw=true "Term::ANSIEncode Horizontal Rules Example")
 
 ----
 
@@ -128,9 +128,9 @@
 
    Show version and licensing info.
 
-![Version](images/version.png?raw=true "Term::ANSIEncode Version")
+![Version](pics/version.png?raw=true "Term::ANSIEncode Version")
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Author
 
@@ -138,7 +138,7 @@
 
    * **GitHub** - [https://github.com/richcsst](https://github.com/richcsst)
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Fonts
 
@@ -150,7 +150,7 @@
 
    I suggest "**SourceCodePro-Powerline-Awesome**" when selecting a font
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## Tokens
 
@@ -307,7 +307,7 @@
    | --- | --- |
    | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## SUGGESTIONS
 
@@ -316,7 +316,7 @@
    * Have a second terminal window open to run ```ansiencode [filename]``` to quickly see what the output looks like, without having to exit your editor.
    * Remove the original copy, once everything looks great, then you are finished.
 
-![Divider](images/pink.jpg?raw=true "Divider")
+![Divider](pics/pink.jpg?raw=true "Divider")
 
 ## LICENSE AND COPYRIGHT
 
