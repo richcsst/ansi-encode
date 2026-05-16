@@ -25,13 +25,27 @@
 
     my $ansi = Term::ANSIEncode->new;
 
-    my $string = '[% CLS %]Some markup encoded string';
-    $string .= "\n" . '[% RED     %]Red foreground[% RESET %]' . "\n";
-    $string .= "\n" . '[% YELLOW  %]Yellow foreground[% RESET %]' . "\n";
-    $string .= "\n" . '[% GREEN   %]Green foreground[% RESET %]' . "\n";
-    $string .= "\n" . '[% CYAN    %]Cyan foreground[% RESET %]' . "\n";
-    $string .= "\n" . '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
-    $string .= "\n" . '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
+    my $string = '[% CLS %]Some markup encoded string' . "\n";
+    $string .= '[% CHAR =,80 %]' . "\n"; # A line of ==== 80 columns long
+
+    $string .= '[% RED     %]Red foreground[% RESET %]' . "\n";
+    $string .= '[% YELLOW  %]Yellow foreground[% RESET %]' . "\n";
+    $string .= '[% GREEN   %]Green foreground[% RESET %]' . "\n";
+    $string .= '[% CYAN    %]Cyan foreground[% RESET %]' . "\n";
+    $string .= '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
+    $string .= '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
+
+    $string .= '[% B_RED     %]Red background[% RESET %]' . "\n";
+    $string .= '[% B_YELLOW  %]Yellow background[% RESET %]' . "\n";
+    $string .= '[% B_GREEN   %]Green background[% RESET %]' . "\n";
+    $string .= '[% B_CYAN    %]Cyan background[% RESET %]' . "\n";
+    $string .= '[% B_BLUE    %]Blue background[% RESET %]' . "\n";
+    $string .= '[% B_MAGENTA %]Magenta background[% RESET %]' . "\n";
+
+    $string .= '[% RGB 255,105,180 %]Hot Pink foreground[% RESET %]' . "\n";
+    $string .= '[% B_RGB 255,105,180 %]Hot Pink background[% RESET %]' . "\n";
+
+    $string .= '[% CHAR =,80 %]' . "\n"; # A line of ==== 80 columns long
 
     $ansi->ansi_output($string);
    ```
