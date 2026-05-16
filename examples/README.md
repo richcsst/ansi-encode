@@ -1,6 +1,6 @@
-![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
-
 # Term::ANSIEncode Examples
+
+![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
 These files can be decoded by the ```ansiencode``` binary to see their output.  Note:  Some require a wide terminal to see properly.
 
