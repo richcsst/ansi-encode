@@ -35,20 +35,22 @@
     $string .= '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
     $string .= '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
 
-    $string .= '[% B_RED     %]Red background[% RESET %]' . "\n";
-    $string .= '[% B_YELLOW  %]Yellow background[% RESET %]' . "\n";
-    $string .= '[% B_GREEN   %]Green background[% RESET %]' . "\n";
-    $string .= '[% B_CYAN    %]Cyan background[% RESET %]' . "\n";
-    $string .= '[% B_BLUE    %]Blue background[% RESET %]' . "\n";
-    $string .= '[% B_MAGENTA %]Magenta background[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_RED     %]Red background black foreground[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_YELLOW  %]Yellow background black foreground[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_GREEN   %]Green background black foreground[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_CYAN    %]Cyan background black foreground[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_BLUE    %]Blue background black foreground[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_MAGENTA %]Magenta background black foreground[% RESET %]' . "\n";
 
     $string .= '[% RGB 255,105,180 %]Hot Pink foreground[% RESET %]' . "\n";
-    $string .= '[% B_RGB 255,105,180 %]Hot Pink background[% RESET %]' . "\n";
+    $string .= '[% BLACK %][% B_RGB 255,105,180 %]Hot Pink background black foreground[% RESET %]' . "\n";
 
-    $string .= '[% CHAR =,80 %]' . "\n"; # A line of ==== 80 columns long
+    $string .= '[% CHAR =,80 %]' . "\n\n"; # A line of ==== 80 columns long
 
     $ansi->ansi_output($string);
    ```
+
+![Code Sample](pics/Sample.png)
 
    ### To use the executable, run:
 
