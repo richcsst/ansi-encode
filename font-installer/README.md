@@ -1,4 +1,4 @@
-# Term::ANSIEncode
+# Term::ANSIEncode Font Installer
 
 ![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
