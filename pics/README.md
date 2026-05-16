@@ -1,4 +1,4 @@
-# Term::ANSIEncode
+# Term::ANSIEncode Documentation Images
 
 ![Term::ANSIEncode Logo](ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
 
