@@ -1,6 +1,6 @@
 # Term::ANSIEncode Executable
 
-![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")
+[![Term::ANSIEncode Logo](../pics/ANSI-Encode.png?raw=true "Term::ANSIEncode Logo Title Text")](https://youtu.be/dINayZsQdTM)
 
 ![Divider](../pics/pink.jpg?raw=true "Divider")
 
