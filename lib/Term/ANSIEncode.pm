@@ -1,4 +1,4 @@
-package Term::ANSIEncode 2.01;
+package Term::ANSIEncode 2.02;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '2.01';
+our $VERSION = '2.02';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -383,7 +383,7 @@ sub _ansi_detect_capability {
                 '3 BIT'  => TRUE,
                 '4 BIT'  => TRUE,
                 '8 BIT'  => TRUE,
-                '24 BIT' => ((exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/) || (exists($ENV{'TERM_PROGRAM'}) && $ENV{'TERM_PROGRAM'} =~ /WarpTerminal/)) ? TRUE : FALSE,
+                '24 BIT' => ((exists($ENV{'COLORTERM'}) && $ENV{'COLORTERM'} =~ /truecolor|24bit/) || (exists($ENV{'TERM_PROGRAM'}) && $ENV{'TERM_PROGRAM'} =~ /WarpTerminal/)) ? TRUE : FALSE, # Warp AI terminal supports 24 bit
             };
         } ## end if (exists($ENV{'WT_SESSION'...}))
     } else {
@@ -601,7 +601,7 @@ sub ansi_decode {
     $text =~ s/\[\%\s*SCROLL\s+DOWN\s+(\d+)\s*\%\]/   $csi . $1 . 'T'           /eigs;
     $text =~ s/\[\%\s*SPACES\s+(\d+)\s*\%\]/   ' ' x $1           /eigs;
     $text =~ s/\[\%\s*TABS\s+(\d+)\s*\%\]/   "\t" x $1           /eigs;
-    $text =~ s/\[\%\s*CHAR\s+(\S),(\d+)\s*\%\]/   "$1" x $2           /eigs;
+    $text =~ s/\[\%\s*CHAR\s+(\S+),(\d+)\s*\%\]/   "$1" x $2           /eigs;
 
     # HORIZONTAL RULE expands into a sequence of meta-tokens (resolved later).
     $text =~ s/\[\%\s*HORIZONTAL\s+RULE\s+(.*?)\s*\%\]/
@@ -2016,7 +2016,7 @@ Output "count" number of spaces
 
 =item CHAR character,count
 
-Output "count" number of "character".  Only ONE character is allowed.
+Output "count" number of "character".  Can be one or more non-space characters.
 
 =back
 

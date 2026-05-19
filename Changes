@@ -433,3 +433,7 @@
         Ugh, I accidentally included some test code.
 		Since CPAN has no inline editing ability, I had to increment the
 		version.
+
+2.02    May 18, 2026
+
+        Improved the capability of the CHAR token.

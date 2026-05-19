@@ -210,7 +210,7 @@
    | UP | Moves cursor up one step |
    | SPACES count | "count" number of spaces |
    | TABS count | "count" number of horizontal tabs |
-   | CHAR character,count | Repeat "character" "count" number of times |
+   | CHAR character,count | Repeat "character(s)" "count" number of times |
    | LOCATE column,row | Sets the cursor location |
    | SCROLL UP count | Scroll the screen up "count" number of times |
    | SCROLL DOWN count | Scroll the screen down "count" number of times |
