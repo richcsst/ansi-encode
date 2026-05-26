@@ -330,51 +330,51 @@ sub calc_speed {
 sub help_text {
     my $help_text = <<'SMALL';
 
-[% CLS %]╔═══════════════════════════════════════════════════════════════════════════╗
-║[% B_BLACK %]                 [% RED %]┏━┓ [% BRIGHT YELLOW %]┏┓╻ [% GREEN %]┏━┓ [% BRIGHT BLUE %]╻     [% BRIGHT WHITE %]┏━╸ ┏┓╻ ┏━╸ ┏━┓ ╺┳┓ ┏━╸                 [% RESET %]║
-║[% B_BLACK %]                 [% RED %]┣━┫ [% BRIGHT YELLOW %]┃┗┫ [% GREEN %]┗━┓ [% BRIGHT BLUE %]┃     [% BRIGHT WHITE %]┣╸  ┃┗┫ ┃   ┃ ┃  ┃┃ ┣╸                  [% RESET %]║
-║[% B_BLACK %]                 [% RED %]╹ ╹ [% BRIGHT YELLOW %]╹ ╹ [% GREEN %]┗━┛ [% BRIGHT BLUE %]╹     [% BRIGHT WHITE %]┗━╸ ╹ ╹ ┗━╸ ┗━┛ ╺┻┛ ┗━╸                 [% RESET %]║
-╠═══════════════════════════════════════════════════════════════════════════╣
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] DESCRIPTION                                                               [% RESET %]║
-║     Markup text to ANSI encoder.                                          ║
-╟───────────────────────────────────────────────────────────────────────────╢
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] USAGE                                                                     [% RESET %]║
-║     [% CYAN %]ansiencode[% RESET %] [options] [text file]                                      ║
-╟───────────────────────────────────────────────────────────────────────────╢
-║[% B_COLOR 52 %][% BRIGHT YELLOW %] OPTIONS                                                                   [% RESET %]║
-║     -[% BRIGHT CYAN %]a[% RESET %] or --[% BRIGHT CYAN %]ansi-modes[% RESET %]                                                    ║
-║         Show supported ANSI color modes                                   ║
-║                                                                           ║
-║     --[% BRIGHT CYAN %]baud[% RESET %]=speed                                                          ║
-║         "speed" can be any baud rate. Default is full speed.              ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]c[% RESET %] or --[% BRIGHT CYAN %]colors[% RESET %]                                                        ║
-║         Show available colors                                             ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]d[% RESET %] or --[% BRIGHT CYAN %]dump[% RESET %] [search]                                                 ║
-║         Dump available sysmbols                                           ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]f[% RESET %] or --[% BRIGHT CYAN %]frames[% RESET %]                                                        ║
-║         Show sample frame types                                           ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]h[% RESET %] or --[% BRIGHT CYAN %]horizontal-rules[% RESET %]                                              ║
-║         Show sample horizontal rules                                      ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]r[% RESET %] or --[% BRIGHT CYAN %]rawtokens[% RESET %]                                                     ║
-║         Raw dump of available tokens.                                     ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]s[% RESET %] or --[% BRIGHT CYAN %]symbols[% RESET %] [search]                                              ║
-║         Show available symbols and character tokens by name               ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]t[% RESET %] or --[% BRIGHT CYAN %]tokens[% RESET %]                                                        ║
-║         Show most used tokens                                             ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]u[% RESET %] or --[% BRIGHT CYAN %]unicode[% RESET %] [search]                                              ║
+[% CLS %]╔[% CHAR ═,75 %]╗
+║[% B_BLACK %][% SPACES 17 %][% RED %]┏━┓ [% BRIGHT YELLOW %]┏┓╻ [% GREEN %]┏━┓ [% BRIGHT BLUE %]╻     [% BRIGHT WHITE %]┏━╸ ┏┓╻ ┏━╸ ┏━┓ ╺┳┓ ┏━╸[% SPACES 17 %][% RESET %]║
+║[% B_BLACK %][% SPACES 17 %][% RED %]┣━┫ [% BRIGHT YELLOW %]┃┗┫ [% GREEN %]┗━┓ [% BRIGHT BLUE %]┃     [% BRIGHT WHITE %]┣╸  ┃┗┫ ┃   ┃ ┃  ┃┃ ┣╸[% SPACES 18 %][% RESET %]║
+║[% B_BLACK %][% SPACES 17 %][% RED %]╹ ╹ [% BRIGHT YELLOW %]╹ ╹ [% GREEN %]┗━┛ [% BRIGHT BLUE %]╹     [% BRIGHT WHITE %]┗━╸ ╹ ╹ ┗━╸ ┗━┛ ╺┻┛ ┗━╸[% SPACES 17 %][% RESET %]║
+╠[% CHAR ═,75 %]╣
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] DESCRIPTION[% SPACES 63 %][% RESET %]║
+║     Markup text to ANSI encoder.[% SPACES 42 %]║
+╟[% CHAR ─,75 %]╢
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] USAGE[% SPACES 69 %][% RESET %]║
+║     [% CYAN %]ansiencode[% RESET %] [options] [text file][% SPACES 38 %]║
+╟[% CHAR ─,75 %]╢
+║[% B_COLOR 52 %][% BRIGHT YELLOW %] OPTIONS[% SPACES 67 %][% RESET %]║
+║     -[% BRIGHT CYAN %]a[% RESET %] or --[% BRIGHT CYAN %]ansi-modes[% RESET %][% SPACES 52 %]║
+║         Show supported ANSI color modes[% SPACES 35 %]║
+║[% SPACES 75 %]║
+║     --[% BRIGHT CYAN %]baud[% RESET %]=speed[% SPACES 58 %]║
+║         "speed" can be any baud rate. Default is full speed.[% SPACES 14 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]c[% RESET %] or --[% BRIGHT CYAN %]colors[% RESET %][% SPACES 56 %]║
+║         Show available colors[% SPACES 45 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]d[% RESET %] or --[% BRIGHT CYAN %]dump[% RESET %] [search][% SPACES 49 %]║
+║         Dump available sysmbols[% SPACES 43 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]f[% RESET %] or --[% BRIGHT CYAN %]frames[% RESET %][% SPACES 56 %]║
+║         Show sample frame types[% SPACES 43 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]h[% RESET %] or --[% BRIGHT CYAN %]horizontal-rules[% RESET %][% SPACES 46 %]║
+║         Show sample horizontal rules[% SPACES 38 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]r[% RESET %] or --[% BRIGHT CYAN %]rawtokens[% RESET %][% SPACES 53 %]║
+║         Raw dump of available tokens.[% SPACES 37 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]s[% RESET %] or --[% BRIGHT CYAN %]symbols[% RESET %] [search][% SPACES 46 %]║
+║         Show available symbols and character tokens by name[% SPACES 15 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]t[% RESET %] or --[% BRIGHT CYAN %]tokens[% RESET %][% SPACES 56 %]║
+║         Show most used tokens[% SPACES 45 %]║
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]u[% RESET %] or --[% BRIGHT CYAN %]unicode[% RESET %] [search][% SPACES 46 %]║
 ║         Show available symbols and character tokens by unicode            ║
-║                                                                           ║
-║     -[% BRIGHT CYAN %]v[% RESET %] or --[% BRIGHT CYAN %]version[% RESET %]                                                       ║
-║         Shows version and licensing info                                  ║
-╚═══════════════════════════════════════════════════════════════════════════╝
+║[% SPACES 75 %]║
+║     -[% BRIGHT CYAN %]v[% RESET %] or --[% BRIGHT CYAN %]version[% RESET %][% SPACES 55 %]║
+║         Shows version and licensing info[% SPACES 34 %]║
+╚[% CHAR ═,75 %]╝
 SMALL
 ###
     return ($help_text);

@@ -1,4 +1,4 @@
-package Term::ANSIEncode 2.02;
+package Term::ANSIEncode 2.03;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '2.02';
+our $VERSION = '2.03';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -114,7 +114,7 @@ sub get_version {
     my $self = shift;
 ###
     my $text = <<'VERSION';
-[% CLS %][% YELLOW %]╔═════════════════════════════════════════════════════════════════════════════╗[% RESET %]
+[% CLS %][% YELLOW %]╔[% CHAR ═,77 %]╗[% RESET %]
 [% YELLOW %]║[% B_BLACK %][% RED %]               [% BRIGHT YELLOW %] _   _ [% GREEN %] _____ [% BRIGHT BLUE %]_____  [% BRIGHT WHITE %] ______                     _            [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% B_BLACK %][% RED %]          ╱╲   [% BRIGHT YELLOW %]│ ╲ │ │[% GREEN %]╱ ____│[% BRIGHT BLUE %]_   _│ [% BRIGHT WHITE %]│  ____│                   │ │           [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% B_BLACK %][% RED %]         ╱  ╲  [% BRIGHT YELLOW %]│  ╲│ │[% GREEN %] (___  [% BRIGHT BLUE %] │ │   [% BRIGHT WHITE %]│ │__   _ __   ___ ___   __│ │ ___       [% RESET %][% YELLOW %]║[% RESET %]
@@ -122,14 +122,14 @@ sub get_version {
 [% YELLOW %]║[% B_BLACK %][% RED %]       ╱ ____ ╲[% BRIGHT YELLOW %]│ │╲  │[% GREEN %]____) │[% BRIGHT BLUE %]_│ │_  [% BRIGHT WHITE %]│ │____│ │ │ │ (_│ (_) │ (_│ │  __╱      [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% B_BLACK %][% RED %]      ╱_╱    ╲_╲[% BRIGHT YELLOW %]_│ ╲_│[% GREEN %]_____╱[% BRIGHT BLUE %]│_____│ [% BRIGHT WHITE %]│______│_│ │_│╲___╲___╱ ╲__,_│╲___│      [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% B_BLACK %]                                                                             [% YELLOW %]║[% B_BLACK %]
-[% YELLOW %]╠═════════════════════════════════════════════════════════════════════════════╣[% RESET %]
+[% YELLOW %]╠[% CHAR ═,77 %]╣[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                         Written By [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                           [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                   Copyright ©[% GREEN %]2023 - 2026 [% BRIGHT YELLOW %]Richard Kelsch[% RESET %][% B_COLOR 17 %]                     [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                            All Rights Reserved                              [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                         Perl Artistic License 2.0                           [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]                               Version [% GREEN %]XXXX[% RESET %][% B_COLOR 17 %]                                  [% RESET %][% YELLOW %]║[% RESET %]
 [% YELLOW %]║[% RESET %][% B_COLOR 17 %]               GitHub:  https://github.com/richcsst/ansiencode               [% RESET %][% YELLOW %]║[% RESET %]
-[% YELLOW %]╚═════════════════════════════════════════════════════════════════════════════╝[% RESET %]
+[% YELLOW %]╚[% CHAR ═,77 %]╝[% RESET %]
 VERSION
 ###
 
@@ -147,20 +147,17 @@ sub expand_tokens {
 
 NOTE:  [% ITALIC %]Use "less -r" to view ANSI in "less"[% RESET %]
 
-[% BRIGHT GREEN %]╭─────────────────────────────────────────────────────────────────────────────╮[% RESET %]
+[% BRIGHT GREEN %]╭[% CHAR ─,77 %]╮[% RESET %]
 TOKENS
 ###
-    $to .= "$bar ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄   ▄    ▄   ▄▄▄▄▄▄▄▄▄▄▄   ▄▄        ▄   ▄▄▄▄▄▄▄▄▄▄▄ $bar\n";
-    $to .= "$bar▐[% RED %]░░░░░░░░░░░[% RESET %]▌▐[% RED %]░░░░░░░░░░░[% RESET %]▌ ▐[% RED %]░[% RESET %]▌  ▐[% RED %]░[% RESET %]▌ ▐[% RED %]░░░░░░░░░░░[% RESET %]▌ ▐[% RED %]░░[% RESET %]▌      ▐[% RED %]░[% RESET %]▌ ▐[% RED %]░░░░░░░░░░░[% RESET %]▌$bar\n";
-    $to .= "$bar ▀▀▀▀█[% RED %]░[% RESET %]█▀▀▀▀ ▐[% RED %]░[% RESET %]█▀▀▀▀▀▀▀█[% RED %]░[% RESET %]▌ ▐[% RED %]░[% RESET %]▌ ▐[% RED %]░[% RESET %]▌  ▐[% RED %]░[% RESET %]█▀▀▀▀▀▀▀▀▀  ▐[% RED %]░[% RESET %]▌[% RED %]░[% RESET %]▌     ▐[% RED %]░[% RESET %]▌ ▐[% RED %]░[% RESET %]█▀▀▀▀▀▀▀▀▀ $bar\n";
-    $to .= "$bar     ▐[% YELLOW %]░[% RESET %]▌     ▐[% YELLOW %]░[% RESET %]▌       ▐[% YELLOW %]░[% RESET %]▌ ▐[% YELLOW %]░[% RESET %]▌▐[% YELLOW %]░[% RESET %]▌   ▐[% YELLOW %]░[% RESET %]▌           ▐[% YELLOW %]░[% RESET %]▌▐[% YELLOW %]░[% RESET %]▌    ▐[% YELLOW %]░[% RESET %]▌ ▐[% YELLOW %]░[% RESET %]▌          $bar\n";
-    $to .= "$bar     ▐[% YELLOW %]░[% RESET %]▌     ▐[% YELLOW %]░[% RESET %]▌       ▐[% YELLOW %]░[% RESET %]▌ ▐[% YELLOW %]░[% RESET %]▌[% YELLOW %]░[% RESET %]▌    ▐[% YELLOW %]░[% RESET %]█▄▄▄▄▄▄▄▄▄  ▐[% YELLOW %]░[% RESET %]▌ ▐[% YELLOW %]░[% RESET %]▌   ▐[% YELLOW %]░[% RESET %]▌ ▐[% YELLOW %]░[% RESET %]█▄▄▄▄▄▄▄▄▄ $bar\n";
-    $to .= "$bar     ▐[% GREEN %]░[% RESET %]▌     ▐[% GREEN %]░[% RESET %]▌       ▐[% GREEN %]░[% RESET %]▌ ▐[% GREEN %]░░[% RESET %]▌     ▐[% GREEN %]░░░░░░░░░░░[% RESET %]▌ ▐[% GREEN %]░[% RESET %]▌  ▐[% GREEN %]░[% RESET %]▌  ▐[% GREEN %]░[% RESET %]▌ ▐[% GREEN %]░░░░░░░░░░░[% RESET %]▌$bar\n";
-    $to .= "$bar     ▐[% GREEN %]░[% RESET %]▌     ▐[% GREEN %]░[% RESET %]▌       ▐[% GREEN %]░[% RESET %]▌ ▐[% GREEN %]░[% RESET %]▌[% GREEN %]░[% RESET %]▌    ▐[% GREEN %]░[% RESET %]█▀▀▀▀▀▀▀▀▀  ▐[% GREEN %]░[% RESET %]▌   ▐[% GREEN %]░[% RESET %]▌ ▐[% GREEN %]░[% RESET %]▌  ▀▀▀▀▀▀▀▀▀█[% GREEN %]░[% RESET %]▌$bar\n";
-    $to .= "$bar     ▐[% CYAN %]░[% RESET %]▌     ▐[% CYAN %]░[% RESET %]▌       ▐[% CYAN %]░[% RESET %]▌ ▐[% CYAN %]░[% RESET %]▌▐[% CYAN %]░[% RESET %]▌   ▐[% CYAN %]░[% RESET %]▌           ▐[% CYAN %]░[% RESET %]▌    ▐[% CYAN %]░[% RESET %]▌▐[% CYAN %]░[% RESET %]▌           ▐[% CYAN %]░[% RESET %]▌$bar\n";
-    $to .= "$bar     ▐[% CYAN %]░[% RESET %]▌     ▐[% CYAN %]░[% RESET %]█▄▄▄▄▄▄▄█[% CYAN %]░[% RESET %]▌ ▐[% CYAN %]░[% RESET %]▌ ▐[% CYAN %]░[% RESET %]▌  ▐[% CYAN %]░[% RESET %]█▄▄▄▄▄▄▄▄▄  ▐[% CYAN %]░[% RESET %]▌     ▐[% CYAN %]░[% RESET %]▐[% CYAN %]░[% RESET %]▌  ▄▄▄▄▄▄▄▄▄█[% CYAN %]░[% RESET %]▌$bar\n";
-    $to .= "$bar     ▐[% BLUE %]░[% RESET %]▌     ▐[% BLUE %]░░░░░░░░░░░[% RESET %]▌ ▐[% BLUE %]░[% RESET %]▌  ▐[% BLUE %]░[% RESET %]▌ ▐[% BLUE %]░░░░░░░░░░░[% RESET %]▌ ▐[% BLUE %]░[% RESET %]▌      ▐[% BLUE %]░░[% RESET %]▌ ▐[% BLUE %]░░░░░░░░░░░[% RESET %]▌$bar\n";
-    $to .= "$bar      ▀       ▀▀▀▀▀▀▀▀▀▀▀   ▀    ▀   ▀▀▀▀▀▀▀▀▀▀▀   ▀        ▀▀   ▀▀▀▀▀▀▀▀▀▀▀ $bar\n";
+   $to .= $bar . qq{ [% BRIGHT RED %]888888888888[% BRIGHT YELLOW %] ,ad8888ba,   [% BRIGHT GREEN %]88      a8P  [% BRIGHT CYAN %]88888888888 [% BRIGHT MAGENTA %]888b      88  [% BRIGHT BLUE %]ad88888ba  $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88     [% BRIGHT YELLOW %]d8"'    `"8b  [% BRIGHT GREEN %]88    ,88'   [% BRIGHT CYAN %]88          [% BRIGHT MAGENTA %]8888b     88 [% BRIGHT BLUE %]d8"     "8b $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88    [% BRIGHT YELLOW %]d8'        `8b [% BRIGHT GREEN %]88  ,88"     [% BRIGHT CYAN %]88          [% BRIGHT MAGENTA %]88 `8b    88 [% BRIGHT BLUE %]Y8,         $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88    [% BRIGHT YELLOW %]88          88 [% BRIGHT GREEN %]88,d88'      [% BRIGHT CYAN %]88aaaaa     [% BRIGHT MAGENTA %]88  `8b   88 [% BRIGHT BLUE %]`Y8aaaaa,   $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88    [% BRIGHT YELLOW %]88          88 [% BRIGHT GREEN %]8888"88,     [% BRIGHT CYAN %]88"""""     [% BRIGHT MAGENTA %]88   `8b  88   [% BRIGHT BLUE %]`"""""8b, $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88    [% BRIGHT YELLOW %]Y8,        ,8P [% BRIGHT GREEN %]88P   Y8b    [% BRIGHT CYAN %]88          [% BRIGHT MAGENTA %]88    `8b 88         [% BRIGHT BLUE %]`8b $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88     [% BRIGHT YELLOW %]Y8a.    .a8P  [% BRIGHT GREEN %]88     "88,  [% BRIGHT CYAN %]88          [% BRIGHT MAGENTA %]88     `8888 [% BRIGHT BLUE %]Y8a     a8P $bar\n};
+   $to .= $bar . qq{ [% BRIGHT RED %]     88      [% BRIGHT YELLOW %]`"Y8888Y"'   [% BRIGHT GREEN %]88       Y8b [% BRIGHT CYAN %]88888888888 [% BRIGHT MAGENTA %]88      `888  [% BRIGHT BLUE %]"Y88888P"  $bar\n};
 ###
     $to .= '[% BRIGHT GREEN %]╞══ [% BOLD %][% BRIGHT YELLOW %]CLEAR [% RESET %][% BRIGHT GREEN %]' . '═' x 27 . '╤' . '═' x 40 . '╡[% RESET %]' . "\n";
     {
@@ -179,12 +176,12 @@ TOKENS
             my $name = shift(@names);
             $to .= $self->_add_row($bar, $name, $self->ansi_description('cursor', $name));
         }
-        $to .= $self->_add_row($bar, 'SPACES count',         'outputs "count" number of spaces');
-        $to .= $self->_add_row($bar, 'TABS count',           'outputs "count" number of tabs');
-        $to .= $self->_add_row($bar, 'CHAR character,count', 'character repeated "count" times');
-        $to .= $self->_add_row($bar, 'LOCATE column,row',    'Sets the cursor location');
-        $to .= $self->_add_row($bar, 'SCROLL UP count',      'Scrolls the screen up by "count" lines');
-        $to .= $self->_add_row($bar, 'SCROLL DOWN count',    'Scrolls the screen down by "count" lines');
+        $to .= $self->_add_row($bar, 'SPACES count',            'outputs "count" number of spaces');
+        $to .= $self->_add_row($bar, 'TABS count',              'outputs "count" number of tabs');
+        $to .= $self->_add_row($bar, 'CHAR character(s),count', 'character repeated "count" times');
+        $to .= $self->_add_row($bar, 'LOCATE column,row',       'Sets the cursor location');
+        $to .= $self->_add_row($bar, 'SCROLL UP count',         'Scrolls the screen up by "count" lines');
+        $to .= $self->_add_row($bar, 'SCROLL DOWN count',       'Scrolls the screen down by "count" lines');
     }
 
     $to .= '[% BRIGHT GREEN %]╞══ [% BOLD %][% BRIGHT YELLOW %]ATTRIBUTES [% RESET %][% BRIGHT GREEN %]' . '═' x 22 . '╪' . '═' x 40 . '╡[% RESET %]' . "\n";
@@ -291,7 +288,7 @@ TOKENS
         $to .= "$bar " . sprintf('%-34s', 'ENDBOX') . " $bar " . sprintf('%-38s', 'Ends the BOX token function') . " $bar\n";
         $to .= '[% BRIGHT CYAN %]│ ' . '─' x 34 . " $bar [% BRIGHT CYAN %]" . '─' x 38 . ' │[% RESET %]' . "\n";
         $to .= "$bar " . sprintf('%-34s', 'SPACES count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of spaces') . " $bar\n";
-        $to .= "$bar " . sprintf('%-34s', 'CHAR character,count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of "character"') . " $bar\n";
+        $to .= "$bar " . sprintf('%-34s', 'CHAR character(s),count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of "character"') . " $bar\n";
     }
     $to .= '[% BRIGHT GREEN %]╰' . '─' x 36 . '┴' . '─' x 40 . '╯[% RESET %]' . "\n";
 
@@ -302,8 +299,8 @@ TOKENS
         $new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
         $to =~ s/ color     /$new/gs;
 
-        $new = '[% FAINT %][% ITALIC %]character[% RESET %],[% FAINT %][% ITALIC %]count[% RESET %]';
-        $to =~ s/character,count/$new/gs;
+        $new = '[% FAINT %][% ITALIC %]character(s)[% RESET %],[% FAINT %][% ITALIC %]count[% RESET %]';
+        $to =~ s/character.s.,count/$new/gs;
 
         $new = '[% FAINT %][% ITALIC %] count     [% RESET %]';
         $to =~ s/ count     /$new/gs;
@@ -562,8 +559,8 @@ sub ansi_decode {
     return $text unless defined $text && length($text) > 1;
 
     # If a literal screen reset token exists, remove it and run reset once.
-    if ($text =~ /\[\%\s*SCREEN\s+RESET\s*\%\]/i) {
-        $text =~ s/\[\%\s*SCREEN\s+RESET\s*\%\]//gis;
+    if ($text =~ /\[\%\s+SCREEN\s+RESET\s+\%\]/i) {
+        $text =~ s/\[\%\s+SCREEN\s+RESET\s+\%\]//gis;
         system('reset');
     }
 
@@ -575,7 +572,7 @@ sub ansi_decode {
     # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
     # so we don't accidentally create replacement-string interpolation warnings.
     #
-    while ($text =~ m{\[\%\s*BOX\s*(.*?)\s*\%\](.*?)\[\%\s*ENDBOX\s*\%\]}is) {
+    while ($text =~ m{\[\%\s+BOX\s+(.*?)\s+\%\](.*?)\[\%\s+ENDBOX\s+\%\]}is) {
         my ($params, $body) = ($1, $2);
 
         # split into up to 6 params: color,x,y,w,h,type
@@ -596,26 +593,26 @@ sub ansi_decode {
     #
     # Targeted parameterized tokens (single-pass). These are simple Regex -> CSI conversions.
     #
-    $text =~ s/\[\%\s*LOCATE\s+(\d+)\s*,\s*(\d+)\s*\%\]/ $csi . "$2;$1" . 'H' /eigs;
-    $text =~ s/\[\%\s*SCROLL\s+UP\s+(\d+)\s*\%\]/     $csi . $1 . 'S'           /eigs;
-    $text =~ s/\[\%\s*SCROLL\s+DOWN\s+(\d+)\s*\%\]/   $csi . $1 . 'T'           /eigs;
-    $text =~ s/\[\%\s*SPACES\s+(\d+)\s*\%\]/   ' ' x $1           /eigs;
-    $text =~ s/\[\%\s*TABS\s+(\d+)\s*\%\]/   "\t" x $1           /eigs;
-    $text =~ s/\[\%\s*CHAR\s+(\S+),(\d+)\s*\%\]/   "$1" x $2           /eigs;
+    $text =~ s/\[\%\s+LOCATE\s+(\d+)\s*,\s*(\d+)\s+\%\]/ $csi . "$2;$1" . 'H' /eigs;
+    $text =~ s/\[\%\s+SCROLL UP\s+(\d+)\s+\%\]/          $csi . $1 . 'S'      /eigs;
+    $text =~ s/\[\%\s+SCROLL DOWN\s+(\d+)\s+\%\]/        $csi . $1 . 'T'      /eigs;
+    $text =~ s/\[\%\s+SPACES\s+(\d+)\s+\%\]/             ' ' x $1             /eigs;
+    $text =~ s/\[\%\s+TABS\s+(\d+)\s+\%\]/               "\t" x $1            /eigs;
+    $text =~ s/\[\%\s+CHAR\s+(\S+)\s*,\s*(\d+)\s+\%\]/   "$1" x $2            /eigs;
 
     # HORIZONTAL RULE expands into a sequence of meta-tokens (resolved later).
-    $text =~ s/\[\%\s*HORIZONTAL\s+RULE\s+(.*?)\s*\%\]/
+    $text =~ s/\[\%\s*HORIZONTAL RULE\s+(.*?)\s*\%\]/
       do {
           my $color = defined $1 && $1 ne '' ? uc $1 : 'DEFAULT';
           '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
       }/eigs;
 
-    while ($text =~ /\[\%\s+UNDERLINE COLOR RGB (\d+),(\d+),(\d+)\s+\%\]/) {
+    while ($text =~ /\[\%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+\%\]/) {
         my ($red, $green, $blue) = ($1, $2, $3);
         my $new = "\e[58;2;${red};${green};${blue}m";
-        $text =~ s/\[\%\s+UNDERLINE COLOR RGB $red,$green,$blue\s+\%\]/$new/gs;
+        $text =~ s/\[\%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+\%\]/$new/gs;
     }
-    while ($text =~ /\[\%\s+UNDERLINE COLOR (.*?)\s+\%\]/) {
+    while ($text =~ /\[\%\s+UNDERLINE COLOR\s+(.*?)\s+\%\]/) {
         my $color = $1;
         my $new;
         $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);

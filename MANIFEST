@@ -23,6 +23,7 @@ pics/timex-sinclair.png
 pics/usa.png
 pics/windows.png
 examples/amd.ans
+examples/ansi-encode.ans
 examples/commodore.ans
 examples/atari.ans
 examples/ibm.ans
