@@ -51,7 +51,7 @@
 
    $ansi->ansi_output($string);
    ```
-## Output
+## Output From Above Code
 
 ![Code Sample](pics/Sample.png)
 
