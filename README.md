@@ -320,11 +320,17 @@
    | B_GREY 0 - B_GREY 23 | Levels of grey |
    | B_RGB red,green,blue | 24 bit background colors |
 
-   ### HORIZONTAL RULES
+   ### MACROS
 
-   | **Token** | **Description** |
-   | --- | --- |
-   | HORIZONTAL RULE token | A solid line of background in the color defined by "token" |
+   | **Token** | **End Token** | **Description** |
+   | --- | --- | --- |
+   | BLOCK count | ENDBLOCK | Duplicate a block of text for "count" number of times between the tokens |
+   | BOX color,column,rowm,width,height,type | ENDBOX | Wrapped text inside a box |
+   | CHAR char,count | | Duplicate "char" "count" number of times |
+   | HORIZONTAL RULE token | | A solid line of background in the color defined by "token" |
+   | JUSTIFIED | ENDJUSTIFIED | Justify text inside the two tokens |
+   | SPACES count | | Replace token with "count" number of spaces |
+   | WRAP | ENDWRAP | Wrap text inside the two tokens |
 
 ![Divider](pics/pink.jpg?raw=true "Divider")
 
