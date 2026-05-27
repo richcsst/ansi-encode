@@ -36,7 +36,7 @@ diag("\r" . colored(['cyan on_black'], q{     88  `"Ybbd8"' `"YbbdP"'   "Y888 88
 diag("\r" . colored(['cyan on_black'], q{                                                     aa,    ,88 }));
 diag("\r" . colored(['yellow on_black'], q{ Term::ANSIEncode}) . colored(['cyan on_black'], q{                                     "Y8bbdP"  }));
 diag("\r" . colored(['magenta'], '=' x 64));
-diag("\r  \n\r  " x 12 . "\e[13A");
+diag("\r  \n\r" x 12 . "\e[13A");
 diag("\r  \n\r" . colored(['bright_yellow on_magenta'],sprintf('%-25s',' Testing object creation ')));
 my $ansi = Term::ANSIEncode->new();
 isa_ok($ansi,'Term::ANSIEncode');
