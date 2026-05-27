@@ -447,3 +447,9 @@
 		"ansiencode" script, but works just fine from using the
 		"Term::ANSIEncode" script.  I don't get it and A.I. doesn't get it.
 		It doesn't make any sense.  So I shrug my shoulders and accept it.
+
+2.04    May 27, 2026
+
+        Macros added.
+		Documentation improved.
+		Additional testing on build.
