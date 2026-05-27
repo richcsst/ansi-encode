@@ -30,18 +30,18 @@
    my $string = '[% CLS %]Some markup encoded string' . "\n";
    $string .= '[% CHAR =,80 %]' . "\n"; # A line of ==== 80 columns long
 
-   $string .= '[% RED     %]Red foreground[% RESET %]' . "\n";
-   $string .= '[% YELLOW  %]Yellow foreground[% RESET %]' . "\n";
-   $string .= '[% GREEN   %]Green foreground[% RESET %]' . "\n";
-   $string .= '[% CYAN    %]Cyan foreground[% RESET %]' . "\n";
-   $string .= '[% BLUE    %]Blue foreground[% RESET %]' . "\n";
+   $string .= '[% RED     %]Red foreground[%     RESET %]' . "\n";
+   $string .= '[% YELLOW  %]Yellow foreground[%  RESET %]' . "\n";
+   $string .= '[% GREEN   %]Green foreground[%   RESET %]' . "\n";
+   $string .= '[% CYAN    %]Cyan foreground[%    RESET %]' . "\n";
+   $string .= '[% BLUE    %]Blue foreground[%    RESET %]' . "\n";
    $string .= '[% MAGENTA %]Magenta foreground[% RESET %]' . "\n";
 
-   $string .= '[% BLACK %][% B_RED     %]Red background black foreground[% RESET %]' . "\n";
-   $string .= '[% BLACK %][% B_YELLOW  %]Yellow background black foreground[% RESET %]' . "\n";
-   $string .= '[% BLACK %][% B_GREEN   %]Green background black foreground[% RESET %]' . "\n";
-   $string .= '[% BLACK %][% B_CYAN    %]Cyan background black foreground[% RESET %]' . "\n";
-   $string .= '[% BLACK %][% B_BLUE    %]Blue background black foreground[% RESET %]' . "\n";
+   $string .= '[% BLACK %][% B_RED     %]Red background black foreground[%     RESET %]' . "\n";
+   $string .= '[% BLACK %][% B_YELLOW  %]Yellow background black foreground[%  RESET %]' . "\n";
+   $string .= '[% BLACK %][% B_GREEN   %]Green background black foreground[%   RESET %]' . "\n";
+   $string .= '[% BLACK %][% B_CYAN    %]Cyan background black foreground[%    RESET %]' . "\n";
+   $string .= '[% BLACK %][% B_BLUE    %]Blue background black foreground[%    RESET %]' . "\n";
    $string .= '[% BLACK %][% B_MAGENTA %]Magenta background black foreground[% RESET %]' . "\n";
 
    $string .= '[% RGB 255,105,180 %]Hot Pink foreground[% RESET %]' . "\n";
