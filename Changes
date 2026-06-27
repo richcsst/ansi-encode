@@ -453,3 +453,7 @@
         Macros added.
         Documentation improved.
         Additional testing on build.
+
+2.05    Jun 27, 2026
+
+        Fixed formatting error for dump
