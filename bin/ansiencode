@@ -45,7 +45,6 @@ my $tokens     = FALSE;
 my $rawtokens  = FALSE;
 my $symbols    = FALSE;
 my $unicode    = FALSE;
-                                                                                                                                                                                                                                                                                              my $colors     = FALSE;
 my $Dump       = FALSE;
 my $frames     = FALSE;
 my $rules      = FALSE;
