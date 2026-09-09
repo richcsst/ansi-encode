@@ -134,7 +134,7 @@ if ($version) {
 		};
 		close $fh;
 
-		$ansi->ansi_output($content) . "\e[?25h";
+		$ansi->ansi_output($content . '[% CURSOR ON %]');
 	} else {
 		$ansi->ansi_output(help_text());
 		$| = 1;
