@@ -240,7 +240,7 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             $replacement .= "\e[${cur_y};${x}H" . $line;
             $cur_y++;
         }
-        $replacement .= "\e[u[% CURSOR ON %]";      # Restore cursor
+        $replacement .= "\e[u";      # Restore cursor
 
         $text =~ s/\Q$matched\E/$replacement/;
     }
