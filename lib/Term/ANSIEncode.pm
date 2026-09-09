@@ -207,7 +207,7 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
         $x = (defined $x && $x =~ /^\d+$/) ? int($x) : 1;
         $y = (defined $y && $y =~ /^\d+$/) ? int($y) : 1;
 
-        my $canvas = eval { Term::Drawille->new() };
+        my $canvas = Term::Drawille->new();
         unless ($canvas) {
             $text =~ s/\Q$matched\E//;
             next;
@@ -219,16 +219,16 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             next unless length($cmd);
 
             if ($cmd =~ /^line\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
-                eval { $canvas->line($1, $2, $3, $4) };
+                $canvas->line($1, $2, $3, $4);
             } elsif ($cmd =~ /^pixel\s+(\d+)\s*,\s*(\d+)/i) {
-                eval { $canvas->set($1, $2) };
+                $canvas->set($1, $2);
             } elsif ($cmd =~ /^unset\s+(\d+)\s*,\s*(\d+)/i) {
-                eval { $canvas->unset($1, $2) };
+                $canvas->unset($1, $2);
             }
         }
 
         # Drawille's draw() returns the pure scalar string!
-        my $canvas_str = eval { $canvas->draw() } // '';
+        my $canvas_str = $canvas->draw() // '';
 
         $canvas_str =~ s/\r//g;
         my @lines = split(/\n/, $canvas_str);
