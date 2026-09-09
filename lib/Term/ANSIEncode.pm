@@ -199,14 +199,18 @@ sub ansi_decode {
         my ($params, $commands) = ($1, $2);
         my $matched = $&;
 
-        # Parameters: col, row (where to stamp on screen)
-        # Optional: w, h are not strictly needed by Drawille (it auto-sizes),
-        # but x and y specify the terminal screen placement.
-        my ($x, $y) = split(/\s*,\s*/, (defined $params ? $params : ''));
-        $x = (defined $x && $x =~ /^\d+$/) ? int($x) : 1;
-        $y = (defined $y && $y =~ /^\d+$/) ? int($y) : 1;
+        # Parameters: col, row, pixel_width, pixel_height
+        my @parts = split(/\s*,\s*/, (defined $params ? $params : ''));
+        my $x = (defined $parts[0] && $parts[0] =~ /^\d+$/) ? int($parts[0]) : 1;
+        my $y = (defined $parts[1] && $parts[1] =~ /^\d+$/) ? int($parts[1]) : 1;
+        my $w = (defined $parts[2] && $parts[2] =~ /^\d+$/) ? int($parts[2]) : 160; # pixel width
+        my $h = (defined $parts[3] && $parts[3] =~ /^\d+$/) ? int($parts[3]) : 80;  # pixel height
 
-        my $canvas = Term::Drawille->new();
+        # Ensure minimum valid pixel dimensions (multiples of 2 and 4)
+        $w = 2 if $w < 2;
+        $h = 4 if $h < 4;
+
+        my $canvas = eval { Term::Drawille->new($w, $h) };
         unless ($canvas) {
             $text =~ s/\Q$matched\E//;
             next;
