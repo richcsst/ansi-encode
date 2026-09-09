@@ -1657,7 +1657,7 @@ TOKENS
         my $new = 'UNDERLINE COLOR RGB [% UNDERLINE %][% UNDERLINE COLOR RGB 255,0,0 %][% FAINT %][% ITALIC %]red[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,255,0 %][% FAINT %][% ITALIC %]green[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,0,255 %][% FAINT %][% ITALIC %]blue[% RESET %]';
         $to =~ s/UNDERLINE COLOR RGB red,green,blue/$new /gs;
 
-        $new = 'UNDERLINE COLOR [% UNDERLINE %][% UNDERLINE COLOR RED %][% FAINT %][% ITALIC %]co[% RESET %][% UNDERLINE %][% UNDERLINE COLOR GREEN %][% FAINT %][% ITALIC %]l[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR BLUE %][% FAINT %][% ITALIC %]or[% RESET %]';
+        $new = 'UNDERLINE COLOR [% UNDERLINE %][% UNDERLINE COLOR RED %][% FAINT %][% ITALIC %]co[% RESET %][% UNDERLINE %][% UNDERLINE COLOR GREEN %][% FAINT %][% ITALIC %]l[% RESET %][% UNDERLINE %][% UNDERLINE COLOR BLUE %][% FAINT %][% ITALIC %]or[% RESET %]';
         $to =~ s/UNDERLINE COLOR color/$new /gs;
 
 		$new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
