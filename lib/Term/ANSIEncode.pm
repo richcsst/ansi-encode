@@ -339,23 +339,26 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
     # else leave token visible.
 ###
 # Final single-pass replacement for remaining [% ... %] tokens.
-    $text =~ s/\[%\s*(.+?)\s*%\]/
-    (
-        sub {
-            my $tok = shift;
-            my $key = lc $tok;
-            return $lookup{$key} if exists $lookup{$key};
-            if ($tok =~ /^[A-Z0-9 ]+$/) {
-                my $char = eval { charnames::string_vianame($tok) };
-                return $char if defined $char;
-            }
-            return $&;
-        }
-    )->($1)/egs;
+# Final single-pass replacement for remaining [% ... %] tokens.
+    $text =~ s/\[%\s*(.+?)\s*%\]/ $self->_resolve_token($1, $&) /egs;
 ###
 
     return $text;
 } ## end sub ansi_decode
+
+sub _resolve_token {
+    my ($self, $tok, $matched) = @_;
+    my $key = lc $tok;
+
+    return $lookup{$key} if exists $lookup{$key};
+
+    if ($tok =~ /^[A-Z0-9 ]+$/) {
+        my $char = eval { charnames::string_vianame($tok) };
+        return $char if defined $char;
+    }
+
+    return $matched;
+}
 
 sub ansi_output {
     my $self = shift;
