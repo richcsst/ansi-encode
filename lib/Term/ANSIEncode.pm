@@ -66,7 +66,7 @@ our $GLOBAL_ANSI_META = _global_ansi_meta();
 
 # Table of styles. Each entry is [tl,tr,bl,br,top,bot,vl,vr]
 our %STYLES = (
-    'DEFAULT'        => ['╔', '╗', '╚', '╝', '═', '═', '║', '║'],
+    'DOUBLE'         => ['╔', '╗', '╚', '╝', '═', '═', '║', '║'],
     'THIN'           => ['┌', '┐', '└', '┘', '─', '─', '│', '│'],
     'ROUND'          => ['╭', '╮', '╰', '╯', '─', '─', '│', '│'],
     'THICK'          => ['┏', '┓', '┗', '┛', '━', '━', '┃', '┃'],
@@ -89,6 +89,7 @@ our %STYLES = (
     'FAT ARROWHEADS' => ['🡅', '🡇', '🡅', '🡇', '🡆', '🡄', '🡅', '🡇'],
     'SOLID'          => ['█', '█', '█', '█', '█', '█', '█', '█'],
 );
+$STYLES{'DEFAULT'} = $STYLES{'DOUBLE'};
 
 # Precomputed 256-color palette and LRU/memoization cache for RGB downsampling
 our (@ANSI_PALETTE, %RGB_CACHE);
