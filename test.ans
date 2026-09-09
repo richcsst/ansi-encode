@@ -1,0 +1,4 @@
+[% CANVAS 5,2,40,15 %]
+line 0,0,79,59
+circle 40,30,20
+[% ENDCANVAS %]

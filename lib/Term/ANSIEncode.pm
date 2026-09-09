@@ -1,4 +1,4 @@
-package Term::ANSIEncode 2.06;
+package Term::ANSIEncode 2.07;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -31,6 +31,9 @@ use constant {
 
 use Time::HiRes qw( sleep );
 use Text::Format;
+use Term::Graille;
+
+require Encode;
 
 # use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 # use Term::Drawille;
@@ -59,7 +62,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '2.06';
+our $VERSION = '2.07';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -170,6 +173,93 @@ sub ansi_decode {
     #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
 ###
 
+	while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
+		my ($params, $commands) = ($1, $2);
+		my $matched = $&;
+
+		unless (eval { require Term::Graille; 1 }) {
+			$text =~ s/\Q$matched\E//;
+			next;
+		}
+
+		my ($x, $y, $w, $h) = split(/\s*,\s*/, (defined $params ? $params : ''));
+		$x = (defined $x && $x =~ /^\d+$/) ? int($x) : 1;
+		$y = (defined $y && $y =~ /^\d+$/) ? int($y) : 1;
+		$w = (defined $w && $w =~ /^\d+$/) ? int($w) : 40;
+		$h = (defined $h && $h =~ /^\d+$/) ? int($h) : 20;
+
+		my $canvas = eval {
+			Term::Graille->new(
+				width  => $w,
+				height => $h,
+			);
+		};
+
+		unless ($canvas) {
+			$text =~ s/\Q$matched\E//;
+			next;
+		}
+
+		# Parse vector directives
+		for my $cmd (split(/\r?\n/, $commands)) {
+			$cmd =~ s/^\s+|\s+$//g;
+			next unless length($cmd);
+
+			if ($cmd =~ /^line\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
+				eval { $canvas->line($1, $2, $3, $4) };
+			} elsif ($cmd =~ /^circle\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
+				eval { $canvas->circle($1, $2, $3) };
+			} elsif ($cmd =~ /^pixel\s+(\d+)\s*,\s*(\d+)/i) {
+				eval { $canvas->set($1, $2) };
+			} elsif ($cmd =~ /^text\s+(\d+)\s*,\s*(\d+)\s*,\s*(.+)$/i) {
+				eval { $canvas->text($1, $2, $3) };
+			}
+		}
+        # Capture output from Term::Graille into a string buffer
+		my $buf = '';
+		{
+			# Silence wide character warning strictly for the memory redirection
+			no warnings 'utf8';
+			local *STDOUT;
+			if (open STDOUT, '>', \$buf) {
+				eval { $canvas->draw() };
+				close STDOUT;
+			}
+		}
+
+		$buf =~ s/\r//g;
+		my @lines = split(/\n/, $buf);
+
+		my $replacement = "\e[s";    # Save cursor
+		my $cur_y = $y;
+		for my $line (@lines) {
+			next unless length($line);
+			$replacement .= "\e[${cur_y};${x}H" . $line;
+			$cur_y++;
+		}
+		$replacement .= "\e[u" . '[% CURSOR ON %]';      # Restore cursor
+
+		$text =~ s/\Q$matched\E/$replacement/;
+	}
+	
+    # Flatten the ansi_meta lookup to a simple, case-insensitive hash
+    my %lookup;
+    for my $code (qw(foreground background special clear cursor attributes)) {
+        my $map = $self->{'ansi_meta'}->{$code} or next;
+        while (my ($name, $info) = each %{$map}) {
+            next unless defined $info->{out};
+            my $seq = $info->{out};
+
+            # Automatically convert 24-bit named presets if TrueColor is unsupported
+            if (! $self->{'CAPS'}->{'24 BIT'} && $seq =~ /\e\[(38|48);2;(\d+);(\d+);(\d+)m/) {
+                my ($plane, $r, $g, $b) = ($1, $2, $3, $4);
+                $seq = $self->_rgb_to_ansi($r, $g, $b, ($plane eq '48' ? 1 : 0));
+            }
+
+            $lookup{ lc $name } = $seq;
+        }
+    }
+
     # If a literal screen reset token exists, remove it and run reset once.
     if ($text =~ /\[%\s+SCREEN\s+RESET\s+%\]/) {
         $text =~ s/\[%\s+SCREEN\s+RESET\s+%\]//gs;
@@ -219,38 +309,20 @@ sub ansi_decode {
           '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
       }/egs;
 
-#    while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
-#        my ($red, $green, $blue) = ($1, $2, $3);
-#        my $new = "\e[58;2;${red};${green};${blue}m";
-#        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
-#    }
-#    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
-#        my $color = $1;
-#        my $new;
-#        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
-#        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
-#    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
-
-    # 24-bit RGB foreground/background
-#    $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
-#      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "38:2:$r:$g:$b" . 'm' }/egs;
-#    $text =~ s/\[%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
-#      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/egs;
-
-# Underline colors
-    while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
-        my ($red, $green, $blue) = ($1 & 255, $2 & 255, $3 & 255);
-        my $new;
-        if ($self->{'CAPS'}->{'24 BIT'}) {
-            $new = "\e[58;2;${red};${green};${blue}m";
-        } elsif ($self->{'CAPS'}->{'8 BIT'}) {
-            my $code = $self->_rgb_to_256($red, $green, $blue);
-            $new = "\e[58;5;${code}m";
-        } else {
-            $new = '';    # Not supported below 8-bit
-        }
-        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
-    }
+   # Underline colors
+   while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
+       my ($red, $green, $blue) = ($1 & 255, $2 & 255, $3 & 255);
+       my $new;
+       if ($self->{'CAPS'}->{'24 BIT'}) {
+           $new = "\e[58;2;${red};${green};${blue}m";
+       } elsif ($self->{'CAPS'}->{'8 BIT'}) {
+           my $code = $self->_rgb_to_256($red, $green, $blue);
+           $new = "\e[58;5;${code}m";
+       } else {
+           $new = '';    # Not supported below 8-bit
+       }
+       $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
+   }
 
     # 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
@@ -288,36 +360,6 @@ sub ansi_decode {
         $text =~ s/\[%\s+JUSTIFIED\s+%\].*?\[%\s+ENDJUSTIFIED\s+%\]/$wrapped/s;
     } ## end while ($text =~ /\[%\s+JUSTIFIED\s+%\](.*?)\[%\s+ENDJUSTIFIED\s+%\]/s)
 
-    #
-    # Flatten the ansi_meta lookup to a simple, case-insensitive hash for a single-pass
-    # substitution of tokens like [% RED %], [% RESET %], etc.
-    #
-#    my %lookup;
-#    for my $code (qw(foreground background special clear cursor attributes)) {
-#        my $map = $self->{'ansi_meta'}->{$code} or next;
-#        while (my ($name, $info) = each %{$map}) {
-#            next unless defined $info->{out};
-#            $lookup{ lc $name } = $info->{out};
-#        }
-#    } ## end for my $code (qw(foreground background special clear cursor attributes))
-
-# Flatten the ansi_meta lookup to a simple, case-insensitive hash
-    my %lookup;
-    for my $code (qw(foreground background special clear cursor attributes)) {
-        my $map = $self->{'ansi_meta'}->{$code} or next;
-        while (my ($name, $info) = each %{$map}) {
-            next unless defined $info->{out};
-            my $seq = $info->{out};
-
-            # Automatically convert 24-bit named presets if TrueColor is unsupported
-            if (! $self->{'CAPS'}->{'24 BIT'} && $seq =~ /\e\[(38|48);2;(\d+);(\d+);(\d+)m/) {
-                my ($plane, $r, $g, $b) = ($1, $2, $3, $4);
-                $seq = $self->_rgb_to_ansi($r, $g, $b, ($plane eq '48' ? 1 : 0));
-            }
-
-            $lookup{ lc $name } = $seq;
-        }
-    }
 
     # Final single-pass replacement for remaining [% ... %] tokens.
     # If token matches a lookup entry, substitute; otherwise if it's a named char use charnames;
