@@ -1625,7 +1625,7 @@ TOKENS
         $to .= '[% BRIGHT CYAN %]│ ' . '─' x 34 . " $bar [% BRIGHT CYAN %]" . '─' x 38 . ' │[% RESET %]' . "\n";
         $to .= "$bar " . sprintf('%-34s', 'SPACES count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of spaces') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', 'CHAR character(s),count') . " $bar " . sprintf('%-38s', 'Outputs "count" number of "character"') . " $bar\n";
-		$to .= "$bar " . sprintf('%-34s', 'CANVAS col,row,width,height     ') . "$bar " . sprintf('%-38s', 'Shows a high-resolution Braille') . " $bar\n";
+		$to .= "$bar " . sprintf('%-34s', 'CANVAS col,row,width,height      ') . "$bar " . sprintf('%-38s', 'Shows a high-resolution Braille') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'canvas at the selected location.') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'Vector drawing commands like line,') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'pixel go between CANVAS & ENDCANVAS.') . " $bar\n";
