@@ -2187,6 +2187,41 @@ For example, for a color of blue, use the following
 
 =back
 
+=head2 GRAPHICS CANVAS
+
+Makes a high-resolution sub-pixel vector graphics canvas using Unicode Braille patterns via C<Term::Drawille>.
+
+For example:
+
+ [% CANVAS 10, 5, 120, 60 %]
+ line 0,0,120,60
+ pixel 30,30
+ [% ENDCANVAS %]
+
+=over 4
+
+=item B<[% CANVAS column,row,pixel_width,pixel_height %]>
+
+Begins the canvas definition at the specified terminal column and row.
+
+=item B<line x1,y1,x2,y2>
+
+Draws a line using Bresenham's algorithm within the canvas pixel grid.
+
+=item B<pixel x,y>
+
+Sets a single pixel dot.
+
+=item B<unset x,y>
+
+Clears a single pixel dot.
+
+=item B<[% ENDCANVAS %]>
+
+Ends the canvas definition and renders the graphic onto the screen.
+
+=back
+
 =head2 FRAMES
 
 Makes a "dialog box" at the selected location and type
