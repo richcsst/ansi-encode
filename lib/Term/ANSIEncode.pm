@@ -296,6 +296,12 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        }
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
+    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
+        my $color = $1;
+        my $new;
+        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
+        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
+    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
 	# 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
@@ -1560,7 +1566,8 @@ TOKENS
                 }
             } ## end while (scalar(@d))
         } ## end while (scalar(@names))
-        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR RGB red,green,blue') . "$bar " . sprintf('%-38s', 'Set the underline color') . " $bar\n";
+        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR RGB red,green,blue') . "$bar " . sprintf('%-38s', 'Set the underline RGB color') . " $bar\n";
+        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR color') . "$bar " . sprintf('%-38s', 'Set the underline color') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'WRAP') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'ENDWRAP') . "$bar " . sprintf('%-38s', 'End text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'JUSTIFIED') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
@@ -1647,7 +1654,10 @@ TOKENS
         my $new = 'UNDERLINE COLOR RGB [% UNDERLINE %][% UNDERLINE COLOR RGB 255,0,0 %][% FAINT %][% ITALIC %]red[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,255,0 %][% FAINT %][% ITALIC %]green[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,0,255 %][% FAINT %][% ITALIC %]blue[% RESET %]';
         $to =~ s/UNDERLINE COLOR RGB red,green,blue/$new /gs;
 
-        $new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
+        my $new = 'UNDERLINE COLOR [% UNDERLINE %][% UNDERLINE COLOR RED %][% FAINT %][% ITALIC %]co[% RESET %][% UNDERLINE %][% UNDERLINE COLOR GREEN][% FAINT %][% ITALIC %]l[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR BLUE %][% FAINT %][% ITALIC %]or[% RESET %]';
+        $to =~ s/UNDERLINE COLOR RGB red,green,blue/$new /gs;
+
+		$new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
         $to =~ s/ color     /$new/gs;
 
         $new = '[% FAINT %][% ITALIC %]character(s)[% RESET %],[% FAINT %][% ITALIC %]count[% RESET %]';
