@@ -348,14 +348,17 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
 sub _resolve_token {
     my ($self, $tok, $matched, $lookup_ref) = @_;
     
-    # Ignore lowercase text, spaces-only, or non-token words
     return $matched unless $tok =~ /^[A-Z0-9 _,-]+$/;
 
     my $key = lc $tok;
     return $lookup_ref->{$key} if exists $lookup_ref->{$key};
 
     if ($tok =~ /^[A-Z0-9 ]+$/) {
-        my $char = eval { charnames::string_vianame($tok) };
+        my $char;
+        {
+            no warnings;
+            $char = charnames::string_vianame($tok);
+        }
         return $char if defined $char;
     }
 
