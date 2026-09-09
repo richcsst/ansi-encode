@@ -1,4 +1,4 @@
-package Term::ANSIEncode 2.05;
+package Term::ANSIEncode 2.06;
 
 #######################################################################
 #            _   _  _____ _____   ______                     _        #
@@ -59,7 +59,7 @@ BEGIN {
     our @EXPORT_OK = qw(ansi_colors);
 } ## end BEGIN
 
-our $VERSION = '2.05';
+our $VERSION = '2.06';
 
 # Package-level caches so large tables are built only once per process.
 our $GLOBAL_ANSI_META = _global_ansi_meta();
@@ -90,6 +90,10 @@ our %STYLES = (
     'SOLID'          => ['█', '█', '█', '█', '█', '█', '█', '█'],
 );
 
+# Precomputed 256-color palette and LRU/memoization cache for RGB downsampling
+our (@ANSI_PALETTE, %RGB_CACHE);
+_init_ansi_palette();
+
 sub new {
     my $class = shift;
     my $esc   = chr(27);
@@ -110,6 +114,35 @@ sub new {
 
     return ($self);
 } ## end sub new
+
+sub _init_ansi_palette {
+    return if @ANSI_PALETTE;
+
+    # 0..15 standard/bright system colors (VGA/xterm defaults)
+    my @system = (
+        [0, 0, 0],       [128, 0, 0],     [0, 128, 0],     [128, 128, 0],
+        [0, 0, 128],     [128, 0, 128],   [0, 128, 128],   [192, 192, 192],
+        [128, 128, 128], [255, 0, 0],     [0, 255, 0],     [255, 255, 0],
+        [0, 0, 255],     [255, 0, 255],   [0, 255, 255],   [255, 255, 255]
+    );
+    push @ANSI_PALETTE, @system;
+
+    # 16..231: 6x6x6 color cube
+    my @levels = (0, 95, 175, 215, 239, 255);
+    for my $r (0 .. 5) {
+        for my $g (0 .. 5) {
+            for my $b (0 .. 5) {
+                push @ANSI_PALETTE, [ $levels[$r], $levels[$g], $levels[$b] ];
+            }
+        }
+    }
+
+    # 232..255: Grayscale ramp
+    for my $i (0 .. 23) {
+        my $v = 8 + ($i * 10);
+        push @ANSI_PALETTE, [ $v, $v, $v ];
+    }
+}
 
 sub ansi_decode {
     my $self = shift;
@@ -185,23 +218,47 @@ sub ansi_decode {
           '[% RETURN %][% B_' . $color . ' %][% CLEAR LINE %][% RESET %]';
       }/egs;
 
-    while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
-        my ($red, $green, $blue) = ($1, $2, $3);
-        my $new = "\e[58;2;${red};${green};${blue}m";
-        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
-    }
-    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
-        my $color = $1;
-        my $new;
-        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
-        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
-    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
+#    while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
+#        my ($red, $green, $blue) = ($1, $2, $3);
+#        my $new = "\e[58;2;${red};${green};${blue}m";
+#        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
+#    }
+#    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
+#        my $color = $1;
+#        my $new;
+#        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
+#        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
+#    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
     # 24-bit RGB foreground/background
+#    $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
+#      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "38:2:$r:$g:$b" . 'm' }/egs;
+#    $text =~ s/\[%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
+#      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/egs;
+
+# Underline colors
+    while ($text =~ /\[%\s+UNDERLINE COLOR RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s+%\]/) {
+        my ($red, $green, $blue) = ($1 & 255, $2 & 255, $3 & 255);
+        my $new;
+        if ($self->{'CAPS'}->{'24 BIT'}) {
+            $new = "\e[58;2;${red};${green};${blue}m";
+        } elsif ($self->{'CAPS'}->{'8 BIT'}) {
+            my $code = $self->_rgb_to_256($red, $green, $blue);
+            $new = "\e[58;5;${code}m";
+        } else {
+            $new = '';    # Not supported below 8-bit
+        }
+        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
+    }
+
+    # 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
-      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "38:2:$r:$g:$b" . 'm' }/egs;
+        $self->_rgb_to_ansi($1 & 255, $2 & 255, $3 & 255, 0);
+    /egs;
+
     $text =~ s/\[%\s*B_RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
-      do { my ($r,$g,$b)=($1&255,$2&255,$3&255); $csi . "48:2:$r:$g:$b" . 'm' }/egs;
+        $self->_rgb_to_ansi($1 & 255, $2 & 255, $3 & 255, 1);
+    /egs;
 
     while ($text =~ /\[%\s+WRAP\s+%\](.*?)\[%\s+ENDWRAP\s+%\]/s) {
         my $wrapped = $1;
@@ -234,14 +291,32 @@ sub ansi_decode {
     # Flatten the ansi_meta lookup to a simple, case-insensitive hash for a single-pass
     # substitution of tokens like [% RED %], [% RESET %], etc.
     #
+#    my %lookup;
+#    for my $code (qw(foreground background special clear cursor attributes)) {
+#        my $map = $self->{'ansi_meta'}->{$code} or next;
+#        while (my ($name, $info) = each %{$map}) {
+#            next unless defined $info->{out};
+#            $lookup{ lc $name } = $info->{out};
+#        }
+#    } ## end for my $code (qw(foreground background special clear cursor attributes))
+
+# Flatten the ansi_meta lookup to a simple, case-insensitive hash
     my %lookup;
     for my $code (qw(foreground background special clear cursor attributes)) {
         my $map = $self->{'ansi_meta'}->{$code} or next;
         while (my ($name, $info) = each %{$map}) {
             next unless defined $info->{out};
-            $lookup{ lc $name } = $info->{out};
+            my $seq = $info->{out};
+
+            # Automatically convert 24-bit named presets if TrueColor is unsupported
+            if (! $self->{'CAPS'}->{'24 BIT'} && $seq =~ /\e\[(38|48);2;(\d+);(\d+);(\d+)m/) {
+                my ($plane, $r, $g, $b) = ($1, $2, $3, $4);
+                $seq = $self->_rgb_to_ansi($r, $g, $b, ($plane eq '48' ? 1 : 0));
+            }
+
+            $lookup{ lc $name } = $seq;
         }
-    } ## end for my $code (qw(foreground background special clear cursor attributes))
+    }
 
     # Final single-pass replacement for remaining [% ... %] tokens.
     # If token matches a lookup entry, substitute; otherwise if it's a named char use charnames;
@@ -348,6 +423,76 @@ sub ansi_box {
 
     return ($text);
 } ## end sub ansi_box
+
+sub _rgb_to_ansi {
+    my ($self, $r, $g, $b, $is_bg) = @_;
+    $is_bg = $is_bg ? 1 : 0;
+
+    my $caps = $self->{'CAPS'};
+
+    # 1. 24-bit TrueColor supported
+    if ($caps->{'24 BIT'}) {
+        my $plane = $is_bg ? 48 : 38;
+        return "\e[${plane};2;${r};${g};${b}m";
+    }
+
+    # Cache lookup key
+    my $cache_key = "$r,$g,$b,$is_bg";
+    return $RGB_CACHE{$cache_key} if exists $RGB_CACHE{$cache_key};
+
+    # 2. Downgrade to 8-bit (256-color)
+    if ($caps->{'8 BIT'}) {
+        my $code = $self->_rgb_to_256($r, $g, $b);
+        my $plane = $is_bg ? 48 : 38;
+        return $RGB_CACHE{$cache_key} = "\e[${plane};5;${code}m";
+    }
+
+    # 3. Downgrade to 4-bit (16-color) or 3-bit (8-color)
+    my $code = $self->_rgb_to_16($r, $g, $b, $caps->{'4 BIT'});
+    my $plane_offset = $is_bg ? ($code >= 90 ? 10 : 40) : ($code >= 90 ? 0 : 30);
+    my $final_code   = ($code >= 90) ? ($code + ($is_bg ? 10 : 0)) : ($plane_offset + ($code % 10));
+
+    return $RGB_CACHE{$cache_key} = "\e[${final_code}m";
+}
+
+sub _rgb_to_256 {
+    my ($self, $r, $g, $b) = @_;
+
+    # Search cube + grayscale ramp (indices 16..255)
+    my ($best_idx, $min_dist) = (16, ~0);
+
+    for my $idx (16 .. 255) {
+        my ($pr, $pg, $pb) = @{ $ANSI_PALETTE[$idx] };
+        # Weighted Euclidean distance (human eye sensitivity: 2R + 4G + 3B)
+        my $dist = (2 * ($r - $pr)**2) + (4 * ($g - $pg)**2) + (3 * ($b - $pb)**2);
+        if ($dist < $min_dist) {
+            $min_dist = $dist;
+            $best_idx = $idx;
+            last if $dist == 0;
+        }
+    }
+    return $best_idx;
+}
+
+sub _rgb_to_16 {
+    my ($self, $r, $g, $b, $allow_bright) = @_;
+
+    # 3-bit standard base coordinates
+    my $v = ($r > 127 ? 1 : 0) | ($g > 127 ? 2 : 0) | ($b > 127 ? 4 : 0);
+
+    # Standard ANSI colors: 0=Black, 1=Red, 2=Green, 3=Yellow, 4=Blue, 5=Magenta, 6=Cyan, 7=White
+    my @ansi3_map = (0, 1, 2, 3, 4, 5, 6, 7);
+    my $base = $ansi3_map[$v];
+
+    if ($allow_bright) {
+        # Check if luminance warrants high-intensity / bright variant
+        my $luminance = (0.299 * $r) + (0.587 * $g) + (0.114 * $b);
+        if ($luminance > 160 || ($r > 200 || $g > 200 || $b > 200)) {
+            return 90 + $base;    # Bright range: 90..97
+        }
+    }
+    return 30 + $base;            # Standard range: 30..37
+}
 
 sub _global_ansi_meta {    # prefills the hash cache
     my $esc = chr(27);
