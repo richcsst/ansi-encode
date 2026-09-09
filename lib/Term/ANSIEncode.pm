@@ -339,18 +339,17 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
     # else leave token visible.
 ###
 # Final single-pass replacement for remaining [% ... %] tokens.
-# Final single-pass replacement for remaining [% ... %] tokens.
-    $text =~ s/\[%\s*(.+?)\s*%\]/ $self->_resolve_token($1, $&) /egs;
+    $text =~ s/\[%\s*(.+?)\s*%\]/ $self->_resolve_token($1, $&, \%lookup) /egs;
 ###
 
     return $text;
 } ## end sub ansi_decode
 
 sub _resolve_token {
-    my ($self, $tok, $matched) = @_;
+    my ($self, $tok, $matched, $lookup_ref) = @_;
     my $key = lc $tok;
 
-    return $lookup{$key} if exists $lookup{$key};
+    return $lookup_ref->{$key} if exists $lookup_ref->{$key};
 
     if ($tok =~ /^[A-Z0-9 ]+$/) {
         my $char = eval { charnames::string_vianame($tok) };
