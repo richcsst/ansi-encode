@@ -49,6 +49,7 @@ my $Dump       = FALSE;
 my $frames     = FALSE;
 my $rules      = FALSE;
 my $ansi_modes = FALSE;
+my $colors     = FALSE;
 my $width      = 80;
 my $baud       = 0;
 my $speed      = 0;
