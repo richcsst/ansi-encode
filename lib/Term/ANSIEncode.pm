@@ -215,13 +215,11 @@ sub ansi_decode {
 				eval { $canvas->text($1, $2, $3) };
 			}
 		}
-        # Capture output from Term::Graille into a string buffer
+        # Capture output from Term::Graille into an in-memory character buffer
 		my $buf = '';
 		{
-			# Silence wide character warning strictly for the memory redirection
-			no warnings 'utf8';
 			local *STDOUT;
-			if (open STDOUT, '>', \$buf) {
+			if (open STDOUT, '>:utf8', \$buf) {
 				eval { $canvas->draw() };
 				close STDOUT;
 			}
