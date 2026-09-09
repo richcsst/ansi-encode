@@ -31,9 +31,6 @@ use constant {
 
 use Time::HiRes qw( sleep );
 use Text::Format;
-use Term::Graille;
-
-require Encode;
 
 # use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 # use Term::Drawille;
@@ -173,72 +170,6 @@ sub ansi_decode {
     #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
 ###
 
-	while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
-		my ($params, $commands) = ($1, $2);
-		my $matched = $&;
-
-		unless (eval { require Term::Graille; 1 }) {
-			$text =~ s/\Q$matched\E//;
-			next;
-		}
-
-		my ($x, $y, $w, $h) = split(/\s*,\s*/, (defined $params ? $params : ''));
-		$x = (defined $x && $x =~ /^\d+$/) ? int($x) : 1;
-		$y = (defined $y && $y =~ /^\d+$/) ? int($y) : 1;
-		$w = (defined $w && $w =~ /^\d+$/) ? int($w) : 40;
-		$h = (defined $h && $h =~ /^\d+$/) ? int($h) : 20;
-
-		my $canvas = eval {
-			Term::Graille->new(
-				width  => $w,
-				height => $h,
-			);
-		};
-
-		unless ($canvas) {
-			$text =~ s/\Q$matched\E//;
-			next;
-		}
-
-		# Parse vector directives
-		for my $cmd (split(/\r?\n/, $commands)) {
-			$cmd =~ s/^\s+|\s+$//g;
-			next unless length($cmd);
-
-			if ($cmd =~ /^line\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
-				eval { $canvas->line($1, $2, $3, $4) };
-			} elsif ($cmd =~ /^circle\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
-				eval { $canvas->circle($1, $2, $3) };
-			} elsif ($cmd =~ /^pixel\s+(\d+)\s*,\s*(\d+)/i) {
-				eval { $canvas->set($1, $2) };
-			} elsif ($cmd =~ /^text\s+(\d+)\s*,\s*(\d+)\s*,\s*(.+)$/i) {
-				eval { $canvas->text($1, $2, $3) };
-			}
-		}
-        # Capture output from Term::Graille into an in-memory character buffer
-		my $buf = '';
-		{
-			local *STDOUT;
-			if (open STDOUT, '>:utf8', \$buf) {
-				eval { $canvas->draw() };
-				close STDOUT;
-			}
-		}
-
-		$buf =~ s/\r//g;
-		my @lines = split(/\n/, $buf);
-
-		my $replacement = "\e[s";    # Save cursor
-		my $cur_y = $y;
-		for my $line (@lines) {
-			next unless length($line);
-			$replacement .= "\e[${cur_y};${x}H" . $line;
-			$cur_y++;
-		}
-		$replacement .= "\e[u" . '[% CURSOR ON %]';      # Restore cursor
-
-		$text =~ s/\Q$matched\E/$replacement/;
-	}
 	
     # Flatten the ansi_meta lookup to a simple, case-insensitive hash
     my %lookup;
