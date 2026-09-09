@@ -1570,7 +1570,7 @@ TOKENS
             } ## end while (scalar(@d))
         } ## end while (scalar(@names))
         $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR RGB red,green,blue') . "$bar " . sprintf('%-38s', 'Set the underline RGB color') . " $bar\n";
-#        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR color') . " $bar " . sprintf('%-38s', 'Set the underline color') . " $bar\n";
+        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR color') . " $bar " . sprintf('%-38s', 'Set the underline color') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'WRAP') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'ENDWRAP') . "$bar " . sprintf('%-38s', 'End text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'JUSTIFIED') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
