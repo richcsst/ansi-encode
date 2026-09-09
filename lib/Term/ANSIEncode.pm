@@ -339,17 +339,17 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
     # else leave token visible.
 ###
     $text =~ s/\[%\s*(.+?)\s*%\]/
-      do {
-          my $tok = $1;
-          my $key = lc $tok;
-          if ( exists $lookup{$key} ) {
-              $lookup{$key};
-          } elsif ( defined( my $char = charnames::string_vianame($tok) ) ) {
-              $char;
-          } else {
-              $&;    # leave the original token intact
-          }
-      }/egs;
+     do {
+         my $tok = $1;
+         my $key = lc $tok;
+         if ( exists $lookup{$key} ) {
+             $lookup{$key};
+         } elsif ( $tok =~ /^[A-Z0-9 ]+$/ && defined( my $char = eval { charnames::string_vianame($tok) } ) ) {
+             $char;
+         } else {
+             $&;    # leave the original token intact
+         }
+     }/egs;
 ###
 
     return $text;
