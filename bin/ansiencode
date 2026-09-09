@@ -134,7 +134,7 @@ if ($version) {
 		};
 		close $fh;
 
-		$ansi->ansi_output($content);
+		$ansi->ansi_output($content) . "\e[?25h";
 	} else {
 		$ansi->ansi_output(help_text());
 		$| = 1;
