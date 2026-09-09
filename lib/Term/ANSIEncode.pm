@@ -200,7 +200,6 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
         my ($params, $commands) = ($1, $2);
         my $matched = $&;
 
-        # Parameters: col, row, pixel_width, pixel_height
         my @parts = split(/\s*,\s*/, (defined $params ? $params : ''));
         my $x = (defined $parts[0] && $parts[0] =~ /^\d+$/) ? int($parts[0]) : 1;
         my $y = (defined $parts[1] && $parts[1] =~ /^\d+$/) ? int($parts[1]) : 1;
@@ -215,7 +214,6 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             height => $h,
         );
 
-        # Parse vector directives
         for my $cmd (split(/\r?\n/, $commands)) {
             $cmd =~ s/^\s+|\s+$//g;
             next unless length($cmd);
@@ -229,22 +227,21 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             }
         }
 
-        # Term::Drawille uses frame() to get the string representation
         my $canvas_str = $canvas->as_string();
         $canvas_str =~ s/\r//g;
         my @lines = split(/\n/, $canvas_str);
 
-        my $replacement = "\e[s";    # Save cursor
+        # Build replacement string safely using explicit cursor save/restore
+        my $replacement = "\e[s";
         my $cur_y = $y;
         for my $line (@lines) {
             $replacement .= "\e[${cur_y};${x}H" . $line;
             $cur_y++;
         }
-        $replacement .= "\e[u";      # Restore cursor
+        $replacement .= "\e[u";
 
         $text =~ s/\Q$matched\E/$replacement/;
     }
-
 	#
     # BOX blocks (BOX ... ENDBOX) - handle first.
     # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
