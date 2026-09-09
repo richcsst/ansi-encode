@@ -195,6 +195,7 @@ sub ansi_decode {
     #      s: Allows the dot . to match newline characters.
     #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
 ###
+
 while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
         my ($params, $commands) = ($1, $2);
         my $matched = $&;
@@ -203,21 +204,16 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
         my @parts = split(/\s*,\s*/, (defined $params ? $params : ''));
         my $x = (defined $parts[0] && $parts[0] =~ /^\d+$/) ? int($parts[0]) : 1;
         my $y = (defined $parts[1] && $parts[1] =~ /^\d+$/) ? int($parts[1]) : 1;
-        my $w = (defined $parts[2] && $parts[2] =~ /^\d+$/) ? int($parts[2]) : 160; # pixel width
-        my $h = (defined $parts[3] && $parts[3] =~ /^\d+$/) ? int($parts[3]) : 80;  # pixel height
+        my $w = (defined $parts[2] && $parts[2] =~ /^\d+$/) ? int($parts[2]) : 160;
+        my $h = (defined $parts[3] && $parts[3] =~ /^\d+$/) ? int($parts[3]) : 80;
 
-        # Ensure valid dimensions
         $w = 2 if $w < 2;
         $h = 4 if $h < 4;
 
         my $canvas = Term::Drawille->new(
-		   width  =>$w,
-		   height => $h,
-		);
-        unless ($canvas) {
-            $text =~ s/\Q$matched\E//;
-            next;
-        }
+            width  => $w,
+            height => $h,
+        );
 
         # Parse vector directives
         for my $cmd (split(/\r?\n/, $commands)) {
@@ -233,16 +229,14 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             }
         }
 
-        # Drawille's draw() returns the pure scalar string!
-        my $canvas_str = eval { $canvas->draw() } // '';
-
+        # Term::Drawille uses frame() to get the string representation
+        my $canvas_str = $canvas->frame();
         $canvas_str =~ s/\r//g;
         my @lines = split(/\n/, $canvas_str);
 
         my $replacement = "\e[s";    # Save cursor
         my $cur_y = $y;
         for my $line (@lines) {
-            next unless length($line);
             $replacement .= "\e[${cur_y};${x}H" . $line;
             $cur_y++;
         }
