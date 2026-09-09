@@ -230,7 +230,7 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
         }
 
         # Term::Drawille uses frame() to get the string representation
-        my $canvas_str = $canvas->frame();
+        my $canvas_str = $canvas->as_string();
         $canvas_str =~ s/\r//g;
         my @lines = split(/\n/, $canvas_str);
 
