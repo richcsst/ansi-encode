@@ -31,6 +31,7 @@ use constant {
 
 use Time::HiRes qw( sleep );
 use Text::Format;
+use Term::Drawille;
 
 # use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
 # use Term::Drawille;
@@ -152,25 +153,6 @@ sub ansi_decode {
     # Nothing to do for very short strings
     return $text unless defined $text && length($text) > 1;
 
-	# Before parsing all other tokens, parse BLOCK and ENDBLOCK tokens
-###
-    $text =~ s{
-        \[%\s+BLOCK\s+(\d+)\s+%\]  # Match the start of the block with the repeat count
-        (.*?)                      # Non-greedy match for the content of the block
-        \[%\s+ENDBLOCK\s+%\]       # Match the end of the block
-    }{
-        my $repeat_count  = $1;
-        my $block_content = $2;
-        $block_content x $repeat_count;  # Repeat the captured block content $1 times
-    }egxs;
-
-    #      e: Evaluates the replacement part as a Perl expression.
-    #      g: Applies the substitution globally to all matches in the string.
-    #      s: Allows the dot . to match newline characters.
-    #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
-###
-
-	
     # Flatten the ansi_meta lookup to a simple, case-insensitive hash
     my %lookup;
     for my $code (qw(foreground background special clear cursor attributes)) {
@@ -197,7 +179,71 @@ sub ansi_decode {
 
     # Convenience CSI
     my $csi = $self->{'ansi_meta'}->{special}->{CSI}->{out};
+	# Before parsing all other tokens, parse BLOCK and ENDBLOCK tokens
+###
+    $text =~ s{
+        \[%\s+BLOCK\s+(\d+)\s+%\]  # Match the start of the block with the repeat count
+        (.*?)                      # Non-greedy match for the content of the block
+        \[%\s+ENDBLOCK\s+%\]       # Match the end of the block
+    }{
+        my $repeat_count  = $1;
+        my $block_content = $2;
+        $block_content x $repeat_count;  # Repeat the captured block content $1 times
+    }egxs;
 
+    #      e: Evaluates the replacement part as a Perl expression.
+    #      g: Applies the substitution globally to all matches in the string.
+    #      s: Allows the dot . to match newline characters.
+    #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
+###
+while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
+        my ($params, $commands) = ($1, $2);
+        my $matched = $&;
+
+        # Parameters: col, row (where to stamp on screen)
+        # Optional: w, h are not strictly needed by Drawille (it auto-sizes),
+        # but x and y specify the terminal screen placement.
+        my ($x, $y) = split(/\s*,\s*/, (defined $params ? $params : ''));
+        $x = (defined $x && $x =~ /^\d+$/) ? int($x) : 1;
+        $y = (defined $y && $y =~ /^\d+$/) ? int($y) : 1;
+
+        my $canvas = eval { Term::Drawille->new() };
+        unless ($canvas) {
+            $text =~ s/\Q$matched\E//;
+            next;
+        }
+
+        # Parse simple vector directives
+        for my $cmd (split(/\r?\n/, $commands)) {
+            $cmd =~ s/^\s+|\s+$//g;
+            next unless length($cmd);
+
+            if ($cmd =~ /^line\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
+                eval { $canvas->line($1, $2, $3, $4) };
+            } elsif ($cmd =~ /^pixel\s+(\d+)\s*,\s*(\d+)/i) {
+                eval { $canvas->set($1, $2) };
+            } elsif ($cmd =~ /^unset\s+(\d+)\s*,\s*(\d+)/i) {
+                eval { $canvas->unset($1, $2) };
+            }
+        }
+
+        # Drawille's draw() returns the pure scalar string!
+        my $canvas_str = eval { $canvas->draw() } // '';
+
+        $canvas_str =~ s/\r//g;
+        my @lines = split(/\n/, $canvas_str);
+
+        my $replacement = "\e[s";    # Save cursor
+        my $cur_y = $y;
+        for my $line (@lines) {
+            next unless length($line);
+            $replacement .= "\e[${cur_y};${x}H" . $line;
+            $cur_y++;
+        }
+        $replacement .= "\e[u";      # Restore cursor
+
+        $text =~ s/\Q$matched\E/$replacement/;
+    }
     #
     # BOX blocks (BOX ... ENDBOX) - handle first.
     # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
