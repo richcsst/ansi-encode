@@ -296,6 +296,13 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        }
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
+   while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
+        my $color = $1;
+        my $new;
+        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
+        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
+    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
+
 
     # 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
