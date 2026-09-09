@@ -296,15 +296,8 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        }
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
-   while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
-        my $color = $1;
-        my $new;
-        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
-        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
-    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
-
-    # 24-bit RGB foreground/background with dynamic fallback
+	# 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
         $self->_rgb_to_ansi($1 & 255, $2 & 255, $3 & 255, 0);
     /egs;
@@ -636,7 +629,7 @@ sub _global_ansi_meta {    # prefills the hash cache
             'SUPERSCRIPT'               => { 'out' => $csi . '73m', 'desc' => 'Turn on superscript' },
             'SUPERSCRIPT OFF'           => { 'out' => $csi . '75m', 'desc' => 'Turn off superscript' },
             'UNDERLINE'                 => { 'out' => $csi . '4m',  'desc' => 'Set to underlined text' },
-			'UNDERLINE COLOR'           => { 'out' => $csi . '58m', 'desc' => 'Set underline color' },
+#			'UNDERLINE COLOR'           => { 'out' => $csi . '58m', 'desc' => 'Set underline color' },
         },
 
         # Color
@@ -1567,7 +1560,7 @@ TOKENS
                 }
             } ## end while (scalar(@d))
         } ## end while (scalar(@names))
-        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR color') . "$bar " . sprintf('%-38s', 'Set the underline color using color') . " $bar\n";
+        $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR RGB red,green,blue') . "$bar " . sprintf('%-38s', 'Set the underline color using rgb colors') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s',  ' ') . " $bar " . sprintf('%-38s', 'token.') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'WRAP') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'ENDWRAP') . "$bar " . sprintf('%-38s', 'End text block to be word-wrapped') . " $bar\n";
