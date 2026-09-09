@@ -210,6 +210,33 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
 	}
 }
 
+{
+    my $text = q{[% CANVAS 5, 2, 40, 20 %]pixel 0,0[% ENDCANVAS %]};
+
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' CANVAS col,row,width,height ')) .
+        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
+    );
+
+    my $got = $ansi->ansi_decode($text);
+
+    # Verify that the token was replaced, cursor position was saved/restored,
+    # and it targeted column 5, row 2 (\e[2;5H).
+    if ($got =~ /\e\[s/ && $got =~ /\e\[2;5H/ && $got =~ /\e\[u\[% CURSOR ON %\]/) {
+        pass(' [% CANVAS ... %] ');
+        diag("\r" . clline .
+            colored(['bright_white on_black'], sprintf('%41s', ' CANVAS col,row,width,height ')) .
+            colored(['bright_green'], ' OK')
+        );
+    } else {
+        fail(' [% CANVAS ... %] ');
+        diag("\r" . clline .
+            colored(['bright_white on_black'], sprintf('%41s', ' CANVAS col,row,width,height ')) .
+            colored(['bright_red'], ' FAILED')
+        );
+    }
+}
+
 diag("\r" . ' ' x 79 . "\r\e[7A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 7);
 
 exit(0);
