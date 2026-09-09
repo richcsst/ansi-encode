@@ -338,18 +338,18 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
     # If token matches a lookup entry, substitute; otherwise if it's a named char use charnames;
     # else leave token visible.
 ###
-    $text =~ s/\[%\s*(.+?)\s*%\]/
-     do {
-         my $tok = $1;
-         my $key = lc $tok;
-         if ( exists $lookup{$key} ) {
-             $lookup{$key};
-         } elsif ( $tok =~ /^[A-Z0-9 ]+$/ && defined( my $char = eval { charnames::string_vianame($tok) } ) ) {
-             $char;
-         } else {
-             $&;    # leave the original token intact
-         }
-     }/egs;
+# Final single-pass replacement for remaining [% ... %] tokens.
+    $text =~ s{\[%\s*(.+?)\s*%\]}{
+        my $tok = $1;
+        my $key = lc $tok;
+        if (exists $lookup{$key}) {
+            $lookup{$key};
+        } elsif ($tok =~ /^[A-Z0-9 ]+$/ && defined(my $char = eval { charnames::string_vianame($tok) })) {
+            $char;
+        } else {
+            $&;
+        }
+    }egs;
 ###
 
     return $text;
