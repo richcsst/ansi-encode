@@ -1549,7 +1549,7 @@ TOKENS
             while (scalar(@d)) {
                 my $line = shift(@d);
                 if ($first) {
-                    if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR/) {
+                    if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR RGB/) {
                         $to .= "$bar " . sprintf('%-34s', $name) . ' [% BRIGHT GREEN %]│[% RESET %] ' . sprintf('%-38s', $line) . ' [% BRIGHT GREEN %]│[% RESET %]' . "\n";
                     } else {
                         $to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-34s', $name) . ' [% RESET %]' . "$bar " . sprintf('%-38s', $line) . " $bar\n";
@@ -1561,7 +1561,6 @@ TOKENS
             } ## end while (scalar(@d))
         } ## end while (scalar(@names))
         $to .= "$bar " . sprintf('%-34s',  'UNDERLINE COLOR RGB red,green,blue') . " $bar " . sprintf('%-38s', 'Set the underline color') . " $bar\n";
-        $to .= "$bar " . sprintf('%-34s',  ' ') . " $bar " . sprintf('%-38s', 'token.') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'WRAP') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'ENDWRAP') . "$bar " . sprintf('%-38s', 'End text block to be word-wrapped') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s ', 'JUSTIFIED') . "$bar " . sprintf('%-38s', 'Begin text block to be word-wrapped') . " $bar\n";
