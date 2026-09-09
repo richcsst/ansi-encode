@@ -629,6 +629,7 @@ sub _global_ansi_meta {    # prefills the hash cache
             'SUPERSCRIPT'               => { 'out' => $csi . '73m', 'desc' => 'Turn on superscript' },
             'SUPERSCRIPT OFF'           => { 'out' => $csi . '75m', 'desc' => 'Turn off superscript' },
             'UNDERLINE'                 => { 'out' => $csi . '4m',  'desc' => 'Set to underlined text' },
+			'UNDERLINE COLOR'           => { 'out' => $csi . '58m', 'desc' => 'Set underline color' },
         },
 
         # Color
