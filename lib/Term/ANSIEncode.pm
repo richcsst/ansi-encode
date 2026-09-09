@@ -34,7 +34,6 @@ use Text::Format;
 use Term::Drawille;
 
 # use Data::Dumper::Simple;$Data::Dumper::Terse=TRUE;$Data::Dumper::Indent=TRUE;$Data::Dumper::Useqq=TRUE;$Data::Dumper::Deparse=TRUE;$Data::Dumper::Quotekeys=TRUE;$Data::Dumper::Trailingcomma=TRUE;$Data::Dumper::Sortkeys=TRUE;$Data::Dumper::Purity=TRUE;$Data::Dumper::Deparse=TRUE;
-# use Term::Drawille;
 
 # UTF-8 is required for special character handling
 binmode(STDERR, ":encoding(UTF-8)");
@@ -196,7 +195,7 @@ sub ansi_decode {
     #      s: Allows the dot . to match newline characters.
     #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
 ###
-while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
+    while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
         my ($params, $commands) = ($1, $2);
         my $matched = $&;
 
@@ -240,7 +239,7 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
             $replacement .= "\e[${cur_y};${x}H" . $line;
             $cur_y++;
         }
-        $replacement .= "\e[u";      # Restore cursor
+        $replacement .= "\e[u[% CURSOR ON %]";      # Restore cursor
 
         $text =~ s/\Q$matched\E/$replacement/;
     }
