@@ -297,10 +297,13 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
     while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
-        my $color = $1;
-        my $new;
-        $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
-        $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
+        my $color = uc($1);
+		if (exists($self->{'ansi_meta'}->{'foreground'}->{$color})) {
+	        my $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
+    	    $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
+		} else {
+    	    $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]//gs;
+		}
     } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
 	# 24-bit RGB foreground/background with dynamic fallback
@@ -1555,7 +1558,7 @@ TOKENS
             while (scalar(@d)) {
                 my $line = shift(@d);
                 if ($first) {
-                    if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR RGB/) {
+                    if ($name =~ /FONT|HIDE|RING BELL|UNDERLINE COLOR/) {
                         $to .= "$bar " . sprintf('%-34s', $name) . ' [% BRIGHT GREEN %]│[% RESET %] ' . sprintf('%-38s', $line) . ' [% BRIGHT GREEN %]│[% RESET %]' . "\n";
                     } else {
                         $to .= $bar . '[% ' . $name . ' %]' . sprintf(' %-34s', $name) . ' [% RESET %]' . "$bar " . sprintf('%-38s', $line) . " $bar\n";
