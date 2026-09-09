@@ -296,15 +296,15 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        }
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
-#    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
-#        my $color = uc($1);
-#		if (exists($self->{'ansi_meta'}->{'foreground'}->{$color})) {
-#	        my $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
-#    	    $text =~ s/\[%\s+UNDERLINE COLOR\s+$color\s+%\]/$new/gs;
-#		} else {
-#    	    $text =~ s/\[%\s+UNDERLINE COLOR\s+$color\s+%\]//igs;
-#		}
-#    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
+    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
+        my $color = uc($1);
+		if (exists($self->{'ansi_meta'}->{'foreground'}->{$color})) {
+	        my $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
+    	    $text =~ s/\[%\s+UNDERLINE COLOR\s+$color\s+%\]/$new/gs;
+		} else {
+    	    $text =~ s/\[%\s+UNDERLINE COLOR\s+$color\s+%\]//gs;
+		}
+    } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
 	# 24-bit RGB foreground/background with dynamic fallback
     $text =~ s/\[%\s*RGB\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*%\]/
