@@ -296,13 +296,13 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
        }
        $text =~ s/\[%\s+UNDERLINE COLOR RGB\s+$red,$green,$blue\s+%\]/$new/gs;
    }
-    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/) {
+    while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/is) {
         my $color = uc($1);
 		if (exists($self->{'ansi_meta'}->{'foreground'}->{$color})) {
 	        my $new = "\e[58;5;" . substr($self->{'ansi_meta'}->{'foreground'}->{$color}->{'out'}, 3);
     	    $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]/$new/gs;
 		} else {
-    	    $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]//gs;
+    	    $text =~ s/\[%\s+UNDERLINE COLOR $color\s+%\]//igs;
 		}
     } ## end while ($text =~ /\[%\s+UNDERLINE COLOR\s+(.*?)\s+%\]/)
 
