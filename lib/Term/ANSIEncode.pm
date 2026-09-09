@@ -1644,7 +1644,7 @@ TOKENS
     $to .= '[% BRIGHT GREEN %]╰' . '─' x 36 . '┴' . '─' x 40 . '╯[% RESET %]' . "\n";
 
     {    # Post processing
-        my $new = 'UNDERLINE COLOR RGB [% UNDERLINE %][% UNDERLINE COLOR RED %][% FAINT %][% ITALIC %]red[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR GREEN %][% FAINT %][% ITALIC %]green[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR BLUE %][% FAINT %][% ITALIC %]blue[% RESET %]';
+        my $new = 'UNDERLINE COLOR RGB [% UNDERLINE %][% UNDERLINE COLOR RGB 255,0,0 %][% FAINT %][% ITALIC %]red[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,255,0 %][% FAINT %][% ITALIC %]green[% RESET %],[% UNDERLINE %][% UNDERLINE COLOR RGB 0,0,255 %][% FAINT %][% ITALIC %]blue[% RESET %]';
         $to =~ s/UNDERLINE COLOR RGB red,gree,blue/$new /gs;
 
         $new = '[% FAINT %][% ITALIC %] color     [% RESET %]';
