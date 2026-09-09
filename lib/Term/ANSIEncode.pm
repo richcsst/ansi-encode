@@ -210,7 +210,10 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
         $w = 2 if $w < 2;
         $h = 4 if $h < 4;
 
-        my $canvas = eval { Term::Drawille->new($w, $h) };
+        my $canvas = Term::Drawille->new(
+		   width  =>$w,
+		   height => $h,
+		);
         unless ($canvas) {
             $text =~ s/\Q$matched\E//;
             next;
