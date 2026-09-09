@@ -347,8 +347,11 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
 
 sub _resolve_token {
     my ($self, $tok, $matched, $lookup_ref) = @_;
-    my $key = lc $tok;
+    
+    # Ignore lowercase text, spaces-only, or non-token words
+    return $matched unless $tok =~ /^[A-Z0-9 _,-]+$/;
 
+    my $key = lc $tok;
     return $lookup_ref->{$key} if exists $lookup_ref->{$key};
 
     if ($tok =~ /^[A-Z0-9 ]+$/) {
