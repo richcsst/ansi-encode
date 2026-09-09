@@ -1651,7 +1651,6 @@ TOKENS
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'canvas at the selected location.') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'Vector drawing commands like line,') . " $bar\n";
         $to .= "$bar " . sprintf('%-34s', ' ') . " $bar " . sprintf('%-38s', 'pixel go between CANVAS & ENDCANVAS.') . " $bar\n";
-        $to .= "$bar " . sprintf('%-34s', 'ENDBOX') . " $bar " . sprintf('%-38s', 'Ends the BOX token function') . " $bar\n"; # (keep existing box end)
     }
     $to .= '[% BRIGHT GREEN %]╰' . '─' x 36 . '┴' . '─' x 40 . '╯[% RESET %]' . "\n";
 
