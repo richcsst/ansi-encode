@@ -357,6 +357,8 @@ while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]
 sub _resolve_token {
     my ($self, $tok, $matched, $lookup_ref) = @_;
     
+    # If the token contains lowercase characters, it is descriptive text (e.g. "color"), not a macro token.
+    return $matched if $tok =~ /[a-z]/;
     return $matched unless $tok =~ /^[A-Z0-9 _,-]+$/;
 
     my $key = lc $tok;
