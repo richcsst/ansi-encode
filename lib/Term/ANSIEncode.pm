@@ -195,7 +195,7 @@ sub ansi_decode {
     #      s: Allows the dot . to match newline characters.
     #      x: Allows for extended mode, which ignores whitespace and comments in the regex for better readability.
 ###
-    while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
+while ($text =~ m{\[%\s*CANVAS(?:\s+(.*?))?\s*%\]([\s\S]*?)\[%\s*ENDCANVAS\s*%\]}si) {
         my ($params, $commands) = ($1, $2);
         my $matched = $&;
 
@@ -206,7 +206,7 @@ sub ansi_decode {
         my $w = (defined $parts[2] && $parts[2] =~ /^\d+$/) ? int($parts[2]) : 160; # pixel width
         my $h = (defined $parts[3] && $parts[3] =~ /^\d+$/) ? int($parts[3]) : 80;  # pixel height
 
-        # Ensure minimum valid pixel dimensions (multiples of 2 and 4)
+        # Ensure valid dimensions
         $w = 2 if $w < 2;
         $h = 4 if $h < 4;
 
@@ -216,13 +216,13 @@ sub ansi_decode {
             next;
         }
 
-        # Parse simple vector directives
+        # Parse vector directives
         for my $cmd (split(/\r?\n/, $commands)) {
             $cmd =~ s/^\s+|\s+$//g;
             next unless length($cmd);
 
             if ($cmd =~ /^line\s+(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i) {
-                $canvas->line($1, $2, $3, $4);
+                _drawille_line($canvas, $1, $2, $3, $4);
             } elsif ($cmd =~ /^pixel\s+(\d+)\s*,\s*(\d+)/i) {
                 $canvas->set($1, $2);
             } elsif ($cmd =~ /^unset\s+(\d+)\s*,\s*(\d+)/i) {
@@ -231,7 +231,7 @@ sub ansi_decode {
         }
 
         # Drawille's draw() returns the pure scalar string!
-        my $canvas_str = $canvas->draw() // '';
+        my $canvas_str = eval { $canvas->draw() } // '';
 
         $canvas_str =~ s/\r//g;
         my @lines = split(/\n/, $canvas_str);
@@ -247,7 +247,8 @@ sub ansi_decode {
 
         $text =~ s/\Q$matched\E/$replacement/;
     }
-    #
+
+	#
     # BOX blocks (BOX ... ENDBOX) - handle first.
     # Use a while loop and plain Perl code for replacements (avoid s///e/do-block in-place),
     # so we don't accidentally create replacement-string interpolation warnings.
@@ -444,6 +445,29 @@ sub ansi_box {
 
     return ($text);
 } ## end sub ansi_box
+
+sub _drawille_line {
+    my ($canvas, $x0, $y0, $x1, $y1) = @_;
+    my $dx = abs($x1 - $x0);
+    my $dy = abs($y1 - $y0);
+    my $sx = $x0 < $x1 ? 1 : -1;
+    my $sy = $y0 < $y1 ? 1 : -1;
+    my $err = $dx - $dy;
+
+    while (1) {
+        $canvas->set($x0, $y0);
+        last if $x0 == $x1 && $y0 == $y1;
+        my $e2 = 2 * $err;
+        if ($e2 > -$dy) {
+            $err -= $dy;
+            $x0  += $sx;
+        }
+        if ($e2 < $dx) {
+            $err += $dx;
+            $y0  += $sy;
+        }
+    }
+}
 
 sub _rgb_to_ansi {
     my ($self, $r, $g, $b, $is_bg) = @_;
