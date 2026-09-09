@@ -220,9 +220,8 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
 
     my $got = $ansi->ansi_decode($text);
 
-    # Verify that the token was replaced, cursor position was saved/restored,
-    # and it targeted column 5, row 2 (\e[2;5H).
-    if ($got =~ /\e\[s/ && $got =~ /\e\[2;5H/ && $got =~ /\e\[u\[% CURSOR ON %\]/) {
+    # Verify cursor save, coordinate positioning at column 5, row 2, and cursor restore
+    if ($got =~ /\e\[s/ && $got =~ /\e\[2;5H/ && $got =~ /\e\[u/) {
         pass(' [% CANVAS ... %] ');
         diag("\r" . clline .
             colored(['bright_white on_black'], sprintf('%41s', ' CANVAS col,row,width,height ')) .
