@@ -386,6 +386,9 @@ sub ansi_box {
     my $type   = shift;
     my $string = shift;
 
+    # Decode any inner tokens inside the box body first
+    $string = $self->ansi_decode($string) if defined $string;
+
     # Basic validation/fallbacks
     $w ||= 3;
     $h ||= 3;
