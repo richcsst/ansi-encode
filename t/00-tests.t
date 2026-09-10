@@ -236,6 +236,47 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
     }
 }
 
+{
+    my $text = q{[% UNDERLINE COLOR RED %]};
+    my $expected = $ansi->{'CAPS'}->{'24 BIT'} || $ansi->{'CAPS'}->{'8 BIT'} ? "\e[58;5;1m" : '';
+
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
+        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
+    );
+
+    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
+    diag("\r" . clline . 
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
+        colored(['bright_green'], ' OK')
+    );
+}
+
+{
+    my $text = q{[% UNDERLINE COLOR RGB 255,0,0 %]};
+    my $expected;
+    if ($ansi->{'CAPS'}->{'24 BIT'}) {
+        $expected = "\e[58;2;255;0;0m";
+    } elsif ($ansi->{'CAPS'}->{'8 BIT'}) {
+        my $code = $ansi->_rgb_to_256(255, 0, 0);
+        $expected = "\e[58;5;${code}m";
+    } else {
+        $expected = '';
+    }
+
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
+        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
+    );
+
+    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
+    diag("\r" . clline . 
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
+        colored(['bright_green'], ' OK')
+    );
+}
+
+
 diag("\r" . ' ' x 79 . "\r\e[8A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 7);
 
 exit(0);
