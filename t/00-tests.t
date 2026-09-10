@@ -236,6 +236,10 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
     }
 }
 
+diag("\r" . ' ' x 79 . "\r\e[8A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 8);
+
+diag("\r" . clline . colored(['bright_yellow on_cyan'],  sprintf('%-41s', ' Testing extended attributes ')) . colored(['bright_yellow'],' ...'));
+
 {
     my $text = q{[% UNDERLINE COLOR RED %]};
     my $expected = $ansi->{'CAPS'}->{'24 BIT'} || $ansi->{'CAPS'}->{'8 BIT'} ? "\e[58;5;1m" : '';
@@ -276,8 +280,7 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
     );
 }
 
-
-diag("\r" . ' ' x 79 . "\r\e[10A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 10);
+diag("\r" . ' ' x 79 . "\r\e[3A" . colored(['bright_yellow on_cyan'],sprintf('%-41s',' Tested extended attributes ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 3);
 
 exit(0);
 
