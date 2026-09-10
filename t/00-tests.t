@@ -88,6 +88,90 @@ foreach my $code (sort(keys %{$ansi->{'ansi_meta'}})) {
 }
 diag("\r" . ' ' x 79 . "\r\e[7A" . colored(['bright_yellow on_blue'],sprintf('%-41s',' Tested tokens ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 6);
 
+diag("\r" . clline . colored(['bright_yellow on_cyan'],  sprintf('%-41s', ' Testing extended attributes ')) . colored(['bright_yellow'],' ...'));
+
+{
+    my $text = q{[% JUSTIFIED %]There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' features.  You can used the '-t' option for all of the color tokens available or use the 'B_RGB' token for access to 16 million colors.[% ENDJUSTIFIED %]};
+    my $expected = qq{There are many  more  background  colors  available  than  the  sixteen  below.\nHowever, the ones below should work on any color terminal.   Other  colors  may\nrequire 256 and 16 million color support.  Most  Linux  X-Windows  and  Wayland\nterminal software should support  the  extra  colors.   Some  Windows  terminal\nsoftware should have 'Term256' features.  You can used the '-t' option for  all\nof the color tokens available or use the 'B_RGB' token for access to 16 million\ncolors.};
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
+        colored(['bright_yellow'], ' [% JUSTIFIED %]...[% ENDJUSTIFIED %]') . "\r\e[1A"
+    );
+    if (cmp_ok($ansi->ansi_decode($text), 'eq', $expected, "JUSTIFIED")) {
+		diag("\r" . clline . 
+			colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
+			colored(['bright_green'], ' OK')
+		);
+	} else {
+		diag("\r" . clline . 
+			colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
+			colored(['bright_red'], ' FAILED')
+		);
+	}
+}
+
+{
+    my $text = q{[% UNDERLINE COLOR RED %]};
+    my $expected = $ansi->{'CAPS'}->{'24 BIT'} || $ansi->{'CAPS'}->{'8 BIT'} ? "\e[58;5;1m" : '';
+
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
+        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
+    );
+
+    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
+    diag("\r" . clline . 
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
+        colored(['bright_green'], ' OK')
+    );
+}
+
+{
+    my $text = q{[% UNDERLINE COLOR RGB 255,0,0 %]};
+    my $expected;
+    if ($ansi->{'CAPS'}->{'24 BIT'}) {
+        $expected = "\e[58;2;255;0;0m";
+    } elsif ($ansi->{'CAPS'}->{'8 BIT'}) {
+        my $code = $ansi->_rgb_to_256(255, 0, 0);
+        $expected = "\e[58;5;${code}m";
+    } else {
+        $expected = '';
+    }
+
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
+        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
+    );
+
+    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
+    diag("\r" . clline . 
+        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
+        colored(['bright_green'], ' OK')
+    );
+}
+
+{
+    my $text = q{[% WRAP %]There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' features.  You can used the '-t' option for all of the color tokens available or use the 'B_RGB' token for access to 16 million colors.[% ENDWRAP %]};
+    my $expected = qq{There are many more background colors available than the sixteen below.\nHowever, the ones below should work on any color terminal.  Other colors may\nrequire 256 and 16 million color support.  Most Linux X-Windows and Wayland\nterminal software should support the extra colors.  Some Windows terminal\nsoftware should have 'Term256' features.  You can used the '-t' option for all\nof the color tokens available or use the 'B_RGB' token for access to 16 million\ncolors.};
+    diag("\r" . clline .
+        colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
+        colored(['bright_yellow'], ' [% WRAP %]...[% ENDWRAP %]') . "\r\e[1A"
+    );
+    if (cmp_ok($ansi->ansi_decode($text), 'eq', $expected, 'WRAP')) {
+		diag("\r" . clline . 
+			colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
+			colored(['bright_green'], ' OK')
+		);
+	} else {
+		diag("\r" . clline . 
+			colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
+			colored(['bright_red'], ' FAILED')
+		);
+	}
+}
+
+diag("\r" . ' ' x 79 . "\r\e[5A" . colored(['bright_yellow on_cyan'],sprintf('%-41s',' Tested extended attributes ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 5);
+
 diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Testing macros ')) . colored(['bright_yellow'],' ...'));
 {
     my $text = q{[% BLOCK 3 %]Duplicate this[% ENDBLOCK %]};
@@ -197,90 +281,6 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
 }
 
 diag("\r" . ' ' x 79 . "\r\e[6A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 5);
-
-diag("\r" . clline . colored(['bright_yellow on_cyan'],  sprintf('%-41s', ' Testing extended attributes ')) . colored(['bright_yellow'],' ...'));
-
-{
-    my $text = q{[% JUSTIFIED %]There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' features.  You can used the '-t' option for all of the color tokens available or use the 'B_RGB' token for access to 16 million colors.[% ENDJUSTIFIED %]};
-    my $expected = qq{There are many  more  background  colors  available  than  the  sixteen  below.\nHowever, the ones below should work on any color terminal.   Other  colors  may\nrequire 256 and 16 million color support.  Most  Linux  X-Windows  and  Wayland\nterminal software should support  the  extra  colors.   Some  Windows  terminal\nsoftware should have 'Term256' features.  You can used the '-t' option for  all\nof the color tokens available or use the 'B_RGB' token for access to 16 million\ncolors.};
-    diag("\r" . clline .
-        colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
-        colored(['bright_yellow'], ' [% JUSTIFIED %]...[% ENDJUSTIFIED %]') . "\r\e[1A"
-    );
-    if (cmp_ok($ansi->ansi_decode($text), 'eq', $expected, "JUSTIFIED")) {
-		diag("\r" . clline . 
-			colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
-			colored(['bright_green'], ' OK')
-		);
-	} else {
-		diag("\r" . clline . 
-			colored(['bright_white on_black'], sprintf('%41s', ' JUSTIFIED ')) .
-			colored(['bright_red'], ' FAILED')
-		);
-	}
-}
-
-{
-    my $text = q{[% UNDERLINE COLOR RED %]};
-    my $expected = $ansi->{'CAPS'}->{'24 BIT'} || $ansi->{'CAPS'}->{'8 BIT'} ? "\e[58;5;1m" : '';
-
-    diag("\r" . clline .
-        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
-        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
-    );
-
-    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
-    diag("\r" . clline . 
-        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR color ')) .
-        colored(['bright_green'], ' OK')
-    );
-}
-
-{
-    my $text = q{[% UNDERLINE COLOR RGB 255,0,0 %]};
-    my $expected;
-    if ($ansi->{'CAPS'}->{'24 BIT'}) {
-        $expected = "\e[58;2;255;0;0m";
-    } elsif ($ansi->{'CAPS'}->{'8 BIT'}) {
-        my $code = $ansi->_rgb_to_256(255, 0, 0);
-        $expected = "\e[58;5;${code}m";
-    } else {
-        $expected = '';
-    }
-
-    diag("\r" . clline .
-        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
-        colored(['bright_yellow'], " $text") . clline . "\r\e[1A"
-    );
-
-    cmp_ok($ansi->ansi_decode($text), 'eq', $expected, $text);
-    diag("\r" . clline . 
-        colored(['bright_white on_black'], sprintf('%41s', ' UNDERLINE COLOR RGB r,g,b ')) .
-        colored(['bright_green'], ' OK')
-    );
-}
-
-{
-    my $text = q{[% WRAP %]There are many more background colors available than the sixteen below.  However, the ones below should work on any color terminal.  Other colors may require 256 and 16 million color support.  Most Linux X-Windows and Wayland terminal software should support the extra colors.  Some Windows terminal software should have 'Term256' features.  You can used the '-t' option for all of the color tokens available or use the 'B_RGB' token for access to 16 million colors.[% ENDWRAP %]};
-    my $expected = qq{There are many more background colors available than the sixteen below.\nHowever, the ones below should work on any color terminal.  Other colors may\nrequire 256 and 16 million color support.  Most Linux X-Windows and Wayland\nterminal software should support the extra colors.  Some Windows terminal\nsoftware should have 'Term256' features.  You can used the '-t' option for all\nof the color tokens available or use the 'B_RGB' token for access to 16 million\ncolors.};
-    diag("\r" . clline .
-        colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
-        colored(['bright_yellow'], ' [% WRAP %]...[% ENDWRAP %]') . "\r\e[1A"
-    );
-    if (cmp_ok($ansi->ansi_decode($text), 'eq', $expected, 'WRAP')) {
-		diag("\r" . clline . 
-			colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
-			colored(['bright_green'], ' OK')
-		);
-	} else {
-		diag("\r" . clline . 
-			colored(['bright_white on_black'], sprintf('%41s', ' WRAP ')) .
-			colored(['bright_red'], ' FAILED')
-		);
-	}
-}
-
-diag("\r" . ' ' x 79 . "\r\e[5A" . colored(['bright_yellow on_cyan'],sprintf('%-41s',' Tested extended attributes ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 5);
 
 exit(0);
 
