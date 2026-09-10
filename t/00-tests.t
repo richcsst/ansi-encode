@@ -11,7 +11,7 @@ use List::Util qw(max);
 use utf8;
 use Data::Dumper;
 
-use Test::More tests => 2094;
+use Test::More tests => 2096;
 # use Test::More 'no_plan';
 
 BEGIN {
