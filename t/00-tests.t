@@ -236,7 +236,7 @@ diag("\r" . clline . colored(['bright_yellow on_blue'],  sprintf('%-41s', ' Test
     }
 }
 
-diag("\r" . ' ' x 79 . "\r\e[8A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 8);
+diag("\r" . ' ' x 79 . "\r\e[8A" . colored(['bright_yellow on_red'],sprintf('%-41s',' Tested macros ')) . colored(['bright_green'],' OK ') . clline . "\n\r " x 7);
 
 diag("\r" . clline . colored(['bright_yellow on_cyan'],  sprintf('%-41s', ' Testing extended attributes ')) . colored(['bright_yellow'],' ...'));
 
